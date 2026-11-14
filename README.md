@@ -2,13 +2,13 @@
 
 **Français** · [English](README.en.md)
 
-[![CI](https://github.com/Relthdrarxash/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Relthdrarxash/sommelle/actions/workflows/ci.yml)
+[![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
 Application Android d'accompagnement à l'insomnie fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie), le traitement recommandé en premier par les recommandations européennes et américaines. Gratuite, en français et en anglais, sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
 
 Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et elle ne remplace pas un avis médical.
 
-**[Site de Sommelle](https://relthdrarxash.github.io/sommelle/)** · **[Google Play](https://play.google.com/store/apps/details?id=fr.sommelle)** · **[Télécharger l'APK](https://github.com/Relthdrarxash/sommelle/releases/latest)** · [Pour les professionnels de santé](https://relthdrarxash.github.io/sommelle/professionnels.html) · [Dossier scientifique](https://relthdrarxash.github.io/sommelle/protocole.html) · [Confidentialité](https://relthdrarxash.github.io/sommelle/confidentialite.html)
+**[Site de Sommelle](https://pilmil-studio.github.io/sommelle/)** · **[Google Play](https://play.google.com/store/apps/details?id=fr.sommelle)** · **[Télécharger l'APK](https://github.com/Pilmil-Studio/sommelle/releases/latest)** · [Pour les professionnels de santé](https://pilmil-studio.github.io/sommelle/professionnels.html) · [Dossier scientifique](https://pilmil-studio.github.io/sommelle/protocole.html) · [Confidentialité](https://pilmil-studio.github.io/sommelle/confidentialite.html)
 
 **Avant la sortie sur Google Play :** [rejoindre le test interne](https://play.google.com/apps/internaltest/4701568611212235635) (réservé aux personnes déjà ajoutées à la liste de testeurs : [demandez l'accès par mail](mailto:pilmil.studio@proton.me?subject=Tester%20Sommelle)).
 
@@ -60,10 +60,10 @@ Les captures sont générées à partir du code des écrans à chaque modificati
 
 ## Du même atelier (Pilmil Studio)
 
-- **[Lunaison](https://github.com/Relthdrarxash/lunaison)** : suivi du cycle menstruel libre, gratuit et sans accès à Internet, avec fiches médicales sourcées et partage partenaire hors-ligne.
-- **[Respire](https://github.com/Relthdrarxash/respire)** : une courte pause de respiration avant les applications que l'on ouvre par réflexe, particulièrement utile le soir avant le coucher.
-- **[Sauve](https://github.com/Relthdrarxash/sauve)** : premiers secours « anti-panique », gratuit, libre et sans accès à Internet, avec guidage vocal et haptique mains libres.
-- **[Sillon](https://github.com/Relthdrarxash/sillon)** : potager vivant et calendrier agronomique indexé sur la date des dernières gelées, gratuit, libre et sans accès à Internet.
+- **[Lunaison](https://github.com/Pilmil-Studio/lunaison)** : suivi du cycle menstruel libre, gratuit et sans accès à Internet, avec fiches médicales sourcées et partage partenaire hors-ligne.
+- **[Respire](https://github.com/Pilmil-Studio/respire)** : une courte pause de respiration avant les applications que l'on ouvre par réflexe, particulièrement utile le soir avant le coucher.
+- **[Sauve](https://github.com/Pilmil-Studio/sauve)** : premiers secours « anti-panique », gratuit, libre et sans accès à Internet, avec guidage vocal et haptique mains libres.
+- **[Sillon](https://github.com/Pilmil-Studio/sillon)** : potager vivant et calendrier agronomique indexé sur la date des dernières gelées, gratuit, libre et sans accès à Internet.
 
 ## Pourquoi Sommelle est gratuite
 
@@ -71,18 +71,18 @@ La thérapie cognitive et comportementale de l'insomnie (TCC-I) est le traitemen
 
 ## Principes
 
-- **Fondée sur les recommandations.** Agenda du Consensus Sleep Diary, restriction du temps au lit et contrôle du stimulus selon les recommandations européennes (2023) et américaines (2021). Les règles, seuils et sources sont décrits dans le [dossier scientifique](https://relthdrarxash.github.io/sommelle/protocole.html), avec leurs limites.
+- **Fondée sur les recommandations.** Agenda du Consensus Sleep Diary, restriction du temps au lit et contrôle du stimulus selon les recommandations européennes (2023) et américaines (2021). Les règles, seuils et sources sont décrits dans le [dossier scientifique](https://pilmil-studio.github.io/sommelle/protocole.html), avec leurs limites.
 - **100 % locale.** Pas de compte, pas de serveur, pas de permission Internet, pas de traceur. Le code étant public, chacun peut le vérifier.
 - **Pour tout le monde.** Conçue pour une personne mal réveillée, y compris âgée ou peu à l'aise avec le numérique : grands boutons, pas de jargon, pas de geste caché, police Atkinson Hyperlegible, thème de nuit chaud. Les choix sont expliqués dans les [principes d'interface](documentation/design.md).
 - **Sans culpabilité.** Pas de score quotidien, pas de série à maintenir, pas de rouge.
-- **L'appli au strict nécessaire, les explications sur le site.** L'appli se limite à ce qu'il faut pour suivre le programme. Le pourquoi de chaque étape, ce qui relève d'une étude et ce qui relève d'un choix de conception, est sur la page [Pourquoi Sommelle est faite comme ça](https://relthdrarxash.github.io/sommelle/pourquoi.html).
+- **L'appli au strict nécessaire, les explications sur le site.** L'appli se limite à ce qu'il faut pour suivre le programme. Le pourquoi de chaque étape, ce qui relève d'une étude et ce qui relève d'un choix de conception, est sur la page [Pourquoi Sommelle est faite comme ça](https://pilmil-studio.github.io/sommelle/pourquoi.html).
 
 ## Documentation
 
 | Document | Contenu |
 |---|---|
-| [Pourquoi Sommelle est faite comme ça](https://relthdrarxash.github.io/sommelle/pourquoi.html) | Pour le grand public : chaque étape, sa raison, à quoi s'attendre les premières semaines, sources (source : `docs/pourquoi.html`) |
-| [Dossier scientifique](https://relthdrarxash.github.io/sommelle/protocole.html) | Pour les soignants : composantes de TCC-I, calculs avec exemple, sécurité, exercices, limites, sources (source : `docs/protocole.html`) |
+| [Pourquoi Sommelle est faite comme ça](https://pilmil-studio.github.io/sommelle/pourquoi.html) | Pour le grand public : chaque étape, sa raison, à quoi s'attendre les premières semaines, sources (source : `docs/pourquoi.html`) |
+| [Dossier scientifique](https://pilmil-studio.github.io/sommelle/protocole.html) | Pour les soignants : composantes de TCC-I, calculs avec exemple, sécurité, exercices, limites, sources (source : `docs/protocole.html`) |
 | [Principes d'interface](documentation/design.md) | Pour qui, et comment l'interface s'adapte à une personne fatiguée |
 | [Architecture](documentation/architecture.md) | Modules, données, accessibilité |
 | [Contribuer](CONTRIBUTING.md) | Compiler, tester, captures d'écran, site |

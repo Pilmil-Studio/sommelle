@@ -16,7 +16,7 @@
     <string name="settings_data_hint">Wszystko pozostaje na Twoim telefonie. Nic nie jest wysyłane.</string>
     <string name="settings_import_csv">Importuj dziennik z pliku CSV</string>
     <string name="settings_import_result">Zaimportowano %1$d nocy do dziennika.</string>
-    <string name="settings_privacy_url">https://relthdrarxash.github.io/sommelle/confidentialite.html</string>
+    <string name="settings_privacy_url">https://pilmil-studio.github.io/sommelle/confidentialite.html</string>
     <string name="settings_privacy">Polityka prywatności</string>
     <string name="settings_erase">Usuń wszystkie moje dane</string>
     <string name="settings_erase_title">Usunąć wszystkie dane?</string>

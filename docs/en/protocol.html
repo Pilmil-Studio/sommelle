@@ -385,36 +385,36 @@
           <tr>
             <td><strong>Versioned clinical parameters</strong></td>
             <td><code>baselineDays = 7</code>, <code>minimumLoggedNightsPerWeek = 5</code>, <code>defaultMinimumWindow = 5h30</code>, <code>safetyCriticalMinimumWindow = 6h00</code>, <code>absoluteMinimumWindow = 5h00</code>, <code>maximumWindow = 9h00</code>, <code>increaseThreshold = 0.85</code>, <code>decreaseThreshold = 0.80</code>, <code>seniorThresholdOffset = 0.05</code>.</td>
-            <td><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ProtocolConfig.kt"><code>ProtocolConfig.kt</code></a></td>
+            <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ProtocolConfig.kt"><code>ProtocolConfig.kt</code></a></td>
           </tr>
           <tr>
             <td><strong>Diary metrics (TIB, TST, SE)</strong></td>
             <td><code>TIB = outOfBed − inBed</code>; <code>TST = (finalWake − lightsOff) − SOL − WASO</code>; weighted weekly sleep efficiency <code>SE = &Sigma;TST / &Sigma;TIB</code>.</td>
-            <td><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/SleepMetrics.kt"><code>SleepMetrics.kt</code></a><br><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/SleepMetricsTest.kt"><code>SleepMetricsTest.kt</code></a></td>
+            <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/SleepMetrics.kt"><code>SleepMetrics.kt</code></a><br><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/SleepMetricsTest.kt"><code>SleepMetricsTest.kt</code></a></td>
           </tr>
           <tr>
             <td><strong>Sleep window &amp; weekly adjustment</strong></td>
             <td>Initial window = mean baseline TST rounded up to the next 15 min, clamped to <code>[minWindow, 9h00]</code>. Weekly adjustment (if <code>&ge; 5</code> logged nights): <code>+15 min</code> if <code>SE &ge; 85%</code> (<code>80%</code> from age 65), <code>−15 min</code> if <code>SE &lt; 80%</code> (<code>75%</code> from age 65), unchanged otherwise.</td>
-            <td><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/SleepWindowCalculator.kt"><code>SleepWindowCalculator.kt</code></a><br><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/SleepWindowCalculatorTest.kt"><code>SleepWindowCalculatorTest.kt</code></a></td>
+            <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/SleepWindowCalculator.kt"><code>SleepWindowCalculator.kt</code></a><br><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/SleepWindowCalculatorTest.kt"><code>SleepWindowCalculatorTest.kt</code></a></td>
           </tr>
           <tr>
             <td><strong>Safety screening &amp; referral</strong></td>
             <td>Deterministic decision tree excluding sleep restriction when sleep apnea, bipolar disorder, epilepsy, pregnancy or delayed sleep phase is suspected, and raising the minimum window to <code>6h00</code> for safety-critical or driving occupations.</td>
-            <td><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ScreeningEvaluator.kt"><code>ScreeningEvaluator.kt</code></a><br><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/ScreeningEvaluatorTest.kt"><code>ScreeningEvaluatorTest.kt</code></a></td>
+            <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ScreeningEvaluator.kt"><code>ScreeningEvaluator.kt</code></a><br><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/ScreeningEvaluatorTest.kt"><code>ScreeningEvaluatorTest.kt</code></a></td>
           </tr>
           <tr>
             <td><strong>Diary consistency validation</strong></td>
             <td>Checks chronological order (<code>inBed &le; lightsOff &le; finalWake &le; outOfBed</code>) and wake durations without blocking the patient.</td>
-            <td><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/DiaryValidator.kt"><code>DiaryValidator.kt</code></a><br><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/DiaryValidatorTest.kt"><code>DiaryValidatorTest.kt</code></a></td>
+            <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/DiaryValidator.kt"><code>DiaryValidator.kt</code></a><br><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/DiaryValidatorTest.kt"><code>DiaryValidatorTest.kt</code></a></td>
           </tr>
           <tr>
             <td><strong>Progression &amp; relapse prevention</strong></td>
             <td>6-week scheduling, before/after review, and maintenance guide for handling an isolated bad night versus a multi-week relapse.</td>
-            <td><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ProgramPlanner.kt"><code>ProgramPlanner.kt</code></a><br><a href="https://github.com/Relthdrarxash/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/ProgramPlannerTest.kt"><code>ProgramPlannerTest.kt</code></a></td>
+            <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ProgramPlanner.kt"><code>ProgramPlanner.kt</code></a><br><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/ProgramPlannerTest.kt"><code>ProgramPlannerTest.kt</code></a></td>
           </tr>
         </tbody>
       </table>
-      <p>Your comments on the protocol, thresholds or wording are valuable, whether you are a sleep physician, a psychologist trained in CBT-I, a general practitioner or a pharmacist. Write to us at <a href="mailto:pilmil.studio@proton.me">pilmil.studio@proton.me</a> or open an issue on <a href="https://github.com/Relthdrarxash/sommelle/issues">GitHub</a>.</p>
+      <p>Your comments on the protocol, thresholds or wording are valuable, whether you are a sleep physician, a psychologist trained in CBT-I, a general practitioner or a pharmacist. Write to us at <a href="mailto:pilmil.studio@proton.me">pilmil.studio@proton.me</a> or open an issue on <a href="https://github.com/Pilmil-Studio/sommelle/issues">GitHub</a>.</p>
     </article>
   </main>
 
@@ -425,7 +425,7 @@
         <a href="./">Home</a>
         <a href="professionals.html">Health professionals</a>
         <a href="privacy.html">Privacy</a>
-        <a href="https://github.com/Relthdrarxash/sommelle">Source code</a>
+        <a href="https://github.com/Pilmil-Studio/sommelle">Source code</a>
         <a href="mailto:pilmil.studio@proton.me">Contact</a>
       </div>
       <p>Sommelle is free software distributed under the Mozilla Public License 2.0 (MPL-2.0). It is not a medical device.</p>

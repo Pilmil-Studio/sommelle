@@ -13,15 +13,15 @@ Categories:
 License: MPL-2.0
 AuthorName: Pilmil Studio
 AuthorEmail: pilmil.studio@proton.me
-WebSite: https://relthdrarxash.github.io/sommelle/
-SourceCode: https://github.com/Relthdrarxash/sommelle
-IssueTracker: https://github.com/Relthdrarxash/sommelle/issues
-Changelog: https://github.com/Relthdrarxash/sommelle/releases
+WebSite: https://pilmil-studio.github.io/sommelle/
+SourceCode: https://github.com/Pilmil-Studio/sommelle
+IssueTracker: https://github.com/Pilmil-Studio/sommelle/issues
+Changelog: https://github.com/Pilmil-Studio/sommelle/releases
 
 AutoName: Sommelle
 
 RepoType: git
-Repo: https://github.com/Relthdrarxash/sommelle.git
+Repo: https://github.com/Pilmil-Studio/sommelle.git
 
 Builds:
   - versionName: 1.2.0
@@ -42,5 +42,5 @@ CurrentVersionCode: 10200
 
 ## 2. Pages dédiées aux professionnels de santé
 
-- **Sommelle** : `https://relthdrarxash.github.io/sommelle/professionnels.html` (et `/en/professionals.html`) avec fiche PDF à imprimer (`fiche-prescripteurs.pdf`).
-- **Lunaison** : `https://relthdrarxash.github.io/lunaison/professionnels.html` (et `/en/professionals.html`).
+- **Sommelle** : `https://pilmil-studio.github.io/sommelle/professionnels.html` (et `/en/professionals.html`) avec fiche PDF à imprimer (`fiche-prescripteurs.pdf`).
+- **Lunaison** : `https://pilmil-studio.github.io/lunaison/professionnels.html` (et `/en/professionals.html`).

@@ -2,13 +2,13 @@
 
 [Français](README.md) · **English**
 
-[![CI](https://github.com/Relthdrarxash/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Relthdrarxash/sommelle/actions/workflows/ci.yml)
+[![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
 An Android app that supports people with insomnia, based on CBT-I (cognitive behavioral therapy for insomnia), the first-line treatment recommended by European and American guidelines. Free, in English and French, no account and no ads. No data leaves the phone.
 
 Sommelle is a self-help and education tool. It is not a medical device and does not replace medical advice.
 
-**[Sommelle website](https://relthdrarxash.github.io/sommelle/en/)** · **[Google Play](https://play.google.com/store/apps/details?id=fr.sommelle)** · **[Download APK](https://github.com/Relthdrarxash/sommelle/releases/latest)** · [For health professionals](https://relthdrarxash.github.io/sommelle/en/professionals.html) · [Scientific dossier](https://relthdrarxash.github.io/sommelle/en/protocol.html) · [Privacy](https://relthdrarxash.github.io/sommelle/en/privacy.html)
+**[Sommelle website](https://pilmil-studio.github.io/sommelle/en/)** · **[Google Play](https://play.google.com/store/apps/details?id=fr.sommelle)** · **[Download APK](https://github.com/Pilmil-Studio/sommelle/releases/latest)** · [For health professionals](https://pilmil-studio.github.io/sommelle/en/professionals.html) · [Scientific dossier](https://pilmil-studio.github.io/sommelle/en/protocol.html) · [Privacy](https://pilmil-studio.github.io/sommelle/en/privacy.html)
 
 **Before the Google Play release:** [join the internal test](https://play.google.com/apps/internaltest/4701568611212235635) (only for people already on the tester list: [ask for access by e-mail](mailto:pilmil.studio@proton.me?subject=Tester%20Sommelle)).
 
@@ -55,10 +55,10 @@ Screenshots are generated from the screen code on every change.
 
 ## From the same studio (Pilmil Studio)
 
-- **[Lunaison](https://github.com/Relthdrarxash/lunaison)**: free, open-source offline menstrual cycle tracker with referenced medical guides and serverless partner sharing.
-- **[Respire](https://github.com/Relthdrarxash/respire)**: a short breathing pause before the apps you open on autopilot, especially helpful in the evening before bed.
-- **[Sauve](https://github.com/Relthdrarxash/sauve)**: anti-panic first aid guide, free, open source and offline, with hands-free voice and haptic guidance.
-- **[Sillon](https://github.com/Relthdrarxash/sillon)**: living vegetable garden planner and agronomic calendar based on the last frost date, free, open source and offline.
+- **[Lunaison](https://github.com/Pilmil-Studio/lunaison)**: free, open-source offline menstrual cycle tracker with referenced medical guides and serverless partner sharing.
+- **[Respire](https://github.com/Pilmil-Studio/respire)**: a short breathing pause before the apps you open on autopilot, especially helpful in the evening before bed.
+- **[Sauve](https://github.com/Pilmil-Studio/sauve)**: anti-panic first aid guide, free, open source and offline, with hands-free voice and haptic guidance.
+- **[Sillon](https://github.com/Pilmil-Studio/sillon)**: living vegetable garden planner and agronomic calendar based on the last frost date, free, open source and offline.
 
 ## Why Sommelle is free
 
@@ -66,11 +66,11 @@ Cognitive behavioral therapy for insomnia (CBT-I) is the recommended first-line 
 
 ## Principles
 
-- **Based on guidelines.** Consensus Sleep Diary, sleep restriction and stimulus control following European (2023) and American (2021) guidelines. The rules, thresholds and sources are described in the [scientific dossier](https://relthdrarxash.github.io/sommelle/en/protocol.html), with their limitations.
+- **Based on guidelines.** Consensus Sleep Diary, sleep restriction and stimulus control following European (2023) and American (2021) guidelines. The rules, thresholds and sources are described in the [scientific dossier](https://pilmil-studio.github.io/sommelle/en/protocol.html), with their limitations.
 - **100% local.** No account, no server, no Internet permission, no trackers. Since the code is public, anyone can check.
 - **For everyone.** Designed for someone who is half awake, including older people or those less comfortable with technology: big buttons, no jargon, no hidden gestures, Atkinson Hyperlegible font, warm night theme. The choices are explained in the [interface principles](documentation/design.md) (in French).
 - **No guilt.** No daily score, no streak to keep up, no red.
-- **Only what is needed in the app, the explanations on the website.** The app sticks to what is needed to follow the program. The reason for each step, and what comes from a study versus a design choice, is on the [Why Sommelle works the way it does](https://relthdrarxash.github.io/sommelle/en/why.html) page.
+- **Only what is needed in the app, the explanations on the website.** The app sticks to what is needed to follow the program. The reason for each step, and what comes from a study versus a design choice, is on the [Why Sommelle works the way it does](https://pilmil-studio.github.io/sommelle/en/why.html) page.
 
 ## Languages
 

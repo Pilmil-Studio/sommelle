@@ -16,7 +16,7 @@
     <string name="settings_data_hint">Усі дані залишаються на телефоні. Нічого нікуди не передається.</string>
     <string name="settings_import_csv">Імпортувати щоденник із CSV</string>
     <string name="settings_import_result">Імпортовано ночей: %1$d.</string>
-    <string name="settings_privacy_url">https://relthdrarxash.github.io/sommelle/confidentialite.html</string>
+    <string name="settings_privacy_url">https://pilmil-studio.github.io/sommelle/confidentialite.html</string>
     <string name="settings_privacy">Політика конфіденційності</string>
     <string name="settings_erase">Видалити всі мої дані</string>
     <string name="settings_erase_title">Видалити всі дані?</string>

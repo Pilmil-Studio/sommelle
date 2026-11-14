@@ -16,7 +16,7 @@
     <string name="settings_data_hint">Alles bleibt auf deinem Handy. Nichts wird übertragen.</string>
     <string name="settings_import_csv">CSV-Tagebuch importieren</string>
     <string name="settings_import_result">%1$d Nacht/Nächte in dein Tagebuch importiert.</string>
-    <string name="settings_privacy_url">https://relthdrarxash.github.io/sommelle/confidentialite.html</string>
+    <string name="settings_privacy_url">https://pilmil-studio.github.io/sommelle/confidentialite.html</string>
     <string name="settings_privacy">Datenschutzerklärung</string>
     <string name="settings_erase">Alle meine Daten löschen</string>
     <string name="settings_erase_title">Alle Daten löschen?</string>

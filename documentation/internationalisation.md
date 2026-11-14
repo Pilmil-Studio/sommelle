@@ -33,14 +33,14 @@ On n'ajoute une langue à ce fichier **que** lorsque tous les textes de l'appli 
 
 ### Lunaison
 
-- Interface Compose et contenus : composés dans le code avec `tr(fr, en, pl, uk, es, de)` ([`Language.kt`](https://github.com/Relthdrarxash/lunaison/blob/main/core/model/src/main/kotlin/fr/lunaison/core/model/Language.kt)). Les arguments `pl`, `uk`, `es`, `de` se replient sur l'anglais s'ils sont absents.
-- Fiches « Comprendre » : `ArticlesFr`, `ArticlesEn` ; une langue sans fichier dédié affiche les fiches anglaises ([`Articles.kt`](https://github.com/Relthdrarxash/lunaison/blob/main/core/content/src/main/kotlin/fr/lunaison/core/content/Articles.kt)).
+- Interface Compose et contenus : composés dans le code avec `tr(fr, en, pl, uk, es, de)` ([`Language.kt`](https://github.com/Pilmil-Studio/lunaison/blob/main/core/model/src/main/kotlin/fr/lunaison/core/model/Language.kt)). Les arguments `pl`, `uk`, `es`, `de` se replient sur l'anglais s'ils sont absents.
+- Fiches « Comprendre » : `ArticlesFr`, `ArticlesEn` ; une langue sans fichier dédié affiche les fiches anglaises ([`Articles.kt`](https://github.com/Pilmil-Studio/lunaison/blob/main/core/content/src/main/kotlin/fr/lunaison/core/content/Articles.kt)).
 - Notifications et widget : `app/src/main/res/values-xx/strings.xml`.
 
 ### Sommelle
 
 - Interface : `strings.xml` de chaque module (`app`, `core/designsystem`, `feature/*`).
-- Textes calculés (bilans, résumé pour le médecin, graphiques) : une implémentation de `TextFormat` par langue ([`TextFormat.kt`](https://github.com/Relthdrarxash/sommelle/blob/main/core/presentation/src/main/kotlin/fr/sommelle/core/presentation/TextFormat.kt)).
+- Textes calculés (bilans, résumé pour le médecin, graphiques) : une implémentation de `TextFormat` par langue ([`TextFormat.kt`](https://github.com/Pilmil-Studio/sommelle/blob/main/core/presentation/src/main/kotlin/fr/sommelle/core/presentation/TextFormat.kt)).
 
 ### Respire
 

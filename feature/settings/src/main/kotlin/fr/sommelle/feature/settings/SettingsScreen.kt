@@ -242,14 +242,14 @@ fun SettingsContent(
                 badge = "🌿",
                 name = stringResource(R.string.settings_app_respire_name),
                 description = stringResource(R.string.settings_app_respire_desc),
-                onClick = { uriHandler.openSafely("https://relthdrarxash.github.io/respire/") },
+                onClick = { uriHandler.openSafely("https://pilmil-studio.github.io/respire/") },
             )
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
             CompanionAppRow(
                 badge = "🌙",
                 name = stringResource(R.string.settings_app_lunaison_name),
                 description = stringResource(R.string.settings_app_lunaison_desc),
-                onClick = { uriHandler.openSafely("https://relthdrarxash.github.io/lunaison/") },
+                onClick = { uriHandler.openSafely("https://pilmil-studio.github.io/lunaison/") },
             )
         }
 
@@ -260,7 +260,7 @@ fun SettingsContent(
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 SommelleButton(
                     stringResource(R.string.settings_source),
-                    { uriHandler.openSafely("https://github.com/Relthdrarxash/sommelle") },
+                    { uriHandler.openSafely("https://github.com/Pilmil-Studio/sommelle") },
                     modifier = Modifier.weight(1f),
                     style = SommelleButtonStyle.Outlined,
                 )
