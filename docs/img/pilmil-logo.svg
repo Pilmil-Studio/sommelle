@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Pilmil Studio — L'Îlot Hors-Ligne (Icône principale) -->
+  <circle cx="128" cy="128" r="114" fill="#FAF8F4" stroke="#1E1D1A" stroke-width="10"/>
+  <!-- Arche protectrice -->
+  <path d="M 62 146 A 66 66 0 0 1 194 146" fill="none" stroke="#285D4D" stroke-width="22" stroke-linecap="round"/>
+  <!-- Ligne d'établi / horizon -->
+  <line x1="56" y1="176" x2="200" y2="176" stroke="#1E1D1A" stroke-width="14" stroke-linecap="round"/>
+  <!-- Noyau local ocre ambré -->
+  <circle cx="128" cy="134" r="22" fill="#D97706"/>
+</svg>

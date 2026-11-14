@@ -271,6 +271,7 @@ fun SettingsContent(
                     style = SommelleButtonStyle.Outlined,
                 )
             }
+            PilmilLegalBlock()
         }
     }
 
