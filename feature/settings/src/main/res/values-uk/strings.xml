@@ -64,4 +64,14 @@
     <string name="backup_confirm_yes">Замінити</string>
     <string name="backup_restored">Копію відновлено.</string>
     <string name="backup_restore_failed">Відновлення не вдалося. Ваші поточні дані не змінено.</string>
+    <string name="night_theme_title">Нічний вигляд</string>
+    <string name="night_theme_hint">Темна тема без синього світла може вмикатися за вашим розкладом.</string>
+    <string name="night_mode_auto">За моїм розкладом</string>
+    <string name="night_mode_day">Завжди світла</string>
+    <string name="night_mode_night">Завжди темна</string>
+    <string name="night_mode_system">Як на телефоні</string>
+    <string name="night_start_label">Початок ночі: %1$d:00</string>
+    <string name="night_end_label">Кінець ночі: %1$d:00</string>
+    <string name="night_hour_earlier">На годину раніше</string>
+    <string name="night_hour_later">На годину пізніше</string>
 </resources>

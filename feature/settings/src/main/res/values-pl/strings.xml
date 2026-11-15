@@ -64,4 +64,14 @@
     <string name="backup_confirm_yes">Zastąp</string>
     <string name="backup_restored">Kopia przywrócona.</string>
     <string name="backup_restore_failed">Przywracanie nie powiodło się. Twoje bieżące dane pozostały bez zmian.</string>
+    <string name="night_theme_title">Wygląd nocny</string>
+    <string name="night_theme_hint">Ciemny motyw bez niebieskiego światła może włączać się o wybranych godzinach.</string>
+    <string name="night_mode_auto">Według moich godzin</string>
+    <string name="night_mode_day">Zawsze jasny</string>
+    <string name="night_mode_night">Zawsze ciemny</string>
+    <string name="night_mode_system">Jak w telefonie</string>
+    <string name="night_start_label">Początek nocy: %1$d:00</string>
+    <string name="night_end_label">Koniec nocy: %1$d:00</string>
+    <string name="night_hour_earlier">Godzinę wcześniej</string>
+    <string name="night_hour_later">Godzinę później</string>
 </resources>

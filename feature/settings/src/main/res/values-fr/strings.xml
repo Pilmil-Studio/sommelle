@@ -64,4 +64,14 @@
     <string name="backup_confirm_yes">Remplacer</string>
     <string name="backup_restored">Sauvegarde restaurée.</string>
     <string name="backup_restore_failed">La restauration n\'a pas abouti. Vos données actuelles sont inchangées.</string>
+    <string name="night_theme_title">Apparence de nuit</string>
+    <string name="night_theme_hint">Le thème sombre, sans lumière bleue, peut s\'activer selon vos horaires.</string>
+    <string name="night_mode_auto">Selon mes horaires</string>
+    <string name="night_mode_day">Toujours clair</string>
+    <string name="night_mode_night">Toujours sombre</string>
+    <string name="night_mode_system">Comme le téléphone</string>
+    <string name="night_start_label">Début de la nuit : %1$d h</string>
+    <string name="night_end_label">Fin de la nuit : %1$d h</string>
+    <string name="night_hour_earlier">Une heure plus tôt</string>
+    <string name="night_hour_later">Une heure plus tard</string>
 </resources>

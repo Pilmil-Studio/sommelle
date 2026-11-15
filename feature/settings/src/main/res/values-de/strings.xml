@@ -64,4 +64,14 @@
     <string name="backup_confirm_yes">Ersetzen</string>
     <string name="backup_restored">Sicherung wiederhergestellt.</string>
     <string name="backup_restore_failed">Die Wiederherstellung ist fehlgeschlagen. Deine aktuellen Daten sind unverändert.</string>
+    <string name="night_theme_title">Nachtdarstellung</string>
+    <string name="night_theme_hint">Das dunkle Design ohne Blaulicht kann sich nach deinen Zeiten einschalten.</string>
+    <string name="night_mode_auto">Nach meinen Zeiten</string>
+    <string name="night_mode_day">Immer hell</string>
+    <string name="night_mode_night">Immer dunkel</string>
+    <string name="night_mode_system">Wie das Telefon</string>
+    <string name="night_start_label">Beginn der Nacht: %1$d Uhr</string>
+    <string name="night_end_label">Ende der Nacht: %1$d Uhr</string>
+    <string name="night_hour_earlier">Eine Stunde früher</string>
+    <string name="night_hour_later">Eine Stunde später</string>
 </resources>

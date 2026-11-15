@@ -7,6 +7,13 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Icon
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -492,73 +499,64 @@ private fun NightAppearanceSection() {
     NightThemeStore.load(context)
     val nightConfig by NightThemeStore.config.collectAsStateWithLifecycle()
     val modes = listOf(
-        NightThemeMode.AUTO_HOURS to "Horaires automatiques",
-        NightThemeMode.ALWAYS_DAY to "Toujours clair (jour)",
-        NightThemeMode.ALWAYS_NIGHT to "Toujours sombre (nuit)",
-        NightThemeMode.FOLLOW_SYSTEM to "Suivre le téléphone",
+        NightThemeMode.AUTO_HOURS to R.string.night_mode_auto,
+        NightThemeMode.ALWAYS_DAY to R.string.night_mode_day,
+        NightThemeMode.ALWAYS_NIGHT to R.string.night_mode_night,
+        NightThemeMode.FOLLOW_SYSTEM to R.string.night_mode_system,
     )
-    Section("Apparence de nuit") {
-        Text(
-            text = "Le thème sombre sans lumière bleue peut s'activer selon votre plage horaire.",
-            style = MaterialTheme.typography.bodyMedium,
-        )
-        modes.forEach { (mode, label) ->
-            val selected = nightConfig.mode == mode
-            Surface(
-                shape = MaterialTheme.shapes.small,
-                color = if (selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(MaterialTheme.shapes.small)
-                    .clickable { NightThemeStore.update(context) { it.copy(mode = mode) } },
-            ) {
-                Text(
-                    text = label,
-                    style = MaterialTheme.typography.titleSmall,
-                    color = if (selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp),
-                )
+    Section(stringResource(R.string.night_theme_title)) {
+        Text(stringResource(R.string.night_theme_hint), style = MaterialTheme.typography.bodyMedium)
+        Column(Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            modes.forEach { (mode, label) ->
+                val selected = nightConfig.mode == mode
+                Surface(
+                    shape = MaterialTheme.shapes.small,
+                    color = if (selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(1.dp, if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 56.dp)
+                        .clip(MaterialTheme.shapes.small)
+                        .selectable(selected = selected, role = Role.RadioButton) {
+                            NightThemeStore.update(context) { it.copy(mode = mode) }
+                        },
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 14.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = stringResource(label),
+                            style = MaterialTheme.typography.titleSmall,
+                            color = if (selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,
+                            modifier = Modifier.weight(1f),
+                        )
+                        if (selected) Icon(Icons.Filled.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                    }
+                }
             }
         }
         if (nightConfig.mode == NightThemeMode.AUTO_HOURS) {
-            Text(
-                text = "Plage active : ${nightConfig.startHour} h → ${nightConfig.endHour} h",
-                style = MaterialTheme.typography.titleSmall,
-            )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                SommelleButton(
-                    text = "Début ${nightConfig.startHour}h (-1h)",
-                    onClick = { NightThemeStore.update(context) { it.copy(startHour = it.startHour - 1) } },
-                    style = SommelleButtonStyle.Outlined,
-                    modifier = Modifier.weight(1f),
-                )
-                SommelleButton(
-                    text = "Début ${nightConfig.startHour}h (+1h)",
-                    onClick = { NightThemeStore.update(context) { it.copy(startHour = it.startHour + 1) } },
-                    style = SommelleButtonStyle.Outlined,
-                    modifier = Modifier.weight(1f),
-                )
-            }
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                SommelleButton(
-                    text = "Fin ${nightConfig.endHour}h (-1h)",
-                    onClick = { NightThemeStore.update(context) { it.copy(endHour = it.endHour - 1) } },
-                    style = SommelleButtonStyle.Outlined,
-                    modifier = Modifier.weight(1f),
-                )
-                SommelleButton(
-                    text = "Fin ${nightConfig.endHour}h (+1h)",
-                    onClick = { NightThemeStore.update(context) { it.copy(endHour = it.endHour + 1) } },
-                    style = SommelleButtonStyle.Outlined,
-                    modifier = Modifier.weight(1f),
-                )
-            }
+            HourRow(stringResource(R.string.night_start_label, nightConfig.startHour),
+                onEarlier = { NightThemeStore.update(context) { it.copy(startHour = it.startHour - 1) } },
+                onLater = { NightThemeStore.update(context) { it.copy(startHour = it.startHour + 1) } })
+            HourRow(stringResource(R.string.night_end_label, nightConfig.endHour),
+                onEarlier = { NightThemeStore.update(context) { it.copy(endHour = it.endHour - 1) } },
+                onLater = { NightThemeStore.update(context) { it.copy(endHour = it.endHour + 1) } })
+        }
+    }
+}
+
+/** Une heure réglable : le libellé, puis « − 1 h » et « + 1 h » avec une description lue par TalkBack. */
+@Composable
+private fun HourRow(label: String, onEarlier: () -> Unit, onLater: () -> Unit) {
+    val earlier = stringResource(R.string.night_hour_earlier)
+    val later = stringResource(R.string.night_hour_later)
+    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        Text(label, style = MaterialTheme.typography.titleSmall)
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            SommelleButton("− 1 h", onEarlier, style = SommelleButtonStyle.Outlined, modifier = Modifier.weight(1f).semantics { contentDescription = earlier })
+            SommelleButton("+ 1 h", onLater, style = SommelleButtonStyle.Outlined, modifier = Modifier.weight(1f).semantics { contentDescription = later })
         }
     }
 }
