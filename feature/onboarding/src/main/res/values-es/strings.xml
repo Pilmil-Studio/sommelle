@@ -60,4 +60,6 @@
     <string name="onb_rem_continue">Continuar</string>
     <string name="onb_meds">Si tomas un somnífero o un ansiolítico, no lo dejes ni cambies la dosis sin el consejo de tu médico. Estos medicamentos pueden aumentar la somnolencia.</string>
     <string name="onb_notice_safety">Tu actividad exige una vigilancia constante. La restricción del tiempo en la cama puede aumentar la somnolencia: habla con tu médico antes de planteártela.</string>
+    <string name="onb_unsure">No lo sé</string>
+    <string name="onb_h_unsure">En caso de duda, Sommelle opta por la prudencia: sin reducir el tiempo en la cama y con la invitación a hablar con un médico.</string>
 </resources>

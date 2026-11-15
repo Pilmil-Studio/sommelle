@@ -60,4 +60,6 @@
     <string name="onb_rem_continue">Weiter</string>
     <string name="onb_meds">Wenn du ein Schlafmittel oder ein Beruhigungsmittel einnimmst, setze es nicht ab und ändere die Dosis nicht ohne ärztlichen Rat. Diese Medikamente können die Schläfrigkeit verstärken.</string>
     <string name="onb_notice_safety">Deine Tätigkeit erfordert ständige Wachsamkeit. Die Bettzeitverkürzung kann die Schläfrigkeit verstärken: Sprich mit deinem Arzt, bevor du sie in Betracht ziehst.</string>
+    <string name="onb_unsure">Ich weiß es nicht</string>
+    <string name="onb_h_unsure">Im Zweifel wählt Sommelle die Vorsicht: keine Verkürzung der Bettzeit und die Empfehlung, mit einem Arzt zu sprechen.</string>
 </resources>

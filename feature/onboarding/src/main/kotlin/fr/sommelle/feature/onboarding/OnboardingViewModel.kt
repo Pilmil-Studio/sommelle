@@ -34,6 +34,9 @@ class OnboardingViewModel(private val repository: SommelleRepository) : ViewMode
 
     fun answer(yes: Boolean) = advance { it.answer(yes) }
 
+    /** « Je ne sais pas » : réponse prudente, traitée comme un oui. */
+    fun answerUnsure() = advance { it.answerUnsure() }
+
     /** Retour à l'étape précédente ; depuis l'âge, retour à l'accueil du questionnaire. */
     fun back() = _state.update { state ->
         when (state) {

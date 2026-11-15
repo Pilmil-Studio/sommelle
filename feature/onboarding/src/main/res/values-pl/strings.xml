@@ -60,4 +60,6 @@
     <string name="onb_rem_continue">Dalej</string>
     <string name="onb_meds">Jeśli przyjmujesz tabletki nasenne lub leki przeciwlękowe, nie odstawiaj ich i nie zmieniaj dawki bez porady lekarza. Te leki mogą nasilać senność.</string>
     <string name="onb_notice_safety">Twoja aktywność wymaga stałej czujności. Ograniczenie czasu w łóżku może nasilać senność: porozmawiaj z lekarzem, zanim ją rozważysz.</string>
+    <string name="onb_unsure">Nie wiem</string>
+    <string name="onb_h_unsure">W razie wątpliwości Sommelle wybiera ostrożność: bez skracania czasu w łóżku i z zaleceniem rozmowy z lekarzem.</string>
 </resources>

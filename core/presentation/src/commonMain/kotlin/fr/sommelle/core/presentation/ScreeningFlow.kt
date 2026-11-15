@@ -9,13 +9,15 @@ import fr.sommelle.core.model.ScreeningAnswers
  * si elle s'applique et comment elle modifie les réponses.
  */
 enum class ScreeningQuestion(
+    /** Vrai si « Je ne sais pas » est proposé : la réponse est alors traitée comme un « oui » prudent. */
+    val allowsUnsure: Boolean = false,
     private val appliesTo: (ScreeningAnswers) -> Boolean = { true },
     private val set: (ScreeningAnswers, Boolean) -> ScreeningAnswers,
 ) {
     SHIFT_WORK(set = { a, v -> a.copy(shiftOrNightWork = v) }),
     EXTERNAL_DISRUPTION(set = { a, v -> a.copy(externalNightDisruption = v) }),
-    SNORING_PAUSES(set = { a, v -> a.copy(loudSnoringWithBreathingPauses = v) }),
-    DAYTIME_SLEEPINESS(set = { a, v -> a.copy(markedDaytimeSleepiness = v) }),
+    SNORING_PAUSES(allowsUnsure = true, set = { a, v -> a.copy(loudSnoringWithBreathingPauses = v) }),
+    DAYTIME_SLEEPINESS(allowsUnsure = true, set = { a, v -> a.copy(markedDaytimeSleepiness = v) }),
     BIPOLAR(set = { a, v -> a.copy(bipolarDisorder = v) }),
     EPILEPSY(set = { a, v -> a.copy(epilepsy = v) }),
     PREGNANCY(set = { a, v -> a.copy(pregnancy = v) }),
@@ -52,6 +54,15 @@ data class ScreeningFlow(
         val q = checkNotNull(current) { "aucune question en cours" }
         val a = q.answer(checkNotNull(answers), yes)
         return copy(answers = a).advanceFrom(q)
+    }
+
+    /**
+     * « Je ne sais pas » : réponse prudente, enregistrée comme un « oui » (parcours sans restriction du temps
+     * au lit et orientation vers un médecin). Sans effet sur les questions qui ne la proposent pas.
+     */
+    fun answerUnsure(): ScreeningFlow {
+        val q = checkNotNull(current) { "aucune question en cours" }
+        return answer(yes = q.allowsUnsure)
     }
 
     /** Retour à la question précédente, ou à l'âge. Les réponses déjà données sont conservées. */

@@ -76,6 +76,7 @@ fun OnboardingScreen(repository: SommelleRepository, onDone: () -> Unit) {
         onStart = viewModel::start,
         onChooseAge = viewModel::chooseAge,
         onAnswer = viewModel::answer,
+        onUnsure = viewModel::answerUnsure,
         onBack = viewModel::back,
         onConfirm = { viewModel.confirm(onDone) },
     )
@@ -90,6 +91,7 @@ fun OnboardingContent(
     onAnswer: (Boolean) -> Unit,
     onBack: () -> Unit,
     onConfirm: () -> Unit,
+    onUnsure: () -> Unit = {},
 ) {
     when (val s = state) {
         OnboardingState.Welcome -> Welcome(onStart = onStart)
@@ -108,6 +110,7 @@ fun OnboardingContent(
                 total = s.flow.totalSteps,
                 onBack = onBack,
                 onAnswer = onAnswer,
+                onUnsure = onUnsure,
             )
         }
         OnboardingState.Reminders -> RemindersStep(denied = false, onAccept = {}, onDecline = {})
@@ -172,15 +175,19 @@ private fun AgeStep(step: Int, total: Int, selected: AgeBand?, onBack: () -> Uni
 }
 
 @Composable
-private fun QuestionStep(question: ScreeningQuestion, step: Int, total: Int, onBack: () -> Unit, onAnswer: (Boolean) -> Unit) {
+private fun QuestionStep(question: ScreeningQuestion, step: Int, total: Int, onBack: () -> Unit, onAnswer: (Boolean) -> Unit, onUnsure: () -> Unit) {
     ScreenScaffold(
-        bottom = { YesNoButtons(onYes = { onAnswer(true) }, onNo = { onAnswer(false) }) },
+        bottom = {
+            YesNoButtons(onYes = { onAnswer(true) }, onNo = { onAnswer(false) })
+            if (question.allowsUnsure) SommelleButton(stringResource(R.string.onb_unsure), onUnsure, style = SommelleButtonStyle.Quiet)
+        },
     ) {
         BackPill(onBack)
         StepProgress(step, total)
         ScreenTitle(stringResource(question.text()))
         question.hint()?.let { Body(it) }
         if (question == ScreeningQuestion.DISTRESS) Body(R.string.onb_h_private)
+        if (question.allowsUnsure) Body(R.string.onb_h_unsure)
     }
 }
 

@@ -65,4 +65,6 @@
     <string name="onb_rem_continue">Continue</string>
     <string name="onb_meds">If you take a sleeping pill or an anti-anxiety medicine, do not stop it or change the dose without your doctor\'s advice. These medicines can increase sleepiness.</string>
     <string name="onb_notice_safety">Your activity requires constant alertness. Restricting time in bed can increase sleepiness: talk to your doctor before considering it.</string>
+    <string name="onb_unsure">I don\'t know</string>
+    <string name="onb_h_unsure">If in doubt, Sommelle errs on the side of caution: no reduction of time in bed, and an invitation to talk to a doctor.</string>
 </resources>

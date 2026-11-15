@@ -50,4 +50,25 @@ class ScreeningFlowTest {
         val done = answerAll(ScreeningFlow().chooseAge(AgeBand.FROM_65)) { false }
         assertEquals(ScreeningQuestion.DISTRESS, done.back().current)
     }
+
+    @Test
+    fun `je ne sais pas est une reponse prudente pour le ronflement et la somnolence`() {
+        val evaluator = fr.sommelle.core.protocol.ScreeningEvaluator()
+        listOf(ScreeningQuestion.SNORING_PAUSES, ScreeningQuestion.DAYTIME_SLEEPINESS).forEach { unsureOn ->
+            assertTrue(unsureOn.allowsUnsure)
+            var flow = ScreeningFlow().chooseAge(AgeBand.FROM_25_TO_44)
+            while (!flow.finished) flow = if (flow.current == unsureOn) flow.answerUnsure() else flow.answer(false)
+            val result = evaluator.evaluate(flow.answers!!)
+            assertEquals(fr.sommelle.core.model.Pathway.WITHOUT_RESTRICTION, result.pathway, "doute sur $unsureOn")
+            assertTrue(result.referrals.isNotEmpty(), "invitation à consulter : $unsureOn")
+        }
+    }
+
+    @Test
+    fun `je ne sais pas n existe pas pour les autres questions`() {
+        assertFalse(ScreeningQuestion.EPILEPSY.allowsUnsure)
+        val q = ScreeningFlow().chooseAge(AgeBand.FROM_25_TO_44)
+        assertEquals(ScreeningQuestion.SHIFT_WORK, q.current)
+        assertFalse(q.answerUnsure().answers!!.shiftOrNightWork)
+    }
 }

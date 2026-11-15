@@ -65,4 +65,6 @@
     <string name="onb_rem_continue">Continuer</string>
     <string name="onb_meds">Si vous prenez un somnifère ou un anxiolytique, ne l\'arrêtez pas et ne changez pas la dose sans l\'avis de votre médecin. Ces médicaments peuvent augmenter la somnolence.</string>
     <string name="onb_notice_safety">Votre activité demande une vigilance constante. La restriction du temps au lit peut augmenter la somnolence : parlez-en à votre médecin avant de l\'envisager.</string>
+    <string name="onb_unsure">Je ne sais pas</string>
+    <string name="onb_h_unsure">En cas de doute, Sommelle choisit la prudence : pas de réduction du temps au lit, et l\'invitation à en parler à un médecin.</string>
 </resources>
