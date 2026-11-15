@@ -16,7 +16,7 @@ import platform.UIKit.UIViewController
 /**
  * Point d'entrée UIKit/SwiftUI pour la coque iOS de Sommelle.
  */
-fun MainViewController(appVersion: String = "1.2.0"): UIViewController = ComposeUIViewController {
+fun MainViewController(appVersion: String = "?"): UIViewController = ComposeUIViewController {
     MaterialTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
             Column(

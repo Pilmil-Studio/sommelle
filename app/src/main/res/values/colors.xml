@@ -3,4 +3,6 @@
     <color name="sommelle_cream">#FFF6F3EE</color>
     <color name="sommelle_night">#FF2F3A6B</color>
     <color name="sommelle_moon">#FFF2C27B</color>
+    <!-- Fond de fenêtre en thème de nuit (valeur sombre dans values-night) ; défaut obligatoire pour lint. -->
+    <color name="sommelle_ember">#FFF6F3EE</color>
 </resources>

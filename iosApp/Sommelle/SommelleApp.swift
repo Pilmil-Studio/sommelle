@@ -14,7 +14,7 @@ struct SommelleApp: App {
 
 struct ContentView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.2.0"
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         return MainViewControllerKt.MainViewController(appVersion: version)
     }
 

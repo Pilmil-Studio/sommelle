@@ -1,4 +1,5 @@
 # Coque iPhone de Sommelle, générée par XcodeGen (`xcodegen generate`).
+# Version affichée : MARKETING_VERSION ci-dessous est la source unique (Info.plist et l'écran la lisent) ; à aligner sur l'étiquette Android.
 name: Sommelle
 options:
   bundleIdPrefix: fr.sommelle
@@ -6,7 +7,7 @@ options:
     iOS: "15.0"
 settings:
   base:
-    MARKETING_VERSION: "1.2.0"
+    MARKETING_VERSION: "1.5.3"
     CURRENT_PROJECT_VERSION: "1"
 targets:
   Sommelle:
