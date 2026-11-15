@@ -2,17 +2,18 @@ package fr.sommelle.core.data.db
 
 import fr.sommelle.core.model.*
 
-import android.content.Context
+import androidx.room.ConstructedBy
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Query
-import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.RoomDatabaseConstructor
 import androidx.room.Transaction
 import androidx.room.TypeConverters
 import androidx.room.Upsert
 import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.execSQL
 import kotlinx.coroutines.flow.Flow
 import kotlinx.datetime.LocalDate
 
@@ -112,29 +113,30 @@ interface SommelleDao {
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
+@ConstructedBy(SommelleDatabaseConstructor::class)
 abstract class SommelleDatabase : RoomDatabase() {
     abstract fun dao(): SommelleDao
 
     companion object {
         /** Version 2 : réglages, modules cognitifs terminés et ressenti de la journée. Données existantes conservées. */
         val MIGRATION_1_2 = object : Migration(1, 2) {
-            override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL(
+            override fun migrate(connection: SQLiteConnection) {
+                connection.execSQL(
                     "CREATE TABLE IF NOT EXISTS `settings` (`id` INTEGER NOT NULL, `morningReminder` INTEGER NOT NULL, " +
                         "`morningTime` TEXT, `eveningReminder` INTEGER NOT NULL, PRIMARY KEY(`id`))",
                 )
-                db.execSQL(
+                connection.execSQL(
                     "CREATE TABLE IF NOT EXISTS `module_progress` (`module` TEXT NOT NULL, `completedOn` TEXT NOT NULL, PRIMARY KEY(`module`))",
                 )
-                db.execSQL(
+                connection.execSQL(
                     "CREATE TABLE IF NOT EXISTS `daytime_impacts` (`date` TEXT NOT NULL, `score` INTEGER NOT NULL, PRIMARY KEY(`date`))",
                 )
             }
         }
-
-        fun create(context: Context): SommelleDatabase =
-            Room.databaseBuilder(context.applicationContext, SommelleDatabase::class.java, "sommelle.db")
-                .addMigrations(MIGRATION_1_2)
-                .build()
     }
+}
+
+@Suppress("NO_ACTUAL_FOR_EXPECT")
+expect object SommelleDatabaseConstructor : RoomDatabaseConstructor<SommelleDatabase> {
+    override fun initialize(): SommelleDatabase
 }

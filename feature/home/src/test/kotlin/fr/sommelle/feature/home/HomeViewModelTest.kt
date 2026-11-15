@@ -29,11 +29,13 @@ import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import java.time.Clock
-import kotlin.time.Duration
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
-import java.time.ZoneOffset
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
+import kotlin.time.Duration
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -46,7 +48,6 @@ import kotlin.test.assertTrue
 class HomeViewModelTest {
 
     private val testDispatcher = UnconfinedTestDispatcher()
-    private val zone = ZoneOffset.UTC
 
     @BeforeTest
     fun setup() {
@@ -58,8 +59,9 @@ class HomeViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private fun clockAt(date: LocalDate): Clock =
-        Clock.fixed(java.time.LocalDateTime.of(date.year, date.monthNumber, date.dayOfMonth, 9, 0).toInstant(zone), zone)
+    private fun clockAt(date: LocalDate): Clock = object : Clock {
+        override fun now(): Instant = date.atTime(9, 0).toInstant(TimeZone.currentSystemDefault())
+    }
 
     private fun entry(nightOf: LocalDate): DiaryEntry = DiaryEntry(
         nightOf = nightOf,

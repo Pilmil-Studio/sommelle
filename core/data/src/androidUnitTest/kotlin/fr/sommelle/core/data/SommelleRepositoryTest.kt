@@ -20,13 +20,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.test.runTest
-import java.time.Clock
-import kotlin.time.Duration
-import java.time.Instant
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.toJavaLocalDateTime
 import kotlinx.datetime.LocalTime
-import java.time.ZoneOffset
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
+import kotlin.time.Duration
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -36,10 +36,9 @@ import kotlin.test.assertTrue
 
 class SommelleRepositoryTest {
 
-    private val zone = ZoneOffset.UTC
-
-    private fun clockAt(date: LocalDate): Clock =
-        Clock.fixed(date.atTime(9, 0).toJavaLocalDateTime().toInstant(zone), zone)
+    private fun clockAt(date: LocalDate): Clock = object : Clock {
+        override fun now(): Instant = date.atTime(9, 0).toInstant(TimeZone.currentSystemDefault())
+    }
 
     private fun entry(nightOf: LocalDate): DiaryEntry = DiaryEntry(
         nightOf = nightOf,

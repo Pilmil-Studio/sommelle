@@ -2,12 +2,7 @@ package fr.sommelle.core.data
 
 import fr.sommelle.core.model.*
 
-import android.content.Context
 import fr.sommelle.core.data.db.SommelleDao
-import fr.sommelle.core.data.db.SommelleDatabase
-import fr.sommelle.core.model.DiaryEntry
-import fr.sommelle.core.model.ScreeningAnswers
-import fr.sommelle.core.model.ScreeningResult
 import fr.sommelle.core.data.db.DaytimeImpactEntity
 import fr.sommelle.core.data.db.ModuleProgressEntity
 import fr.sommelle.core.data.db.SettingsEntity
@@ -23,15 +18,19 @@ import fr.sommelle.core.protocol.ProtocolConfig
 import fr.sommelle.core.protocol.RestrictionProfile
 import fr.sommelle.core.protocol.ScreeningEvaluator
 import fr.sommelle.core.protocol.SleepWindowCalculator
+import fr.sommelle.core.model.DiaryEntry
+import fr.sommelle.core.model.ScreeningAnswers
+import fr.sommelle.core.model.ScreeningResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
-import java.time.Clock
-import kotlin.time.Duration
+import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
-import kotlinx.datetime.toKotlinLocalDate
-import kotlinx.datetime.toKotlinLocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.todayIn
+import kotlin.time.Duration
 
 /** Implémenté par l'application : donne accès au dépôt là où l'injection n'est pas possible (tâches de fond). */
 interface SommelleRepositoryProvider {
@@ -67,16 +66,17 @@ data class BaselineTransitionInfo(
  */
 class SommelleRepository(
     private val dao: SommelleDao,
-    private val clock: Clock = Clock.systemDefaultZone(),
+    private val clock: Clock = Clock.System,
     private val config: ProtocolConfig = ProtocolConfig.DEFAULT,
+    private val timeZone: TimeZone = TimeZone.currentSystemDefault(),
 ) {
     private val evaluator = ScreeningEvaluator(config)
     private val engine = ProgramEngine(config)
     private val calculator = SleepWindowCalculator(config)
 
-    fun today(): LocalDate = java.time.LocalDate.now(clock).toKotlinLocalDate()
+    fun today(): LocalDate = clock.todayIn(timeZone)
 
-    fun now(): LocalTime = java.time.LocalTime.now(clock).toKotlinLocalTime()
+    fun now(): LocalTime = clock.now().toLocalDateTime(timeZone).time
 
     /** null tant que le questionnaire d'entrée n'a pas été rempli. */
     val snapshot: Flow<ProgramSnapshot?> = combine(dao.program(), dao.entries(), dao.windows()) { p, e, w ->
@@ -217,7 +217,5 @@ class SommelleRepository(
 
     companion object {
         private const val MAX_CATCH_UP_WEEKS = 104
-
-        fun create(context: Context) = SommelleRepository(SommelleDatabase.create(context).dao())
     }
 }

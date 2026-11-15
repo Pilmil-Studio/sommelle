@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
@@ -18,7 +18,30 @@ android {
 }
 
 kotlin {
-    compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
+    androidTarget {
+        compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
+    }
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+
+    sourceSets {
+        commonMain.dependencies {
+            api(project(":core:presentation"))
+            api(libs.kotlinx.coroutines.core)
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.androidx.sqlite.bundled)
+        }
+        androidMain.dependencies {
+            api(libs.kotlinx.coroutines.android)
+        }
+        androidUnitTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.coroutines.test)
+            // Vrai moteur SQLite sur la JVM, pour rejouer les migrations sans émulateur.
+            implementation("org.xerial:sqlite-jdbc:3.46.1.3")
+        }
+    }
 }
 
 // Le plugin Room gère l'export du schéma pour chaque variante sans conflit d'écriture.
@@ -27,13 +50,8 @@ room {
 }
 
 dependencies {
-    api(project(":core:presentation"))
-    api(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
-    testImplementation(kotlin("test"))
-    testImplementation(libs.kotlinx.coroutines.test)
-    // Vrai moteur SQLite sur la JVM, pour rejouer les migrations sans émulateur.
-    testImplementation("org.xerial:sqlite-jdbc:3.46.1.3")
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspIosArm64", libs.androidx.room.compiler)
+    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    add("kspIosX64", libs.androidx.room.compiler)
 }

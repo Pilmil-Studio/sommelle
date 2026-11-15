@@ -3,6 +3,7 @@ package fr.sommelle
 import android.app.Application
 import fr.sommelle.core.data.SommelleRepository
 import fr.sommelle.core.data.SommelleRepositoryProvider
+import fr.sommelle.core.data.create
 import fr.sommelle.feature.reminders.ReminderScheduler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

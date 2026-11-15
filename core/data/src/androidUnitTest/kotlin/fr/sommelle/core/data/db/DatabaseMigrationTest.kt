@@ -1,6 +1,8 @@
 package fr.sommelle.core.data.db
 
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.SQLiteStatement
+import androidx.sqlite.execSQL
 import java.io.File
 import java.lang.reflect.Proxy
 import java.sql.Connection
@@ -70,7 +72,7 @@ class DatabaseMigrationTest {
     }
 
     /** Schéma de la toute première version publiée : programme, agenda et fenêtres. */
-    private fun createV1(db: SupportSQLiteDatabase) {
+    private fun createV1(db: SQLiteConnection) {
         db.execSQL(
             "CREATE TABLE IF NOT EXISTS `program` (`id` INTEGER NOT NULL, `startDate` TEXT NOT NULL, " +
                 "`wakeTime` TEXT, `ageBand` TEXT NOT NULL, `loudSnoringWithBreathingPauses` INTEGER NOT NULL, " +
@@ -94,21 +96,37 @@ class DatabaseMigrationTest {
     }
 }
 
-// Outils, sans Robolectric : SQLite JDBC derrière l'interface SupportSQLiteDatabase de Room.
+// Outils, sans Robolectric : SQLite JDBC derrière l'interface SQLiteConnection de Room KMP.
 
-private fun <T> withDatabase(block: (Connection, SupportSQLiteDatabase) -> T): T =
-    DriverManager.getConnection("jdbc:sqlite::memory:").use { conn -> block(conn, conn.asSupportDb()) }
+private fun <T> withDatabase(block: (Connection, SQLiteConnection) -> T): T =
+    DriverManager.getConnection("jdbc:sqlite::memory:").use { conn -> block(conn, conn.asSqliteConnection()) }
 
-private fun Connection.asSupportDb(): SupportSQLiteDatabase =
+private fun Connection.asSqliteConnection(): SQLiteConnection =
     Proxy.newProxyInstance(
-        SupportSQLiteDatabase::class.java.classLoader,
-        arrayOf(SupportSQLiteDatabase::class.java),
+        SQLiteConnection::class.java.classLoader,
+        arrayOf(SQLiteConnection::class.java),
     ) { _, method, args ->
         when (method.name) {
-            "execSQL" -> createStatement().use { it.execute(args[0] as String) }.let { null }
+            "prepare" -> createStatement().asSqliteStatement(args[0] as String)
+            "close" -> close()
             else -> throw UnsupportedOperationException("Non simulé dans le test : ${method.name}")
         }
-    } as SupportSQLiteDatabase
+    } as SQLiteConnection
+
+private fun java.sql.Statement.asSqliteStatement(sql: String): SQLiteStatement =
+    Proxy.newProxyInstance(
+        SQLiteStatement::class.java.classLoader,
+        arrayOf(SQLiteStatement::class.java),
+    ) { _, method, _ ->
+        when (method.name) {
+            "step" -> {
+                execute(sql)
+                false
+            }
+            "close" -> close()
+            else -> throw UnsupportedOperationException("Non simulé dans le test : ${method.name}")
+        }
+    } as SQLiteStatement
 
 private fun <T> Connection.query(sql: String, block: (ResultSet) -> T): T =
     createStatement().use { stmt -> stmt.executeQuery(sql).use(block) }
