@@ -10,6 +10,7 @@ import fr.sommelle.core.data.db.ProgramEntity
 import fr.sommelle.core.data.db.SettingsEntity
 import fr.sommelle.core.data.db.SleepWindowEntity
 import fr.sommelle.core.data.db.SommelleDao
+import fr.sommelle.core.data.db.WeeklyCheckEntity
 import fr.sommelle.core.data.toEntity
 import fr.sommelle.core.model.AgeBand
 import fr.sommelle.core.model.DiaryEntry
@@ -149,6 +150,7 @@ private class TrackingFakeDao : SommelleDao {
     private val settingsFlow = MutableStateFlow<SettingsEntity?>(null)
     private val modulesFlow = MutableStateFlow<Map<String, ModuleProgressEntity>>(emptyMap())
     private val impactsFlow = MutableStateFlow<Map<LocalDate, DaytimeImpactEntity>>(emptyMap())
+    private val weeklyChecksFlow = MutableStateFlow<Map<LocalDate, WeeklyCheckEntity>>(emptyMap())
 
     var upsertWindowCalls = 0
         private set
@@ -218,6 +220,20 @@ private class TrackingFakeDao : SommelleDao {
 
     override suspend fun upsertDaytimeImpact(impact: DaytimeImpactEntity) {
         impactsFlow.value = impactsFlow.value + (impact.date to impact)
+    }
+
+    override fun weeklyChecks(): Flow<List<WeeklyCheckEntity>> =
+        weeklyChecksFlow.map { it.values.sortedBy { c -> c.reviewDate } }
+
+    override suspend fun weeklyChecksOnce(): List<WeeklyCheckEntity> =
+        weeklyChecksFlow.value.values.sortedBy { it.reviewDate }
+
+    override suspend fun upsertWeeklyCheck(check: WeeklyCheckEntity) {
+        weeklyChecksFlow.value = weeklyChecksFlow.value + (check.reviewDate to check)
+    }
+
+    override suspend fun deleteWeeklyChecks() {
+        weeklyChecksFlow.value = emptyMap()
     }
 
     override suspend fun deleteSettings() {
