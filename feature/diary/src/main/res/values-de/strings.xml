@@ -48,4 +48,5 @@
     <string name="diary_issue_awake_too_long">Die Wachzeit ist länger als die gesamte Nacht. Bitte überprüfe Zeiten und Dauern.</string>
     <string name="diary_issue_order">Die Uhrzeiten sind nicht in der richtigen Reihenfolge. Bitte prüfe Bettzeit, Aufwachen und Aufstehen.</string>
     <string name="diary_issue_ok">Richtig</string>
+    <string name="diary_go_faster">Schneller vorankommen</string>
 </resources>

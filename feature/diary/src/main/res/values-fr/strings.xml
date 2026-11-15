@@ -55,4 +55,5 @@
     <string name="diary_issue_awake_too_long">Le temps passé éveillé dépasse la durée de la nuit. Vérifiez les heures ou les durées.</string>
     <string name="diary_issue_order">Les heures ne se suivent pas. Vérifiez le coucher, le réveil et le lever.</string>
     <string name="diary_issue_ok">Corriger</string>
+    <string name="diary_go_faster">Aller plus vite</string>
 </resources>

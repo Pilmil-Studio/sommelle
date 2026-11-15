@@ -110,6 +110,9 @@ private fun Guided(state: DiaryState, actions: DiaryActions, onBack: () -> Unit,
     ) {
         BackPill(onBack)
         StepProgress(state.step.number, DiaryStep.total)
+        if (state.canGoFaster && !state.returnToSummary) {
+            SommelleButton(stringResource(R.string.diary_go_faster), actions::goFaster, style = SommelleButtonStyle.Quiet)
+        }
         state.blockingIssue?.let { IssueCard(it, onFixIssue) }
         when (state.step) {
             DiaryStep.BED_TIME -> TimeQuestion(R.string.diary_q_bed, R.string.diary_h_bed, draft, TimeField.BED_TIME, actions)

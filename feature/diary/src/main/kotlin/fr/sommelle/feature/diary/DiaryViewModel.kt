@@ -28,6 +28,8 @@ data class DiaryState(
     val returnToSummary: Boolean = false,
     /** Problème bloquant à expliquer, s'il y en a un. */
     val blockingIssue: DiaryIssue? = null,
+    /** Vrai dès la 3e nuit saisie : le mode guidé propose « Aller plus vite » (résumé). */
+    val canGoFaster: Boolean = false,
 )
 
 /** Actions de l'agenda, séparées du ViewModel pour afficher l'écran sans données réelles. */
@@ -41,6 +43,7 @@ interface DiaryActions {
     fun back(): Boolean
     fun editFromSummary(step: DiaryStep)
     fun guidedFromStart()
+    fun goFaster()
     fun dismissIssue()
     fun save(onSaved: () -> Unit)
 }
@@ -61,7 +64,7 @@ class DiaryViewModel(
                 ?: DiaryDraft.prefilled(nightOf, repository.previousEntry(nightOf))
             // Guidé les deux premières semaines, puis résumé une fois l'habitude prise (documentation/design.md, section 5).
             val mode = if (existing != null || loggedNights >= HABIT_NIGHTS) DiaryMode.SUMMARY else DiaryMode.GUIDED
-            _state.value = DiaryState(draft = draft, mode = mode)
+            _state.value = DiaryState(draft = draft, mode = mode, canGoFaster = loggedNights >= FASTER_NIGHTS)
         }
     }
 
@@ -96,6 +99,8 @@ class DiaryViewModel(
 
     override fun editFromSummary(step: DiaryStep) = _state.update { it?.copy(mode = DiaryMode.GUIDED, step = step, returnToSummary = true) }
 
+    override fun goFaster() = _state.update { it?.copy(mode = DiaryMode.SUMMARY, returnToSummary = false) }
+
     override fun guidedFromStart() = _state.update { it?.copy(mode = DiaryMode.GUIDED, step = DiaryStep.BED_TIME, returnToSummary = false) }
 
     override fun dismissIssue() = _state.update { it?.copy(blockingIssue = null) }
@@ -117,5 +122,8 @@ class DiaryViewModel(
 
     private companion object {
         const val HABIT_NIGHTS = 14
+
+        /** À partir de cette nuit saisie, le choix « Aller plus vite » est visible dans le mode guidé. */
+        const val FASTER_NIGHTS = 3
     }
 }

@@ -50,4 +50,5 @@
     <string name="diary_issue_awake_too_long">Czas czuwania jest dłuższy niż cała noc. Sprawdź godziny lub czasy trwania.</string>
     <string name="diary_issue_order">Godziny nie są w porządku chronologicznym. Sprawdź porę snu, wybudzenie i wstanie.</string>
     <string name="diary_issue_ok">Prawidłowo</string>
+    <string name="diary_go_faster">Przejdź szybciej</string>
 </resources>

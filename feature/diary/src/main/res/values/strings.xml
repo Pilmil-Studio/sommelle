@@ -54,4 +54,5 @@
     <string name="diary_issue_awake_too_long">The time spent awake is longer than the night. Check the times or durations.</string>
     <string name="diary_issue_order">The times are not in order. Check bedtime, waking up and getting up.</string>
     <string name="diary_issue_ok">Correct</string>
+    <string name="diary_go_faster">Go faster</string>
 </resources>

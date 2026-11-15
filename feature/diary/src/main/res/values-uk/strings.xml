@@ -50,4 +50,5 @@
     <string name="diary_issue_awake_too_long">Час без сну довший за всю ніч. Перевірте вказаний час або тривалість.</string>
     <string name="diary_issue_order">Час вказано не по порядку. Перевірте час, коли лягли, прокинулися та встали.</string>
     <string name="diary_issue_ok">Правильно</string>
+    <string name="diary_go_faster">Швидше</string>
 </resources>

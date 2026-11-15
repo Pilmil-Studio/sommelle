@@ -281,6 +281,7 @@ object Samples {
         override fun back(): Boolean = false
         override fun editFromSummary(step: DiaryStep) = Unit
         override fun guidedFromStart() = Unit
+        override fun goFaster() = Unit
         override fun dismissIssue() = Unit
         override fun save(onSaved: () -> Unit) = Unit
     }

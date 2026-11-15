@@ -48,4 +48,5 @@
     <string name="diary_issue_awake_too_long">El tiempo despierto supera la duración de la noche. Revisa las horas o duraciones.</string>
     <string name="diary_issue_order">Las horas no están en orden cronológico. Revisa acostarse, despertar y levantarse.</string>
     <string name="diary_issue_ok">Correcto</string>
+    <string name="diary_go_faster">Ir más rápido</string>
 </resources>
