@@ -121,7 +121,30 @@ data class DiaryDraft(
     private fun at(time: LocalTime): LocalDateTime =
         if (time >= LocalTime.NOON) nightOf.minusDays(1).atTime(time) else nightOf.atTime(time)
 
+    /** Texte compact pour garder le brouillon en cas de retour ou d'arrêt du processus. Voir [decode]. */
+    fun encode(): String = listOf(
+        bedTime, lightsOut, sleepOnsetMinutes, awakeningCount, awakeMinutes, finalWake, outOfBed, quality.name, prefillSource?.name.orEmpty(),
+    ).joinToString(";")
+
     companion object {
+        /** Relit un brouillon enregistré pour la nuit [nightOf] ; null si le texte est illisible. */
+        fun decode(nightOf: LocalDate, text: String): DiaryDraft? = runCatching {
+            val p = text.split(";")
+            require(p.size == 9)
+            DiaryDraft(
+                nightOf = nightOf,
+                bedTime = LocalTime.parse(p[0]),
+                lightsOut = LocalTime.parse(p[1]),
+                sleepOnsetMinutes = p[2].toLong(),
+                awakeningCount = p[3].toInt(),
+                awakeMinutes = p[4].toLong(),
+                finalWake = LocalTime.parse(p[5]),
+                outOfBed = LocalTime.parse(p[6]),
+                quality = SleepQuality.valueOf(p[7]),
+                prefillSource = p[8].takeIf { it.isNotEmpty() }?.let { PrefillSource.valueOf(it) },
+            )
+        }.getOrNull()
+
         /** Brouillon initial : la nuit précédente si elle existe, sinon des valeurs neutres. */
         fun prefilled(nightOf: LocalDate, previous: DiaryEntry?): DiaryDraft = if (previous != null) {
             DiaryDraft(

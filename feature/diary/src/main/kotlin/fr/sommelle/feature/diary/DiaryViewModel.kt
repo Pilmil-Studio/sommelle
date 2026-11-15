@@ -48,9 +48,23 @@ interface DiaryActions {
     fun save(onSaved: () -> Unit)
 }
 
+/** Garde le brouillon d'une nuit hors de l'écran : retour en arrière, processus arrêté par le système. */
+interface DraftStore {
+    fun load(nightOf: LocalDate): String?
+    fun save(nightOf: LocalDate, draft: String)
+    fun clear(nightOf: LocalDate)
+}
+
+object NoDraftStore : DraftStore {
+    override fun load(nightOf: LocalDate): String? = null
+    override fun save(nightOf: LocalDate, draft: String) = Unit
+    override fun clear(nightOf: LocalDate) = Unit
+}
+
 class DiaryViewModel(
     private val repository: SommelleRepository,
     private val nightOf: LocalDate,
+    private val drafts: DraftStore = NoDraftStore,
 ) : ViewModel(), DiaryActions {
 
     private val _state = MutableStateFlow<DiaryState?>(null)
@@ -60,7 +74,9 @@ class DiaryViewModel(
         viewModelScope.launch {
             val existing = repository.entry(nightOf)
             val loggedNights = repository.snapshot.first()?.entries?.size ?: 0
-            val draft = existing?.let { DiaryDraft.prefilled(nightOf, it).copy(prefillSource = it.prefillSource) }
+            // Un brouillon non enregistré, laissé au retour ou à l'arrêt du processus, a priorité sur les valeurs proposées.
+            val saved = drafts.load(nightOf)?.let { DiaryDraft.decode(nightOf, it) }
+            val draft = saved ?: existing?.let { DiaryDraft.prefilled(nightOf, it).copy(prefillSource = it.prefillSource) }
                 ?: DiaryDraft.prefilled(nightOf, repository.previousEntry(nightOf))
             // Guidé les deux premières semaines, puis résumé une fois l'habitude prise (documentation/design.md, section 5).
             val mode = if (existing != null || loggedNights >= HABIT_NIGHTS) DiaryMode.SUMMARY else DiaryMode.GUIDED
@@ -114,11 +130,15 @@ class DiaryViewModel(
         }
         viewModelScope.launch {
             repository.saveEntry(s.draft.toEntry())
+            drafts.clear(nightOf)
             onSaved()
         }
     }
 
-    private fun edit(change: (DiaryDraft) -> DiaryDraft) = _state.update { it?.copy(draft = change(it.draft), blockingIssue = null) }
+    private fun edit(change: (DiaryDraft) -> DiaryDraft) {
+        _state.update { it?.copy(draft = change(it.draft), blockingIssue = null) }
+        _state.value?.let { drafts.save(nightOf, it.draft.encode()) }
+    }
 
     private companion object {
         const val HABIT_NIGHTS = 14

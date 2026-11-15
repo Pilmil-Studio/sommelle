@@ -163,6 +163,42 @@ class DiaryViewModelTest {
         vm.save { saved = true }
         assertTrue(saved)
     }
+
+    @Test
+    fun `le brouillon survit au retour et disparait a l enregistrement`() = runTest {
+        val today = LocalDate.of(2026, 10, 20)
+        val dao = FakeDiaryDao()
+        val repo = SommelleRepository(dao, object : kotlinx.datetime.Clock {
+            override fun now() = today.atTime(9, 0).toInstant(kotlinx.datetime.TimeZone.currentSystemDefault())
+        })
+        val store = MemoryStore()
+
+        val first = DiaryViewModel(repo, today, store)
+        first.state.filterNotNull().first()
+        first.quality(SleepQuality.VERY_GOOD)
+        first.sleepOnset(45)
+
+        // Retour à l'écran (ou processus tué) : un nouveau ViewModel relit le brouillon.
+        val second = DiaryViewModel(repo, today, store).state.filterNotNull().first()
+        assertEquals(SleepQuality.VERY_GOOD, second.draft.quality)
+        assertEquals(45L, second.draft.sleepOnsetMinutes)
+
+        var saved = false
+        val vm = DiaryViewModel(repo, today, store)
+        vm.state.filterNotNull().first()
+        vm.save { saved = true }
+        kotlinx.coroutines.yield()
+        assertTrue(saved)
+        assertEquals(null, store.load(today))
+    }
+
+}
+
+private class MemoryStore : DraftStore {
+    val values = mutableMapOf<LocalDate, String>()
+    override fun load(nightOf: LocalDate) = values[nightOf]
+    override fun save(nightOf: LocalDate, draft: String) { values[nightOf] = draft }
+    override fun clear(nightOf: LocalDate) { values.remove(nightOf) }
 }
 
 private class FakeDiaryDao : SommelleDao {

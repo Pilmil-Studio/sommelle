@@ -26,6 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -58,7 +59,10 @@ import kotlinx.datetime.LocalDate
 
 @Composable
 fun DiaryScreen(repository: SommelleRepository, nightOf: LocalDate, onClose: () -> Unit) {
-    val viewModel: DiaryViewModel = viewModel(key = "diary-$nightOf") { DiaryViewModel(repository, nightOf) }
+    val context = LocalContext.current
+    val viewModel: DiaryViewModel = viewModel(key = "diary-$nightOf") {
+        DiaryViewModel(repository, nightOf, PreferencesDraftStore(context.applicationContext))
+    }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
 
@@ -275,11 +279,9 @@ private fun IssueCard(issue: DiaryIssue, onFix: (DiaryStep) -> Unit) {
 
 @Composable
 private fun PrefillLine(source: PrefillSource) {
-    val (icon, text) = when (source) {
-        PrefillSource.PREVIOUS_NIGHT -> SommelleIcons.History to R.string.diary_prefill_previous
-        PrefillSource.HEALTH_CONNECT -> SommelleIcons.Watch to R.string.diary_prefill_watch
-        PrefillSource.SCREEN_EVENTS -> SommelleIcons.History to R.string.diary_prefill_screen
-    }
+    // HEALTH_CONNECT et SCREEN_EVENTS sont déclarées mais jamais alimentées : seule la nuit précédente est proposée.
+    if (source != PrefillSource.PREVIOUS_NIGHT) return
+    val (icon, text) = SommelleIcons.History to R.string.diary_prefill_previous
     InfoLine(icon, stringResource(text))
 }
 
