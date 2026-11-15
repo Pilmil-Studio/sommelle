@@ -1,0 +1,5 @@
+• Morning and evening reminders offered at startup; notifications open the right screen.
+• A clearer, more honest welcome; the introduction can be replayed from settings.
+• A review request in the Week tab, after two window adjustments.
+• License changed to the Mozilla Public License 2.0.
+• Your data is excluded from Android cloud backup.

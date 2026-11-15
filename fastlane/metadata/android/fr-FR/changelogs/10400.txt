@@ -1,0 +1,5 @@
+• Rappels du matin et du soir proposés au démarrage ; les notifications ouvrent le bon écran.
+• Un accueil plus clair et honnête, l'introduction à revoir depuis les réglages.
+• Une demande d'avis dans l'onglet Semaine, après deux ajustements de fenêtre.
+• Licence passée à la Mozilla Public License 2.0.
+• Vos données sont exclues de la sauvegarde Android dans le cloud.

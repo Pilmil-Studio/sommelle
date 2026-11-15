@@ -1,16 +1,21 @@
-Sommelle est une application dédiée au traitement de l'insomnie chronique par la thérapie cognitivo-comportementale de première intention (TCC-I), recommandée par la Haute Autorité de Santé (HAS), l'European Sleep Research Society (ESRS 2023) et l'American Academy of Sleep Medicine (AASM 2021).
+Sommelle est un outil d'accompagnement qui s'inspire de la thérapie cognitivo-comportementale de l'insomnie (TCC-I), que la HAS et les recommandations européennes et américaines recommandent en première intention. Sommelle n'a pas été évaluée cliniquement et ne remplace pas un médecin.
 
-Totalement libre (MPL-2.0), gratuite, sans publicité, sans abonnement, sans compte utilisateur et 100 % hors-ligne : elle ne demande même pas la permission d'accès à Internet dans son manifeste Android. Vos données de sommeil ne quittent jamais votre téléphone.
+Totalement libre (MPL-2.0), gratuite, sans publicité, sans abonnement, sans compte et 100 % hors ligne : elle ne demande même pas la permission d'accès à Internet. Vos données de sommeil ne quittent jamais votre téléphone.
 
-UN PROGRAMME STRUCTURÉ EN 6 SEMAINES
-• Questionnaire initial de repérage : Vérification préalable des contre-indications à la restriction du temps au lit (apnée non traitée, trouble bipolaire, épilepsie, grossesse, métier à vigilance critique) et orientation vers un parcours adapté ou médical.
-• Semaine 1 d'observation : Remplissage quotidien de l'agenda de sommeil en 20 secondes, sans saisie clavier fastidieuse, pour calculer vos repères objectifs de base (temps moyen au lit, temps dormi, efficacité initiale).
-• Sas de transition pédagogique : Restitution claire de vos repères de départ et explication de la méthode avant d'entamer la consolidation.
-• Semaines 2 à 5 de consolidation : Restriction calibrée du temps au lit avec heure de lever fixe (ancre circadienne), contrôle du stimulus et déblocage progressif des modules cognitifs (désamorçage des pensées anxieuses, hygiène des rythmes, lâcher-prise).
-• Semaine 6 de bilan : Évaluation comparative objective avant/après de votre efficacité de sommeil et de l'impact diurne.
+UN PROGRAMME EN 6 SEMAINES
+• Questions de départ : l'appli vérifie si la réduction du temps passé au lit est adaptée à votre situation (apnée possible, trouble bipolaire, épilepsie, grossesse, métier exigeant une vigilance constante, détresse) et vous oriente vers un parcours adapté ou vers un médecin.
+• Une semaine d'observation : un agenda du sommeil à remplir en 20 secondes chaque matin, sans clavier, pour connaître votre point de départ (temps au lit, temps dormi, part du temps au lit passée à dormir).
+• Une étape de transition : vos chiffres de départ et l'explication de la méthode, avant de commencer.
+• Semaines 1 à 6 : un temps au lit réduit à ce que vous dormez réellement (jamais moins de 6 h), avec une heure de lever fixe, des repères pour les nuits d'éveil et des exercices pour apaiser les pensées qui entretiennent l'insomnie. Chaque semaine, la fenêtre est ajustée à partir de votre agenda de sommeil.
+• Un bilan à la fin : vos nuits du début comparées à vos dernières nuits, à partir de votre agenda de sommeil.
 
-OUTILS CLINIQUES INTÉGRÉS
-• Agenda du sommeil standardisé inspiré du Consensus Sleep Diary (CSD).
-• Écran de nuit "Je n'arrive pas à dormir" en ultra-basse luminosité pour appliquer le contrôle du stimulus sans quitter le lit avec agressivité lumineuse.
-• Export PDF et CSV anonymisé destiné à votre médecin traitant ou spécialiste du sommeil.
-• 100 % hors-ligne, aucune télémétrie, aucune revente de données.
+À SAVOIR
+• Pendant les premières semaines, la somnolence peut augmenter. Si vous avez du mal à rester éveillé·e, ne conduisez pas et n'utilisez pas de machine dangereuse.
+• Si vous prenez un somnifère ou un anxiolytique, ne l'arrêtez pas et ne changez pas la dose sans l'avis de votre médecin.
+
+OUTILS
+• Agenda du sommeil inspiré du Consensus Sleep Diary.
+• Écran de nuit « Je n'arrive pas à dormir », très peu lumineux.
+• Export PDF et CSV pour votre médecin.
+• Sauvegarde chiffrée de vos données, que vous gardez vous-même.
+• Aucun traceur, aucune revente de données.

@@ -1,0 +1,3 @@
+• Thème de nuit réglable : horaires automatiques, toujours clair, toujours sombre, ou celui du téléphone.
+• Thème sombre et barres système mieux adaptés à la nuit.
+• Sauvegarde chiffrée (.pilmil) avec mot de passe, grâce à une base technique commune aux applications Pilmil Studio.

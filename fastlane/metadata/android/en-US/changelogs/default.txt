@@ -1,4 +1,5 @@
-• Recent 7 nights strip on Home to track adherence and backfill mornings in one tap.
-• Direct "Summary for my doctor" button on the Week screen to export CBT-I reports.
-• Polished bottom navigation bar with unified "Settings" label.
-• Companion suite discovery (Respire, Lunaison) and unified ethical privacy pledge.
+• More caution: the time-in-bed floor is now 6 h, and a sleepiness warning (driving, machinery) appears before your first window.
+• Distress or a high-risk activity: path without time-in-bed reduction, with an invitation to see a doctor.
+• A weekly question about daytime sleepiness: if yes, your window is not reduced.
+• Reminder about sleeping pills and anti-anxiety medicines, clearer wording.
+• Full encrypted backup with restore.

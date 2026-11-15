@@ -1,0 +1,3 @@
+• Adjustable night theme: automatic hours, always light, always dark, or follow the phone.
+• Dark theme and system bars better suited to the night.
+• Encrypted backup (.pilmil) with a password, built on a technical base shared by Pilmil Studio apps.

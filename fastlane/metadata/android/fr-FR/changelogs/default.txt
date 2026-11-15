@@ -1,4 +1,5 @@
-• Ruban des 7 dernières nuits sur l'accueil pour suivre l'observance et rattraper un réveil d'un clic.
-• Bouton direct « Résumé pour mon médecin » sur l'écran Bilan pour exporter la synthèse TCC-I.
-• Harmonisation de la barre de navigation avec libellé « Réglages ».
-• Découverte des applications compagnes (Respire, Lunaison) et engagement éthique unifié.
+• Plus de prudence : le plancher du temps au lit passe à 6 h, et un avertissement sur la somnolence (conduite, machines) s'affiche avant la première fenêtre.
+• Détresse déclarée ou activité à risque : parcours sans réduction du temps au lit, avec invitation à consulter.
+• Chaque semaine, une question sur la somnolence en journée : si oui, la fenêtre n'est pas réduite.
+• Rappel pour les somnifères et anxiolytiques, textes clarifiés.
+• Sauvegarde chiffrée complète avec restauration.
