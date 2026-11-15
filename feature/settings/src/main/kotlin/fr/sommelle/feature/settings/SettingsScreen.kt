@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
@@ -43,6 +44,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.NotificationManagerCompat
@@ -68,8 +70,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -85,7 +85,7 @@ data class SettingsState(
     val hasWindow: Boolean,
 )
 
-class SettingsViewModel(private val repository: SommelleRepository) : ViewModel() {
+class SettingsViewModel(private val repository: SommelleRepository, val backup: BackupService) : ViewModel() {
 
     val state: StateFlow<SettingsState?> = combine(repository.reminderSettings, repository.snapshot) { settings, snapshot ->
         SettingsState(
@@ -114,30 +114,27 @@ class SettingsViewModel(private val repository: SommelleRepository) : ViewModel(
         }
     }
 
-    suspend fun exportCsv(): String {
-        val snap = repository.snapshot.filterNotNull().first()
-        return fr.sommelle.core.presentation.DiaryCsv.export(snap.entries)
-    }
 }
 
 @Composable
 fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onOpenIntro: () -> Unit, onErased: () -> Unit) {
-    val viewModel: SettingsViewModel = viewModel { SettingsViewModel(repository) }
+    val context = LocalContext.current
+    val viewModel: SettingsViewModel = viewModel { SettingsViewModel(repository, BackupService.create(repository, context)) }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
-    val context = LocalContext.current
     var notificationsAllowed by remember { mutableStateOf(NotificationManagerCompat.from(context).areNotificationsEnabled()) }
     var importedCount by rememberSaveable { mutableStateOf<Int?>(null) }
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         notificationsAllowed = granted
     }
     val scope = rememberCoroutineScope()
-    var showExportPilmilDialog by rememberSaveable { mutableStateOf(false) }
-    var pendingPilmilImport by remember { mutableStateOf<ByteArray?>(null) }
-    var pilmilStatus by rememberSaveable { mutableStateOf<String?>(null) }
+    var showExportDialog by rememberSaveable { mutableStateOf(false) }
+    var pendingContainer by remember { mutableStateOf<ByteArray?>(null) }
+    var pendingFull by remember { mutableStateOf<OpenedBackup.Full?>(null) }
+    var backupMessage by rememberSaveable { mutableStateOf<Int?>(null) }
     var passphraseInput by rememberSaveable { mutableStateOf("") }
     var passphraseConfirm by rememberSaveable { mutableStateOf("") }
-    var passphraseError by rememberSaveable { mutableStateOf<String?>(null) }
+    var passphraseError by rememberSaveable { mutableStateOf<Int?>(null) }
     var pendingExportPassphrase by remember { mutableStateOf<CharArray?>(null) }
 
     val pilmilExporter = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { uri ->
@@ -146,16 +143,13 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
         if (uri != null && pwd != null) {
             scope.launch {
                 try {
-                    val csv = viewModel.exportCsv()
-                    val encrypted = withContext(Dispatchers.Default) {
-                        fr.pilmil.core.platform.backup.AndroidBackupVault().encrypt(csv, pwd)
-                    }
+                    val encrypted = viewModel.backup.create(pwd)
                     withContext(Dispatchers.IO) {
                         context.contentResolver.openOutputStream(uri)?.use { it.write(encrypted) }
                     }
-                    pilmilStatus = "Sauvegarde chiffrée (.pilmil) enregistrée."
-                } catch (e: Exception) {
-                    pilmilStatus = "Erreur : ${e.localizedMessage}"
+                    backupMessage = R.string.backup_saved
+                } catch (_: Exception) {
+                    backupMessage = R.string.backup_save_failed
                 } finally {
                     pwd.fill('\u0000')
                 }
@@ -172,13 +166,13 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
                 }.getOrNull()
             } ?: return@launch
             if (isPilmilBackup(bytes)) {
-                pendingPilmilImport = bytes
+                pendingContainer = bytes
                 passphraseInput = ""
                 passphraseError = null
             } else {
                 viewModel.importCsv(bytes.decodeToString()) { count ->
                     importedCount = count
-                    pilmilStatus = null
+                    backupMessage = null
                 }
             }
         }
@@ -211,40 +205,24 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
             passphraseInput = ""
             passphraseConfirm = ""
             passphraseError = null
-            showExportPilmilDialog = true
+            showExportDialog = true
         },
-        pilmilStatus = pilmilStatus,
+        pilmilStatus = backupMessage?.let { stringResource(it) },
         importedCount = importedCount,
         onErase = { viewModel.erase(onErased) },
     )
 
-    if (showExportPilmilDialog) {
+    if (showExportDialog) {
         val mismatch = passphraseConfirm.isNotEmpty() && passphraseInput != passphraseConfirm
         val valid = passphraseInput.isNotEmpty() && passphraseInput == passphraseConfirm
         AlertDialog(
-            onDismissRequest = { showExportPilmilDialog = false },
-            title = { Text("Sauvegarde chiffrée (.pilmil)") },
+            onDismissRequest = { showExportDialog = false },
+            title = { Text(stringResource(R.string.backup_export_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(
-                        "Ce mot de passe chiffrera votre agenda (AES-256-GCM). Conservez-le précieusement : aucune récupération n'est possible sans lui.",
-                        style = MaterialTheme.typography.bodySmall,
-                    )
-                    androidx.compose.material3.OutlinedTextField(
-                        value = passphraseInput,
-                        onValueChange = { passphraseInput = it },
-                        label = { Text("Mot de passe") },
-                        singleLine = true,
-                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
-                    )
-                    androidx.compose.material3.OutlinedTextField(
-                        value = passphraseConfirm,
-                        onValueChange = { passphraseConfirm = it },
-                        label = { Text("Confirmer") },
-                        singleLine = true,
-                        isError = mismatch,
-                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
-                    )
+                    Text(stringResource(R.string.backup_export_text), style = MaterialTheme.typography.bodySmall)
+                    PasswordField(stringResource(R.string.backup_password), passphraseInput) { passphraseInput = it }
+                    PasswordField(stringResource(R.string.backup_password_confirm), passphraseConfirm, isError = mismatch) { passphraseConfirm = it }
                 }
             },
             confirmButton = {
@@ -254,71 +232,112 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
                         pendingExportPassphrase = passphraseInput.toCharArray()
                         passphraseInput = ""
                         passphraseConfirm = ""
-                        showExportPilmilDialog = false
+                        showExportDialog = false
                         pilmilExporter.launch("sommelle.pilmil")
                     },
-                ) { Text("Exporter") }
+                ) { Text(stringResource(R.string.backup_export_confirm)) }
             },
             dismissButton = {
-                TextButton(onClick = { showExportPilmilDialog = false }) { Text("Annuler") }
+                TextButton(onClick = { showExportDialog = false }) { Text(stringResource(R.string.backup_cancel)) }
             },
         )
     }
 
-    val encryptedImport = pendingPilmilImport
-    if (encryptedImport != null) {
+    // Étape 1 de la restauration : mot de passe. Le fichier est déchiffré et vérifié sans rien écrire.
+    val container = pendingContainer
+    if (container != null) {
         AlertDialog(
-            onDismissRequest = { pendingPilmilImport = null },
-            title = { Text("Déchiffrer la sauvegarde .pilmil") },
+            onDismissRequest = { pendingContainer = null },
+            title = { Text(stringResource(R.string.backup_restore_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    androidx.compose.material3.OutlinedTextField(
-                        value = passphraseInput,
-                        onValueChange = {
-                            passphraseInput = it
-                            passphraseError = null
-                        },
-                        label = { Text("Mot de passe") },
-                        singleLine = true,
-                        isError = passphraseError != null,
-                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
-                    )
-                    if (passphraseError != null) {
-                        Text(passphraseError.orEmpty(), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
+                    Text(stringResource(R.string.backup_restore_text), style = MaterialTheme.typography.bodySmall)
+                    PasswordField(stringResource(R.string.backup_password), passphraseInput, isError = passphraseError != null) {
+                        passphraseInput = it
+                        passphraseError = null
+                    }
+                    passphraseError?.let {
+                        Text(stringResource(it), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
                     }
                 }
             },
             confirmButton = {
                 TextButton(
+                    enabled = passphraseInput.isNotEmpty(),
                     onClick = {
                         val pwd = passphraseInput.toCharArray()
                         scope.launch {
                             try {
-                                val csv = withContext(Dispatchers.Default) {
-                                    fr.pilmil.core.platform.backup.AndroidBackupVault().decrypt(encryptedImport, pwd)
+                                when (val opened = viewModel.backup.open(container, pwd)) {
+                                    is OpenedBackup.Full -> pendingFull = opened
+                                    is OpenedBackup.LegacyCsv -> viewModel.importCsv(opened.csv) { count ->
+                                        importedCount = count
+                                        backupMessage = null
+                                    }
                                 }
-                                viewModel.importCsv(csv) { count ->
-                                    importedCount = count
-                                    pilmilStatus = null
-                                }
-                                pendingPilmilImport = null
+                                pendingContainer = null
                                 passphraseInput = ""
-                            } catch (_: fr.pilmil.core.platform.backup.InvalidPassphraseException) {
-                                passphraseError = "Mot de passe incorrect."
-                            } catch (e: Exception) {
-                                passphraseError = "Erreur : ${e.localizedMessage}"
+                            } catch (e: BackupRefused) {
+                                passphraseError = e.failure.message()
                             } finally {
                                 pwd.fill('\u0000')
                             }
                         }
                     },
-                ) { Text("Importer") }
+                ) { Text(stringResource(R.string.backup_restore_open)) }
             },
             dismissButton = {
-                TextButton(onClick = { pendingPilmilImport = null }) { Text("Annuler") }
+                TextButton(onClick = { pendingContainer = null }) { Text(stringResource(R.string.backup_cancel)) }
             },
         )
     }
+
+    // Étape 2 : confirmation explicite avant de remplacer les données actuelles.
+    val toRestore = pendingFull
+    if (toRestore != null) {
+        AlertDialog(
+            onDismissRequest = { pendingFull = null },
+            title = { Text(stringResource(R.string.backup_confirm_title)) },
+            text = { Text(stringResource(R.string.backup_confirm_text, toRestore.nights)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        pendingFull = null
+                        scope.launch {
+                            backupMessage = try {
+                                viewModel.backup.restore(toRestore)
+                                R.string.backup_restored
+                            } catch (_: Exception) {
+                                R.string.backup_restore_failed
+                            }
+                        }
+                    },
+                ) { Text(stringResource(R.string.backup_confirm_yes)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { pendingFull = null }) { Text(stringResource(R.string.backup_cancel)) }
+            },
+        )
+    }
+}
+
+private fun BackupFailure.message(): Int = when (this) {
+    BackupFailure.WRONG_PASSWORD -> R.string.backup_wrong_password
+    BackupFailure.CORRUPTED -> R.string.backup_corrupted
+    BackupFailure.UNSUPPORTED_VERSION -> R.string.backup_unsupported
+    BackupFailure.NOT_A_BACKUP -> R.string.backup_not_sommelle
+}
+
+@Composable
+private fun PasswordField(label: String, value: String, isError: Boolean = false, onChange: (String) -> Unit) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onChange,
+        label = { Text(label) },
+        singleLine = true,
+        isError = isError,
+        visualTransformation = PasswordVisualTransformation(),
+    )
 }
 
 private val SOMMELLE_PILMIL_MAGIC = byteArrayOf(0x50, 0x49, 0x4C, 0x4D, 0x49, 0x4C)
@@ -387,7 +406,8 @@ fun SettingsContent(
         val privacyUrl = stringResource(R.string.settings_privacy_url)
         Section(stringResource(R.string.settings_data)) {
             InfoLine(SommelleIcons.History, stringResource(R.string.settings_data_hint))
-            SommelleButton("Sauvegarde chiffrée (.pilmil)", onExportPilmil, style = SommelleButtonStyle.Outlined)
+            SommelleButton(stringResource(R.string.settings_backup_export), onExportPilmil, style = SommelleButtonStyle.Outlined)
+            SommelleButton(stringResource(R.string.settings_backup_restore), onImportCsv, style = SommelleButtonStyle.Outlined)
             SommelleButton(stringResource(R.string.settings_import_csv), onImportCsv, style = SommelleButtonStyle.Outlined)
             if (pilmilStatus != null) {
                 Text(pilmilStatus, style = MaterialTheme.typography.bodySmall)
@@ -431,7 +451,7 @@ fun SettingsContent(
 
         Section(stringResource(R.string.settings_about)) {
             SommelleButton(stringResource(R.string.settings_replay_intro), onOpenIntro, style = SommelleButtonStyle.Outlined)
-            Text(stringResource(R.string.settings_version, "1.2.0"), style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(R.string.settings_version, appVersionName()), style = MaterialTheme.typography.titleMedium)
             Text(stringResource(R.string.settings_commitment), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 SommelleButton(
@@ -601,5 +621,14 @@ private fun CompanionAppRow(
             Text(name, style = MaterialTheme.typography.titleMedium)
             Text(description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
+    }
+}
+
+/** Version de l'application installée (celle du manifeste), plutôt qu'un numéro écrit en dur. */
+@Composable
+private fun appVersionName(): String {
+    val context = LocalContext.current
+    return remember(context) {
+        runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull() ?: ""
     }
 }

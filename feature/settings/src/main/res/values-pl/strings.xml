@@ -42,4 +42,26 @@
     <string name="settings_app_lunaison_desc">Śledzenie cyklu menstruacyjnego i zdrowie hormonalne, bez konta i offline</string>
     <string name="settings_replay_intro">Zobacz ponownie wprowadzenie</string>
     <string name="settings_legal_title">Pilmil Studio · Informacje prawne</string>
+    <string name="settings_backup_export">Szyfrowana kopia (.pilmil)</string>
+    <string name="settings_backup_restore">Przywróć kopię zapasową</string>
+    <string name="backup_password">Hasło</string>
+    <string name="backup_password_confirm">Potwierdź</string>
+    <string name="backup_cancel">Anuluj</string>
+    <string name="backup_export_title">Szyfrowana kopia</string>
+    <string name="backup_export_text">To hasło zaszyfruje wszystkie Twoje dane: dziennik, program, okna snu, podsumowania tygodni, przypomnienia i ukończone ćwiczenia. Zachowaj je: bez niego nic nie da się odzyskać.</string>
+    <string name="backup_export_confirm">Eksportuj</string>
+    <string name="backup_saved">Szyfrowana kopia zapisana.</string>
+    <string name="backup_save_failed">Nie udało się zapisać kopii.</string>
+    <string name="backup_restore_title">Przywracanie kopii</string>
+    <string name="backup_restore_text">Wpisz hasło wybrane podczas tworzenia kopii.</string>
+    <string name="backup_restore_open">Otwórz</string>
+    <string name="backup_wrong_password">Nieprawidłowe hasło. Nic nie zostało zmienione.</string>
+    <string name="backup_corrupted">Ten plik jest uszkodzony lub niekompletny. Nic nie zostało zmienione.</string>
+    <string name="backup_unsupported">Ta kopia pochodzi z nowszej wersji Sommelle. Zaktualizuj aplikację. Nic nie zostało zmienione.</string>
+    <string name="backup_not_sommelle">Ten plik nie jest kopią zapasową Sommelle. Nic nie zostało zmienione.</string>
+    <string name="backup_confirm_title">Zastąpić Twoje dane?</string>
+    <string name="backup_confirm_text">Twoje bieżące dane zostaną zastąpione zawartością kopii (%1$d nocy w dzienniku). Tej czynności nie można cofnąć.</string>
+    <string name="backup_confirm_yes">Zastąp</string>
+    <string name="backup_restored">Kopia przywrócona.</string>
+    <string name="backup_restore_failed">Przywracanie nie powiodło się. Twoje bieżące dane pozostały bez zmian.</string>
 </resources>

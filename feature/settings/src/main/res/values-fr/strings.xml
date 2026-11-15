@@ -42,4 +42,26 @@
     <string name="settings_app_lunaison_desc">Suivi du cycle menstruel &amp; santé hormonale, libre et sans compte</string>
     <string name="settings_replay_intro">Revoir l\'introduction</string>
     <string name="settings_legal_title">Pilmil Studio · Mentions légales</string>
+    <string name="settings_backup_export">Sauvegarde chiffrée (.pilmil)</string>
+    <string name="settings_backup_restore">Restaurer une sauvegarde</string>
+    <string name="backup_password">Mot de passe</string>
+    <string name="backup_password_confirm">Confirmer</string>
+    <string name="backup_cancel">Annuler</string>
+    <string name="backup_export_title">Sauvegarde chiffrée</string>
+    <string name="backup_export_text">Ce mot de passe chiffrera toutes vos données : agenda, programme, fenêtres de sommeil, bilans, rappels et exercices terminés. Conservez-le précieusement : sans lui, rien ne peut être récupéré.</string>
+    <string name="backup_export_confirm">Exporter</string>
+    <string name="backup_saved">Sauvegarde chiffrée enregistrée.</string>
+    <string name="backup_save_failed">La sauvegarde n\'a pas pu être enregistrée.</string>
+    <string name="backup_restore_title">Restaurer la sauvegarde</string>
+    <string name="backup_restore_text">Saisissez le mot de passe choisi lors de la sauvegarde.</string>
+    <string name="backup_restore_open">Ouvrir</string>
+    <string name="backup_wrong_password">Mot de passe incorrect. Rien n\'a été modifié.</string>
+    <string name="backup_corrupted">Ce fichier est abîmé ou incomplet. Rien n\'a été modifié.</string>
+    <string name="backup_unsupported">Cette sauvegarde vient d\'une version plus récente de Sommelle. Mettez l\'application à jour. Rien n\'a été modifié.</string>
+    <string name="backup_not_sommelle">Ce fichier n\'est pas une sauvegarde de Sommelle. Rien n\'a été modifié.</string>
+    <string name="backup_confirm_title">Remplacer vos données ?</string>
+    <string name="backup_confirm_text">Vos données actuelles seront remplacées par celles de la sauvegarde (%1$d nuit(s) d\'agenda). Cette action est définitive.</string>
+    <string name="backup_confirm_yes">Remplacer</string>
+    <string name="backup_restored">Sauvegarde restaurée.</string>
+    <string name="backup_restore_failed">La restauration n\'a pas abouti. Vos données actuelles sont inchangées.</string>
 </resources>

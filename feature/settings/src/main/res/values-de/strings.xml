@@ -42,4 +42,26 @@
     <string name="settings_app_lunaison_desc">Menstruationszyklus- &amp; Hormongesundheits-Tracking, frei und offline</string>
     <string name="settings_replay_intro">Einführung noch einmal ansehen</string>
     <string name="settings_legal_title">Pilmil Studio · Impressum</string>
+    <string name="settings_backup_export">Verschlüsselte Sicherung (.pilmil)</string>
+    <string name="settings_backup_restore">Sicherung wiederherstellen</string>
+    <string name="backup_password">Passwort</string>
+    <string name="backup_password_confirm">Bestätigen</string>
+    <string name="backup_cancel">Abbrechen</string>
+    <string name="backup_export_title">Verschlüsselte Sicherung</string>
+    <string name="backup_export_text">Dieses Passwort verschlüsselt alle deine Daten: Tagebuch, Programm, Schlaffenster, Wochenbilanzen, Erinnerungen und abgeschlossene Übungen. Bewahre es gut auf: Ohne es lässt sich nichts wiederherstellen.</string>
+    <string name="backup_export_confirm">Exportieren</string>
+    <string name="backup_saved">Verschlüsselte Sicherung gespeichert.</string>
+    <string name="backup_save_failed">Die Sicherung konnte nicht gespeichert werden.</string>
+    <string name="backup_restore_title">Sicherung wiederherstellen</string>
+    <string name="backup_restore_text">Gib das Passwort ein, das du beim Sichern gewählt hast.</string>
+    <string name="backup_restore_open">Öffnen</string>
+    <string name="backup_wrong_password">Falsches Passwort. Es wurde nichts geändert.</string>
+    <string name="backup_corrupted">Diese Datei ist beschädigt oder unvollständig. Es wurde nichts geändert.</string>
+    <string name="backup_unsupported">Diese Sicherung stammt aus einer neueren Version von Sommelle. Bitte aktualisiere die App. Es wurde nichts geändert.</string>
+    <string name="backup_not_sommelle">Diese Datei ist keine Sommelle-Sicherung. Es wurde nichts geändert.</string>
+    <string name="backup_confirm_title">Deine Daten ersetzen?</string>
+    <string name="backup_confirm_text">Deine aktuellen Daten werden durch den Inhalt der Sicherung ersetzt (%1$d Tagebuchnacht/-nächte). Das lässt sich nicht rückgängig machen.</string>
+    <string name="backup_confirm_yes">Ersetzen</string>
+    <string name="backup_restored">Sicherung wiederhergestellt.</string>
+    <string name="backup_restore_failed">Die Wiederherstellung ist fehlgeschlagen. Deine aktuellen Daten sind unverändert.</string>
 </resources>

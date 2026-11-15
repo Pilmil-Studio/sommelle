@@ -42,4 +42,26 @@
     <string name="settings_app_lunaison_desc">Відстеження менструального циклу та гормональне здоров\'я, вільна та офлайн</string>
     <string name="settings_replay_intro">Переглянути вступ ще раз</string>
     <string name="settings_legal_title">Pilmil Studio · Правова інформація</string>
+    <string name="settings_backup_export">Зашифрована копія (.pilmil)</string>
+    <string name="settings_backup_restore">Відновити з копії</string>
+    <string name="backup_password">Пароль</string>
+    <string name="backup_password_confirm">Підтвердьте</string>
+    <string name="backup_cancel">Скасувати</string>
+    <string name="backup_export_title">Зашифрована копія</string>
+    <string name="backup_export_text">Цей пароль зашифрує всі ваші дані: щоденник, програму, вікна сну, підсумки тижнів, нагадування та завершені вправи. Збережіть його: без нього нічого не можна відновити.</string>
+    <string name="backup_export_confirm">Експортувати</string>
+    <string name="backup_saved">Зашифровану копію збережено.</string>
+    <string name="backup_save_failed">Не вдалося зберегти копію.</string>
+    <string name="backup_restore_title">Відновлення з копії</string>
+    <string name="backup_restore_text">Введіть пароль, який ви обрали під час збереження.</string>
+    <string name="backup_restore_open">Відкрити</string>
+    <string name="backup_wrong_password">Неправильний пароль. Нічого не змінено.</string>
+    <string name="backup_corrupted">Цей файл пошкоджено або він неповний. Нічого не змінено.</string>
+    <string name="backup_unsupported">Ця копія походить із новішої версії Sommelle. Оновіть застосунок. Нічого не змінено.</string>
+    <string name="backup_not_sommelle">Цей файл не є копією Sommelle. Нічого не змінено.</string>
+    <string name="backup_confirm_title">Замінити ваші дані?</string>
+    <string name="backup_confirm_text">Ваші поточні дані буде замінено вмістом копії (ночей у щоденнику: %1$d). Цю дію не можна скасувати.</string>
+    <string name="backup_confirm_yes">Замінити</string>
+    <string name="backup_restored">Копію відновлено.</string>
+    <string name="backup_restore_failed">Відновлення не вдалося. Ваші поточні дані не змінено.</string>
 </resources>
