@@ -26,6 +26,7 @@
     <string name="export_empty">Data will appear after a few nights have been logged.</string>
     <string name="export_disclaimer">Data reported by the person in their sleep diary (Consensus Sleep Diary). Sommelle is a self-help tool based on CBT-I, not a medical device.</string>
     <string name="export_pdf_baseline">Observation</string>
+    <string name="export_outcome_today">Today</string>
     <string name="export_pdf_last_7">Last 7 nights</string>
     <string name="export_pdf_diary">Diary: last %1$d nights</string>
     <string name="export_pdf_col_night">Night</string>

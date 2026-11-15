@@ -20,6 +20,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -89,7 +90,7 @@ fun PilmilLegalBlock(modifier: Modifier = Modifier) {
             PilmilStudioMark(size = 40.dp)
             Column {
                 Text(
-                    text = "Pilmil Studio · Mentions légales",
+                    text = stringResource(R.string.settings_legal_title),
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Bold,
                 )
@@ -104,7 +105,8 @@ fun PilmilLegalBlock(modifier: Modifier = Modifier) {
             text = "Éditeur : Pilmil Studio (Alfortville, France).\n" +
                 "Confidentialité : 100 % hors-ligne, aucune permission réseau, aucun traceur, aucun compte.\n" +
                 "Licence : logiciel libre sous licence MPL-2.0.\n" +
-                "Contact : pilmil.studio@proton.me · https://relthdrarxash.github.io",
+                "Contact : pilmil.studio@proton.me · https://relthdrarxash.github.io\n\n" +
+                "Un besoin d'outil hors-ligne sans pub ni suivi ? Écrivez-nous à pilmil.studio@proton.me.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

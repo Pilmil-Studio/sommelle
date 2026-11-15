@@ -1,26 +1,31 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    alias(libs.plugins.kotlin.multiplatform)
 }
 
 kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-        allWarningsAsErrors.set(true)
+    jvm {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+            allWarningsAsErrors.set(true)
+        }
+    }
+
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+
+    sourceSets {
+        commonMain.dependencies {
+            api(project(":core:model"))
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
     }
 }
 
-dependencies {
-    api(project(":core:model"))
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
+tasks.named<Test>("jvmTest") {
     useJUnitPlatform()
 }

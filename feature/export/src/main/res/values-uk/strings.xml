@@ -26,6 +26,7 @@
     <string name="export_empty">Дані з\'являться після кількох заповнених ночей.</string>
     <string name="export_disclaimer">Дані внесені самостійно у щоденник сну (Consensus Sleep Diary). Sommelle — це інструмент супроводу на основі КПТ-Б, а не медичний виріб.</string>
     <string name="export_pdf_baseline">Спостереження</string>
+    <string name="export_outcome_today">Сьогодні</string>
     <string name="export_pdf_last_7">Останні 7 ночей</string>
     <string name="export_pdf_diary">Щоденник: останні %1$d ночей</string>
     <string name="export_pdf_col_night">Ніч</string>

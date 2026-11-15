@@ -1,5 +1,7 @@
 package fr.sommelle.screenshots
 
+import fr.sommelle.core.model.*
+
 import androidx.compose.runtime.Composable
 import fr.sommelle.core.model.AgeBand
 import fr.sommelle.core.model.DiaryEntry
@@ -46,9 +48,9 @@ import fr.sommelle.feature.onboarding.OnboardingContent
 import fr.sommelle.feature.onboarding.OnboardingState
 import fr.sommelle.feature.week.WeekContent
 import fr.sommelle.feature.week.WeekState
-import java.time.Duration
-import java.time.LocalDate
-import java.time.LocalTime
+import kotlin.time.Duration
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 
 /** Écrans remplis de données d'exemple, partagés par les captures de la documentation et des stores. */
 object Samples {

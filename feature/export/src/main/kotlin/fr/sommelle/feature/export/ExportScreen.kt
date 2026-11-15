@@ -132,8 +132,8 @@ fun ExportContent(report: ClinicianReport, onBack: () -> Unit, onSharePdf: () ->
         if (report.outcome.isNotEmpty()) {
             Card(stringResource(R.string.export_outcome)) {
                 ComparisonTable(
-                    beforeTitle = "Observation",
-                    afterTitle = "Aujourd'hui",
+                    beforeTitle = stringResource(R.string.export_pdf_baseline),
+                    afterTitle = stringResource(R.string.export_outcome_today),
                     rows = report.outcome.map { ComparisonRow(it.metric.label, it.before, it.after, it.trend.word) },
                 )
             }

@@ -13,7 +13,15 @@ import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
 import fr.sommelle.core.presentation.ClinicianReport
 import java.io.File
+import java.util.Locale
 import fr.sommelle.core.designsystem.R as DsR
+
+/**
+ * Le polonais et l'ukrainien ont des glyphes (ą ć ę ł ń ś ź ż, cyrillique) absents d'Atkinson Hyperlegible
+ * embarquée dans l'appli : pour ces langues le PDF utilise la police sans empattement du système.
+ */
+internal fun reportNeedsSystemFont(language: String = Locale.getDefault().language): Boolean =
+    language == "pl" || language == "uk"
 
 /**
  * Génère le résumé PDF sur le téléphone (format A4), sans aucun accès réseau.
@@ -28,11 +36,36 @@ object PdfReport {
     private const val MUTED = 0xFF4A4F63.toInt()
     private const val LINE = 0xFFE2DDD3.toInt()
 
+    internal fun prepareExportsDir(cacheDir: File): File {
+        val dir = File(cacheDir, "exports")
+        if (dir.exists()) {
+            dir.listFiles()?.forEach { it.deleteRecursively() }
+        } else {
+            dir.mkdirs()
+        }
+        return dir
+    }
+
+    private fun loadFonts(context: Context): Pair<Typeface, Typeface> {
+        val language = context.resources.configuration.locales.let {
+            if (it.isEmpty) Locale.getDefault().language else it[0].language
+        }
+        if (reportNeedsSystemFont(language)) {
+            return Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL) to
+                Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
+        }
+        val regular = runCatching { ResourcesCompat.getFont(context, DsR.font.atkinson_regular) }.getOrNull()
+            ?: Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL)
+        val bold = runCatching { ResourcesCompat.getFont(context, DsR.font.atkinson_bold) }.getOrNull()
+            ?: Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
+        return regular to bold
+    }
+
     fun write(context: Context, report: ClinicianReport): File {
-        val regular = ResourcesCompat.getFont(context, DsR.font.atkinson_regular) ?: Typeface.DEFAULT
-        val bold = ResourcesCompat.getFont(context, DsR.font.atkinson_bold) ?: Typeface.DEFAULT_BOLD
+        val (regular, bold) = loadFonts(context)
         val document = PdfDocument()
-        val writer = Writer(document, regular, bold) { context.getString(R.string.export_pdf_page, it) }
+        try {
+            val writer = Writer(document, regular, bold) { context.getString(R.string.export_pdf_page, it) }
 
         writer.title(context.getString(R.string.export_title))
         writer.paragraph(
@@ -87,17 +120,19 @@ object PdfReport {
             )
         }
 
-        writer.footerNote(context.getString(R.string.export_disclaimer) + " " + context.getString(R.string.export_pdf_generated, report.generatedOn))
-        writer.finish()
+            writer.footerNote(context.getString(R.string.export_disclaimer) + " " + context.getString(R.string.export_pdf_generated, report.generatedOn))
+            writer.finish()
 
-        val file = File(File(context.cacheDir, "exports").apply { mkdirs() }, "sommelle-resume.pdf")
-        file.outputStream().use { document.writeTo(it) }
-        document.close()
-        return file
+            val file = File(prepareExportsDir(context.cacheDir), "sommelle-resume.pdf")
+            file.outputStream().use { document.writeTo(it) }
+            return file
+        } finally {
+            document.close()
+        }
     }
 
     fun writeCsv(context: Context, csv: String): File {
-        val file = File(File(context.cacheDir, "exports").apply { mkdirs() }, "sommelle-agenda.csv")
+        val file = File(prepareExportsDir(context.cacheDir), "sommelle-agenda.csv")
         file.writeText(csv, Charsets.UTF_8)
         return file
     }

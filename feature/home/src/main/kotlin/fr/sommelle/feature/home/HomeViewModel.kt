@@ -1,5 +1,7 @@
 package fr.sommelle.feature.home
 
+import fr.sommelle.core.model.*
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import fr.sommelle.core.data.SommelleRepository
@@ -9,6 +11,7 @@ import fr.sommelle.core.presentation.ProgramOutcome
 import fr.sommelle.core.presentation.WeekBadge
 import fr.sommelle.core.presentation.WindowStep
 import fr.sommelle.core.presentation.RecentNightUi
+import fr.sommelle.core.presentation.ProgramEngine
 import fr.sommelle.core.presentation.nightsToFill
 import fr.sommelle.core.presentation.recentNights
 import fr.sommelle.core.presentation.weekBadge
@@ -17,11 +20,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 data class HomeState(
     val date: String,
@@ -37,35 +38,55 @@ data class HomeState(
     val recentNights: List<RecentNightUi> = emptyList(),
 )
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class HomeViewModel(private val repository: SommelleRepository) : ViewModel() {
 
     private val planner = ProgramPlanner()
+    private val engine = ProgramEngine()
 
-    /** Chaque changement de données relance la synchronisation des fenêtres dues. */
-    val state: StateFlow<HomeState?> = combine(repository.snapshot.filterNotNull(), repository.daytimeImpacts) { snapshot, impacts -> snapshot to impacts }
-        .mapLatest { (snapshot, impacts) ->
-            val step = repository.synchronize()
-            val today = repository.today()
-            val programWeek = planner.programWeek(snapshot.program.startDate, today)
-            val (badge, week) = weekBadge(programWeek)
-            val endImpactDone = impacts.any { (planner.programWeek(snapshot.program.startDate, it.date) ?: 0) >= ProgramOutcome.AVAILABLE_FROM_WEEK }
-            val inProgram = snapshot.program.screening.pathway != Pathway.OUT_OF_SCOPE
-            val toFill = nightsToFill(today, snapshot.entries.map { it.nightOf }.toSet())
-            HomeState(
-                date = Texts.current().longDate(today),
-                badge = badge,
-                week = week,
-                pathway = snapshot.program.screening.pathway,
-                step = step,
-                nightsToFill = toFill,
-                lastNight = today,
-                askDaytimeImpact = inProgram &&
-                    (impacts.isEmpty() || ((programWeek ?: 0) >= ProgramOutcome.AVAILABLE_FROM_WEEK && !endImpactDone)),
-                recentNights = recentNights(today, snapshot.entries, toFill),
-            )
+    init {
+        synchronize()
+    }
+
+    /** Enregistre les fenêtres dues (à l'initialisation ou sur action explicite). */
+    fun synchronize() {
+        viewModelScope.launch {
+            repository.synchronize()
         }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+    }
+
+    val state: StateFlow<HomeState?> = combine(repository.snapshot.filterNotNull(), repository.daytimeImpacts) { snapshot, impacts ->
+        val today = repository.today()
+        val rawStep = engine.windowStep(
+            today = today,
+            startDate = snapshot.program.startDate,
+            screening = snapshot.program.screening,
+            entries = snapshot.entries,
+            windows = snapshot.windows.map { it.window },
+            wakeTime = snapshot.program.wakeTime,
+        )
+        val step = when (rawStep) {
+            is WindowStep.NewInitialWindow -> WindowStep.Current(rawStep.window)
+            is WindowStep.NewWeeklyDecision -> WindowStep.Current(rawStep.decision.window)
+            else -> rawStep
+        }
+        val programWeek = planner.programWeek(snapshot.program.startDate, today)
+        val (badge, week) = weekBadge(programWeek)
+        val endImpactDone = impacts.any { (planner.programWeek(snapshot.program.startDate, it.date) ?: 0) >= ProgramOutcome.AVAILABLE_FROM_WEEK }
+        val inProgram = snapshot.program.screening.pathway != Pathway.OUT_OF_SCOPE
+        val toFill = nightsToFill(today, snapshot.entries.map { it.nightOf }.toSet())
+        HomeState(
+            date = Texts.current().longDate(today),
+            badge = badge,
+            week = week,
+            pathway = snapshot.program.screening.pathway,
+            step = step,
+            nightsToFill = toFill,
+            lastNight = today,
+            askDaytimeImpact = inProgram &&
+                (impacts.isEmpty() || ((programWeek ?: 0) >= ProgramOutcome.AVAILABLE_FROM_WEEK && !endImpactDone)),
+            recentNights = recentNights(today, snapshot.entries, toFill),
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
     /** Rappel du matin pour le journal, et du soir avant la fenêtre. */
     fun enableReminders() {

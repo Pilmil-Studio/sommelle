@@ -1,5 +1,7 @@
 package fr.sommelle.feature.settings
 
+import fr.sommelle.core.model.*
+
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
@@ -62,12 +64,14 @@ import fr.sommelle.core.designsystem.TimeStepper
 import fr.sommelle.core.presentation.Texts
 import fr.sommelle.core.presentation.ReminderPlanner
 import fr.sommelle.core.presentation.ReminderSettings
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import java.time.LocalTime
+import kotlinx.coroutines.withContext
+import kotlinx.datetime.LocalTime
 
 private const val CONTACT_EMAIL = "pilmil.studio@proton.me"
 
@@ -120,12 +124,17 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         notificationsAllowed = granted
     }
+    val scope = rememberCoroutineScope()
     val csvPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         val selected = uri ?: return@rememberLauncherForActivityResult
-        val text = runCatching {
-            context.contentResolver.openInputStream(selected)?.bufferedReader()?.use { it.readText() }
-        }.getOrNull() ?: return@rememberLauncherForActivityResult
-        viewModel.importCsv(text) { count -> importedCount = count }
+        scope.launch {
+            val text = withContext(Dispatchers.IO) {
+                runCatching {
+                    context.contentResolver.openInputStream(selected)?.bufferedReader()?.use { it.readText() }
+                }.getOrNull()
+            } ?: return@launch
+            viewModel.importCsv(text) { count -> importedCount = count }
+        }
     }
 
     fun ensurePermission() {

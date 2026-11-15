@@ -1,5 +1,7 @@
 package fr.sommelle.feature.diary
 
+import fr.sommelle.core.model.*
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import fr.sommelle.core.data.SommelleRepository
@@ -14,7 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 enum class DiaryMode { GUIDED, SUMMARY }
 

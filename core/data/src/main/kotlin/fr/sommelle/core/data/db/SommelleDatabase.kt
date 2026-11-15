@@ -1,17 +1,20 @@
 package fr.sommelle.core.data.db
 
+import fr.sommelle.core.model.*
+
 import android.content.Context
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.Transaction
 import androidx.room.TypeConverters
 import androidx.room.Upsert
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.flow.Flow
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 @Dao
 interface SommelleDao {
@@ -38,6 +41,11 @@ interface SommelleDao {
 
     @Upsert
     suspend fun upsertEntry(entry: DiaryEntryEntity)
+
+    @Transaction
+    suspend fun upsertEntries(entries: List<DiaryEntryEntity>) {
+        entries.forEach { upsertEntry(it) }
+    }
 
     @Query("SELECT * FROM sleep_windows ORDER BY effectiveFrom")
     fun windows(): Flow<List<SleepWindowEntity>>

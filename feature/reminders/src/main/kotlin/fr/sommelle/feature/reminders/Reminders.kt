@@ -1,5 +1,7 @@
 package fr.sommelle.feature.reminders
 
+import fr.sommelle.core.model.*
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
@@ -26,9 +28,10 @@ import fr.sommelle.core.presentation.ReminderKind
 import fr.sommelle.core.presentation.ReminderPlanner
 import fr.sommelle.core.presentation.ReminderSettings
 import kotlinx.coroutines.flow.first
-import java.time.Duration
-import java.time.LocalDateTime
-import java.time.LocalTime
+import kotlin.time.Duration
+import kotlin.time.toJavaDuration
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
 
 /**
  * Planification des rappels. Chaque rappel est une tâche unique, replanifiée après chaque envoi
@@ -58,7 +61,7 @@ object ReminderScheduler {
         }
         val delay = Duration.between(now, ReminderPlanner.next(now, time))
         val request = OneTimeWorkRequestBuilder<ReminderWorker>()
-            .setInitialDelay(delay)
+            .setInitialDelay(delay.toJavaDuration())
             .setInputData(workDataOf(ReminderWorker.KIND to kind.name))
             .build()
         manager.enqueueUniqueWork(workName(kind), ExistingWorkPolicy.REPLACE, request)

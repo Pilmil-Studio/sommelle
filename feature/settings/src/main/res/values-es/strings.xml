@@ -41,4 +41,5 @@
     <string name="settings_app_lunaison_name">Lunaison</string>
     <string name="settings_app_lunaison_desc">Seguimiento del ciclo menstrual y salud hormonal, libre y sin conexión</string>
     <string name="settings_replay_intro">Volver a ver la introducción</string>
+    <string name="settings_legal_title">Pilmil Studio · Aviso legal</string>
 </resources>

@@ -1,5 +1,7 @@
 package fr.sommelle.feature.diary
 
+import fr.sommelle.core.model.*
+
 import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
@@ -51,8 +53,8 @@ import fr.sommelle.core.presentation.DiaryStep
 import fr.sommelle.core.presentation.Texts
 import fr.sommelle.core.presentation.TimeField
 import fr.sommelle.core.protocol.DiaryIssue
-import java.time.Duration
-import java.time.LocalDate
+import kotlin.time.Duration
+import kotlinx.datetime.LocalDate
 
 @Composable
 fun DiaryScreen(repository: SommelleRepository, nightOf: LocalDate, onClose: () -> Unit) {

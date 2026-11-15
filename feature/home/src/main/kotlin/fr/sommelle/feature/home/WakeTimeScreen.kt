@@ -1,5 +1,7 @@
 package fr.sommelle.feature.home
 
+import fr.sommelle.core.model.*
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,7 +39,7 @@ import fr.sommelle.core.presentation.DiaryChoices
 import fr.sommelle.core.presentation.Texts
 import fr.sommelle.core.presentation.WindowStep
 import kotlinx.coroutines.launch
-import java.time.LocalTime
+import kotlinx.datetime.LocalTime
 
 /** Choix de l'heure de lever fixe, ancre de la fenêtre de sommeil et sas de transition vers la restriction. */
 @Composable

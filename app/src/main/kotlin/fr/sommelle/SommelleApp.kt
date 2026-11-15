@@ -1,5 +1,7 @@
 package fr.sommelle
 
+import fr.sommelle.core.model.*
+
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -45,7 +47,7 @@ import fr.sommelle.feature.onboarding.OnboardingScreen
 import fr.sommelle.feature.settings.SettingsScreen
 import fr.sommelle.feature.week.WeekScreen
 import kotlinx.coroutines.flow.first
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 private object Routes {
     const val ONBOARDING = "onboarding"

@@ -1,11 +1,13 @@
 package fr.sommelle.core.data.db
 
+import fr.sommelle.core.model.*
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.LocalTime
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
 
 /** Une seule ligne : le programme en cours et les réponses au questionnaire d'entrée. */
 @Entity(tableName = "program")

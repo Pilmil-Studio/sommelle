@@ -26,6 +26,7 @@
     <string name="export_empty">Los datos aparecerán tras anotar algunas noches.</string>
     <string name="export_disclaimer">Datos declarados por el usuario en su diario de sueño (Consensus Sleep Diary). Sommelle es una herramienta de apoyo basada en la TCC-I, no un dispositivo médico.</string>
     <string name="export_pdf_baseline">Observación</string>
+    <string name="export_outcome_today">Hoy</string>
     <string name="export_pdf_last_7">Últimas 7 noches</string>
     <string name="export_pdf_diary">Diario: últimas %1$d noches</string>
     <string name="export_pdf_col_night">Noche</string>

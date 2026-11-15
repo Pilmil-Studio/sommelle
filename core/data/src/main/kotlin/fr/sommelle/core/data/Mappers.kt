@@ -1,5 +1,7 @@
 package fr.sommelle.core.data
 
+import fr.sommelle.core.model.*
+
 import fr.sommelle.core.data.db.DiaryEntryEntity
 import fr.sommelle.core.data.db.ProgramEntity
 import fr.sommelle.core.data.db.SleepWindowEntity
@@ -11,11 +13,11 @@ import fr.sommelle.core.model.SleepQuality
 import fr.sommelle.core.model.SleepWindow
 import fr.sommelle.core.presentation.StoredWindow
 import fr.sommelle.core.protocol.WindowChange
-import java.time.Duration
-import java.time.LocalDate
-import java.time.LocalTime
+import kotlin.time.Duration
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 
-internal fun DiaryEntry.toEntity() = DiaryEntryEntity(
+fun DiaryEntry.toEntity() = DiaryEntryEntity(
     nightOf = nightOf,
     bedTime = bedTime,
     lightsOutTime = lightsOutTime,
@@ -78,7 +80,7 @@ internal fun ProgramEntity.answers() = ScreeningAnswers(
     expressedDistress = expressedDistress,
 )
 
-internal fun ScreeningAnswers.toEntity(startDate: LocalDate, wakeTime: LocalTime?) = ProgramEntity(
+fun ScreeningAnswers.toEntity(startDate: LocalDate, wakeTime: LocalTime?) = ProgramEntity(
     startDate = startDate,
     wakeTime = wakeTime,
     ageBand = ageBand.name,

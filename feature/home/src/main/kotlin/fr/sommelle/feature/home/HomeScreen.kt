@@ -1,5 +1,7 @@
 package fr.sommelle.feature.home
 
+import fr.sommelle.core.model.*
+
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -37,6 +39,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -65,15 +68,12 @@ import fr.sommelle.core.presentation.RecentNightUi
 import fr.sommelle.core.presentation.Texts
 import fr.sommelle.core.presentation.WeekBadge
 import fr.sommelle.core.presentation.WindowStep
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 
 @Composable
 fun HomeScreen(

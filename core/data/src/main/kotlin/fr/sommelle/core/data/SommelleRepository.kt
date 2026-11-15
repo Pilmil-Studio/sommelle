@@ -1,5 +1,7 @@
 package fr.sommelle.core.data
 
+import fr.sommelle.core.model.*
+
 import android.content.Context
 import fr.sommelle.core.data.db.SommelleDao
 import fr.sommelle.core.data.db.SommelleDatabase
@@ -25,9 +27,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import java.time.Clock
-import java.time.Duration
-import java.time.LocalDate
-import java.time.LocalTime
+import kotlin.time.Duration
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.toKotlinLocalDate
+import kotlinx.datetime.toKotlinLocalTime
 
 /** Implémenté par l'application : donne accès au dépôt là où l'injection n'est pas possible (tâches de fond). */
 interface SommelleRepositoryProvider {
@@ -70,9 +74,9 @@ class SommelleRepository(
     private val engine = ProgramEngine(config)
     private val calculator = SleepWindowCalculator(config)
 
-    fun today(): LocalDate = LocalDate.now(clock)
+    fun today(): LocalDate = java.time.LocalDate.now(clock).toKotlinLocalDate()
 
-    fun now(): LocalTime = LocalTime.now(clock)
+    fun now(): LocalTime = java.time.LocalTime.now(clock).toKotlinLocalTime()
 
     /** null tant que le questionnaire d'entrée n'a pas été rempli. */
     val snapshot: Flow<ProgramSnapshot?> = combine(dao.program(), dao.entries(), dao.windows()) { p, e, w ->
@@ -132,8 +136,10 @@ class SommelleRepository(
     /** Restaure les nuits issues d'un fichier CSV exporté par Sommelle et recalcule les fenêtres. */
     suspend fun importCsv(content: String): Int {
         val parsed = DiaryCsv.parse(content)
-        parsed.forEach { dao.upsertEntry(it.toEntity()) }
-        if (parsed.isNotEmpty()) synchronize()
+        if (parsed.isNotEmpty()) {
+            dao.upsertEntries(parsed.map { it.toEntity() })
+            synchronize()
+        }
         return parsed.size
     }
 
