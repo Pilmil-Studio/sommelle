@@ -39,4 +39,6 @@
     <string name="export_pdf_col_quality">Jakość</string>
     <string name="export_pdf_generated">Wygenerowano %1$s.</string>
     <string name="export_pdf_page">Sommelle · strona %1$d</string>
+    <string name="export_error">Nie udało się utworzyć lub udostępnić pliku. Spróbuj ponownie za chwilę.</string>
+    <string name="export_nothing">Na razie nie ma czego eksportować: najpierw uzupełnij kilka nocy w dzienniku.</string>
 </resources>

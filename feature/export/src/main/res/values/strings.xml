@@ -39,4 +39,6 @@
     <string name="export_pdf_col_quality">Quality</string>
     <string name="export_pdf_generated">Generated on %1$s.</string>
     <string name="export_pdf_page">Sommelle · page %1$d</string>
+    <string name="export_error">The file could not be created or shared. Please try again in a moment.</string>
+    <string name="export_nothing">Nothing to export yet: fill in a few nights in your diary first.</string>
 </resources>

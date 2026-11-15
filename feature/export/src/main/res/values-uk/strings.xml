@@ -39,4 +39,6 @@
     <string name="export_pdf_col_quality">Якість</string>
     <string name="export_pdf_generated">Сформовано %1$s.</string>
     <string name="export_pdf_page">Sommelle · сторінка %1$d</string>
+    <string name="export_error">Не вдалося створити або надіслати файл. Спробуйте ще раз за мить.</string>
+    <string name="export_nothing">Поки що нічого експортувати: спершу заповніть кілька ночей у щоденнику.</string>
 </resources>

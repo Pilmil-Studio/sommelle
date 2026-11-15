@@ -8,11 +8,16 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
@@ -65,32 +70,64 @@ fun ExportScreen(repository: SommelleRepository, onBack: () -> Unit) {
     val s = state ?: return
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    var failed by remember { mutableStateOf(false) }
+
+    // Une erreur de création ou de partage s'affiche à l'écran, sans fermer l'appli.
+    fun export(block: suspend () -> Unit) {
+        failed = false
+        scope.launch {
+            try {
+                block()
+            } catch (_: Exception) {
+                failed = true
+            }
+        }
+    }
 
     ExportContent(
         report = s.report,
         onBack = onBack,
         onSharePdf = {
-            scope.launch {
+            export {
                 val file = withContext(Dispatchers.IO) { PdfReport.write(context, s.report) }
                 PdfReport.share(context, file, "application/pdf")
             }
         },
         onShareCsv = {
-            scope.launch {
+            export {
                 val file = withContext(Dispatchers.IO) { PdfReport.writeCsv(context, s.csv) }
                 PdfReport.share(context, file, "text/csv")
             }
         },
+        hasData = s.report.weeks.isNotEmpty(),
+        failed = failed,
     )
 }
 
 /** Résumé à l'écran, lisible directement par le médecin sur le téléphone. */
 @Composable
-fun ExportContent(report: ClinicianReport, onBack: () -> Unit, onSharePdf: () -> Unit, onShareCsv: () -> Unit) {
+fun ExportContent(
+    report: ClinicianReport,
+    onBack: () -> Unit,
+    onSharePdf: () -> Unit,
+    onShareCsv: () -> Unit,
+    hasData: Boolean = true,
+    failed: Boolean = false,
+) {
     ScreenScaffold(
         bottom = {
-            SommelleButton(stringResource(R.string.export_share_pdf), onSharePdf)
-            SommelleButton(stringResource(R.string.export_share_csv), onShareCsv, style = SommelleButtonStyle.Quiet)
+            if (failed) {
+                // Zone annoncée par TalkBack dès qu'elle apparaît.
+                Text(
+                    stringResource(R.string.export_error),
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+                )
+            }
+            if (!hasData) Text(stringResource(R.string.export_nothing), style = MaterialTheme.typography.bodyMedium)
+            SommelleButton(stringResource(R.string.export_share_pdf), onSharePdf, enabled = hasData)
+            SommelleButton(stringResource(R.string.export_share_csv), onShareCsv, style = SommelleButtonStyle.Quiet, enabled = hasData)
         },
     ) {
         BackPill(onBack)
