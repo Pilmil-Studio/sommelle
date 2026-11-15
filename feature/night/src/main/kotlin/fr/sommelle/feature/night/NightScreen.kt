@@ -33,6 +33,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -61,7 +63,8 @@ import kotlin.math.exp
 import kotlin.math.sin
 
 /** Durée après laquelle l'écran se ferme seul si le repère de 20 min n'est pas activé. */
-private const val AUTO_CLOSE_MILLIS = 90_000L
+/** Fermeture automatique après 3 minutes sans toucher ni faire défiler l'écran. */
+private const val AUTO_CLOSE_MILLIS = 180_000L
 
 /** Durée de la règle du contrôle du stimulus (~20 minutes hors du lit, sans horloge). */
 private const val STIMULUS_BELL_MILLIS = 20 * 60 * 1_000L
@@ -103,12 +106,18 @@ fun NightScreen(onClose: () -> Unit) {
         }
     }
 
+    // Chaque toucher ou défilement relance le délai : on ne ferme pas l'écran pendant qu'on le lit.
+    var lastInteraction by remember { mutableStateOf(0) }
+    LaunchedEffect(bellState, lastInteraction) {
+        if (bellState != BellState.ACTIVE) {
+            delay(AUTO_CLOSE_MILLIS)
+            currentOnClose.value()
+        }
+    }
+
     LaunchedEffect(bellState) {
         when (bellState) {
-            BellState.IDLE -> {
-                delay(AUTO_CLOSE_MILLIS)
-                currentOnClose.value()
-            }
+            BellState.IDLE -> Unit
             BellState.ACTIVE -> {
                 withContext(Dispatchers.IO) { playGentleNightChime() }
                 delay(STIMULUS_BELL_MILLIS)
@@ -119,16 +128,21 @@ fun NightScreen(onClose: () -> Unit) {
                 }
                 bellState = BellState.DONE
             }
-            BellState.DONE -> {
-                delay(AUTO_CLOSE_MILLIS)
-                currentOnClose.value()
-            }
+            BellState.DONE -> Unit
         }
     }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .pointerInput(Unit) {
+                awaitPointerEventScope {
+                    while (true) {
+                        awaitPointerEvent(PointerEventPass.Initial)
+                        lastInteraction++
+                    }
+                }
+            }
             .background(SommelleColors.Ember)
             .windowInsetsPadding(WindowInsets.safeDrawing)
             .padding(horizontal = 28.dp, vertical = 36.dp),
