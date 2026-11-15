@@ -4,11 +4,11 @@
 
 [![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
-Application Android d'accompagnement à l'insomnie fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie), le traitement recommandé en premier par les recommandations européennes et américaines. Gratuite, en français et en anglais, sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
+Application d'accompagnement à l'insomnie (Android + socle KMP/iOS en cours de portage) fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie), le traitement recommandé en premier par les recommandations européennes et américaines. Gratuite, disponible en 6 langues (`fr`, `en`, `es`, `de`, `pl`, `uk`), sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
 
 Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et elle ne remplace pas un avis médical.
 
-**[Site de Sommelle](https://pilmil-studio.github.io/sommelle/)** · **[Google Play](https://play.google.com/store/apps/details?id=fr.sommelle)** · **[Télécharger l'APK](https://github.com/Pilmil-Studio/sommelle/releases/latest)** · [Pour les professionnels de santé](https://pilmil-studio.github.io/sommelle/professionnels.html) · [Dossier scientifique](https://pilmil-studio.github.io/sommelle/protocole.html) · [Confidentialité](https://pilmil-studio.github.io/sommelle/confidentialite.html)
+**[Site de Sommelle](https://pilmil-studio.github.io/sommelle/)** · **Google Play** (bientôt) · **[Télécharger l'APK](https://github.com/Pilmil-Studio/sommelle/releases/latest)** · [Pour les professionnels de santé](https://pilmil-studio.github.io/sommelle/professionnels.html) · [Dossier scientifique](https://pilmil-studio.github.io/sommelle/protocole.html) · [Confidentialité](https://pilmil-studio.github.io/sommelle/confidentialite.html)
 
 **Avant la sortie sur Google Play :** [rejoindre le test interne](https://play.google.com/apps/internaltest/4701568611212235635) (réservé aux personnes déjà ajoutées à la liste de testeurs : [demandez l'accès par mail](mailto:pilmil.studio@proton.me?subject=Tester%20Sommelle)).
 
@@ -22,8 +22,8 @@ Pendant six à huit semaines :
 - **Un écran pour la nuit**, presque noir et sans horloge, rappelle quoi faire quand le sommeil ne vient pas et propose un **repère sonore doux à 20 minutes** (règle du contrôle du stimulus, sans afficher de décompte).
 - **Cinq exercices cognitifs et une liste d'engagements du soir** se débloquent au fil du programme : idées sur le sommeil, mise au repos de la journée (avec un carnet du soir interactif sur le téléphone), intention paradoxale, décatastrophisation, relaxation, chacun pouvant être écouté **les yeux fermés** grâce à une lecture vocale hors ligne à débit apaisé et une cloche acoustique douce, complétés par 5 habitudes cochables de chambre et de soirée.
 - **Un bilan avant/après et un guide anti-rechute** comparent la semaine d'observation aux dernières nuits et rappellent la conduite à tenir si une mauvaise nuit isolée revient plus tard.
-- **Un résumé pour le médecin**, à montrer à l'écran ou à partager en PDF et en tableur, ainsi qu'un **import de sauvegarde CSV** dans les réglages.
-- **Des rappels** optionnels le matin et le soir, et un **widget discret sur l'écran d'accueil** affichant la fenêtre de sommeil du soir.
+- **Un résumé pour le médecin**, à montrer à l'écran ou à partager en PDF et en tableur, ainsi qu'un **import de sauvegarde CSV** et un **coffre chiffré `.pilmil`** (AES-256-GCM via `pilmil-core`) dans les réglages.
+- **Des rappels** optionnels le matin et le soir, un **mode nuit personnalisable** (`NightThemeMode` : horaires automatiques réglables, toujours clair, toujours sombre ou suivre le système) et un **widget discret sur l'écran d'accueil** affichant la fenêtre de sommeil du soir.
 
 ## Aperçu
 
@@ -64,6 +64,7 @@ Les captures sont générées à partir du code des écrans à chaque modificati
 - **[Respire](https://github.com/Pilmil-Studio/respire)** : une courte pause de respiration avant les applications que l'on ouvre par réflexe, particulièrement utile le soir avant le coucher.
 - **[Sauve](https://github.com/Pilmil-Studio/sauve)** : premiers secours « anti-panique », gratuit, libre et sans accès à Internet, avec guidage vocal et haptique mains libres.
 - **[Sillon](https://github.com/Pilmil-Studio/sillon)** : potager vivant et calendrier agronomique indexé sur la date des dernières gelées, gratuit, libre et sans accès à Internet.
+- **[Fredonne](https://github.com/Pilmil-Studio/fredonne)** : saisie mélodique, écoute acoustique hors-ligne et transposition, gratuit, libre et sans accès à Internet.
 
 ## Pourquoi Sommelle est gratuite
 
@@ -85,13 +86,16 @@ La thérapie cognitive et comportementale de l'insomnie (TCC-I) est le traitemen
 | [Dossier scientifique](https://pilmil-studio.github.io/sommelle/protocole.html) | Pour les soignants : composantes de TCC-I, calculs avec exemple, sécurité, exercices, limites, sources (source : `docs/protocole.html`) |
 | [Principes d'interface](documentation/design.md) | Pour qui, et comment l'interface s'adapte à une personne fatiguée |
 | [Architecture](documentation/architecture.md) | Modules, données, accessibilité |
+| [Portage iOS](documentation/portage-ios.md) | Avancement KMP / iOS (`:shared`, Room KMP, PDF iOS) |
 | [Contribuer](CONTRIBUTING.md) | Compiler, tester, captures d'écran, site |
 
 ## Langues
 
-L'appli suit la langue du téléphone : français sur un téléphone en français, anglais sinon. Les textes de l'interface sont des ressources Android (`values/` en anglais, `values-fr/` en français) ; les heures, durées et libellés composés à partir des données viennent de `TextFormat` dans `:core:presentation` (`FrenchFormat`, `EnglishFormat`).
+L'appli suit la langue du téléphone et prend en charge **6 langues** (`fr`, `en`, `es`, `de`, `pl`, `uk`). Les textes de l'interface sont des ressources Android (`values/` et `values-{fr,es,de,pl,uk}/`) ; les heures, durées et libellés composés à partir des données viennent de `TextFormat` dans `:core:presentation` (`FrenchFormat`, `EnglishFormat`, `SpanishFormat`, `GermanFormat`, `PolishFormat`, `UkrainianFormat`).
 
-## Compiler
+## Compiler et architecture
+
+Le socle métier (`:core:model`, `:core:protocol`, `:core:presentation`), le stockage local (`:core:data`, Room KMP `2.7.2` + `sqlite-bundled`) et le rendu PDF multiplateforme (`:shared`, `IosSleepReportPdfExporter` via `UIGraphicsPDFRenderer`) sont en Kotlin Multiplatform (`androidTarget`, `jvm`, `iosArm64`, `iosSimulatorArm64`, `iosX64`), avec une coque iOS (`iosApp/`) et le sous-module `pilmil-core`. L'interface complète des écrans `:feature:*` reste sous Android (`targetSdk 36`).
 
 Ouvrir le projet dans Android Studio, ou en ligne de commande :
 

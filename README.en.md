@@ -4,11 +4,11 @@
 
 [![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
-An Android app that supports people with insomnia, based on CBT-I (cognitive behavioral therapy for insomnia), the first-line treatment recommended by European and American guidelines. Free, in English and French, no account and no ads. No data leaves the phone.
+An insomnia support app (Android + KMP/iOS port in progress) based on CBT-I (cognitive behavioral therapy for insomnia), the first-line treatment recommended by European and American guidelines. Free, available in 6 languages (`fr`, `en`, `es`, `de`, `pl`, `uk`), no account and no ads. No data leaves the phone.
 
 Sommelle is a self-help and education tool. It is not a medical device and does not replace medical advice.
 
-**[Sommelle website](https://pilmil-studio.github.io/sommelle/en/)** · **[Google Play](https://play.google.com/store/apps/details?id=fr.sommelle)** · **[Download APK](https://github.com/Pilmil-Studio/sommelle/releases/latest)** · [For health professionals](https://pilmil-studio.github.io/sommelle/en/professionals.html) · [Scientific dossier](https://pilmil-studio.github.io/sommelle/en/protocol.html) · [Privacy](https://pilmil-studio.github.io/sommelle/en/privacy.html)
+**[Sommelle website](https://pilmil-studio.github.io/sommelle/en/)** · **Google Play** (soon) · **[Download APK](https://github.com/Pilmil-Studio/sommelle/releases/latest)** · [For health professionals](https://pilmil-studio.github.io/sommelle/en/professionals.html) · [Scientific dossier](https://pilmil-studio.github.io/sommelle/en/protocol.html) · [Privacy](https://pilmil-studio.github.io/sommelle/en/privacy.html)
 
 **Before the Google Play release:** [join the internal test](https://play.google.com/apps/internaltest/4701568611212235635) (only for people already on the tester list: [ask for access by e-mail](mailto:pilmil.studio@proton.me?subject=Tester%20Sommelle)).
 
@@ -22,8 +22,8 @@ Over six to eight weeks:
 - **A night screen**, almost black and clock-free, reminds you what to do when sleep does not come and offers an optional **20-minute gentle chime** (stimulus control rule without a visible countdown).
 - **Five cognitive exercises and evening habit commitments** unlock over the program: ideas about sleep, putting the day to rest (with an interactive evening notepad on the phone), paradoxical intention, decatastrophizing, relaxation, each playable **with your eyes closed** via a calm offline voice guide and gentle acoustic chime, alongside 5 checkable bedroom and evening habits.
 - **A before/after review and relapse-prevention guide** compare the observation week with the latest nights and explain what to do if an occasional bad night comes back later.
-- **A summary for the doctor**, to show on screen or share as a PDF and a spreadsheet, plus **CSV backup import** in settings.
-- Optional **reminders** in the morning and evening, and a **discreet home screen widget** showing the evening sleep window.
+- **A summary for the doctor**, to show on screen or share as a PDF and a spreadsheet, plus **CSV backup import** and an **encrypted `.pilmil` vault** (AES-256-GCM via `pilmil-core`) in settings.
+- Optional **reminders** in the morning and evening, a **customizable night theme** (`NightThemeMode`: adjustable automatic hours, always light, always dark, or follow system), and a **discreet home screen widget** showing the evening sleep window.
 
 ## Preview
 
@@ -59,6 +59,7 @@ Screenshots are generated from the screen code on every change.
 - **[Respire](https://github.com/Pilmil-Studio/respire)**: a short breathing pause before the apps you open on autopilot, especially helpful in the evening before bed.
 - **[Sauve](https://github.com/Pilmil-Studio/sauve)**: anti-panic first aid guide, free, open source and offline, with hands-free voice and haptic guidance.
 - **[Sillon](https://github.com/Pilmil-Studio/sillon)**: living vegetable garden planner and agronomic calendar based on the last frost date, free, open source and offline.
+- **[Fredonne](https://github.com/Pilmil-Studio/fredonne)**: single-voice melody entry, offline acoustic playback and transposition, free, open source and offline.
 
 ## Why Sommelle is free
 
@@ -74,9 +75,11 @@ Cognitive behavioral therapy for insomnia (CBT-I) is the recommended first-line 
 
 ## Languages
 
-The app follows the phone's language: French on a phone set to French, English otherwise. Interface texts are Android resources (`values/` in English, `values-fr/` in French); times, durations and labels built from data come from `TextFormat` in `:core:presentation` (`FrenchFormat`, `EnglishFormat`).
+The app follows the phone's language and supports **6 languages** (`fr`, `en`, `es`, `de`, `pl`, `uk`). Interface texts are Android resources (`values/` and `values-{fr,es,de,pl,uk}/`); times, durations and labels built from data come from `TextFormat` in `:core:presentation` (`FrenchFormat`, `EnglishFormat`, `SpanishFormat`, `GermanFormat`, `PolishFormat`, `UkrainianFormat`).
 
-## Building
+## Building & architecture
+
+The core domain (`:core:model`, `:core:protocol`, `:core:presentation`), local storage (`:core:data`, Room KMP `2.7.2` + `sqlite-bundled`) and multiplatform PDF exporter (`:shared`, `IosSleepReportPdfExporter` via `UIGraphicsPDFRenderer`) are built with Kotlin Multiplatform (`androidTarget`, `jvm`, `iosArm64`, `iosSimulatorArm64`, `iosX64`), alongside an iOS shell (`iosApp/` — see [documentation/portage-ios.md](documentation/portage-ios.md)) and the `pilmil-core` submodule. The full `:feature:*` UI remains on Android (`targetSdk 36`).
 
 Open the project in Android Studio, or from the command line:
 
