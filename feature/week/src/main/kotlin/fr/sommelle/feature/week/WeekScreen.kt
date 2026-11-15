@@ -184,7 +184,7 @@ private fun headline(s: WeekState): Pair<String, String> {
                 ReportTone.LONGER -> stringResource(R.string.week_longer_title) to stringResource(R.string.week_longer_text, eff, change)
                 ReportTone.SHORTER -> stringResource(R.string.week_shorter_title) to stringResource(R.string.week_shorter_text, eff, change)
                 ReportTone.STEADY -> stringResource(R.string.week_steady_title) to stringResource(R.string.week_steady_text, eff)
-                ReportTone.AT_FLOOR -> stringResource(R.string.week_floor_title) to stringResource(R.string.week_floor_text, eff)
+                ReportTone.AT_FLOOR, ReportTone.REDUCTION_HELD -> stringResource(R.string.week_floor_title) to stringResource(R.string.week_floor_text, eff)
                 ReportTone.AT_MAXIMUM -> stringResource(R.string.week_max_title) to stringResource(R.string.week_max_text, eff)
                 ReportTone.MISSING_NIGHTS -> stringResource(R.string.week_missing_title) to
                     stringResource(R.string.week_missing_text, report.loggedNights, report.requiredNights)

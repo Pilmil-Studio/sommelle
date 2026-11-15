@@ -281,7 +281,6 @@ private fun ScreeningQuestion.text(): Int = when (this) {
     ScreeningQuestion.EPILEPSY -> R.string.onb_q_epilepsy
     ScreeningQuestion.PREGNANCY -> R.string.onb_q_pregnancy
     ScreeningQuestion.SAFETY_CRITICAL -> R.string.onb_q_safety
-    ScreeningQuestion.PREFERS_NO_RESTRICTION -> R.string.onb_q_prefers_no_restriction
     ScreeningQuestion.LATE_SCHEDULE -> R.string.onb_q_late
     ScreeningQuestion.DISTRESS -> R.string.onb_q_distress
 }
@@ -292,7 +291,6 @@ private fun ScreeningQuestion.hint(): Int? = when (this) {
     ScreeningQuestion.EXTERNAL_DISRUPTION -> R.string.onb_h_external
     ScreeningQuestion.DAYTIME_SLEEPINESS -> R.string.onb_h_sleepiness
     ScreeningQuestion.SAFETY_CRITICAL -> R.string.onb_h_safety
-    ScreeningQuestion.PREFERS_NO_RESTRICTION -> R.string.onb_h_prefers_no_restriction
     else -> null
 }
 
@@ -309,7 +307,8 @@ private fun Referral.text(): Int = when (this) {
 
 @StringRes
 private fun Notice.text(): Int = when (this) {
-    Notice.REINFORCED_DROWSINESS_WARNING -> R.string.onb_notice_drowsiness
+    Notice.DROWSINESS_WARNING -> R.string.onb_notice_drowsiness
+    Notice.SAFETY_CRITICAL_ACTIVITY -> R.string.onb_h_safety
     Notice.EXTERNAL_DISRUPTION -> R.string.onb_notice_external
     Notice.PREGNANCY -> R.string.onb_notice_pregnancy
     Notice.CRISIS_RESOURCES -> R.string.onb_notice_crisis

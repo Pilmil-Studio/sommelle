@@ -158,6 +158,7 @@ class SommelleRepository(
                 entries = dao.entriesOnce().map { it.toModel() },
                 windows = dao.windowsOnce().map { it.toModel().window },
                 wakeTime = program.wakeTime,
+                sleepinessChecks = dao.weeklyChecksOnce().associate { it.reviewDate to it.sleepinessReported },
             )
             when (step) {
                 is WindowStep.NewInitialWindow -> dao.upsertWindow(step.window.toEntity(change = null))

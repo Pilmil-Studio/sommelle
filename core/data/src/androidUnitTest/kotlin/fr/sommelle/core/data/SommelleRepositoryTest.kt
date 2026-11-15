@@ -9,6 +9,7 @@ import fr.sommelle.core.data.db.ProgramEntity
 import fr.sommelle.core.data.db.SettingsEntity
 import fr.sommelle.core.data.db.SleepWindowEntity
 import fr.sommelle.core.data.db.SommelleDao
+import fr.sommelle.core.data.db.WeeklyCheckEntity
 import fr.sommelle.core.model.AgeBand
 import fr.sommelle.core.model.DiaryEntry
 import fr.sommelle.core.model.ScreeningAnswers
@@ -97,6 +98,7 @@ class SommelleRepositoryTest {
         (0L..14L).forEach { dao.upsertEntry(entry(start.plusDays(it)).toEntity()) }
 
         SommelleRepository(dao, clockAt(start.plusDays(7))).synchronize()
+        dao.upsertWeeklyCheck(WeeklyCheckEntity(reviewDate = start.plusDays(14), sleepinessReported = false))
         val step = SommelleRepository(dao, clockAt(start.plusDays(15))).synchronize()
 
         assertIs<WindowStep.Current>(step)
@@ -147,6 +149,7 @@ private class FakeSommelleDao : SommelleDao {
     private val settingsFlow = MutableStateFlow<SettingsEntity?>(null)
     private val modulesFlow = MutableStateFlow<Map<String, ModuleProgressEntity>>(emptyMap())
     private val impactsFlow = MutableStateFlow<Map<LocalDate, DaytimeImpactEntity>>(emptyMap())
+    private val weeklyChecksFlow = MutableStateFlow<Map<LocalDate, WeeklyCheckEntity>>(emptyMap())
 
     var batchUpsertCalls = 0
         private set
@@ -220,6 +223,20 @@ private class FakeSommelleDao : SommelleDao {
 
     override suspend fun upsertDaytimeImpact(impact: DaytimeImpactEntity) {
         impactsFlow.value = impactsFlow.value + (impact.date to impact)
+    }
+
+    override fun weeklyChecks(): Flow<List<WeeklyCheckEntity>> =
+        weeklyChecksFlow.map { it.values.sortedBy { c -> c.reviewDate } }
+
+    override suspend fun weeklyChecksOnce(): List<WeeklyCheckEntity> =
+        weeklyChecksFlow.value.values.sortedBy { it.reviewDate }
+
+    override suspend fun upsertWeeklyCheck(check: WeeklyCheckEntity) {
+        weeklyChecksFlow.value = weeklyChecksFlow.value + (check.reviewDate to check)
+    }
+
+    override suspend fun deleteWeeklyChecks() {
+        weeklyChecksFlow.value = emptyMap()
     }
 
     override suspend fun deleteSettings() {
