@@ -12,6 +12,8 @@ import android.text.TextPaint
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
 import fr.sommelle.core.presentation.ClinicianReport
+import fr.sommelle.shared.SleepReportLabels
+import fr.sommelle.shared.SleepReportPdfExporter
 import java.io.File
 import java.util.Locale
 import fr.sommelle.core.designsystem.R as DsR
@@ -22,6 +24,12 @@ import fr.sommelle.core.designsystem.R as DsR
  */
 internal fun reportNeedsSystemFont(language: String = Locale.getDefault().language): Boolean =
     language == "pl" || language == "uk"
+
+/** Implémentation Android de [SleepReportPdfExporter] s'appuyant sur [PdfReport]. */
+class AndroidSleepReportPdfExporter(private val context: Context) : SleepReportPdfExporter {
+    override fun exportPdf(report: ClinicianReport, labels: SleepReportLabels): String =
+        PdfReport.write(context, report).absolutePath
+}
 
 /**
  * Génère le résumé PDF sur le téléphone (format A4), sans aucun accès réseau.

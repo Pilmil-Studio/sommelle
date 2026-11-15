@@ -68,6 +68,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -111,6 +113,11 @@ class SettingsViewModel(private val repository: SommelleRepository) : ViewModel(
             onDone(count)
         }
     }
+
+    suspend fun exportCsv(): String {
+        val snap = repository.snapshot.filterNotNull().first()
+        return fr.sommelle.core.presentation.DiaryCsv.export(snap.entries)
+    }
 }
 
 @Composable
@@ -125,15 +132,55 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
         notificationsAllowed = granted
     }
     val scope = rememberCoroutineScope()
+    var showExportPilmilDialog by rememberSaveable { mutableStateOf(false) }
+    var pendingPilmilImport by remember { mutableStateOf<ByteArray?>(null) }
+    var pilmilStatus by rememberSaveable { mutableStateOf<String?>(null) }
+    var passphraseInput by rememberSaveable { mutableStateOf("") }
+    var passphraseConfirm by rememberSaveable { mutableStateOf("") }
+    var passphraseError by rememberSaveable { mutableStateOf<String?>(null) }
+    var pendingExportPassphrase by remember { mutableStateOf<CharArray?>(null) }
+
+    val pilmilExporter = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { uri ->
+        val pwd = pendingExportPassphrase
+        pendingExportPassphrase = null
+        if (uri != null && pwd != null) {
+            scope.launch {
+                try {
+                    val csv = viewModel.exportCsv()
+                    val encrypted = withContext(Dispatchers.Default) {
+                        fr.pilmil.core.platform.backup.AndroidBackupVault().encrypt(csv, pwd)
+                    }
+                    withContext(Dispatchers.IO) {
+                        context.contentResolver.openOutputStream(uri)?.use { it.write(encrypted) }
+                    }
+                    pilmilStatus = "Sauvegarde chiffrée (.pilmil) enregistrée."
+                } catch (e: Exception) {
+                    pilmilStatus = "Erreur : ${e.localizedMessage}"
+                } finally {
+                    pwd.fill('\u0000')
+                }
+            }
+        }
+    }
+
     val csvPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         val selected = uri ?: return@rememberLauncherForActivityResult
         scope.launch {
-            val text = withContext(Dispatchers.IO) {
+            val bytes = withContext(Dispatchers.IO) {
                 runCatching {
-                    context.contentResolver.openInputStream(selected)?.bufferedReader()?.use { it.readText() }
+                    context.contentResolver.openInputStream(selected)?.use { it.readBytes() }
                 }.getOrNull()
             } ?: return@launch
-            viewModel.importCsv(text) { count -> importedCount = count }
+            if (isPilmilBackup(bytes)) {
+                pendingPilmilImport = bytes
+                passphraseInput = ""
+                passphraseError = null
+            } else {
+                viewModel.importCsv(bytes.decodeToString()) { count ->
+                    importedCount = count
+                    pilmilStatus = null
+                }
+            }
         }
     }
 
@@ -160,10 +207,124 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
         onOpenReport = onOpenReport,
         onOpenIntro = onOpenIntro,
         onImportCsv = { csvPicker.launch("*/*") },
+        onExportPilmil = {
+            passphraseInput = ""
+            passphraseConfirm = ""
+            passphraseError = null
+            showExportPilmilDialog = true
+        },
+        pilmilStatus = pilmilStatus,
         importedCount = importedCount,
         onErase = { viewModel.erase(onErased) },
     )
+
+    if (showExportPilmilDialog) {
+        val mismatch = passphraseConfirm.isNotEmpty() && passphraseInput != passphraseConfirm
+        val valid = passphraseInput.isNotEmpty() && passphraseInput == passphraseConfirm
+        AlertDialog(
+            onDismissRequest = { showExportPilmilDialog = false },
+            title = { Text("Sauvegarde chiffrée (.pilmil)") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        "Ce mot de passe chiffrera votre agenda (AES-256-GCM). Conservez-le précieusement : aucune récupération n'est possible sans lui.",
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                    androidx.compose.material3.OutlinedTextField(
+                        value = passphraseInput,
+                        onValueChange = { passphraseInput = it },
+                        label = { Text("Mot de passe") },
+                        singleLine = true,
+                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                    )
+                    androidx.compose.material3.OutlinedTextField(
+                        value = passphraseConfirm,
+                        onValueChange = { passphraseConfirm = it },
+                        label = { Text("Confirmer") },
+                        singleLine = true,
+                        isError = mismatch,
+                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    enabled = valid,
+                    onClick = {
+                        pendingExportPassphrase = passphraseInput.toCharArray()
+                        passphraseInput = ""
+                        passphraseConfirm = ""
+                        showExportPilmilDialog = false
+                        pilmilExporter.launch("sommelle.pilmil")
+                    },
+                ) { Text("Exporter") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showExportPilmilDialog = false }) { Text("Annuler") }
+            },
+        )
+    }
+
+    val encryptedImport = pendingPilmilImport
+    if (encryptedImport != null) {
+        AlertDialog(
+            onDismissRequest = { pendingPilmilImport = null },
+            title = { Text("Déchiffrer la sauvegarde .pilmil") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    androidx.compose.material3.OutlinedTextField(
+                        value = passphraseInput,
+                        onValueChange = {
+                            passphraseInput = it
+                            passphraseError = null
+                        },
+                        label = { Text("Mot de passe") },
+                        singleLine = true,
+                        isError = passphraseError != null,
+                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                    )
+                    if (passphraseError != null) {
+                        Text(passphraseError.orEmpty(), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        val pwd = passphraseInput.toCharArray()
+                        scope.launch {
+                            try {
+                                val csv = withContext(Dispatchers.Default) {
+                                    fr.pilmil.core.platform.backup.AndroidBackupVault().decrypt(encryptedImport, pwd)
+                                }
+                                viewModel.importCsv(csv) { count ->
+                                    importedCount = count
+                                    pilmilStatus = null
+                                }
+                                pendingPilmilImport = null
+                                passphraseInput = ""
+                            } catch (_: fr.pilmil.core.platform.backup.InvalidPassphraseException) {
+                                passphraseError = "Mot de passe incorrect."
+                            } catch (e: Exception) {
+                                passphraseError = "Erreur : ${e.localizedMessage}"
+                            } finally {
+                                pwd.fill('\u0000')
+                            }
+                        }
+                    },
+                ) { Text("Importer") }
+            },
+            dismissButton = {
+                TextButton(onClick = { pendingPilmilImport = null }) { Text("Annuler") }
+            },
+        )
+    }
 }
+
+private val SOMMELLE_PILMIL_MAGIC = byteArrayOf(0x50, 0x49, 0x4C, 0x4D, 0x49, 0x4C)
+
+private fun isPilmilBackup(bytes: ByteArray): Boolean =
+    bytes.size >= 7 && SOMMELLE_PILMIL_MAGIC.indices.all { i -> bytes[i] == SOMMELLE_PILMIL_MAGIC[i] }
 
 /** Réglages sans état ni dépendance : affichés tels quels dans les captures de la documentation. */
 @Composable
@@ -177,6 +338,8 @@ fun SettingsContent(
     onErase: () -> Unit,
     onOpenIntro: () -> Unit = {},
     onImportCsv: () -> Unit = {},
+    onExportPilmil: () -> Unit = {},
+    pilmilStatus: String? = null,
     importedCount: Int? = null,
 ) {
     val uriHandler = LocalUriHandler.current
@@ -224,7 +387,11 @@ fun SettingsContent(
         val privacyUrl = stringResource(R.string.settings_privacy_url)
         Section(stringResource(R.string.settings_data)) {
             InfoLine(SommelleIcons.History, stringResource(R.string.settings_data_hint))
+            SommelleButton("Sauvegarde chiffrée (.pilmil)", onExportPilmil, style = SommelleButtonStyle.Outlined)
             SommelleButton(stringResource(R.string.settings_import_csv), onImportCsv, style = SommelleButtonStyle.Outlined)
+            if (pilmilStatus != null) {
+                Text(pilmilStatus, style = MaterialTheme.typography.bodySmall)
+            }
             if (importedCount != null) {
                 Text(stringResource(R.string.settings_import_result, importedCount), style = MaterialTheme.typography.bodySmall)
             }

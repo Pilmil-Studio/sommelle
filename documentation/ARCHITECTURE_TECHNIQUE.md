@@ -25,6 +25,6 @@ Dans `AndroidManifest.xml` :
 
 - **Base de données** : Room 2.6.1 (`sommelle.db`, version 2), stockée dans le bac à sable privé Android (sans SQLCipher actuellement).
 - **Planification locale** : `WorkManager 2.10.0` pour les rappels matin/soir.
-- **Exports locaux** : génération PDF A4 native via `android.graphics.pdf.PdfDocument` (`PdfReport`) et export/import CSV (`sommelle-agenda.csv`).
+- **Exports et sauvegardes locales** : génération PDF A4 native via `android.graphics.pdf.PdfDocument` (`PdfReport`), export/import CSV (`sommelle-agenda.csv`) et sauvegarde chiffrée **`.pilmil`** via `AndroidBackupVault` (`pilmil-core`, AES-256-GCM + PBKDF2-HMAC-SHA256 600 000 itérations) dans `feature:settings`.
 - **Audio hors-ligne** : synthèse vocale Android locale (vitesse `0.86x`) combinée à une génération sinusoïdale `AudioTrack` à **432 Hz**.
 - **Internationalisation** : 6 langues (FR, EN, DE, ES, PL, UK).

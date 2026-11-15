@@ -37,7 +37,7 @@ Un parcours en **5 étapes** sécurise la prise en charge avant de démarrer :
 
 ### 4. Réglages (`settings`)
 - Configuration des **rappels** et de la plage horaire du **thème nuit**.
-- Accès au **Bilan clinicien** (`ExportScreen`) : export **PDF A4** (`PdfReport`) et **CSV** (`sommelle-agenda.csv`), ainsi qu'**import CSV**.
+- Accès au **Bilan clinicien** (`ExportScreen`) : export **PDF A4** (`PdfReport`) et **CSV** (`sommelle-agenda.csv`), **sauvegarde chiffrée (`.pilmil`)**, ainsi qu'**import CSV / `.pilmil`**.
 - **Effacement complet** des données locales, raccourci d'aide **3114**, présentation de la suite Pilmil et page **À propos**.
 
 ---
