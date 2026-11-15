@@ -123,7 +123,7 @@ class ReportAndRemindersTest {
             impacts = listOf(DaytimeImpact(start, 3), DaytimeImpact(today, 1)),
         )
         assertEquals("65 ans et plus", report.ageBand)
-        assertTrue(report.safetyNotes.any { "plancher" in it })
+        assertTrue(report.safetyNotes.any { "somnolence" in it })
         assertEquals("coucher 0 h 15, lever 6 h 45 (6 h 30)", report.currentWindow)
         assertEquals(listOf("Observation", "Semaine 1", "Semaine 2 (en cours)"), report.weeks.map { it.label })
         assertEquals("Aucune", report.weeks[0].window)

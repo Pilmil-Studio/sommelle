@@ -103,10 +103,11 @@ object SpanishFormat : TextFormat {
     }
 
     override fun notice(notice: Notice) = when (notice) {
-        Notice.REINFORCED_DROWSINESS_WARNING -> "Actividad con riesgo de somnolencia: ventana mínima elevada a 6 h"
+        Notice.DROWSINESS_WARNING -> "Recorrido con restricción: advertencia de somnolencia mostrada (conducción, máquinas peligrosas)"
+        Notice.SAFETY_CRITICAL_ACTIVITY -> "Actividad con riesgo de somnolencia: sin restricción de tiempo en cama, se aconseja consultar al médico"
         Notice.EXTERNAL_DISRUPTION -> "Noches interrumpidas por terceros declaradas"
         Notice.PREGNANCY -> "Embarazo declarado: sin restricción de tiempo en cama"
-        Notice.CRISIS_RESOURCES -> "Malestar anímico expresado: recursos de apoyo disponibles"
+        Notice.CRISIS_RESOURCES -> "Malestar anímico expresado: recursos de apoyo disponibles, sin restricción de tiempo en cama, se aconseja consultar"
     }
 
     override fun metric(metric: OutcomeMetric) = when (metric) {

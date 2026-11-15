@@ -22,7 +22,8 @@ data class ProgramEntity(
     val epilepsy: Boolean,
     val pregnancy: Boolean,
     val safetyCriticalActivity: Boolean,
-    val prefersNoRestriction: Boolean,
+    /** Colonne conservée pour la compatibilité (version 1) : la question n'est plus posée, toujours false. */
+    val prefersNoRestriction: Boolean = false,
     val shiftOrNightWork: Boolean,
     val externalNightDisruption: Boolean,
     val lateScheduleSleepsWellOnceAsleep: Boolean,
@@ -76,6 +77,16 @@ data class ModuleProgressEntity(
 data class DaytimeImpactEntity(
     @PrimaryKey val date: LocalDate,
     val score: Int,
+)
+
+/**
+ * Réponse à la question hebdomadaire sur la somnolence en journée, par date de bilan
+ * (jour d'effet de la fenêtre qui en résulte). Ajoutée en version 3.
+ */
+@Entity(tableName = "weekly_checks")
+data class WeeklyCheckEntity(
+    @PrimaryKey val reviewDate: LocalDate,
+    val sleepinessReported: Boolean,
 )
 
 /** Les dates et heures sont stockées au format ISO 8601, lisible dans un export. */

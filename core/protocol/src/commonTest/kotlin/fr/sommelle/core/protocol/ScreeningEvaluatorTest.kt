@@ -21,7 +21,7 @@ class ScreeningEvaluatorTest {
     fun `sans contre-indication le programme est complet avec le plancher par defaut`() {
         val r = evaluator.evaluate(answers())
         assertEquals(Pathway.FULL, r.pathway)
-        assertEquals(Duration.ofMinutes(330), r.minimumSleepWindow)
+        assertEquals(Duration.ofHours(6), r.minimumSleepWindow)
         assertTrue(r.restrictionAllowed)
         assertTrue(r.referrals.isEmpty())
     }
@@ -58,17 +58,43 @@ class ScreeningEvaluatorTest {
             answers().copy(epilepsy = true),
             answers().copy(pregnancy = true),
             answers().copy(lateScheduleSleepsWellOnceAsleep = true),
-            answers().copy(safetyCriticalActivity = true, prefersNoRestriction = true),
+            answers().copy(safetyCriticalActivity = true),
+            answers().copy(expressedDistress = true),
         )
         cases.forEach { assertFalse(evaluator.evaluate(it).restrictionAllowed, "cas : $it") }
     }
 
     @Test
-    fun `activite a risque releve le plancher et renforce l avertissement`() {
+    fun `activite a risque donne un parcours sans restriction avec son message`() {
         val r = evaluator.evaluate(answers().copy(safetyCriticalActivity = true))
-        assertEquals(Pathway.FULL, r.pathway)
-        assertEquals(Duration.ofHours(6), r.minimumSleepWindow)
-        assertTrue(Notice.REINFORCED_DROWSINESS_WARNING in r.notices)
+        assertEquals(Pathway.WITHOUT_RESTRICTION, r.pathway)
+        assertNull(r.minimumSleepWindow)
+        assertFalse(r.restrictionAllowed)
+        assertTrue(Notice.SAFETY_CRITICAL_ACTIVITY in r.notices)
+        assertNull(RestrictionProfile.from(ProtocolConfig.DEFAULT, r))
+    }
+
+    @Test
+    fun `detresse exprimee donne un parcours sans restriction avec le 3114`() {
+        val r = evaluator.evaluate(answers().copy(expressedDistress = true))
+        assertEquals(Pathway.WITHOUT_RESTRICTION, r.pathway)
+        assertNull(r.minimumSleepWindow)
+        assertTrue(Notice.CRISIS_RESOURCES in r.notices)
+        assertNull(RestrictionProfile.from(ProtocolConfig.DEFAULT, r))
+    }
+
+    @Test
+    fun `l avertissement somnolence est emis pour tout parcours avec restriction`() {
+        AgeBand.entries.filter { it != AgeBand.UNDER_18 }.forEach { age ->
+            val r = evaluator.evaluate(answers(age))
+            assertEquals(Pathway.FULL, r.pathway)
+            assertTrue(Notice.DROWSINESS_WARNING in r.notices, "tranche d'âge : $age")
+        }
+    }
+
+    @Test
+    fun `pas d avertissement de restriction quand la restriction n est pas proposee`() {
+        assertFalse(Notice.DROWSINESS_WARNING in evaluator.evaluate(answers().copy(epilepsy = true)).notices)
     }
 
     @Test

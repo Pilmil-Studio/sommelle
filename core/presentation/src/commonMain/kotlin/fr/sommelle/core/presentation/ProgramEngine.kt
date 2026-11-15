@@ -34,6 +34,12 @@ sealed interface WindowStep {
     /** Ajustement hebdomadaire à enregistrer, et bilan à montrer. */
     data class NewWeeklyDecision(val previous: SleepWindow, val decision: WindowDecision) : WindowStep
 
+    /**
+     * Bilan hebdomadaire dû, mais la question sur la somnolence en journée n'a pas encore été posée :
+     * la fenêtre en cours s'applique jusqu'à la réponse.
+     */
+    data class AwaitingSleepinessCheck(val reviewDate: LocalDate, val current: SleepWindow) : WindowStep
+
     /** Rien à faire : la fenêtre en cours s'applique. */
     data class Current(val window: SleepWindow) : WindowStep
 }
@@ -41,7 +47,7 @@ sealed interface WindowStep {
 /**
  * Orchestration pure du programme, à partir de ce qui est enregistré. Le calendrier des
  * ajustements suit la dernière fenêtre : un nouveau bilan tous les 7 jours à partir de sa date
- * d'effet, calculé sur les 7 nuits qui précèdent.
+ * d'effet, calculé sur les 7 nuits qui précèdent, une fois la question sur la somnolence répondue.
  */
 class ProgramEngine(private val config: ProtocolConfig = ProtocolConfig.DEFAULT) {
 
@@ -54,6 +60,8 @@ class ProgramEngine(private val config: ProtocolConfig = ProtocolConfig.DEFAULT)
         entries: List<DiaryEntry>,
         windows: List<SleepWindow>,
         wakeTime: LocalTime?,
+        /** Réponses à la question hebdomadaire sur la somnolence, par date du bilan (true : somnolence déclarée). */
+        sleepinessChecks: Map<LocalDate, Boolean> = emptyMap(),
     ): WindowStep {
         val profile = RestrictionProfile.from(config, screening) ?: return WindowStep.NotApplicable
         val latest = windows.maxByOrNull { it.effectiveFrom }
@@ -76,8 +84,13 @@ class ProgramEngine(private val config: ProtocolConfig = ProtocolConfig.DEFAULT)
 
         val nextReview = latest.effectiveFrom.plusDays(7)
         if (today < nextReview) return WindowStep.Current(latest)
+        // Le bilan du jour attend la réponse sur la somnolence. Si un bilan plus récent est déjà dû,
+        // celui-ci n'est plus posé : par prudence, la fenêtre n'est pas réduite.
+        val answer = sleepinessChecks[nextReview]
+        val outdated = today >= nextReview.plusDays(7)
+        if (answer == null && !outdated) return WindowStep.AwaitingSleepinessCheck(nextReview, latest)
         val week = nightsBetween(entries, latest.effectiveFrom, nextReview.minusDays(1))
-        val decision = calculator.weeklyAdjustment(latest, week, profile, nextReview)
+        val decision = calculator.weeklyAdjustment(latest, week, profile, nextReview, holdReduction = answer != false)
         return WindowStep.NewWeeklyDecision(latest, decision)
     }
 

@@ -5,6 +5,7 @@ import fr.sommelle.core.model.*
 import fr.sommelle.core.model.AgeBand
 import fr.sommelle.core.model.DiaryEntry
 import fr.sommelle.core.model.ScreeningAnswers
+import fr.sommelle.core.model.SleepWindow
 import fr.sommelle.core.model.SleepQuality
 import fr.sommelle.core.protocol.ScreeningEvaluator
 import fr.sommelle.core.protocol.WindowChange
@@ -15,6 +16,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 class ProgramEngineTest {
 
@@ -75,14 +77,56 @@ class ProgramEngineTest {
         val week1 = nights(day7, 7, 375, 340)
         assertEquals(WindowStep.Current(window), engine.windowStep(day7.plusDays(6), start, full, week1, listOf(window), wake))
 
-        val review = engine.windowStep(day7.plusDays(7), start, full, week1, listOf(window), wake)
+        val reviewDay = day7.plusDays(7)
+        // Le bilan attend la réponse sur la somnolence : la fenêtre en cours continue de s'appliquer.
+        val waiting = engine.windowStep(reviewDay, start, full, week1, listOf(window), wake)
+        assertEquals(WindowStep.AwaitingSleepinessCheck(reviewDay, window), waiting)
+
+        val review = engine.windowStep(reviewDay, start, full, week1, listOf(window), wake, mapOf(reviewDay to false))
         assertIs<WindowStep.NewWeeklyDecision>(review)
         assertEquals(WindowChange.INCREASED, review.decision.change)
-        assertEquals(day7.plusDays(7), review.decision.window.effectiveFrom)
+        assertEquals(reviewDay, review.decision.window.effectiveFrom)
 
         val report = WeeklyReport.of(review.previous, review.decision)
         assertEquals(ReportTone.LONGER, report.tone)
         assertNotNull(report.efficiency)
         assertEquals("15 minutes", report.change)
+    }
+
+    private fun firstWindow(): SleepWindow {
+        val day7 = start.plusDays(7)
+        val initial = engine.windowStep(day7, start, full, nights(start.plusDays(1), 7, 510, 370), emptyList(), wake)
+        return (initial as WindowStep.NewInitialWindow).window
+    }
+
+    @Test
+    fun `somnolence declaree la fenetre n est pas reduite ce jour-la`() {
+        val window = firstWindow()
+        val reviewDay = window.effectiveFrom.plusDays(7)
+        val poor = nights(window.effectiveFrom, 7, 375, 280)
+
+        val declared = engine.windowStep(reviewDay, start, full, poor, listOf(window), wake, mapOf(reviewDay to true))
+        assertIs<WindowStep.NewWeeklyDecision>(declared)
+        assertEquals(WindowChange.UNCHANGED_SLEEPINESS, declared.decision.change)
+        assertEquals(window.duration, declared.decision.window.duration)
+        val report = WeeklyReport.of(declared.previous, declared.decision, sleepinessReported = true)
+        assertEquals(ReportTone.REDUCTION_HELD, report.tone)
+        assertTrue(report.sleepinessReported)
+
+        val denied = engine.windowStep(reviewDay, start, full, poor, listOf(window), wake, mapOf(reviewDay to false))
+        assertIs<WindowStep.NewWeeklyDecision>(denied)
+        assertEquals(WindowChange.DECREASED, denied.decision.change)
+    }
+
+    @Test
+    fun `bilan ancien sans reponse la fenetre n est pas reduite par prudence`() {
+        val window = firstWindow()
+        val reviewDay = window.effectiveFrom.plusDays(7)
+        val poor = nights(window.effectiveFrom, 7, 375, 280)
+
+        val outdated = engine.windowStep(reviewDay.plusDays(7), start, full, poor, listOf(window), wake)
+        assertIs<WindowStep.NewWeeklyDecision>(outdated)
+        assertEquals(reviewDay, outdated.decision.window.effectiveFrom)
+        assertEquals(WindowChange.UNCHANGED_SLEEPINESS, outdated.decision.change)
     }
 }

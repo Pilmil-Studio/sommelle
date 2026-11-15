@@ -11,7 +11,12 @@ import fr.sommelle.core.protocol.WindowDecision
 import kotlinx.datetime.LocalDate
 
 /** Une fenêtre enregistrée, avec la décision qui l'a produite (null pour la fenêtre initiale). */
-data class StoredWindow(val window: SleepWindow, val change: WindowChange?)
+data class StoredWindow(
+    val window: SleepWindow,
+    val change: WindowChange?,
+    /** Somnolence en journée déclarée au bilan qui a produit cette fenêtre. */
+    val sleepinessReported: Boolean = false,
+)
 
 /** Reconstitution, à partir des données enregistrées, de ce que montrent l'accueil et le bilan. */
 object ProgramHistory {
@@ -28,7 +33,7 @@ object ProgramHistory {
         val change = latest.change ?: return null
         val previous = sorted[sorted.size - 2]
         val week = PeriodSummary.of(nights(entries, previous.window.effectiveFrom, latest.window.effectiveFrom.minusDays(1)))
-        return WeeklyReport.of(previous.window, WindowDecision(latest.window, change, week), config)
+        return WeeklyReport.of(previous.window, WindowDecision(latest.window, change, week), config, sleepinessReported = latest.sleepinessReported)
     }
 
     /**

@@ -43,6 +43,8 @@ enum class WindowChange {
     UNCHANGED_IN_TARGET_RANGE,
     UNCHANGED_AT_FLOOR,
     UNCHANGED_AT_MAXIMUM,
+    /** Réduction qui aurait eu lieu, suspendue parce que de la somnolence en journée est déclarée. */
+    UNCHANGED_SLEEPINESS,
     /** Pas assez de nuits renseignées : la fenêtre est maintenue, avec un message explicatif. */
     UNCHANGED_INSUFFICIENT_DATA,
 }
@@ -58,6 +60,8 @@ data class WindowDecision(
  * - Fenêtre initiale : temps de sommeil total moyen de la ligne de base, arrondi au pas supérieur,
  *   borné entre le plancher de la personne et le maximum.
  * - Ajustement hebdomadaire selon l'efficacité de la semaine écoulée.
+ * - Aucune réduction la semaine où de la somnolence en journée est déclarée ; l'élargissement reste permis.
+ * - Une fenêtre déjà en cours sous le plancher y est relevée au prochain calcul.
  * - L'heure de lever reste fixe ; l'heure de coucher en découle.
  */
 class SleepWindowCalculator(private val config: ProtocolConfig = ProtocolConfig.DEFAULT) {
@@ -84,10 +88,16 @@ class SleepWindowCalculator(private val config: ProtocolConfig = ProtocolConfig.
         week: Collection<DiaryEntry>,
         profile: RestrictionProfile,
         effectiveFrom: LocalDate,
+        /** Vrai si la fenêtre ne doit pas être réduite cette semaine (somnolence déclarée, réponse absente). */
+        holdReduction: Boolean = false,
     ): WindowDecision {
         val summary = PeriodSummary.of(week)
         if (summary == null || summary.loggedNights < config.minimumLoggedNightsPerWeek) {
-            return WindowDecision(current.copy(effectiveFrom = effectiveFrom), WindowChange.UNCHANGED_INSUFFICIENT_DATA, summary)
+            return WindowDecision(
+                window(current.wakeTime, current.duration.coerceAtLeast(profile.minimumWindow), effectiveFrom),
+                WindowChange.UNCHANGED_INSUFFICIENT_DATA,
+                summary,
+            )
         }
 
         val efficiency = summary.sleepEfficiency
@@ -96,9 +106,13 @@ class SleepWindowCalculator(private val config: ProtocolConfig = ProtocolConfig.
                 if (current.duration >= config.maximumWindow) {
                     current.duration to WindowChange.UNCHANGED_AT_MAXIMUM
                 } else {
-                    current.duration.plus(config.increaseStep).coerceAtMost(config.maximumWindow) to WindowChange.INCREASED
+                    current.duration.plus(config.increaseStep)
+                        .coerceAtLeast(profile.minimumWindow)
+                        .coerceAtMost(config.maximumWindow) to WindowChange.INCREASED
                 }
             }
+            efficiency < profile.decreaseThreshold && holdReduction ->
+                current.duration.coerceAtLeast(profile.minimumWindow) to WindowChange.UNCHANGED_SLEEPINESS
             efficiency < profile.decreaseThreshold -> {
                 val target = current.duration.minus(config.decreaseStep)
                 when {

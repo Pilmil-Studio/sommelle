@@ -24,10 +24,8 @@ data class ScreeningAnswers(
     val bipolarDisorder: Boolean = false,
     val epilepsy: Boolean = false,
     val pregnancy: Boolean = false,
-    /** Conduite professionnelle, machines dangereuses ou métier de sécurité. */
+    /** Conduite professionnelle, machines dangereuses ou métier de sécurité : parcours sans restriction. */
     val safetyCriticalActivity: Boolean = false,
-    /** Choix de la personne concernée par l'activité ci-dessus de ne pas restreindre son temps au lit. */
-    val prefersNoRestriction: Boolean = false,
     val shiftOrNightWork: Boolean = false,
     /** Nuits interrompues par une cause externe : nourrisson, soins à un proche, etc. */
     val externalNightDisruption: Boolean = false,
@@ -60,12 +58,14 @@ enum class Referral {
 
 /** Messages à afficher selon les réponses, sans valeur de diagnostic. */
 enum class Notice {
-    /** Avertissement somnolence renforcé pour les activités à risque. */
-    REINFORCED_DROWSINESS_WARNING,
+    /** Avertissement somnolence (conduite, machines), pour tout parcours avec restriction du temps au lit. */
+    DROWSINESS_WARNING,
+    /** Activité à risque : la restriction n'est pas proposée sans l'avis d'un médecin. */
+    SAFETY_CRITICAL_ACTIVITY,
     /** La TCC-I cible l'insomnie, pas la privation de sommeil liée à une cause externe. */
     EXTERNAL_DISRUPTION,
     PREGNANCY,
-    /** Mise en avant des ressources d'aide (3114), en plus de leur présence permanente. */
+    /** Mise en avant des ressources d'aide (3114) et invitation à consulter, en plus de leur présence permanente. */
     CRISIS_RESOURCES,
 }
 

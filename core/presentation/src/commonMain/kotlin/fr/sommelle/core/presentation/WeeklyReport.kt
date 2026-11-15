@@ -12,7 +12,7 @@ import kotlin.time.Duration
 import kotlinx.datetime.LocalDate
 
 /** Ton du bilan hebdomadaire. Jamais d'échec : une semaine difficile est une information. */
-enum class ReportTone { LONGER, SHORTER, STEADY, AT_FLOOR, AT_MAXIMUM, MISSING_NIGHTS }
+enum class ReportTone { LONGER, SHORTER, STEADY, AT_FLOOR, AT_MAXIMUM, MISSING_NIGHTS, REDUCTION_HELD }
 
 /**
  * Contenu du bilan hebdomadaire, déjà mis en forme. L'interface choisit le titre et la phrase
@@ -28,6 +28,8 @@ data class WeeklyReport(
     val wakeTime: String,
     val loggedNights: Int,
     val requiredNights: Int,
+    /** Somnolence en journée déclarée cette semaine : l'interface invite à en parler au médecin. */
+    val sleepinessReported: Boolean = false,
 ) {
     companion object {
         fun of(
@@ -35,6 +37,7 @@ data class WeeklyReport(
             decision: WindowDecision,
             config: ProtocolConfig = ProtocolConfig.DEFAULT,
             text: TextFormat = Texts.current(),
+            sleepinessReported: Boolean = false,
         ): WeeklyReport {
             val delta: Duration = decision.window.duration.minus(previous.duration)
             val tone = when (decision.change) {
@@ -44,6 +47,7 @@ data class WeeklyReport(
                 WindowChange.UNCHANGED_AT_FLOOR -> ReportTone.AT_FLOOR
                 WindowChange.UNCHANGED_AT_MAXIMUM -> ReportTone.AT_MAXIMUM
                 WindowChange.UNCHANGED_INSUFFICIENT_DATA -> ReportTone.MISSING_NIGHTS
+                WindowChange.UNCHANGED_SLEEPINESS -> ReportTone.REDUCTION_HELD
             }
             val week = decision.week
             return WeeklyReport(
@@ -54,6 +58,7 @@ data class WeeklyReport(
                 wakeTime = text.time(decision.window.wakeTime),
                 loggedNights = week?.loggedNights ?: 0,
                 requiredNights = config.minimumLoggedNightsPerWeek,
+                sleepinessReported = sleepinessReported,
             )
         }
     }

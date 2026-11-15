@@ -105,10 +105,11 @@ object EnglishFormat : TextFormat {
     }
 
     override fun notice(notice: Notice) = when (notice) {
-        Notice.REINFORCED_DROWSINESS_WARNING -> "Activity at risk from drowsiness: minimum window raised to 6 hours"
+        Notice.DROWSINESS_WARNING -> "Restriction pathway: drowsiness warning shown (driving, dangerous machinery)"
+        Notice.SAFETY_CRITICAL_ACTIVITY -> "Activity at risk from drowsiness: no time-in-bed restriction, medical advice recommended"
         Notice.EXTERNAL_DISRUPTION -> "Reports nights interrupted by someone else"
         Notice.PREGNANCY -> "Reports pregnancy: no time-in-bed restriction"
-        Notice.CRISIS_RESOURCES -> "Distress expressed in the questionnaire: support resources shown"
+        Notice.CRISIS_RESOURCES -> "Distress expressed in the questionnaire: support resources shown, no time-in-bed restriction, consultation advised"
     }
 
     override fun metric(metric: OutcomeMetric) = when (metric) {

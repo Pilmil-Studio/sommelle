@@ -103,10 +103,11 @@ object GermanFormat : TextFormat {
     }
 
     override fun notice(notice: Notice) = when (notice) {
-        Notice.REINFORCED_DROWSINESS_WARNING -> "Sicherheitsrelevante Tätigkeit: Mindestfenster auf 6 Std. angehoben"
+        Notice.DROWSINESS_WARNING -> "Weg mit Bettzeit-Einschränkung: Warnhinweis zur Schläfrigkeit angezeigt (Fahren, gefährliche Maschinen)"
+        Notice.SAFETY_CRITICAL_ACTIVITY -> "Tätigkeit mit Schläfrigkeitsrisiko: keine Bettzeit-Einschränkung, ärztlicher Rat empfohlen"
         Notice.EXTERNAL_DISRUPTION -> "Nächtliche Störungen durch Dritte angegeben"
         Notice.PREGNANCY -> "Schwangerschaft angegeben: Keine Bettzeit-Einschränkung"
-        Notice.CRISIS_RESOURCES -> "Seelische Belastung geäußert: Hilfsangebote verfügbar"
+        Notice.CRISIS_RESOURCES -> "Seelische Belastung geäußert: Hilfsangebote verfügbar, keine Bettzeit-Einschränkung, ärztliche Beratung empfohlen"
     }
 
     override fun metric(metric: OutcomeMetric) = when (metric) {

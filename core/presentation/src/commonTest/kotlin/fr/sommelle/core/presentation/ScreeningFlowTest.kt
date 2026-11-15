@@ -28,18 +28,14 @@ class ScreeningFlowTest {
     }
 
     @Test
-    fun `la question de preference n apparait que pour les activites a risque`() {
+    fun `une activite a risque ne pose plus de question de preference`() {
         val asked = mutableListOf<ScreeningQuestion>()
-        answerAll(ScreeningFlow().chooseAge(AgeBand.FROM_45_TO_64)) { asked += it; false }
-        assertFalse(ScreeningQuestion.PREFERS_NO_RESTRICTION in asked)
-
-        asked.clear()
         val done = answerAll(ScreeningFlow().chooseAge(AgeBand.FROM_45_TO_64)) {
             asked += it
-            it == ScreeningQuestion.SAFETY_CRITICAL || it == ScreeningQuestion.PREFERS_NO_RESTRICTION
+            it == ScreeningQuestion.SAFETY_CRITICAL
         }
-        assertTrue(ScreeningQuestion.PREFERS_NO_RESTRICTION in asked)
-        assertTrue(done.answers!!.prefersNoRestriction)
+        assertTrue(done.answers!!.safetyCriticalActivity)
+        assertEquals(ScreeningQuestion.entries.toList(), asked)
     }
 
     @Test

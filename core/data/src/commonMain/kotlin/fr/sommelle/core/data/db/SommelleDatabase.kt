@@ -90,6 +90,18 @@ interface SommelleDao {
     @Upsert
     suspend fun upsertDaytimeImpact(impact: DaytimeImpactEntity)
 
+    @Query("SELECT * FROM weekly_checks ORDER BY reviewDate")
+    fun weeklyChecks(): Flow<List<WeeklyCheckEntity>>
+
+    @Query("SELECT * FROM weekly_checks ORDER BY reviewDate")
+    suspend fun weeklyChecksOnce(): List<WeeklyCheckEntity>
+
+    @Upsert
+    suspend fun upsertWeeklyCheck(check: WeeklyCheckEntity)
+
+    @Query("DELETE FROM weekly_checks")
+    suspend fun deleteWeeklyChecks()
+
     @Query("DELETE FROM settings")
     suspend fun deleteSettings()
 
@@ -108,8 +120,9 @@ interface SommelleDao {
         SettingsEntity::class,
         ModuleProgressEntity::class,
         DaytimeImpactEntity::class,
+        WeeklyCheckEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -130,6 +143,16 @@ abstract class SommelleDatabase : RoomDatabase() {
                 )
                 connection.execSQL(
                     "CREATE TABLE IF NOT EXISTS `daytime_impacts` (`date` TEXT NOT NULL, `score` INTEGER NOT NULL, PRIMARY KEY(`date`))",
+                )
+            }
+        }
+
+        /** Version 3 : réponse hebdomadaire sur la somnolence en journée. Données existantes conservées. */
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(connection: SQLiteConnection) {
+                connection.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `weekly_checks` (`reviewDate` TEXT NOT NULL, " +
+                        "`sleepinessReported` INTEGER NOT NULL, PRIMARY KEY(`reviewDate`))",
                 )
             }
         }

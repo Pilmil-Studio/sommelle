@@ -43,17 +43,60 @@ class SleepWindowCalculatorTest {
         val baseline = week(MONDAY, nights = 7, timeInBedMin = 480, totalSleepMin = 290)
         val result = calculator.initialWindow(baseline, WAKE, adult, MONDAY)
         assertIs<InitialWindowResult.Ready>(result)
-        assertEquals(Duration.ofMinutes(330), result.window.duration)
-        assertEquals(LocalTime.of(1, 15), result.window.bedTime)
+        assertEquals(Duration.ofHours(6), result.window.duration)
+        assertEquals(LocalTime.of(0, 45), result.window.bedTime)
     }
 
     @Test
-    fun `plancher releve pour une activite a risque`() {
-        val safety = RestrictionProfile.from(config, evaluator.evaluate(answers().copy(safetyCriticalActivity = true)))!!
-        val baseline = week(MONDAY, nights = 7, timeInBedMin = 480, totalSleepMin = 290)
-        val result = calculator.initialWindow(baseline, WAKE, safety, MONDAY)
+    fun `le plancher est de 6 h meme pour un sommeil tres court`() {
+        assertEquals(Duration.ofHours(6), adult.minimumWindow)
+        val baseline = week(MONDAY, nights = 7, timeInBedMin = 420, totalSleepMin = 240)
+        val result = calculator.initialWindow(baseline, WAKE, adult, MONDAY)
         assertIs<InitialWindowResult.Ready>(result)
         assertEquals(Duration.ofHours(6), result.window.duration)
+    }
+
+    @Test
+    fun `une fenetre en cours de 5 h 30 est relevee a 6 h au prochain calcul`() {
+        // Fenêtre créée avec l'ancien plancher (5 h 30), quelle que soit la décision de la semaine.
+        val low = windowOf(330)
+        val atFloorEfficiency = calculator.weeklyAdjustment(low, week(MONDAY, 7, 330, 200), adult, MONDAY)
+        assertEquals(Duration.ofHours(6), atFloorEfficiency.window.duration)
+        assertEquals(LocalTime.of(0, 45), atFloorEfficiency.window.bedTime)
+
+        val steady = calculator.weeklyAdjustment(low, week(MONDAY, 7, 330, 272), adult, MONDAY)
+        assertEquals(Duration.ofHours(6), steady.window.duration)
+
+        val longer = calculator.weeklyAdjustment(low, week(MONDAY, 7, 330, 320), adult, MONDAY)
+        assertEquals(WindowChange.INCREASED, longer.change)
+        assertEquals(Duration.ofHours(6), longer.window.duration)
+
+        val missing = calculator.weeklyAdjustment(low, week(MONDAY, 3, 330, 320), adult, MONDAY)
+        assertEquals(WindowChange.UNCHANGED_INSUFFICIENT_DATA, missing.change)
+        assertEquals(Duration.ofHours(6), missing.window.duration)
+    }
+
+    @Test
+    fun `somnolence declaree pas de reduction cette semaine la`() {
+        val low = week(MONDAY, 7, 390, 290)
+        val held = calculator.weeklyAdjustment(windowOf(390), low, adult, MONDAY, holdReduction = true)
+        assertEquals(WindowChange.UNCHANGED_SLEEPINESS, held.change)
+        assertEquals(Duration.ofMinutes(390), held.window.duration)
+        // Sans somnolence, la même semaine réduit la fenêtre.
+        assertEquals(WindowChange.DECREASED, calculator.weeklyAdjustment(windowOf(390), low, adult, MONDAY).change)
+    }
+
+    @Test
+    fun `somnolence declaree l elargissement reste permis`() {
+        val d = calculator.weeklyAdjustment(windowOf(360), week(MONDAY, 7, 360, 330), adult, MONDAY, holdReduction = true)
+        assertEquals(WindowChange.INCREASED, d.change)
+        assertEquals(Duration.ofMinutes(375), d.window.duration)
+    }
+
+    @Test
+    fun `somnolence declaree et fenetre sous le plancher la fenetre est quand meme relevee`() {
+        val d = calculator.weeklyAdjustment(windowOf(330), week(MONDAY, 7, 330, 200), adult, MONDAY, holdReduction = true)
+        assertEquals(Duration.ofHours(6), d.window.duration)
     }
 
     @Test
@@ -87,13 +130,13 @@ class SleepWindowCalculatorTest {
 
     @Test
     fun `la reduction s arrete au plancher`() {
-        val atFloor = calculator.weeklyAdjustment(windowOf(330), week(MONDAY, 7, 330, 200), adult, MONDAY)
+        val atFloor = calculator.weeklyAdjustment(windowOf(360), week(MONDAY, 7, 360, 200), adult, MONDAY)
         assertEquals(WindowChange.UNCHANGED_AT_FLOOR, atFloor.change)
-        assertEquals(Duration.ofMinutes(330), atFloor.window.duration)
+        assertEquals(Duration.ofMinutes(360), atFloor.window.duration)
 
-        val nearFloor = calculator.weeklyAdjustment(windowOf(340), week(MONDAY, 7, 340, 200), adult, MONDAY)
+        val nearFloor = calculator.weeklyAdjustment(windowOf(370), week(MONDAY, 7, 370, 200), adult, MONDAY)
         assertEquals(WindowChange.DECREASED_TO_FLOOR, nearFloor.change)
-        assertEquals(Duration.ofMinutes(330), nearFloor.window.duration)
+        assertEquals(Duration.ofMinutes(360), nearFloor.window.duration)
     }
 
     @Test

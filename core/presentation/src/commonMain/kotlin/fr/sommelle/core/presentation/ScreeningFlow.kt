@@ -19,8 +19,7 @@ enum class ScreeningQuestion(
     BIPOLAR(set = { a, v -> a.copy(bipolarDisorder = v) }),
     EPILEPSY(set = { a, v -> a.copy(epilepsy = v) }),
     PREGNANCY(set = { a, v -> a.copy(pregnancy = v) }),
-    SAFETY_CRITICAL(set = { a, v -> a.copy(safetyCriticalActivity = v, prefersNoRestriction = if (v) a.prefersNoRestriction else false) }),
-    PREFERS_NO_RESTRICTION(appliesTo = { it.safetyCriticalActivity }, set = { a, v -> a.copy(prefersNoRestriction = v) }),
+    SAFETY_CRITICAL(set = { a, v -> a.copy(safetyCriticalActivity = v) }),
     LATE_SCHEDULE(set = { a, v -> a.copy(lateScheduleSleepsWellOnceAsleep = v) }),
     DISTRESS(set = { a, v -> a.copy(expressedDistress = v) });
 

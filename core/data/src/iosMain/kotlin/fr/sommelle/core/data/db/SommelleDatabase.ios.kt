@@ -19,6 +19,6 @@ fun SommelleDatabase.Companion.create(): SommelleDatabase {
     val dbPath = requireNotNull(documentsUrl?.path) + "/sommelle.db"
     return Room.databaseBuilder<SommelleDatabase>(name = dbPath)
         .setDriver(BundledSQLiteDriver())
-        .addMigrations(MIGRATION_1_2)
+        .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
         .build()
 }

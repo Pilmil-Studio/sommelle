@@ -17,10 +17,8 @@ data class ProtocolConfig(
     val baselineDays: Int,
     /** Nombre minimum de nuits renseignées sur 7 pour calculer ou ajuster une fenêtre. */
     val minimumLoggedNightsPerWeek: Int,
-    /** Plancher par défaut de la fenêtre de sommeil (à valider). */
+    /** Plancher de la fenêtre de sommeil : 6 h, repère du Réseau Morphée 2019 (à valider). */
     val defaultMinimumWindow: Duration,
-    /** Plancher pour les activités à risque de somnolence (à valider). */
-    val safetyCriticalMinimumWindow: Duration,
     /** Limite absolue : aucun réglage ne peut descendre en dessous. */
     val absoluteMinimumWindow: Duration,
     /** Durée maximale de la fenêtre, au-delà de laquelle on cesse d'allonger. */
@@ -41,8 +39,7 @@ data class ProtocolConfig(
         require(baselineDays in 7..14) { "la ligne de base dure entre 7 et 14 jours" }
         require(minimumLoggedNightsPerWeek in 1..7)
         require(defaultMinimumWindow >= absoluteMinimumWindow) { "plancher sous la limite absolue" }
-        require(safetyCriticalMinimumWindow >= defaultMinimumWindow) { "plancher de sécurité trop bas" }
-        require(maximumWindow > safetyCriticalMinimumWindow)
+        require(maximumWindow > defaultMinimumWindow)
         require(!roundingStep.isNegative && !roundingStep.isZero)
         require(!increaseStep.isNegative && !increaseStep.isZero)
         require(!decreaseStep.isNegative && !decreaseStep.isZero)
@@ -54,12 +51,11 @@ data class ProtocolConfig(
 
     companion object {
         val DEFAULT = ProtocolConfig(
-            version = 1,
+            version = 2,
             baselineDays = 7,
             minimumLoggedNightsPerWeek = 5,
-            defaultMinimumWindow = Duration.ofMinutes(5 * 60 + 30),
-            safetyCriticalMinimumWindow = Duration.ofHours(6),
-            absoluteMinimumWindow = Duration.ofHours(5),
+            defaultMinimumWindow = Duration.ofHours(6),
+            absoluteMinimumWindow = Duration.ofHours(6),
             maximumWindow = Duration.ofHours(9),
             roundingStep = Duration.ofMinutes(15),
             increaseStep = Duration.ofMinutes(15),

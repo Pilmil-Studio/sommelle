@@ -111,10 +111,11 @@ object PolishFormat : TextFormat {
     }
 
     override fun notice(notice: Notice) = when (notice) {
-        Notice.REINFORCED_DROWSINESS_WARNING -> "Czynność z ryzykiem senności: minimalne okno snu podniesione do 6 godz."
+        Notice.DROWSINESS_WARNING -> "Ścieżka z ograniczeniem: wyświetlono ostrzeżenie o senności (prowadzenie pojazdów, niebezpieczne maszyny)"
+        Notice.SAFETY_CRITICAL_ACTIVITY -> "Czynność z ryzykiem senności: bez ograniczenia czasu w łóżku, zalecana porada lekarza"
         Notice.EXTERNAL_DISRUPTION -> "Zgłoszone noce przerywane przez osoby trzecie"
         Notice.PREGNANCY -> "Zgłoszona ciąża: bez ograniczenia czasu w łóżku"
-        Notice.CRISIS_RESOURCES -> "Zgłoszone pogorszenie nastroju: dostępne wsparcie kryzysowe"
+        Notice.CRISIS_RESOURCES -> "Zgłoszone pogorszenie nastroju: dostępne wsparcie kryzysowe, bez ograniczenia czasu w łóżku, zalecana konsultacja"
     }
 
     override fun metric(metric: OutcomeMetric) = when (metric) {

@@ -14,6 +14,8 @@ import kotlin.time.Duration
  * Traduit les réponses au questionnaire d'entrée en parcours, plancher de fenêtre, orientations et messages.
  * Règles : tableau « Sécurité et orientation » de docs/protocole.html. Contre-indications de la restriction
  * du temps au lit d'après Kyle et al., Sleep 2014, et Riemann et al., J Sleep Res 2023 (à valider).
+ * Par prudence, la détresse déclarée et les activités à risque de somnolence conduisent aussi au parcours
+ * sans restriction.
  *
  * Ordre de priorité : hors périmètre, puis contre-indications à la restriction, puis programme complet.
  */
@@ -55,19 +57,18 @@ class ScreeningEvaluator(private val config: ProtocolConfig = ProtocolConfig.DEF
             answers.epilepsy ||
             answers.pregnancy ||
             answers.lateScheduleSleepsWellOnceAsleep ||
-            (answers.safetyCriticalActivity && answers.prefersNoRestriction)
+            answers.safetyCriticalActivity ||
+            answers.expressedDistress
+
+        if (answers.safetyCriticalActivity) notices += Notice.SAFETY_CRITICAL_ACTIVITY
 
         if (restrictionContraindicated) {
             return result(Pathway.WITHOUT_RESTRICTION, answers, null, referrals, notices)
         }
 
-        val floor = if (answers.safetyCriticalActivity) {
-            notices += Notice.REINFORCED_DROWSINESS_WARNING
-            config.safetyCriticalMinimumWindow
-        } else {
-            config.defaultMinimumWindow
-        }
-        return result(Pathway.FULL, answers, floor, referrals, notices)
+        // La somnolence peut augmenter pendant la restriction : l'avertissement vaut pour tout le monde.
+        notices += Notice.DROWSINESS_WARNING
+        return result(Pathway.FULL, answers, config.defaultMinimumWindow, referrals, notices)
     }
 
     private fun result(

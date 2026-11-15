@@ -105,10 +105,11 @@ object FrenchFormat : TextFormat {
     }
 
     override fun notice(notice: Notice) = when (notice) {
-        Notice.REINFORCED_DROWSINESS_WARNING -> "Activité à risque de somnolence : plancher de fenêtre relevé à 6 h"
+        Notice.DROWSINESS_WARNING -> "Parcours avec restriction : avertissement sur la somnolence affiché (conduite, machines dangereuses)"
+        Notice.SAFETY_CRITICAL_ACTIVITY -> "Activité à risque de somnolence : pas de restriction du temps au lit, avis du médecin conseillé"
         Notice.EXTERNAL_DISRUPTION -> "Nuits interrompues par un tiers déclarées"
         Notice.PREGNANCY -> "Grossesse déclarée : pas de restriction du temps au lit"
-        Notice.CRISIS_RESOURCES -> "Détresse exprimée au questionnaire : ressources d'aide affichées"
+        Notice.CRISIS_RESOURCES -> "Détresse exprimée au questionnaire : ressources d'aide affichées, pas de restriction du temps au lit, consultation conseillée"
     }
 
     override fun metric(metric: OutcomeMetric) = when (metric) {

@@ -110,10 +110,11 @@ object UkrainianFormat : TextFormat {
     }
 
     override fun notice(notice: Notice) = when (notice) {
-        Notice.REINFORCED_DROWSINESS_WARNING -> "Діяльність із ризиком сонливості: мінімальне вікно піднято до 6 год"
+        Notice.DROWSINESS_WARNING -> "Шлях з обмеженням: показано попередження про сонливість (кермування, небезпечні механізми)"
+        Notice.SAFETY_CRITICAL_ACTIVITY -> "Діяльність із ризиком сонливості: без обмеження часу в ліжку, рекомендовано поради лікаря"
         Notice.EXTERNAL_DISRUPTION -> "Зголошено ночі, перервані іншими людьми"
         Notice.PREGNANCY -> "Зголошено вагітність: без обмеження часу в ліжку"
-        Notice.CRISIS_RESOURCES -> "Зголошено пригнічений стан: доступна психологічна підтримка"
+        Notice.CRISIS_RESOURCES -> "Зголошено пригнічений стан: доступна психологічна підтримка, без обмеження часу в ліжку, рекомендовано звернутися до лікаря"
     }
 
     override fun metric(metric: OutcomeMetric) = when (metric) {
