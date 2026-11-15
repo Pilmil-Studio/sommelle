@@ -49,6 +49,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -392,7 +393,7 @@ private fun RecentNightsStrip(
                 val first = currentNights.first().date
                 val last = currentNights.last().date
                 Text(
-                    text = "${first.dayOfMonth}/${first.monthValue} – ${last.dayOfMonth}/${last.monthValue}",
+                    text = "${Texts.current().shortNight(first)} – ${Texts.current().shortNight(last)}",
                     style = MaterialTheme.typography.labelMedium,
                     color = colors.primary,
                 )
@@ -407,20 +408,27 @@ private fun RecentNightsStrip(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             currentNights.forEach { night ->
+                // Aucune couleur d'alerte sur des données de suivi : une nuit à remplir est une tuile neutre en contour.
                 val containerColor = when {
                     night.isFilled -> colors.primaryContainer
-                    night.isMissingToFill -> colors.errorContainer.copy(alpha = 0.6f)
+                    night.isMissingToFill -> colors.surface
                     else -> colors.surfaceVariant.copy(alpha = 0.35f)
                 }
                 val contentColor = when {
                     night.isFilled -> colors.onPrimaryContainer
-                    night.isMissingToFill -> colors.onErrorContainer
+                    night.isMissingToFill -> colors.onSurface
                     else -> colors.onSurfaceVariant
                 }
                 val borderColor = when {
-                    night.isMissingToFill -> colors.error
+                    night.isMissingToFill -> colors.outline
                     night.isFilled -> colors.primary.copy(alpha = 0.5f)
                     else -> colors.outlineVariant.copy(alpha = 0.3f)
+                }
+                val dateText = Texts.current().longDate(night.date)
+                val description = when {
+                    night.isFilled -> stringResource(R.string.home_night_desc_filled, dateText)
+                    night.isMissingToFill -> stringResource(R.string.home_night_desc_missing, dateText)
+                    else -> dateText
                 }
 
                 Surface(
@@ -430,7 +438,8 @@ private fun RecentNightsStrip(
                     border = BorderStroke(1.dp, borderColor),
                     modifier = Modifier
                         .weight(1f)
-                        .heightIn(min = 54.dp),
+                        .heightIn(min = 54.dp)
+                        .semantics(mergeDescendants = true) { contentDescription = description },
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -448,15 +457,23 @@ private fun RecentNightsStrip(
                             fontWeight = FontWeight.Bold,
                             color = contentColor,
                         )
-                        Box(
-                            modifier = Modifier
-                                .padding(top = 3.dp)
-                                .size(5.dp)
-                                .background(
-                                    color = if (night.isFilled) colors.primary else if (night.isMissingToFill) colors.error else Color.Transparent,
-                                    shape = CircleShape,
-                                ),
-                        )
+                        if (night.isMissingToFill) {
+                            Text(
+                                text = stringResource(R.string.home_night_to_fill),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = contentColor.copy(alpha = 0.8f),
+                            )
+                        } else {
+                            Box(
+                                modifier = Modifier
+                                    .padding(top = 3.dp)
+                                    .size(5.dp)
+                                    .background(
+                                        color = if (night.isFilled) colors.primary else Color.Transparent,
+                                        shape = CircleShape,
+                                    ),
+                            )
+                        }
                     }
                 }
             }

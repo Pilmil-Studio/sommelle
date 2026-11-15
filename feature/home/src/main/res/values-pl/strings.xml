@@ -59,4 +59,7 @@
     <string name="home_sleepiness_title">Podsumowanie tygodnia</string>
     <string name="home_sleepiness_question">Czy w tym tygodniu zdarzyło Ci się mimowolnie zasnąć w ciągu dnia lub niewiele brakowało?</string>
     <string name="home_sleepiness_hint">Okno snu na ten tydzień zostanie dostosowane zaraz po Twojej odpowiedzi.</string>
+    <string name="home_night_to_fill">do uzupełnienia</string>
+    <string name="home_night_desc_missing">%1$s, noc do uzupełnienia</string>
+    <string name="home_night_desc_filled">%1$s, noc uzupełniona</string>
 </resources>
