@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.annotation.ArrayRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -151,12 +152,11 @@ private fun SleepHabitsCard() {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable {
+                            .toggleable(value = checked, role = Role.Checkbox) {
                                 val next = if (checked) selected - index else selected + index
                                 selected = next
                                 prefs?.edit()?.putBoolean("habit_$index", !checked)?.apply()
                             }
-                            .semantics { role = Role.Checkbox }
                             .padding(horizontal = 16.dp, vertical = 12.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
@@ -216,9 +216,9 @@ fun ModuleScreen(repository: SommelleRepository, module: CognitiveModule, onBack
     val state by viewModel.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val prefs = remember(context) { context.getSharedPreferences("sommelle_evening_notepad", Context.MODE_PRIVATE) }
-    var worryText by rememberSaveable { mutableStateOf(prefs.getString("worry", "") ?: "") }
-    var actionText by rememberSaveable { mutableStateOf(prefs.getString("action", "") ?: "") }
-    var putAway by rememberSaveable { mutableStateOf(prefs.getBoolean("put_away", false)) }
+    var worryText by rememberSaveable { mutableStateOf(prefs.getString(EveningNotepad.WORRY, "") ?: "") }
+    var actionText by rememberSaveable { mutableStateOf(prefs.getString(EveningNotepad.ACTION, "") ?: "") }
+    var putAway by rememberSaveable { mutableStateOf(prefs.getBoolean(EveningNotepad.PUT_AWAY, false)) }
     var isSpeaking by remember { mutableStateOf(false) }
     val guide = remember(context) {
         VoiceExerciseGuide(context, onFinished = { isSpeaking = false })
@@ -254,23 +254,24 @@ fun ModuleScreen(repository: SommelleRepository, module: CognitiveModule, onBack
         worryText = worryText,
         onWorryChange = {
             worryText = it
-            prefs.edit().putString("worry", it).apply()
+            prefs.edit().putString(EveningNotepad.WORRY, it).apply()
         },
         actionText = actionText,
         onActionChange = {
             actionText = it
-            prefs.edit().putString("action", it).apply()
+            prefs.edit().putString(EveningNotepad.ACTION, it).apply()
         },
         worryPutAway = putAway,
         onPutAwayChange = {
             putAway = it
-            prefs.edit().putBoolean("put_away", it).apply()
+            prefs.edit().putBoolean(EveningNotepad.PUT_AWAY, it).apply()
         },
         onClearWorry = {
             worryText = ""
             actionText = ""
             putAway = false
-            prefs.edit().clear().apply()
+            // Seulement l'inquiétude : les habitudes cochées sont dans le même fichier et doivent rester.
+            prefs.edit().apply { EveningNotepad.WORRY_KEYS.forEach { remove(it) } }.apply()
         },
     )
 }
