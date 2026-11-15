@@ -14,6 +14,10 @@ import fr.sommelle.core.model.AgeBand
 import fr.sommelle.core.model.DiaryEntry
 import fr.sommelle.core.model.ScreeningAnswers
 import fr.sommelle.core.model.SleepQuality
+import fr.sommelle.core.data.backup.InvalidBackupException
+import fr.sommelle.core.data.backup.SommelleBackup
+import fr.sommelle.core.model.PrefillSource
+import fr.sommelle.core.presentation.CognitiveModule
 import fr.sommelle.core.presentation.DiaryCsv
 import fr.sommelle.core.presentation.WindowStep
 import kotlinx.coroutines.flow.Flow
@@ -30,6 +34,7 @@ import kotlinx.datetime.toInstant
 import kotlin.time.Duration
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
@@ -126,6 +131,197 @@ class SommelleRepositoryTest {
         assertTrue(info.prescribedDuration >= Duration.ofHours(5))
     }
 
+
+    // Bilan hebdomadaire : question sur la somnolence
+
+    private suspend fun programWithWeek(dao: FakeSommelleDao, start: LocalDate) {
+        dao.upsertProgram(
+            ScreeningAnswers(ageBand = AgeBand.FROM_25_TO_44).toEntity(startDate = start, wakeTime = LocalTime.of(7, 0)),
+        )
+        // Ligne de base correcte (fenêtre de 6 h 45), puis une semaine de mauvais sommeil qui appellerait une réduction.
+        (0L..6L).forEach { dao.upsertEntry(entry(start.plusDays(it)).toEntity()) }
+        (7L..13L).forEach {
+            dao.upsertEntry(entry(start.plusDays(it)).copy(wakeAfterSleepOnset = Duration.ofMinutes(90)).toEntity())
+        }
+    }
+
+    @Test
+    fun `le bilan hebdomadaire attend la reponse sur la somnolence`() = runTest {
+        val dao = FakeSommelleDao()
+        val start = LocalDate.of(2026, 10, 1)
+        programWithWeek(dao, start)
+        SommelleRepository(dao, clockAt(start.plusDays(7))).synchronize()
+
+        val step = SommelleRepository(dao, clockAt(start.plusDays(14))).synchronize()
+
+        assertEquals(WindowStep.AwaitingSleepinessCheck::class, step!!::class)
+        assertEquals(1, dao.windowsOnce().size)
+    }
+
+    @Test
+    fun `somnolence declaree la fenetre n est pas reduite et la reponse est enregistree`() = runTest {
+        val dao = FakeSommelleDao()
+        val start = LocalDate.of(2026, 10, 1)
+        programWithWeek(dao, start)
+        SommelleRepository(dao, clockAt(start.plusDays(7))).synchronize()
+        val repo = SommelleRepository(dao, clockAt(start.plusDays(14)))
+        val before = dao.windowsOnce().single().durationMinutes
+
+        repo.answerSleepinessCheck(start.plusDays(14), sleepinessReported = true)
+
+        val windows = dao.windowsOnce()
+        assertEquals(2, windows.size)
+        assertEquals(before, windows.last().durationMinutes)
+        assertEquals("UNCHANGED_SLEEPINESS", windows.last().change)
+        assertEquals(true, dao.weeklyChecksOnce().single().sleepinessReported)
+        val snapshot = repo.snapshot.first()!!
+        assertTrue(snapshot.windows.last().sleepinessReported)
+    }
+
+    @Test
+    fun `sans somnolence la meme semaine reduit la fenetre`() = runTest {
+        val dao = FakeSommelleDao()
+        val start = LocalDate.of(2026, 10, 1)
+        programWithWeek(dao, start)
+        SommelleRepository(dao, clockAt(start.plusDays(7))).synchronize()
+        val before = dao.windowsOnce().single().durationMinutes
+
+        SommelleRepository(dao, clockAt(start.plusDays(14))).answerSleepinessCheck(start.plusDays(14), sleepinessReported = false)
+
+        val last = dao.windowsOnce().last()
+        assertEquals("DECREASED", last.change)
+        assertEquals(before - 15, last.durationMinutes)
+    }
+
+    @Test
+    fun `une fenetre existante de 5 h 30 est relevee a 6 h au prochain bilan`() = runTest {
+        val dao = FakeSommelleDao()
+        val start = LocalDate.of(2026, 10, 1)
+        dao.upsertProgram(
+            ScreeningAnswers(ageBand = AgeBand.FROM_25_TO_44).toEntity(startDate = start, wakeTime = LocalTime.of(7, 0)),
+        )
+        (0L..13L).forEach { dao.upsertEntry(entry(start.plusDays(it)).toEntity()) }
+        // Fenêtre créée avant le changement de plancher (protocole 1, 5 h 30).
+        dao.upsertWindow(SleepWindowEntity(start.plusDays(7), LocalTime.of(1, 30), LocalTime.of(7, 0), 330, 1, null))
+        dao.upsertWeeklyCheck(WeeklyCheckEntity(start.plusDays(14), sleepinessReported = false))
+
+        SommelleRepository(dao, clockAt(start.plusDays(14))).synchronize()
+
+        val raised = dao.windowsOnce().last()
+        assertEquals(360, raised.durationMinutes)
+        assertEquals(LocalTime.of(1, 0), raised.bedTime)
+        assertEquals(1, dao.windowsOnce().first().protocolVersion)
+    }
+
+    // Sauvegarde complète
+
+    private suspend fun fillAllTables(dao: FakeSommelleDao) {
+        val start = LocalDate.of(2026, 10, 1)
+        dao.upsertProgram(
+            ScreeningAnswers(ageBand = AgeBand.FROM_45_TO_64, expressedDistress = true).toEntity(startDate = start, wakeTime = LocalTime.of(6, 45)),
+        )
+        dao.upsertEntry(entry(start.plusDays(1)).toEntity())
+        dao.upsertEntry(entry(start.plusDays(2)).copy(notes = "Nuit \"agitée\"\nsecond ligne", prefillSource = PrefillSource.PREVIOUS_NIGHT).toEntity())
+        dao.upsertWindow(SleepWindowEntity(start.plusDays(7), LocalTime.of(0, 15), LocalTime.of(6, 45), 390, 2, null))
+        dao.upsertWindow(SleepWindowEntity(start.plusDays(14), LocalTime.of(0, 0), LocalTime.of(6, 45), 405, 2, "INCREASED"))
+        dao.upsertSettings(SettingsEntity(morningReminder = true, morningTime = LocalTime.of(7, 5), eveningReminder = false))
+        dao.upsertModuleProgress(ModuleProgressEntity(CognitiveModule.entries[0].name, start.plusDays(10)))
+        dao.upsertModuleProgress(ModuleProgressEntity(CognitiveModule.entries[1].name, start.plusDays(12)))
+        dao.upsertDaytimeImpact(DaytimeImpactEntity(start, 3))
+        dao.upsertDaytimeImpact(DaytimeImpactEntity(start.plusDays(40), 1))
+        dao.upsertWeeklyCheck(WeeklyCheckEntity(start.plusDays(14), true))
+        dao.upsertWeeklyCheck(WeeklyCheckEntity(start.plusDays(21), false))
+    }
+
+    @Test
+    fun `sauvegarde complete aller-retour retrouve toutes les tables`() = runTest {
+        val source = FakeSommelleDao()
+        fillAllTables(source)
+        val json = SommelleRepository(source, clockAt(LocalDate.of(2026, 11, 15)))
+            .exportBackup(mapOf("nightMode" to "ALWAYS_NIGHT", "nightStartHour" to "22"))
+
+        assertTrue(json.contains("\"format\":\"sommelle-backup\""))
+        assertTrue(json.contains("\"version\":1"))
+
+        val target = FakeSommelleDao()
+        target.upsertEntry(entry(LocalDate.of(2025, 1, 5)).toEntity()) // donnée à remplacer
+        val repo = SommelleRepository(target, clockAt(LocalDate.of(2026, 11, 15)))
+        val data = SommelleBackup.decode(json)
+        repo.restoreBackup(data)
+
+        assertEquals(source.programOnce(), target.programOnce())
+        assertEquals(source.entriesOnce(), target.entriesOnce())
+        assertEquals(2, target.entriesOnce().size, "la nuit préexistante est remplacée")
+        assertEquals(source.windowsOnce(), target.windowsOnce())
+        assertEquals(source.settingsOnce(), target.settingsOnce())
+        assertEquals(source.moduleProgress().first().toSet(), target.moduleProgress().first().toSet())
+        assertEquals(source.daytimeImpactsOnce(), target.daytimeImpactsOnce())
+        assertEquals(source.weeklyChecksOnce(), target.weeklyChecksOnce())
+        assertEquals(mapOf("nightMode" to "ALWAYS_NIGHT", "nightStartHour" to "22"), data.preferences)
+        assertEquals("Nuit \"agitée\"\nsecond ligne", target.entriesOnce().last().notes)
+    }
+
+    @Test
+    fun `sauvegarde d une base vide aller-retour`() = runTest {
+        val json = SommelleRepository(FakeSommelleDao(), clockAt(LocalDate.of(2026, 11, 15))).exportBackup()
+        val data = SommelleBackup.decode(json)
+        assertNull(data.program)
+        assertTrue(data.diaryEntries.isEmpty())
+    }
+
+    @Test
+    fun `version inconnue refusee sans rien modifier`() = runTest {
+        val dao = FakeSommelleDao()
+        fillAllTables(dao)
+        val repo = SommelleRepository(dao, clockAt(LocalDate.of(2026, 11, 15)))
+        val json = repo.exportBackup().replace("\"version\":1", "\"version\":2")
+        val entriesBefore = dao.entriesOnce()
+
+        val refused = assertFailsWith<InvalidBackupException> { SommelleBackup.decode(json) }
+
+        assertEquals(InvalidBackupException.Reason.UNSUPPORTED_VERSION, refused.reason)
+        assertEquals(entriesBefore, dao.entriesOnce())
+    }
+
+    @Test
+    fun `document d un autre format refuse`() {
+        val refused = assertFailsWith<InvalidBackupException> { SommelleBackup.decode("""{"app":"lunaison","version":1}""") }
+        assertEquals(InvalidBackupException.Reason.NOT_A_BACKUP, refused.reason)
+    }
+
+    @Test
+    fun `json tronque refuse sans modification des donnees`() = runTest {
+        val dao = FakeSommelleDao()
+        fillAllTables(dao)
+        val repo = SommelleRepository(dao, clockAt(LocalDate.of(2026, 11, 15)))
+        val json = repo.exportBackup()
+        val before = listOf(dao.programOnce(), dao.entriesOnce(), dao.windowsOnce(), dao.weeklyChecksOnce(), dao.settingsOnce())
+
+        // Tronqué en plusieurs endroits : au milieu d'un texte, d'une liste, juste avant la fin.
+        listOf(json.length / 3, json.length / 2, json.length - 1).forEach { cut ->
+            val refused = assertFailsWith<InvalidBackupException> { SommelleBackup.decode(json.take(cut)) }
+            assertEquals(InvalidBackupException.Reason.CORRUPTED, refused.reason)
+        }
+        assertEquals(before, listOf(dao.programOnce(), dao.entriesOnce(), dao.windowsOnce(), dao.weeklyChecksOnce(), dao.settingsOnce()))
+    }
+
+    @Test
+    fun `valeurs impossibles refusees`() = runTest {
+        val dao = FakeSommelleDao()
+        fillAllTables(dao)
+        val json = SommelleRepository(dao, clockAt(LocalDate.of(2026, 11, 15))).exportBackup()
+        listOf(
+            json.replace("FROM_45_TO_64", "FROM_100"),
+            json.replace("\"quality\":\"FAIR\"", "\"quality\":\"EXCELLENT\""),
+            json.replace("\"startDate\":\"2026-10-01\"", "\"startDate\":\"pas-une-date\""),
+            json.replace("\"score\":3", "\"score\":9"),
+            json.replace("\"diaryEntries\":[", "\"diaryEntries\":{\"x\":["),
+        ).forEach { bad ->
+            val refused = assertFailsWith<InvalidBackupException> { SommelleBackup.decode(bad) }
+            assertEquals(InvalidBackupException.Reason.CORRUPTED, refused.reason)
+        }
+    }
+
     @Test
     fun `eraseEverything supprime toutes les tables`() = runTest {
         val dao = FakeSommelleDao()
@@ -134,9 +330,11 @@ class SommelleRepositoryTest {
         repo.startProgram(ScreeningAnswers(ageBand = AgeBand.FROM_25_TO_44))
         repo.saveEntry(entry(today))
         repo.saveDaytimeImpact(3)
+        dao.upsertWeeklyCheck(WeeklyCheckEntity(today, true))
 
         repo.eraseEverything()
 
+        assertTrue(dao.weeklyChecksOnce().isEmpty())
         assertNull(repo.snapshot.first())
         assertTrue(repo.daytimeImpactsOnce().isEmpty())
     }

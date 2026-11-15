@@ -37,7 +37,7 @@
     <string name="wake_baseline_in_bed">En la cama</string>
     <string name="wake_baseline_sleep">Dormido</string>
     <string name="wake_baseline_efficiency">Eficiencia</string>
-    <string name="wake_baseline_explanation">La restricción ajusta tu tiempo en la cama al que realmente duermes para reconstruir la presión de sueño. La fatiga diurna es normal durante los primeros 10 a 15 días.</string>
+    <string name="wake_baseline_explanation">La restricción ajusta tu tiempo en la cama al que realmente duermes para reconstruir la presión de sueño. Durante 2 a 4 semanas, el cansancio y la somnolencia pueden aumentar. Por lo general, disminuyen después.</string>
     <string name="wake_projected_window">Ventana resultante: acostarse %1$s • levantarse %2$s (%3$s en cama)</string>
     <string name="wake_confirm">Confirmar</string>
     <string name="home_impact_title">Una pregunta breve</string>
@@ -53,4 +53,8 @@
     <string name="home_reminder_text">Un recordatorio por la mañana ayuda mucho a anotar cada noche, y el programa depende de ello. No se envía ningún recordatorio si la noche ya está anotada.</string>
     <string name="home_reminder_enable">Activar recordatorios</string>
     <string name="home_reminder_dismiss">No, gracias</string>
+    <string name="wake_drowsiness_warning">Durante las primeras semanas, la somnolencia puede aumentar. Si te cuesta mantenerte despierto, no conduzcas ni uses maquinaria peligrosa.</string>
+    <string name="home_sleepiness_title">Balance de la semana</string>
+    <string name="home_sleepiness_question">Esta semana, ¿te has quedado dormido sin querer durante el día, o has estado a punto?</string>
+    <string name="home_sleepiness_hint">Tu ventana semanal se ajusta en cuanto respondas.</string>
 </resources>

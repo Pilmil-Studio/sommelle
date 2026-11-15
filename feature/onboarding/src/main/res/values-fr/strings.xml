@@ -29,14 +29,12 @@
     <string name="onb_q_pregnancy">Êtes-vous enceinte ?</string>
     <string name="onb_q_safety">Conduisez-vous pour votre travail, ou utilisez-vous des machines dangereuses ?</string>
     <string name="onb_h_safety">Ou exercez-vous un métier où un moment d\'inattention peut être grave.</string>
-    <string name="onb_q_prefers_no_restriction">Préférez-vous un programme sans réduction du temps passé au lit ?</string>
-    <string name="onb_h_prefers_no_restriction">Cette partie du programme peut augmenter la fatigue en journée au début. Sans elle, le programme reste utile, avec un effet plus progressif.</string>
     <string name="onb_q_late">Vous couchez-vous et vous levez-vous très tard, mais dormez-vous bien une fois le sommeil venu ?</string>
     <string name="onb_q_distress">Ces derniers temps, vous sentez-vous à bout, ou sans espoir ?</string>
     <string name="onb_h_private">Votre réponse reste sur votre téléphone.</string>
 
     <string name="onb_result_full_title">Le programme complet vous convient</string>
-    <string name="onb_result_full_text">1. Semaine 1 (observation) : dormez comme d\'habitude et notez votre nuit chaque matin.\n2. Semaines 2 à 7 (consolidation) : Sommelle aligne temporairement votre temps au lit sur votre sommeil réel pour le rendre profond et continu. Les 10 à 15 premiers jours entraînent une fatigue transitoire (comme des courbatures lors d\'une reprise sportive) : c\'est le signe que la pression de sommeil se reconstruit. Puis Sommelle rallonge vos nuits semaine après semaine.\n3. Après les 6 semaines : le sommeil est consolidé et vous pouvez ranger l\'agenda.</string>
+    <string name="onb_result_full_text">1. Observation (7 premiers jours) : dormez comme d\'habitude et notez votre nuit chaque matin.\n2. Semaines 1 à 6 : Sommelle aligne temporairement votre temps au lit sur votre sommeil réel pour le rendre plus continu. Pendant 2 à 4 semaines, la fatigue et la somnolence peuvent augmenter. Elles diminuent en général ensuite. Puis Sommelle rallonge vos nuits semaine après semaine.\n3. Après les 6 semaines : votre sommeil devrait s\'être amélioré et vous pouvez ranger l\'agenda.</string>
     <string name="onb_result_partial_title">Un programme adapté pour vous</string>
     <string name="onb_result_partial_text">D\'après vos réponses, Sommelle ne réduira pas votre temps passé au lit. Pendant 6 semaines, vous suivrez l\'agenda du matin, les repères pour la nuit et un exercice par semaine pour apaiser le sommeil.</string>
     <string name="onb_result_out_title">Sommelle n\'est pas adaptée à votre situation</string>
@@ -53,10 +51,10 @@
     <string name="onb_ref_delayed">Horaires très tardifs : il peut s\'agir d\'un décalage de l\'horloge biologique plutôt que d\'une insomnie. Un médecin peut vous orienter.</string>
     <string name="onb_ref_shift">Horaires de nuit ou décalés : le programme classique n\'est pas prévu pour ce rythme. Un médecin du travail ou du sommeil peut vous conseiller.</string>
 
-    <string name="onb_notice_drowsiness">Les premières semaines, la fatigue peut augmenter. Si vous sentez la somnolence venir, ne conduisez pas et n\'utilisez pas de machine dangereuse.</string>
+    <string name="onb_notice_drowsiness">Pendant les premières semaines, la somnolence peut augmenter. Si vous avez du mal à rester éveillé·e, ne conduisez pas et n\'utilisez pas de machine dangereuse.</string>
     <string name="onb_notice_external">Quand les nuits sont interrompues par quelqu\'un d\'autre, le manque de sommeil ne vient pas d\'une insomnie. Parlez-en à votre médecin si la fatigue vous pèse.</string>
     <string name="onb_notice_pregnancy">Pendant la grossesse, Sommelle ne réduira pas votre temps passé au lit.</string>
-    <string name="onb_notice_crisis">Si vous traversez un moment difficile, vous pouvez appeler le 3114, gratuitement, jour et nuit. Des personnes formées vous écoutent.</string>
+    <string name="onb_notice_crisis">Si vous traversez un moment difficile, vous pouvez appeler le 3114, gratuitement, jour et nuit. Des personnes formées vous écoutent. Parlez-en aussi à un médecin : le programme proposé ne réduit pas votre temps au lit.</string>
     <string name="onb_call_3114">Appeler le 3114</string>
     <string name="onb_rem_title">Un rappel chaque matin ?</string>
     <string name="onb_rem_text">Le programme repose sur votre journal de sommeil : vingt secondes chaque matin. Sommelle peut vous le rappeler après le lever, et le soir peu avant le début de votre fenêtre de sommeil.</string>
@@ -65,4 +63,6 @@
     <string name="onb_rem_no">Pas maintenant</string>
     <string name="onb_rem_denied">Les notifications sont désactivées : les rappels ne s\'afficheront pas. Vous pourrez les activer plus tard dans les réglages.</string>
     <string name="onb_rem_continue">Continuer</string>
+    <string name="onb_meds">Si vous prenez un somnifère ou un anxiolytique, ne l\'arrêtez pas et ne changez pas la dose sans l\'avis de votre médecin. Ces médicaments peuvent augmenter la somnolence.</string>
+    <string name="onb_notice_safety">Votre activité demande une vigilance constante. La restriction du temps au lit peut augmenter la somnolence : parlez-en à votre médecin avant de l\'envisager.</string>
 </resources>

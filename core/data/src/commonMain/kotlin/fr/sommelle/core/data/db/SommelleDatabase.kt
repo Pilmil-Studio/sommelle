@@ -102,6 +102,36 @@ interface SommelleDao {
     @Query("DELETE FROM weekly_checks")
     suspend fun deleteWeeklyChecks()
 
+    /**
+     * Remplace tout le contenu de la base par celui d'une sauvegarde, en une seule transaction :
+     * si une écriture échoue, l'état précédent est conservé.
+     */
+    @Transaction
+    suspend fun replaceAll(
+        program: ProgramEntity?,
+        entries: List<DiaryEntryEntity>,
+        windows: List<SleepWindowEntity>,
+        settings: SettingsEntity?,
+        modules: List<ModuleProgressEntity>,
+        impacts: List<DaytimeImpactEntity>,
+        checks: List<WeeklyCheckEntity>,
+    ) {
+        deleteWindows()
+        deleteEntries()
+        deleteProgram()
+        deleteSettings()
+        deleteModuleProgress()
+        deleteDaytimeImpacts()
+        deleteWeeklyChecks()
+        program?.let { upsertProgram(it) }
+        entries.forEach { upsertEntry(it) }
+        windows.forEach { upsertWindow(it) }
+        settings?.let { upsertSettings(it) }
+        modules.forEach { upsertModuleProgress(it) }
+        impacts.forEach { upsertDaytimeImpact(it) }
+        checks.forEach { upsertWeeklyCheck(it) }
+    }
+
     @Query("DELETE FROM settings")
     suspend fun deleteSettings()
 

@@ -42,7 +42,7 @@
     <string name="wake_baseline_in_bed">Au lit</string>
     <string name="wake_baseline_sleep">Dormi</string>
     <string name="wake_baseline_efficiency">Efficacité</string>
-    <string name="wake_baseline_explanation">La restriction cale votre temps au lit sur ce que vous dormez réellement pour restaurer la pression de sommeil. Une fatigue en journée est normale pendant les 10 à 15 premiers jours.</string>
+    <string name="wake_baseline_explanation">La restriction cale votre temps au lit sur ce que vous dormez réellement pour restaurer la pression de sommeil. Pendant 2 à 4 semaines, la fatigue et la somnolence peuvent augmenter. Elles diminuent en général ensuite.</string>
     <string name="wake_projected_window">Fenêtre résultante : coucher %1$s • lever %2$s (%3$s au lit)</string>
     <string name="wake_confirm">Valider</string>
 
@@ -59,4 +59,8 @@
     <string name="home_reminder_text">Un rappel le matin aide beaucoup à noter chaque nuit, et le programme en dépend. Aucun rappel n\'est envoyé si la nuit est déjà notée.</string>
     <string name="home_reminder_enable">Activer les rappels</string>
     <string name="home_reminder_dismiss">Non merci</string>
+    <string name="wake_drowsiness_warning">Pendant les premières semaines, la somnolence peut augmenter. Si vous avez du mal à rester éveillé·e, ne conduisez pas et n\'utilisez pas de machine dangereuse.</string>
+    <string name="home_sleepiness_title">Bilan de la semaine</string>
+    <string name="home_sleepiness_question">Cette semaine, vous êtes-vous endormi·e sans le vouloir en journée, ou avez-vous failli ?</string>
+    <string name="home_sleepiness_hint">Votre fenêtre de la semaine est ajustée dès votre réponse.</string>
 </resources>

@@ -65,7 +65,7 @@ Eine verständliche Sorge, aber nächtliches Grübeln darüber verlängert das W
     <string-array name="cog_paradox_steps">
         <item>Im Bett bei gelöschtem Licht: Halte die Augen im Dunkeln geöffnet und sage dir ganz gelassen, dass du sie noch ein wenig offen hältst.</item>
         <item>Tue absolut nichts, um einzuschlafen. Schaue nicht auf die Uhr. Lass die Zeit einfach verstreichen.</item>
-        <item>Wenn du nach längerer Zeit Unruhe verspürst, befolge die Grundregel: Aufstehen und erst wieder hinlegen, wenn die Müdigkeit spürbar wird.</item>
+        <item>Wenn du seit etwa zwanzig Minuten wach bist (schätze, ohne auf die Uhr zu schauen), steh auf. Steh langsam auf und schalte ein sanftes Licht ein. Lege dich erst wieder hin, wenn die Müdigkeit spürbar wird.</item>
     </string-array>
     <string name="cog_decatastrophize_title">Zurück zum Wahrscheinlichen</string>
     <string name="cog_decatastrophize_summary">Vier Fragen, wenn eine unruhige Nacht Sorgen bereitet.</string>

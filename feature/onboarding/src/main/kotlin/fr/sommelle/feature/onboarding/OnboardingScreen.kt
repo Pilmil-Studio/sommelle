@@ -134,6 +134,7 @@ private fun Welcome(onStart: () -> Unit) {
         Body(R.string.onb_welcome_3)
         Body(R.string.onb_welcome_effort)
         Body(R.string.onb_welcome_4)
+        Body(R.string.onb_meds)
     }
 }
 
@@ -150,6 +151,7 @@ fun IntroScreen(onBack: () -> Unit) {
         Body(R.string.onb_welcome_3)
         Body(R.string.onb_welcome_effort)
         Body(R.string.onb_welcome_4)
+        Body(R.string.onb_meds)
     }
 }
 
@@ -214,7 +216,9 @@ private fun ResultStep(
         BackPill(onBack)
         ScreenTitle(stringResource(title))
         Body(text)
-        val messages = referrals.map { it.text() } + notices.map { it.text() }
+        // Rappel pour tout parcours dans le programme, avant de commencer.
+        val medsNotice = if (pathway != Pathway.OUT_OF_SCOPE) listOf(R.string.onb_meds) else emptyList()
+        val messages = referrals.map { it.text() } + notices.map { it.text() } + medsNotice
         if (messages.isNotEmpty()) {
             Text(
                 text = stringResource(R.string.onb_result_good_to_know),
@@ -308,7 +312,7 @@ private fun Referral.text(): Int = when (this) {
 @StringRes
 private fun Notice.text(): Int = when (this) {
     Notice.DROWSINESS_WARNING -> R.string.onb_notice_drowsiness
-    Notice.SAFETY_CRITICAL_ACTIVITY -> R.string.onb_h_safety
+    Notice.SAFETY_CRITICAL_ACTIVITY -> R.string.onb_notice_safety
     Notice.EXTERNAL_DISRUPTION -> R.string.onb_notice_external
     Notice.PREGNANCY -> R.string.onb_notice_pregnancy
     Notice.CRISIS_RESOURCES -> R.string.onb_notice_crisis

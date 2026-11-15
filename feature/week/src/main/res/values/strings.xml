@@ -32,10 +32,10 @@
     <string name="week_chart_empty">The chart will appear after a few nights have been filled in.</string>
 
     <string name="week_how_title">How is my window calculated?</string>
-    <string name="week_how_text" formatted="false">Each week, Sommelle compares the time you slept with the time you spent in bed. As a rule, above 85%, the window grows by 15 minutes; below 80%, it shrinks by 15 minutes, without going under a safety floor. In between, it stays the same. Your rise time never changes.</string>
+    <string name="week_how_text" formatted="false">Each week, Sommelle compares the time you slept with the time you spent in bed. From 85% (80% from age 65), the window grows by 15 minutes; below 80% (75% from age 65), it shrinks by 15 minutes, without going under 6 hours. In between, it stays the same. If you fell asleep unintentionally during the day, it does not shrink. Your rise time never changes.</string>
 
     <string name="week_relapse_title">What if a bad night comes back later?</string>
-    <string name="week_relapse_text">An occasional bad night (stress, travel, life event) is normal and does not mean chronic insomnia is back:\n• The next morning: keep your usual rise time, without sleeping in.\n• During the day: skip naps so your evening sleep drive stays strong.\n• At night: if sleep does not come, get out of bed for about twenty minutes without checking the clock.\n• If hard nights last more than 5 days: return to a tighter sleep window for one to two weeks.</string>
+    <string name="week_relapse_text">An occasional bad night (stress, travel, life event) is normal and does not mean chronic insomnia is back:\n• The next morning: keep your usual rise time, without sleeping in.\n• During the day: skip naps so your evening sleep drive stays strong.\n• At night: if sleep does not come, get out of bed for about twenty minutes without checking the clock.\n• If hard nights last more than 5 days: return to a tighter sleep window for one to two weeks.\n• If this lasts more than 2 to 3 weeks, talk to your doctor.</string>
 
     <string name="week_outcome_title">Program results</string>
     <string name="week_outcome_text">Your observation week compared with your last seven nights.</string>
@@ -46,4 +46,8 @@
     <string name="week_review_text">Sommelle is free, open source, ad-free and has no servers. A short review on the Play Store helps other people with insomnia find it.</string>
     <string name="week_review_yes">Leave a review</string>
     <string name="week_review_no">No thanks</string>
+    <string name="week_drowsiness_reminder">During the first weeks, sleepiness may increase. If you have trouble staying awake, do not drive and do not use dangerous machinery.</string>
+    <string name="week_held_title">Your window does not shrink this week</string>
+    <string name="week_held_text">This week, you slept %1$s of your time in bed. Your window does not shrink: it stays the same.</string>
+    <string name="week_sleepiness_doctor">Talk to your doctor before continuing the restriction.</string>
 </resources>

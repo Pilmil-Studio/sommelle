@@ -36,6 +36,8 @@ data class HomeState(
     /** Vrai quand il faut demander le ressenti de la journée : au début, puis à partir de la semaine 6. */
     val askDaytimeImpact: Boolean = false,
     val recentNights: List<RecentNightUi> = emptyList(),
+    /** Date du bilan hebdomadaire en attente de la réponse sur la somnolence en journée, sinon null. */
+    val pendingSleepinessCheck: LocalDate? = null,
 )
 
 class HomeViewModel(private val repository: SommelleRepository) : ViewModel() {
@@ -63,8 +65,10 @@ class HomeViewModel(private val repository: SommelleRepository) : ViewModel() {
             entries = snapshot.entries,
             windows = snapshot.windows.map { it.window },
             wakeTime = snapshot.program.wakeTime,
+            sleepinessChecks = snapshot.sleepinessChecks,
         )
         val step = when (rawStep) {
+            is WindowStep.AwaitingSleepinessCheck -> WindowStep.Current(rawStep.current)
             is WindowStep.NewInitialWindow -> WindowStep.Current(rawStep.window)
             is WindowStep.NewWeeklyDecision -> WindowStep.Current(rawStep.decision.window)
             else -> rawStep
@@ -85,6 +89,7 @@ class HomeViewModel(private val repository: SommelleRepository) : ViewModel() {
             askDaytimeImpact = inProgram &&
                 (impacts.isEmpty() || ((programWeek ?: 0) >= ProgramOutcome.AVAILABLE_FROM_WEEK && !endImpactDone)),
             recentNights = recentNights(today, snapshot.entries, toFill),
+            pendingSleepinessCheck = (rawStep as? WindowStep.AwaitingSleepinessCheck)?.reviewDate,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
@@ -93,6 +98,11 @@ class HomeViewModel(private val repository: SommelleRepository) : ViewModel() {
         viewModelScope.launch {
             repository.saveReminderSettings(repository.reminderSettingsOnce().copy(morningEnabled = true, eveningEnabled = true))
         }
+    }
+
+    /** Réponse à la question hebdomadaire : enregistre puis calcule le bilan de la semaine. */
+    fun answerSleepiness(reviewDate: LocalDate, reported: Boolean) {
+        viewModelScope.launch { repository.answerSleepinessCheck(reviewDate, reported) }
     }
 
     fun saveDaytimeImpact(score: Int) {

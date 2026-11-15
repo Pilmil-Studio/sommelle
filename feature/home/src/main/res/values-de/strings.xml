@@ -37,7 +37,7 @@
     <string name="wake_baseline_in_bed">Im Bett</string>
     <string name="wake_baseline_sleep">Geschlafen</string>
     <string name="wake_baseline_efficiency">Effizienz</string>
-    <string name="wake_baseline_explanation">Die Bettzeitverkürzung passt deine Bettzeit an deine tatsächliche Schlafzeit an, um den Schlafdruck wieder aufzubauen. Müdigkeit tagsüber ist in den ersten 10 bis 15 Tagen normal.</string>
+    <string name="wake_baseline_explanation">Die Bettzeitverkürzung passt deine Bettzeit an deine tatsächliche Schlafzeit an, um den Schlafdruck wieder aufzubauen. Während 2 bis 4 Wochen können Müdigkeit und Schläfrigkeit zunehmen. Danach lassen sie in der Regel nach.</string>
     <string name="wake_projected_window">Berechnetes Schlaffenster: Zubettgehen %1$s • Aufstehen %2$s (%3$s im Bett)</string>
     <string name="wake_confirm">Bestätigen</string>
     <string name="home_impact_title">Eine kurze Frage</string>
@@ -53,4 +53,8 @@
     <string name="home_reminder_text">Eine Erinnerung am Morgen hilft sehr, jede Nacht einzutragen, und das Programm hängt davon ab. Ist die Nacht schon eingetragen, kommt keine Erinnerung.</string>
     <string name="home_reminder_enable">Erinnerungen einschalten</string>
     <string name="home_reminder_dismiss">Nein danke</string>
+    <string name="wake_drowsiness_warning">In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>
+    <string name="home_sleepiness_title">Wochenbilanz</string>
+    <string name="home_sleepiness_question">Bist du diese Woche tagsüber ungewollt eingeschlafen oder beinahe eingeschlafen?</string>
+    <string name="home_sleepiness_hint">Dein Wochenfenster wird angepasst, sobald du antwortest.</string>
 </resources>

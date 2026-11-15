@@ -65,7 +65,7 @@ Es una preocupación comprensible, pero pensar en ello por la noche perpetúa el
     <string-array name="cog_paradox_steps">
         <item>En la cama, con la luz apagada, mantén los ojos abiertos en la oscuridad y dite con calma que vas a mantenerlos abiertos un ratito más.</item>
         <item>No hagas nada por dormirte. No mires la hora. Deja simplemente pasar el tiempo.</item>
-        <item>Si tras un buen rato sientes tensión, aplica la regla habitual: levántate y vuelve a la cama cuando notes que el sueño regresa.</item>
+        <item>Si llevas despierto unos veinte minutos (calcúlalo sin mirar el reloj), levántate. Levántate despacio y enciende una luz suave. Vuelve a la cama cuando notes que el sueño regresa.</item>
     </string-array>
     <string name="cog_decatastrophize_title">Volver a lo más probable</string>
     <string name="cog_decatastrophize_summary">Cuatro preguntas para cuando una mala noche genera inquietud.</string>

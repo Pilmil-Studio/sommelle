@@ -27,15 +27,11 @@
     <string name="onb_q_pregnancy">Czy jesteś w ciąży?</string>
     <string name="onb_q_safety">Czy prowadzisz zawodowo pojazdy lub obsługujesz niebezpieczne maszyny?</string>
     <string name="onb_h_safety">Lub wykonujesz zawód, w którym chwila nieuwagi stwarza poważne ryzyko.</string>
-    <string name="onb_q_prefers_no_restriction">Czy wolisz program bez ograniczania czasu w łóżku?</string>
-    <string name="onb_h_prefers_no_restriction">Ten element może początkowo zwiększać zmęczenie w ciągu dnia. Bez niego program nadal jest pomocny, z bardziej stopniowym efektem.</string>
     <string name="onb_q_late">Czy kładziesz się i wstajesz bardzo późno, lecz śpisz dobrze po zaśnięciu?</string>
     <string name="onb_q_distress">Czy w ostatnim czasie czujesz się przytłoczony lub pozbawiony nadziei?</string>
     <string name="onb_h_private">Twoja odpowiedź pozostaje na Twoim telefonie.</string>
     <string name="onb_result_full_title">Pełny program jest dla Ciebie odpowiedni</string>
-    <string name="onb_result_full_text">1. Przez 1 tydzień obserwacji śpisz jak dotychczas i każdego ranka zapisujesz noc.
-2. Przez 6 tygodni Sommelle najpierw zbliża czas w łóżku do rzeczywistego snu, by go skonsolidować, a następnie co tydzień wydłuża noc.
-3. Po 6 tygodniach program jest zakończony i możesz odłożyć dziennik.</string>
+    <string name="onb_result_full_text">1. Obserwacja (pierwsze 7 dni): śpisz jak dotychczas i każdego ranka zapisujesz noc.\n2. Tygodnie 1–6: Sommelle najpierw zbliża czas w łóżku do rzeczywistego snu, a następnie co tydzień wydłuża noc. Przez 2–4 tygodnie zmęczenie i senność mogą się nasilać. Zwykle potem słabną.\n3. Po 6 tygodniach Twój sen powinien się poprawić i możesz odłożyć dziennik.</string>
     <string name="onb_result_partial_title">Program dostosowany do Ciebie</string>
     <string name="onb_result_partial_text">Na podstawie Twoich odpowiedzi Sommelle nie ograniczy czasu spędzanego w łóżku. Przez 6 tygodni korzystasz z porannego dziennika, wskazówek na noc oraz jednego ćwiczenia w tygodniu.</string>
     <string name="onb_result_out_title">Sommelle nie jest dostosowane do Twojej sytuacji</string>
@@ -50,10 +46,10 @@
     <string name="onb_ref_epilepsy">Padaczka: niedobór snu może prowokować napady. Skonsultuj się z lekarzem prowadzącym.</string>
     <string name="onb_ref_delayed">Bardzo późne pory: może to być zespół opóźnionej fazy snu, a nie bezsenność. Lekarz może wskazać właściwe postępowanie.</string>
     <string name="onb_ref_shift">Praca zmianowa lub nocna: klasyczny program nie jest dostosowany do takiego rytmu. Lekarz medycyny pracy lub poradnia snu udzieli wskazówek.</string>
-    <string name="onb_notice_drowsiness">W pierwszych tygodniach zmęczenie może wzrosnąć. W razie uczucia senności nie prowadź pojazdów ani nie obsługuj maszyn.</string>
+    <string name="onb_notice_drowsiness">W pierwszych tygodniach senność może się nasilić. Jeśli trudno Ci utrzymać się na jawie, nie prowadź pojazdów i nie obsługuj niebezpiecznych maszyn.</string>
     <string name="onb_notice_external">Gdy noce są przerywane przez kogoś innego, brak snu nie wynika z bezsenności. Porozmawiaj z lekarzem, jeśli zmęczenie jest uciążliwe.</string>
     <string name="onb_notice_pregnancy">W trakcie ciąży Sommelle nie będzie ograniczać Twojego czasu w łóżku.</string>
-    <string name="onb_notice_crisis">Jeśli przechodzisz trudne chwile, możesz skorzystać z bezpłatnej linii wsparcia kryzysowego.</string>
+    <string name="onb_notice_crisis">Jeśli przechodzisz trudne chwile, możesz skorzystać z bezpłatnej linii wsparcia kryzysowego. Porozmawiaj też z lekarzem: proponowany program nie skraca Twojego czasu w łóżku.</string>
     <string name="onb_call_3114">Zadzwoń pod 116 123 (Polska)</string>
     <string name="onb_rem_title">Przypomnienie każdego ranka?</string>
     <string name="onb_rem_text">Program opiera się na dzienniku snu: dwadzieścia sekund każdego ranka. Sommelle może przypomnieć Ci o nim po przebudzeniu, a wieczorem tuż przed początkiem Twojego okna snu.</string>
@@ -62,4 +58,6 @@
     <string name="onb_rem_no">Nie teraz</string>
     <string name="onb_rem_denied">Powiadomienia są wyłączone, więc przypomnienia się nie pojawią. Możesz je włączyć później w ustawieniach.</string>
     <string name="onb_rem_continue">Dalej</string>
+    <string name="onb_meds">Jeśli przyjmujesz tabletki nasenne lub leki przeciwlękowe, nie odstawiaj ich i nie zmieniaj dawki bez porady lekarza. Te leki mogą nasilać senność.</string>
+    <string name="onb_notice_safety">Twoja aktywność wymaga stałej czujności. Ograniczenie czasu w łóżku może nasilać senność: porozmawiaj z lekarzem, zanim ją rozważysz.</string>
 </resources>

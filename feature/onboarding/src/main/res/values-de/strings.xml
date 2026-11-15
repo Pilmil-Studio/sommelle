@@ -27,15 +27,11 @@
     <string name="onb_q_pregnancy">Bist du schwanger?</string>
     <string name="onb_q_safety">Fährst du beruflich Auto oder bedienst gefährliche Maschinen?</string>
     <string name="onb_h_safety">Oder ein Beruf, in dem eine Unaufmerksamkeit gefährlich sein kann.</string>
-    <string name="onb_q_prefers_no_restriction">Bevorzugst du ein Programm ohne Verkürzung der Bettzeit?</string>
-    <string name="onb_h_prefers_no_restriction">Diese Komponente kann anfangs die Tagesmüdigkeit verstärken. Auch ohne sie ist das Programm wirksam, mit schrittweiserem Verlauf.</string>
     <string name="onb_q_late">Gehst du sehr spät schlafen und stehst spät auf, schläfst dann aber gut durch?</string>
     <string name="onb_q_distress">Fühlst du dich in letzter Zeit überfordert oder hoffnungslos?</string>
     <string name="onb_h_private">Deine Antwort bleibt auf deinem Gerät.</string>
     <string name="onb_result_full_title">Das vollständige Programm ist passend für dich</string>
-    <string name="onb_result_full_text">1. In einer 1-wöchigen Beobachtungsphase schläfst du wie gewohnt und erfasst jeden Morgen deine Nacht.
-2. In den folgenden 6 Wochen passt Sommelle die Bettzeit an deine tatsächliche Schlafdauer an, um den Schlaf zu festigen, und verlängert sie dann schrittweise.
-3. Nach 6 Wochen ist das Training abgeschlossen und du kannst das Tagebuch beenden.</string>
+    <string name="onb_result_full_text">1. In einer Beobachtungsphase (die ersten 7 Tage) schläfst du wie gewohnt und erfasst jeden Morgen deine Nacht.\n2. In den Wochen 1 bis 6 passt Sommelle die Bettzeit an deine tatsächliche Schlafdauer an, um den Schlaf zu festigen, und verlängert sie dann schrittweise. Während 2 bis 4 Wochen können Müdigkeit und Schläfrigkeit zunehmen. Danach lassen sie in der Regel nach.\n3. Nach den 6 Wochen sollte sich dein Schlaf verbessert haben und du kannst das Tagebuch beenden.</string>
     <string name="onb_result_partial_title">Ein angepasstes Programm für dich</string>
     <string name="onb_result_partial_text">Anhand deiner Antworten wird Sommelle deine Bettzeit nicht einschränken. Während 6 Wochen nutzt du das Morgentagebuch, Orientierungshilfen für die Nacht und eine wöchentliche Entspannungsübung.</string>
     <string name="onb_result_out_title">Sommelle ist nicht für deine Situation geeignet</string>
@@ -50,10 +46,10 @@
     <string name="onb_ref_epilepsy">Epilepsie: Schlafmangel kann Anfälle begünstigen. Sprich bitte mit deiner behandelnden Fachkraft.</string>
     <string name="onb_ref_delayed">Sehr späte Schlafzeiten: Möglicherweise liegt eine circadiane Phasenverzögerung statt einer Insomnie vor. Eine ärztliche Abklärung hilft.</string>
     <string name="onb_ref_shift">Schicht- oder Nachtarbeit: Das Standardprogramm ist nicht auf diesen Rhythmus ausgelegt. Eine arbeits- oder schlafmedizinische Beratung ist empfehlenswert.</string>
-    <string name="onb_notice_drowsiness">In den ersten Wochen kann die Müdigkeit zunehmen. Wenn du Schläfrigkeit verspürst, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>
+    <string name="onb_notice_drowsiness">In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>
     <string name="onb_notice_external">Wenn Nächte durch andere Personen gestört werden, ist Schlafmangel keine klassische Insomnie. Sprich mit deiner Ärztin / deinem Arzt, falls dich die Erschöpfung belastet.</string>
     <string name="onb_notice_pregnancy">In der Schwangerschaft schränkt Sommelle deine Bettzeit nicht ein.</string>
-    <string name="onb_notice_crisis">Wenn du dich in einer seelischen Krise befindest, ist die TelefonSeelsorge rund um die Uhr kostenfrei für dich da.</string>
+    <string name="onb_notice_crisis">Wenn du dich in einer seelischen Krise befindest, ist die TelefonSeelsorge rund um die Uhr kostenfrei für dich da. Sprich bitte auch mit einer Ärztin oder einem Arzt: Das vorgeschlagene Programm verkürzt deine Bettzeit nicht.</string>
     <string name="onb_call_3114">0800 111 0 111 anrufen (D)</string>
     <string name="onb_rem_title">Jeden Morgen eine Erinnerung?</string>
     <string name="onb_rem_text">Das Programm baut auf deinem Schlaftagebuch auf: zwanzig Sekunden jeden Morgen. Sommelle kann dich nach dem Aufstehen daran erinnern und abends kurz bevor dein Schlaffenster beginnt.</string>
@@ -62,4 +58,6 @@
     <string name="onb_rem_no">Jetzt nicht</string>
     <string name="onb_rem_denied">Benachrichtigungen sind ausgeschaltet, Erinnerungen werden daher nicht angezeigt. Du kannst sie später in den Einstellungen einschalten.</string>
     <string name="onb_rem_continue">Weiter</string>
+    <string name="onb_meds">Wenn du ein Schlafmittel oder ein Beruhigungsmittel einnimmst, setze es nicht ab und ändere die Dosis nicht ohne ärztlichen Rat. Diese Medikamente können die Schläfrigkeit verstärken.</string>
+    <string name="onb_notice_safety">Deine Tätigkeit erfordert ständige Wachsamkeit. Die Bettzeitverkürzung kann die Schläfrigkeit verstärken: Sprich mit deinem Arzt, bevor du sie in Betracht ziehst.</string>
 </resources>

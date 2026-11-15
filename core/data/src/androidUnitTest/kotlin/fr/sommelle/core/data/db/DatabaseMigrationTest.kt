@@ -13,19 +13,19 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 /**
- * Rejoue la migration v1 -> v2 sur un vrai moteur SQLite, à partir d'une base v1 remplie.
+ * Rejoue les migrations v1 -> v2 -> v3 sur un vrai moteur SQLite, à partir d'une base v1 remplie.
  *
  * Deux garanties :
  * - le programme, l'agenda et les fenêtres de sommeil existants sont conservés à l'identique ;
  * - la base migrée est identique (colonnes, types, NOT NULL, clé primaire) à une base neuve créée
- *   par Room à partir du schéma exporté `schemas/.../2.json`.
+ *   par Room à partir du schéma exporté `schemas/.../3.json`.
  */
 class DatabaseMigrationTest {
 
-    private val latestSchema = File("schemas/fr.sommelle.core.data.db.SommelleDatabase/2.json")
+    private val latestSchema = File("schemas/fr.sommelle.core.data.db.SommelleDatabase/3.json")
 
     @Test
-    fun `migration de v1 a v2 sans perte de donnees`() = withDatabase { conn, db ->
+    fun `migration de v1 a v3 sans perte de donnees`() = withDatabase { conn, db ->
         createV1(db)
         db.execSQL(
             "INSERT INTO program VALUES (0, '2026-10-01', '07:00', 'FROM_25_TO_44', 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0)",
@@ -37,6 +37,7 @@ class DatabaseMigrationTest {
         db.execSQL("INSERT INTO sleep_windows VALUES ('2026-10-08', '00:15', '07:00', 405, 1, NULL)")
 
         SommelleDatabase.MIGRATION_1_2.migrate(db)
+        SommelleDatabase.MIGRATION_2_3.migrate(db)
 
         conn.query("SELECT * FROM program WHERE id = 0") { rs ->
             assertTrue(rs.next())
@@ -55,10 +56,36 @@ class DatabaseMigrationTest {
             assertEquals(405, rs.getLong(1))
         }
         conn.query("SELECT COUNT(*) FROM settings") { rs -> assertEquals(0, rs.getInt(1)) }
+        conn.query("SELECT COUNT(*) FROM weekly_checks") { rs -> assertEquals(0, rs.getInt(1)) }
     }
 
     @Test
-    fun `la base migree correspond exactement au schema Room v2`() {
+    fun `migration de v2 a v3 ajoute la reponse hebdomadaire sans toucher aux donnees`() = withDatabase { conn, db ->
+        createV1(db)
+        SommelleDatabase.MIGRATION_1_2.migrate(db)
+        db.execSQL("INSERT INTO sleep_windows VALUES ('2026-10-08', '00:15', '07:00', 330, 1, NULL)")
+        db.execSQL("INSERT INTO daytime_impacts VALUES ('2026-10-01', 3)")
+
+        SommelleDatabase.MIGRATION_2_3.migrate(db)
+
+        // Une fenêtre de 5 h 30 (ancien plancher) est conservée telle quelle : c'est le calcul suivant qui la relève.
+        conn.query("SELECT durationMinutes FROM sleep_windows") { rs ->
+            assertTrue(rs.next())
+            assertEquals(330, rs.getLong(1))
+        }
+        conn.query("SELECT score FROM daytime_impacts") { rs ->
+            assertTrue(rs.next())
+            assertEquals(3, rs.getInt(1))
+        }
+        db.execSQL("INSERT INTO weekly_checks VALUES ('2026-10-15', 1)")
+        conn.query("SELECT sleepinessReported FROM weekly_checks WHERE reviewDate = '2026-10-15'") { rs ->
+            assertTrue(rs.next())
+            assertEquals(1, rs.getInt(1))
+        }
+    }
+
+    @Test
+    fun `la base migree correspond exactement au schema Room v3`() {
         val expected = withDatabase { conn, db ->
             createTablesSql(latestSchema).values.forEach(db::execSQL)
             tables(conn)
@@ -66,6 +93,7 @@ class DatabaseMigrationTest {
         val migrated = withDatabase { conn, db ->
             createV1(db)
             SommelleDatabase.MIGRATION_1_2.migrate(db)
+            SommelleDatabase.MIGRATION_2_3.migrate(db)
             tables(conn)
         }
         assertEquals(expected, migrated)

@@ -57,6 +57,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import fr.sommelle.core.data.SommelleRepository
 import fr.sommelle.core.designsystem.ChoiceGrid
 import fr.sommelle.core.designsystem.ScreenScaffold
+import fr.sommelle.core.designsystem.YesNoButtons
 import fr.sommelle.core.designsystem.SommelleButton
 import fr.sommelle.core.designsystem.SommelleButtonStyle
 import fr.sommelle.core.designsystem.SommelleColors
@@ -98,6 +99,7 @@ fun HomeScreen(
         onChooseWakeTime,
         onCantSleep,
         onDaytimeImpact = viewModel::saveDaytimeImpact,
+        onSleepinessAnswer = viewModel::answerSleepiness,
         showReminderPrompt = !promptDismissed && reminders?.morningEnabled == false,
         onEnableReminders = {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
@@ -127,6 +129,7 @@ fun HomeContent(
     onChooseWakeTime: () -> Unit,
     onCantSleep: () -> Unit,
     onDaytimeImpact: (Int) -> Unit = {},
+    onSleepinessAnswer: (LocalDate, Boolean) -> Unit = { _, _ -> },
     showReminderPrompt: Boolean = false,
     onEnableReminders: () -> Unit = {},
     onDismissReminders: () -> Unit = {},
@@ -145,6 +148,7 @@ fun HomeContent(
         },
     ) {
         Header(s)
+        s.pendingSleepinessCheck?.let { date -> SleepinessCheckCard { onSleepinessAnswer(date, it) } }
         if (s.askDaytimeImpact) DaytimeImpactCard(onDaytimeImpact)
         ProgramCard(s, onChooseWakeTime)
         if (diaryAvailable) DiarySection(s, onFillNight)
@@ -486,6 +490,32 @@ private fun DaytimeImpactCard(onAnswer: (Int) -> Unit) {
                 onSelect = onAnswer,
                 columns = 1,
             )
+        }
+    }
+}
+
+/** Question du bilan hebdomadaire : tant qu'elle n'a pas de réponse, la fenêtre de la semaine n'est pas recalculée. */
+@Composable
+private fun SleepinessCheckCard(onAnswer: (Boolean) -> Unit) {
+    Surface(shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.primaryContainer) {
+        Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(
+                stringResource(R.string.home_sleepiness_title),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+            )
+            Text(
+                stringResource(R.string.home_sleepiness_question),
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier.semantics { heading() },
+            )
+            Text(
+                stringResource(R.string.home_sleepiness_hint),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+            )
+            YesNoButtons(onYes = { onAnswer(true) }, onNo = { onAnswer(false) })
         }
     }
 }

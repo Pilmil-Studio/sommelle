@@ -41,7 +41,7 @@
     <string name="wake_baseline_in_bed">In bed</string>
     <string name="wake_baseline_sleep">Asleep</string>
     <string name="wake_baseline_efficiency">Efficiency</string>
-    <string name="wake_baseline_explanation">Sleep restriction aligns your time in bed with your actual sleep time to restore sleep pressure. An increase in daytime fatigue is normal during the first 10 to 15 days.</string>
+    <string name="wake_baseline_explanation">Sleep restriction aligns your time in bed with your actual sleep time to restore sleep pressure. For 2 to 4 weeks, tiredness and sleepiness may increase. They usually ease afterwards.</string>
     <string name="wake_projected_window">Resulting window: bedtime %1$s • rise %2$s (%3$s in bed)</string>
     <string name="wake_confirm">Confirm</string>
 
@@ -58,4 +58,8 @@
     <string name="home_reminder_text">A morning reminder makes it much easier to log every night, and the program depends on it. No reminder is sent once the night is logged.</string>
     <string name="home_reminder_enable">Turn on reminders</string>
     <string name="home_reminder_dismiss">No thanks</string>
+    <string name="wake_drowsiness_warning">During the first weeks, sleepiness may increase. If you have trouble staying awake, do not drive and do not use dangerous machinery.</string>
+    <string name="home_sleepiness_title">Weekly review</string>
+    <string name="home_sleepiness_question">This week, did you fall asleep unintentionally during the day, or nearly do so?</string>
+    <string name="home_sleepiness_hint">Your weekly window is adjusted as soon as you answer.</string>
 </resources>

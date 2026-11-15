@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="night_title">No consigues dormir. Es normal, y no pasa nada.</string>
-    <string name="night_intro">Quedarse en la cama esperando el sueño lo aleja. Esto es lo que puedes hacer.</string>
-    <string name="night_step_1">Levántate y ve a otra habitación.</string>
+    <string name="night_intro">Quedarse en la cama esperando el sueño lo aleja. Si llevas despierto unos veinte minutos (calcúlalo sin mirar el reloj), levántate.</string>
+    <string name="night_step_1">Levántate despacio y enciende una luz suave; luego ve a otra habitación.</string>
     <string name="night_step_2">Haz algo tranquilo, con luz tenue, lejos de pantallas.</string>
     <string name="night_step_3">Vuelve a la cama cuando sientas que vuelve el sueño.</string>
     <string name="night_bell_start">Avisarme suavemente en 20 min (sin reloj)</string>

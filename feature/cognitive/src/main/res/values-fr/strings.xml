@@ -61,7 +61,7 @@
     <string-array name="cog_paradox_steps">
         <item>Au lit, lumière éteinte, gardez les yeux ouverts dans le noir et dites-vous tranquillement que vous allez garder les yeux ouverts encore un peu.</item>
         <item>Ne faites rien pour dormir. Ne regardez pas l\'heure. Laissez simplement le temps passer.</item>
-        <item>Si au bout d\'un long moment vous vous sentez tendu, appliquez la règle habituelle : levez-vous, et revenez au lit quand le sommeil vient.</item>
+        <item>Si vous êtes éveillé·e depuis une vingtaine de minutes (estimez sans regarder l\'heure), levez-vous. Levez-vous lentement et allumez une lumière douce. Revenez au lit quand le sommeil vient.</item>
     </string-array>
 
     <!-- Décatastrophiser -->

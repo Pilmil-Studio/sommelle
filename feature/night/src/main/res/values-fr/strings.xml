@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="night_title">Vous ne dormez pas. Ça arrive, et ce n\'est pas grave.</string>
-    <string name="night_intro">Rester au lit à attendre le sommeil l\'éloigne. Voici quoi faire.</string>
-    <string name="night_step_1">Levez-vous et allez dans une autre pièce.</string>
+    <string name="night_intro">Rester au lit à attendre le sommeil l\'éloigne. Si vous êtes éveillé·e depuis une vingtaine de minutes (estimez sans regarder l\'heure), levez-vous.</string>
+    <string name="night_step_1">Levez-vous lentement et allumez une lumière douce, puis allez dans une autre pièce.</string>
     <string name="night_step_2">Faites quelque chose de calme, sous une lumière douce, loin des écrans.</string>
     <string name="night_step_3">Revenez au lit quand vous sentez le sommeil venir.</string>
     <string name="night_bell_start">Me prévenir doucement dans 20 min (sans horloge)</string>

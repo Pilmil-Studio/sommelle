@@ -27,13 +27,9 @@
     <string name="week_legend_sleep">Geschlafen</string>
     <string name="week_chart_empty">Das Diagramm erscheint nach einigen erfassten Nächten.</string>
     <string name="week_how_title">Wie wird mein Schlaffenster berechnet?</string>
-    <string name="week_how_text" formatted="false">Jede Woche vergleicht Sommelle die geschlafene Zeit mit der Zeit im Bett. Liegt der Wert über 85 %, verlängert sich das Fenster um 15 Minuten; unter 80 % verkürzt es sich um 15 Minuten (jedoch nie unter das Sicherheitsminimum). Dazwischen bleibt es gleich. Die Aufstehzeit bleibt immer fest.</string>
+    <string name="week_how_text" formatted="false">Jede Woche vergleicht Sommelle die geschlafene Zeit mit der Zeit im Bett. Ab 85 % (ab 65 Jahren 80 %) verlängert sich das Fenster um 15 Minuten; unter 80 % (ab 65 Jahren 75 %) verkürzt es sich um 15 Minuten, jedoch nie unter 6 Stunden. Dazwischen bleibt es gleich. Wenn du tagsüber ungewollt eingeschlafen bist, wird es nicht verkürzt. Die Aufstehzeit bleibt immer fest.</string>
     <string name="week_relapse_title">Was tun bei einer schlechten Nacht?</string>
-    <string name="week_relapse_text">Eine einzelne schlechte Nacht (Stress, Reisen, Ereignisse) ist normal und bedeutet nicht, dass die Schlafstörung zurückkehrt:
-• Am nächsten Morgen: Behalte deine gewohnte Aufstehzeit bei, ohne auszuschlafen.
-• Am Tag: Vermeide Nickerchen, um den Schlafdruck für den Abend aufzubauen.
-• In der Nacht: Wenn der Schlaf ausbleibt, stehe für ca. 20 Minuten auf, ohne auf die Uhr zu schauen.
-• Wenn unruhige Nächte länger als 5 Tage anhalten: Nutze für 1–2 Wochen wieder dein verkürztes Schlaffenster.</string>
+    <string name="week_relapse_text">Eine einzelne schlechte Nacht (Stress, Reisen, Ereignisse) ist normal und bedeutet nicht, dass die Schlafstörung zurückkehrt:\n• Am nächsten Morgen: Behalte deine gewohnte Aufstehzeit bei, ohne auszuschlafen.\n• Am Tag: Vermeide Nickerchen, um den Schlafdruck für den Abend aufzubauen.\n• In der Nacht: Wenn der Schlaf ausbleibt, stehe für ca. 20 Minuten auf, ohne auf die Uhr zu schauen.\n• Wenn unruhige Nächte länger als 5 Tage anhalten: Nutze für 1–2 Wochen wieder dein verkürztes Schlaffenster.\n• Wenn das länger als 2 bis 3 Wochen anhält, sprich mit deinem Arzt.</string>
     <string name="week_outcome_title">Programmergebnis</string>
     <string name="week_outcome_text">Deine Beobachtungswoche im Vergleich zu deinen letzten sieben Nächten.</string>
     <string name="week_outcome_before">Zu Beginn</string>
@@ -43,4 +39,8 @@
     <string name="week_review_text">Sommelle ist kostenlos, quelloffen, werbefrei und ohne Server. Eine kurze Bewertung im Play Store hilft anderen Menschen mit Schlafstörungen, sie zu finden.</string>
     <string name="week_review_yes">Bewertung abgeben</string>
     <string name="week_review_no">Nein danke</string>
+    <string name="week_drowsiness_reminder">In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>
+    <string name="week_held_title">Dein Fenster wird diese Woche nicht verkürzt</string>
+    <string name="week_held_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster wird nicht verkürzt: Es bleibt gleich.</string>
+    <string name="week_sleepiness_doctor">Sprich mit deinem Arzt, bevor du die Bettzeitverkürzung fortsetzt.</string>
 </resources>

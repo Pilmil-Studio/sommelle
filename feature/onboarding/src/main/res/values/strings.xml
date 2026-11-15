@@ -29,14 +29,12 @@
     <string name="onb_q_pregnancy">Are you pregnant?</string>
     <string name="onb_q_safety">Do you drive for work, or operate dangerous machinery?</string>
     <string name="onb_h_safety">Or a job where a moment of inattention could have serious consequences.</string>
-    <string name="onb_q_prefers_no_restriction">Would you prefer a program without reducing your time in bed?</string>
-    <string name="onb_h_prefers_no_restriction">This part of the program can increase daytime tiredness at first. Without it, the program is still useful, with a more gradual effect.</string>
     <string name="onb_q_late">Do you go to bed and get up very late, but sleep well once you fall asleep?</string>
     <string name="onb_q_distress">Lately, have you been feeling at the end of your rope, or hopeless?</string>
     <string name="onb_h_private">Your answer stays on your phone.</string>
 
     <string name="onb_result_full_title">The full program is right for you</string>
-    <string name="onb_result_full_text">1. Week 1 (observation): sleep as usual and log your night each morning.\n2. Weeks 2 to 7 (consolidation): Sommelle temporarily matches your time in bed to your actual sleep time to make it deep and continuous. The first 10 to 15 days cause temporary daytime tiredness (like muscle soreness when resuming exercise): this is the sign that sleep pressure is rebuilding. Sommelle then lengthens your nights week after week.\n3. After 6 weeks: sleep is consolidated and you can put the diary away.</string>
+    <string name="onb_result_full_text">1. Observation (first 7 days): sleep as usual and log your night each morning.\n2. Weeks 1 to 6: Sommelle temporarily matches your time in bed to your actual sleep time to make it more continuous. For 2 to 4 weeks, tiredness and sleepiness may increase. They usually ease afterwards. Sommelle then lengthens your nights week after week.\n3. After the 6 weeks: your sleep should have improved and you can put the diary away.</string>
     <string name="onb_result_partial_title">A program adapted for you</string>
     <string name="onb_result_partial_text">Based on your answers, Sommelle will not reduce your time in bed. Over 6 weeks, you will follow the morning diary, the night guidance and one exercise per week to calm your sleep.</string>
     <string name="onb_result_out_title">Sommelle is not suited to your situation</string>
@@ -53,10 +51,10 @@
     <string name="onb_ref_delayed">Very late schedule: this may be a shift in your body clock rather than insomnia. A doctor can advise you.</string>
     <string name="onb_ref_shift">Night or shift work: the standard program is not designed for this rhythm. An occupational health or sleep doctor can advise you.</string>
 
-    <string name="onb_notice_drowsiness">In the first weeks, tiredness may increase. If you feel drowsy, do not drive or operate dangerous machinery.</string>
+    <string name="onb_notice_drowsiness">During the first weeks, sleepiness may increase. If you have trouble staying awake, do not drive and do not use dangerous machinery.</string>
     <string name="onb_notice_external">When your nights are interrupted by someone else, the lack of sleep does not come from insomnia. Talk to your doctor if tiredness weighs on you.</string>
     <string name="onb_notice_pregnancy">During pregnancy, Sommelle will not reduce your time in bed.</string>
-    <string name="onb_notice_crisis">If you are going through a hard time, please reach out now: call your local emergency number or a crisis line in your country, such as 988 in the United States. In France, 3114 is free, day and night, with trained people who listen.</string>
+    <string name="onb_notice_crisis">If you are going through a hard time, please reach out now: call your local emergency number or a crisis line in your country, such as 988 in the United States. In France, 3114 is free, day and night, with trained people who listen. Please also talk to a doctor: the program offered does not reduce your time in bed.</string>
     <string name="onb_call_3114">Call 3114 (France)</string>
     <string name="onb_rem_title">A reminder each morning?</string>
     <string name="onb_rem_text">The program relies on your sleep diary: twenty seconds each morning. Sommelle can remind you after you wake up, and in the evening shortly before your sleep window starts.</string>
@@ -65,4 +63,6 @@
     <string name="onb_rem_no">Not now</string>
     <string name="onb_rem_denied">Notifications are turned off, so reminders will not appear. You can turn them on later in the settings.</string>
     <string name="onb_rem_continue">Continue</string>
+    <string name="onb_meds">If you take a sleeping pill or an anti-anxiety medicine, do not stop it or change the dose without your doctor\'s advice. These medicines can increase sleepiness.</string>
+    <string name="onb_notice_safety">Your activity requires constant alertness. Restricting time in bed can increase sleepiness: talk to your doctor before considering it.</string>
 </resources>

@@ -28,6 +28,8 @@ data class WeekState(
     val chartDescription: String,
     /** Bilan avant/après, à partir de la semaine 6 du programme. */
     val outcome: List<OutcomeRow> = emptyList(),
+    /** Rappel de l'avertissement somnolence : première fenêtre et trois premiers bilans hebdomadaires. */
+    val showDrowsinessReminder: Boolean = false,
 )
 
 class WeekViewModel(repository: SommelleRepository) : ViewModel() {
@@ -54,7 +56,14 @@ class WeekViewModel(repository: SommelleRepository) : ViewModel() {
                 bars = bars,
                 chartDescription = WeekChart.accessibilityDescription(bars),
                 outcome = outcome,
+                showDrowsinessReminder = snapshot.program.screening.restrictionAllowed &&
+                    snapshot.windows.size in 1..(DROWSINESS_REMINDER_REVIEWS + 1),
             )
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    private companion object {
+        /** Nombre de bilans hebdomadaires qui rappellent l'avertissement sur la somnolence. */
+        const val DROWSINESS_REMINDER_REVIEWS = 3
+    }
 }

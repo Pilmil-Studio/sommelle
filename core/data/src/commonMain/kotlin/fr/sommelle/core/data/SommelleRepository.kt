@@ -2,10 +2,14 @@ package fr.sommelle.core.data
 
 import fr.sommelle.core.model.*
 
+import fr.sommelle.core.data.backup.BackupData
+import fr.sommelle.core.data.backup.InvalidBackupException
+import fr.sommelle.core.data.backup.SommelleBackup
 import fr.sommelle.core.data.db.SommelleDao
 import fr.sommelle.core.data.db.DaytimeImpactEntity
 import fr.sommelle.core.data.db.ModuleProgressEntity
 import fr.sommelle.core.data.db.SettingsEntity
+import fr.sommelle.core.data.db.WeeklyCheckEntity
 import fr.sommelle.core.presentation.CognitiveModule
 import fr.sommelle.core.presentation.DaytimeImpact
 import fr.sommelle.core.presentation.DiaryCsv
@@ -23,6 +27,7 @@ import fr.sommelle.core.model.ScreeningAnswers
 import fr.sommelle.core.model.ScreeningResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
@@ -50,6 +55,8 @@ data class ProgramSnapshot(
     val program: Program,
     val entries: List<DiaryEntry>,
     val windows: List<StoredWindow>,
+    /** Réponses à la question hebdomadaire sur la somnolence, par date de bilan (true : somnolence déclarée). */
+    val sleepinessChecks: Map<LocalDate, Boolean> = emptyMap(),
 )
 
 /** Synthèse de la semaine d'observation pour le sas de transition vers la restriction (Semaine 2). */
@@ -79,13 +86,15 @@ class SommelleRepository(
     fun now(): LocalTime = clock.now().toLocalDateTime(timeZone).time
 
     /** null tant que le questionnaire d'entrée n'a pas été rempli. */
-    val snapshot: Flow<ProgramSnapshot?> = combine(dao.program(), dao.entries(), dao.windows()) { p, e, w ->
+    val snapshot: Flow<ProgramSnapshot?> = combine(dao.program(), dao.entries(), dao.windows(), dao.weeklyChecks()) { p, e, w, c ->
         p?.let {
             val answers = it.answers()
+            val checks = c.associate { check -> check.reviewDate to check.sleepinessReported }
             ProgramSnapshot(
                 program = Program(it.startDate, answers, evaluator.evaluate(answers), it.wakeTime),
                 entries = e.map { entity -> entity.toModel() },
-                windows = w.map { entity -> entity.toModel() },
+                windows = w.map { entity -> entity.toModel().copy(sleepinessReported = checks[entity.effectiveFrom] == true) },
+                sleepinessChecks = checks,
             )
         }
     }
@@ -169,6 +178,15 @@ class SommelleRepository(
         return null
     }
 
+    /**
+     * Enregistre la réponse à la question hebdomadaire sur la somnolence, puis calcule le bilan en attente :
+     * avec « oui », la fenêtre n'est pas réduite cette semaine-là.
+     */
+    suspend fun answerSleepinessCheck(reviewDate: LocalDate, sleepinessReported: Boolean) {
+        dao.upsertWeeklyCheck(WeeklyCheckEntity(reviewDate, sleepinessReported))
+        synchronize()
+    }
+
     // Réglages des rappels
 
     val reminderSettings: Flow<ReminderSettings> = dao.settings().map { it?.toModel() ?: ReminderSettings() }
@@ -200,6 +218,40 @@ class SommelleRepository(
 
     suspend fun saveDaytimeImpact(score: Int) = dao.upsertDaytimeImpact(DaytimeImpactEntity(date = today(), score = score))
 
+    // Sauvegarde complète
+
+    /** Document JSON de la sauvegarde complète : toutes les tables de la base, plus les [preferences] fournies. */
+    suspend fun exportBackup(preferences: Map<String, String> = emptyMap()): String =
+        SommelleBackup.encode(
+            BackupData(
+                program = dao.programOnce(),
+                diaryEntries = dao.entriesOnce(),
+                sleepWindows = dao.windowsOnce(),
+                settings = dao.settingsOnce(),
+                moduleProgress = dao.moduleProgress().first(),
+                daytimeImpacts = dao.daytimeImpactsOnce(),
+                weeklyChecks = dao.weeklyChecksOnce(),
+                preferences = preferences,
+            ),
+            exportedAt = clock.now().toString(),
+        )
+
+    /**
+     * Remplace toutes les données par celles d'une sauvegarde déjà lue et vérifiée
+     * (voir [SommelleBackup.decode], qui lève [InvalidBackupException] avant toute écriture), en une transaction.
+     */
+    suspend fun restoreBackup(data: BackupData) {
+        dao.replaceAll(
+            program = data.program,
+            entries = data.diaryEntries,
+            windows = data.sleepWindows,
+            settings = data.settings,
+            modules = data.moduleProgress,
+            impacts = data.daytimeImpacts,
+            checks = data.weeklyChecks,
+        )
+    }
+
     /** Effacement complet, en un geste depuis les réglages (documentation/architecture.md, section « Données »). */
     suspend fun eraseEverything() {
         dao.deleteWindows()
@@ -208,6 +260,7 @@ class SommelleRepository(
         dao.deleteSettings()
         dao.deleteModuleProgress()
         dao.deleteDaytimeImpacts()
+        dao.deleteWeeklyChecks()
     }
 
     private fun SettingsEntity.toModel() = ReminderSettings(

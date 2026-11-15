@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="night_title">You can\'t sleep. It happens, and it\'s okay.</string>
-    <string name="night_intro">Lying in bed waiting for sleep pushes it further away. Here is what to do.</string>
-    <string name="night_step_1">Get up and go to another room.</string>
+    <string name="night_intro">Lying in bed waiting for sleep pushes it further away. If you have been awake for about twenty minutes (estimate without checking the time), get up.</string>
+    <string name="night_step_1">Get up slowly and turn on a soft light, then go to another room.</string>
     <string name="night_step_2">Do something calm, in soft light, away from screens.</string>
     <string name="night_step_3">Go back to bed when you feel sleep coming.</string>
     <string name="night_bell_start">Gently chime in 20 minutes (no clock)</string>

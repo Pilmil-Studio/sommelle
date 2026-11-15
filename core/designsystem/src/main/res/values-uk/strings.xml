@@ -9,4 +9,8 @@
     <string name="ds_plus_15_description">На 15 хвилин пізніше</string>
     <string name="ds_yes">Так</string>
     <string name="ds_no">Ні</string>
+    <string name="ds_minus_1h">− 1 год</string>
+    <string name="ds_plus_1h">+ 1 год</string>
+    <string name="ds_minus_1h_description">На годину раніше</string>
+    <string name="ds_plus_1h_description">На годину пізніше</string>
 </resources>

@@ -65,7 +65,7 @@ To zrozumiały lęk, lecz nocne rozmyślanie o tym tylko podtrzymuje czuwanie. B
     <string-array name="cog_paradox_steps">
         <item>W łóżku przy zgaszonym świetle: miej otwarte oczy w ciemności i spokojnie powiedz sobie, że jeszcze przez chwilę nie będziesz ich zamykać.</item>
         <item>Nie rób nic, aby zasnąć. Nie sprawdzaj godziny. Po prostu pozwól upływać czasowi.</item>
-        <item>Jeśli po dłuższej chwili poczujesz narastające napięcie, zastosuj zasadę: wstań i wróć do łóżka dopiero wtedy, gdy poczujesz senność.</item>
+        <item>Jeśli nie śpisz od około dwudziestu minut (oszacuj to, nie patrząc na zegar), wstań. Wstań powoli i zapal łagodne światło. Wróć do łóżka, gdy poczujesz senność.</item>
     </string-array>
     <string name="cog_decatastrophize_title">Powrót do prawdopodobieństwa</string>
     <string name="cog_decatastrophize_summary">Cztery pytania, gdy niepokoisz się gorszą nocą.</string>

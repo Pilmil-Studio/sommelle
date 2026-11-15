@@ -114,6 +114,21 @@ fun WeekContent(
         ScreenTitle(title)
         Text(text, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
 
+        if (s.report?.sleepinessReported == true) {
+            Text(
+                stringResource(R.string.week_sleepiness_doctor),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onBackground,
+            )
+        }
+        if (s.showDrowsinessReminder) {
+            Text(
+                stringResource(R.string.week_drowsiness_reminder),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+
         if (s.bedTime != null && s.wakeTime != null) WindowCard(s.bedTime, s.wakeTime)
 
         if (s.outcome.isNotEmpty()) {
@@ -184,7 +199,8 @@ private fun headline(s: WeekState): Pair<String, String> {
                 ReportTone.LONGER -> stringResource(R.string.week_longer_title) to stringResource(R.string.week_longer_text, eff, change)
                 ReportTone.SHORTER -> stringResource(R.string.week_shorter_title) to stringResource(R.string.week_shorter_text, eff, change)
                 ReportTone.STEADY -> stringResource(R.string.week_steady_title) to stringResource(R.string.week_steady_text, eff)
-                ReportTone.AT_FLOOR, ReportTone.REDUCTION_HELD -> stringResource(R.string.week_floor_title) to stringResource(R.string.week_floor_text, eff)
+                ReportTone.AT_FLOOR -> stringResource(R.string.week_floor_title) to stringResource(R.string.week_floor_text, eff)
+                ReportTone.REDUCTION_HELD -> stringResource(R.string.week_held_title) to stringResource(R.string.week_held_text, eff)
                 ReportTone.AT_MAXIMUM -> stringResource(R.string.week_max_title) to stringResource(R.string.week_max_text, eff)
                 ReportTone.MISSING_NIGHTS -> stringResource(R.string.week_missing_title) to
                     stringResource(R.string.week_missing_text, report.loggedNights, report.requiredNights)

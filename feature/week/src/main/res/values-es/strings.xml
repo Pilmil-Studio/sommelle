@@ -27,13 +27,9 @@
     <string name="week_legend_sleep">Dormido</string>
     <string name="week_chart_empty">El gráfico aparecerá tras anotar algunas noches.</string>
     <string name="week_how_title">¿Cómo se calcula mi ventana?</string>
-    <string name="week_how_text" formatted="false">Cada semana, Sommelle compara el tiempo dormido con el tiempo en la cama. Por norma general, por encima del 85 %, la ventana se amplía 15 minutos; por debajo del 80 %, se reduce 15 minutos, sin bajar de un mínimo de seguridad. En valores intermedios se mantiene igual. La hora de levantarse no varía.</string>
+    <string name="week_how_text" formatted="false">Cada semana, Sommelle compara el tiempo dormido con el tiempo en la cama. A partir del 85 % (80 % desde los 65 años), la ventana se amplía 15 minutos; por debajo del 80 % (75 % desde los 65 años), se reduce 15 minutos, sin bajar de 6 horas. En valores intermedios se mantiene igual. Si te has dormido sin querer durante el día, no se reduce. La hora de levantarse no varía.</string>
     <string name="week_relapse_title">¿Qué hacer si reaparece una mala noche más adelante?</string>
-    <string name="week_relapse_text">Una mala noche aislada (estrés, viaje, imprevisto) es normal y no significa una recaída del insomnio crónico:
-• A la mañana siguiente: mantén tu hora habitual de levantarte, sin remolonear en la cama.
-• Durante el día: evita siestas para acumular presión de sueño para la noche.
-• Por la noche: si no logras dormir, levántate unos veinte minutos sin mirar el reloj.
-• Si las noches difíciles se prolongan más de 5 días: retoma tu ventana de sueño reducida durante una o dos semanas.</string>
+    <string name="week_relapse_text">Una mala noche aislada (estrés, viaje, imprevisto) es normal y no significa una recaída del insomnio crónico:\n• A la mañana siguiente: mantén tu hora habitual de levantarte, sin remolonear en la cama.\n• Durante el día: evita siestas para acumular presión de sueño para la noche.\n• Por la noche: si no logras dormir, levántate unos veinte minutos sin mirar el reloj.\n• Si las noches difíciles se prolongan más de 5 días: retoma tu ventana de sueño reducida durante una o dos semanas.\n• Si esto dura más de 2 a 3 semanas, habla con tu médico.</string>
     <string name="week_outcome_title">Balance del programa</string>
     <string name="week_outcome_text">Tu semana de observación comparada con tus últimas siete noches.</string>
     <string name="week_outcome_before">Al inicio</string>
@@ -43,4 +39,8 @@
     <string name="week_review_text">Sommelle es gratuita, libre, sin anuncios y sin servidores. Una breve opinión en Google Play ayuda a otras personas con insomnio a encontrarla.</string>
     <string name="week_review_yes">Dejar una opinión</string>
     <string name="week_review_no">No, gracias</string>
+    <string name="week_drowsiness_reminder">Durante las primeras semanas, la somnolencia puede aumentar. Si te cuesta mantenerte despierto, no conduzcas ni uses maquinaria peligrosa.</string>
+    <string name="week_held_title">Tu ventana no se reduce esta semana</string>
+    <string name="week_held_text">Esta semana has dormido el %1$s del tiempo en la cama. Tu ventana no se reduce: se mantiene igual.</string>
+    <string name="week_sleepiness_doctor">Habla con tu médico antes de seguir con la restricción.</string>
 </resources>

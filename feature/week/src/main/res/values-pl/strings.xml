@@ -27,13 +27,9 @@
     <string name="week_legend_sleep">Sen</string>
     <string name="week_chart_empty">Wykres pojawi się po zapisaniu kilku nocy.</string>
     <string name="week_how_title">Jak obliczane jest moje okno?</string>
-    <string name="week_how_text" formatted="false">W każdym tygodniu Sommelle porównuje czas snu z czasem spędzonym w łóżku. Jeśli efektywność przekracza 85%, okno wydłuża się o 15 minut; poniżej 80% skraca się o 15 minut (nie schodząc poniżej bezpiecznego progu). Pomiędzy tymi wartościami pozostaje bez zmian. Godzina wstawania nigdy się nie zmienia.</string>
+    <string name="week_how_text" formatted="false">W każdym tygodniu Sommelle porównuje czas snu z czasem spędzonym w łóżku. Od 85% (od 65. roku życia 80%) okno wydłuża się o 15 minut; poniżej 80% (od 65. roku życia 75%) skraca się o 15 minut, nie schodząc poniżej 6 godzin. Pomiędzy tymi wartościami pozostaje bez zmian. Jeśli w ciągu dnia mimowolnie zasnąłeś(-aś), okno się nie skraca. Godzina wstawania nigdy się nie zmienia.</string>
     <string name="week_relapse_title">Co zrobić, gdy gorsza noc powróci?</string>
-    <string name="week_relapse_text">Pojedyncza gorsza noc (stres, podróż, wydarzenie) jest czymś normalnym i nie oznacza powrotu bezsenności:
-• Następnego ranka: wstań o stałej porze, nie dosypiaj.
-• W ciągu dnia: unikaj drzemek, aby zachować presję snu na wieczór.
-• W nocy: jeśli sen nie przychodzi, wyjdź z łóżka na około 20 minut i nie sprawdzaj godziny.
-• Jeśli trudne noce trwają dłużej niż 5 dni: wróć do zawężonego okna snu na 1–2 tygodnie.</string>
+    <string name="week_relapse_text">Pojedyncza gorsza noc (stres, podróż, wydarzenie) jest czymś normalnym i nie oznacza powrotu bezsenności:\n• Następnego ranka: wstań o stałej porze, nie dosypiaj.\n• W ciągu dnia: unikaj drzemek, aby zachować presję snu na wieczór.\n• W nocy: jeśli sen nie przychodzi, wyjdź z łóżka na około 20 minut i nie sprawdzaj godziny.\n• Jeśli trudne noce trwają dłużej niż 5 dni: wróć do zawężonego okna snu na 1–2 tygodnie.\n• Jeśli trwa to dłużej niż 2–3 tygodnie, porozmawiaj z lekarzem.</string>
     <string name="week_outcome_title">Podsumowanie programu</string>
     <string name="week_outcome_text">Twój tydzień obserwacji w porównaniu z ostatnimi siedmioma nocami.</string>
     <string name="week_outcome_before">Na początku</string>
@@ -43,4 +39,8 @@
     <string name="week_review_text">Sommelle jest darmowa, otwarta, bez reklam i bez serwerów. Krótka opinia w Sklepie Play pomoże innym osobom z bezsennością ją znaleźć.</string>
     <string name="week_review_yes">Wystaw opinię</string>
     <string name="week_review_no">Nie, dziękuję</string>
+    <string name="week_drowsiness_reminder">W pierwszych tygodniach senność może się nasilić. Jeśli trudno Ci utrzymać się na jawie, nie prowadź pojazdów i nie obsługuj niebezpiecznych maszyn.</string>
+    <string name="week_held_title">Twoje okno nie skraca się w tym tygodniu</string>
+    <string name="week_held_text">W tym tygodniu przespałeś %1$s czasu spędzonego w łóżku. Okno się nie skraca: pozostaje bez zmian.</string>
+    <string name="week_sleepiness_doctor">Porozmawiaj z lekarzem, zanim będziesz kontynuować ograniczanie czasu w łóżku.</string>
 </resources>

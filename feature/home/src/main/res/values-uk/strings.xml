@@ -39,7 +39,7 @@
     <string name="wake_baseline_in_bed">У ліжку</string>
     <string name="wake_baseline_sleep">Сон</string>
     <string name="wake_baseline_efficiency">Ефективність</string>
-    <string name="wake_baseline_explanation">Обмеження часу в ліжку узгоджує перебування в ліжку з реальним часом сну для відновлення тиску сну. Денна втома є нормальною в перші 10-15 днів.</string>
+    <string name="wake_baseline_explanation">Обмеження часу в ліжку узгоджує перебування в ліжку з реальним часом сну для відновлення тиску сну. Протягом 2–4 тижнів втома й сонливість можуть посилюватися. Зазвичай потім вони зменшуються.</string>
     <string name="wake_projected_window">Розраховане вікно: сон %1$s • підйом %2$s (%3$s у ліжку)</string>
     <string name="wake_confirm">Підтвердити</string>
     <string name="home_impact_title">Коротке запитання</string>
@@ -55,4 +55,8 @@
     <string name="home_reminder_text">Ранкове нагадування дуже допомагає записувати кожну ніч, а від цього залежить програма. Якщо ніч уже записано, нагадування не надходить.</string>
     <string name="home_reminder_enable">Увімкнути нагадування</string>
     <string name="home_reminder_dismiss">Ні, дякую</string>
+    <string name="wake_drowsiness_warning">У перші тижні сонливість може посилитися. Якщо вам важко залишатися бадьорим, не керуйте транспортом і не працюйте з небезпечними механізмами.</string>
+    <string name="home_sleepiness_title">Підсумок тижня</string>
+    <string name="home_sleepiness_question">Чи траплялося цього тижня, що ви ненавмисно засинали вдень або ледь не заснули?</string>
+    <string name="home_sleepiness_hint">Вікно сну на тиждень буде скориговано одразу після вашої відповіді.</string>
 </resources>

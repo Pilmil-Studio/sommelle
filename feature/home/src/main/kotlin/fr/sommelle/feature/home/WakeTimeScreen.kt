@@ -170,6 +170,9 @@ fun WakeTimeContent(
                 }
             }
         }
+
+        // Dernier écran avant la première fenêtre : l'avertissement sur la somnolence y figure pour tout le monde.
+        InfoLine(SommelleIcons.History, stringResource(R.string.wake_drowsiness_warning))
     }
 }
 

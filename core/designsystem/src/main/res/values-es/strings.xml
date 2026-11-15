@@ -9,4 +9,8 @@
     <string name="ds_plus_15_description">Quince minutos más tarde</string>
     <string name="ds_yes">Sí</string>
     <string name="ds_no">No</string>
+    <string name="ds_minus_1h">− 1 h</string>
+    <string name="ds_plus_1h">+ 1 h</string>
+    <string name="ds_minus_1h_description">Una hora antes</string>
+    <string name="ds_plus_1h_description">Una hora después</string>
 </resources>
