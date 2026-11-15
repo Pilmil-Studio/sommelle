@@ -61,7 +61,7 @@
 
       <h2 id="tcci">1. CBT-I in brief</h2>
       <p>Cognitive behavioral therapy for insomnia (CBT-I) is the first-line treatment for chronic insomnia in adults, ahead of hypnotics, according to European (2023) and American (2021) guidelines. It combines several components: sleep diary, sleep restriction, stimulus control, cognitive work and sleep education.</p>
-      <p>Digital versions of CBT-I are effective in trials, with smaller effects without human support. The main challenge is for the patient to complete the program: this is what guides Sommelle's design (quick entry, nothing that makes the patient feel guilty).</p>
+      <p>For digital CBT-I, effectiveness is mainly shown for guided online programs; effects are smaller without human support. The main challenge is for the patient to complete the program: this is what guides Sommelle's design (quick entry, nothing that makes the patient feel guilty).</p>
 
       <h2 id="deroule">2. Program outline</h2>
       <table>
@@ -167,7 +167,7 @@
           <tr><td>Observation period before any restriction</td><td>7 days</td></tr>
           <tr><td>Logged nights required</td><td>At least 5 out of 7, otherwise the window is kept and the patient is told</td></tr>
           <tr><td>Initial window</td><td>Mean total sleep time during the observation week, rounded up to the next quarter hour</td></tr>
-          <tr><td>Minimum length</td><td>5 h 30 min; 6 h for people at risk if drowsy; never below 5 h, whatever the setting</td></tr>
+          <tr><td>Minimum length</td><td>6 h (Réseau Morphée benchmark, 2019) for everyone; a window already under way below 6 h is raised to 6 h at the next calculation</td></tr>
           <tr><td>Maximum length</td><td>9 h</td></tr>
           <tr><td>Anchor</td><td>Fixed rise time, chosen by the patient, 7 days a week; the bedtime follows from it</td></tr>
           <tr><td>Weekly adjustment</td><td>Efficiency ≥ 85%: +15 min; &lt; 80%: −15 min (without going below the minimum); in between: unchanged</td></tr>
@@ -289,7 +289,7 @@
       </figure>
 
       <h3>Precautions</h3>
-      <p>Restriction causes transient daytime sleepiness, objectively measurable (Kyle et al., 2014). A warning about driving and dangerous activities is shown at the start of the program. Restriction is never offered in the situations listed in section 7.</p>
+      <p>Restriction causes transient daytime sleepiness, objectively measurable (Kyle et al., 2014). A warning about driving and dangerous machinery is shown for every pathway with restriction, before the first window, and repeated at the first three weekly reviews. Each review also asks: “This week, did you fall asleep unintentionally during the day, or nearly do so?”. If yes, the window is not reduced that week (lengthening is still allowed) and the app advises talking to a doctor. Restriction is never offered in the situations listed in section 7.</p>
 
       <h2 id="stimulus">5. Stimulus control and evening sleep habits</h2>
       <p>Stimulus control (Bootzin, 1972; <em>CBT-i Coach</em>) aims to re-associate the bed with sleep. In Sommelle, it relies on five elements:</p>
@@ -322,10 +322,10 @@
           <tr><td>Loud snoring with observed breathing pauses, or marked daytime sleepiness</td><td>No restriction; advice to see a doctor (possible sleep apnea)</td></tr>
           <tr><td>Bipolar disorder, epilepsy</td><td>No restriction; advice to talk to the treating doctor</td></tr>
           <tr><td>Pregnancy</td><td>No restriction</td></tr>
-          <tr><td>Driving for work, dangerous machinery, safety-critical job</td><td>Restriction with the minimum raised to 6 h and a stronger warning, or no restriction, as the patient chooses</td></tr>
+          <tr><td>Driving for work, dangerous machinery, safety-critical job</td><td>No restriction by default; message: restriction can increase sleepiness, to discuss with a doctor</td></tr>
           <tr><td>Very late schedule with normal sleep once asleep</td><td>No restriction; possible delayed sleep phase flagged and advice to see a doctor</td></tr>
           <tr><td>Shift or night work, nights interrupted by someone else (infant, sick relative), under 18</td><td>Outside the app's scope; referral</td></tr>
-          <tr><td>Distress expressed</td><td>Crisis line highlighted (3114, the French suicide prevention line, always present in the app, with advice to contact a local crisis line elsewhere)</td></tr>
+          <tr><td>Distress expressed</td><td>Crisis line highlighted (3114, the French suicide prevention line, always present in the app, with advice to contact a local crisis line elsewhere); path without time-in-bed restriction and invitation to see a doctor</td></tr>
         </tbody>
       </table>
 
@@ -345,14 +345,21 @@
       <h2 id="limites">9. What Sommelle does not do, and points to validate</h2>
       <ul>
         <li>It does not diagnose insomnia or any other sleep disorder.</li>
-        <li>It does not manage tapering or stopping hypnotics, which remains for the doctor to supervise.</li>
+        <li>It does not manage tapering or stopping hypnotics, which remains for the doctor to supervise; it reminds users not to stop them without medical advice.</li>
         <li>It does not offer follow-up by a professional: it can, however, support existing follow-up through the summary.</li>
         <li>It does not yet present all sleep hygiene and stimulus control instructions (see section 5).</li>
         <li>Its own effectiveness has not been evaluated in a clinical study.</li>
       </ul>
+      <h2 id="gaps">Gaps and limits</h2>
+      <ul>
+        <li>Time-in-bed restriction is offered without follow-up by a clinician, whereas the guidelines describe it with follow-up.</li>
+        <li>The content has been reviewed against published references (European Insomnia Guideline 2023, AASM 2021, HAS 2024, Réseau Morphée 2019) but not yet validated by a sleep physician.</li>
+        <li>Sommelle has not been clinically evaluated.</li>
+      </ul>
+
       <p>Several parameters are reasoned design choices rather than established values. We would like them to be reviewed by sleep professionals:</p>
       <ul>
-        <li>the minimum length of 5 h 30 min and the adjustment thresholds, especially the lowering from age 65;</li>
+        <li>the minimum length of 6 h and the adjustment thresholds, especially the lowering from age 65;</li>
         <li>calculating weekly efficiency on totals rather than as a mean of nights, and rounding the initial window up;</li>
         <li>the maximum length of 9 h;</li>
         <li>the content of the cognitive exercises and the order in which they unlock;</li>
@@ -384,7 +391,7 @@
         <tbody>
           <tr>
             <td><strong>Versioned clinical parameters</strong></td>
-            <td><code>baselineDays = 7</code>, <code>minimumLoggedNightsPerWeek = 5</code>, <code>defaultMinimumWindow = 5h30</code>, <code>safetyCriticalMinimumWindow = 6h00</code>, <code>absoluteMinimumWindow = 5h00</code>, <code>maximumWindow = 9h00</code>, <code>increaseThreshold = 0.85</code>, <code>decreaseThreshold = 0.80</code>, <code>seniorThresholdOffset = 0.05</code>.</td>
+            <td><code>baselineDays = 7</code>, <code>minimumLoggedNightsPerWeek = 5</code>, <code>defaultMinimumWindow = 6h00</code>, <code>absoluteMinimumWindow = 6h00</code>, <code>maximumWindow = 9h00</code>, <code>increaseThreshold = 0.85</code>, <code>decreaseThreshold = 0.80</code>, <code>seniorThresholdOffset = 0.05</code>.</td>
             <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ProtocolConfig.kt"><code>ProtocolConfig.kt</code></a></td>
           </tr>
           <tr>
@@ -399,7 +406,7 @@
           </tr>
           <tr>
             <td><strong>Safety screening &amp; referral</strong></td>
-            <td>Deterministic decision tree excluding sleep restriction when sleep apnea, bipolar disorder, epilepsy, pregnancy or delayed sleep phase is suspected, and raising the minimum window to <code>6h00</code> for safety-critical or driving occupations.</td>
+            <td>Deterministic decision tree excluding sleep restriction when sleep apnea, bipolar disorder, epilepsy, pregnancy or delayed sleep phase is suspected, and also excluding it for declared distress or safety-critical or driving occupations.</td>
             <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ScreeningEvaluator.kt"><code>ScreeningEvaluator.kt</code></a><br><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/ScreeningEvaluatorTest.kt"><code>ScreeningEvaluatorTest.kt</code></a></td>
           </tr>
           <tr>

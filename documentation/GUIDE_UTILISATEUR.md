@@ -27,7 +27,7 @@ Un parcours en **5 étapes** sécurise la prise en charge avant de démarrer :
 ### 2. Ma semaine (`week`)
 - Bilan hebdomadaire d'efficacité du sommeil :
   - Efficacité **>= 85 %** : élargissement progressif de la fenêtre (**+15 min**).
-  - Efficacité **< 80 %** : resserrement de la fenêtre (**-15 min**), avec plancher de sécurité (**5h30** ou **6h00** selon le profil).
+  - Efficacité **< 80 %** : resserrement de la fenêtre (**-15 min**), avec plancher de sécurité (**6h00**).
 - **Tableau comparatif** (`ComparisonTable`) et **graphique en barres horizontal** accessible.
 
 ### 3. Exercices (`cognitive`)

@@ -120,4 +120,4 @@ Sommelle est distribuée sous licence [Mozilla Public License 2.0](LICENSE) (MPL
 
 ## Note sur le développement
 
-Le code de Sommelle a été développé avec l'aide d'un assistant IA (Claude, d'Anthropic) : l'application elle-même n'embarque aucune intelligence artificielle, tous les contenus et calculs reposent sur le protocole clinique de la TCC-I (HAS, Réseau Morphée, ESRS, CBT-i Coach), le moteur du programme et la logique des écrans sont déterministes et couverts par des tests automatiques, et je maintiens personnellement le projet en répondant moi-même aux tickets et aux messages.
+Le code de Sommelle a été développé avec l'aide d'un assistant IA (Claude, d'Anthropic) : l'application elle-même n'embarque aucune intelligence artificielle, tous les contenus et calculs s'inspirent de la TCC-I (HAS, Réseau Morphée, ESRS, CBT-i Coach), le moteur du programme et la logique des écrans sont déterministes et couverts par des tests automatiques, et je maintiens personnellement le projet en répondant moi-même aux tickets et aux messages.

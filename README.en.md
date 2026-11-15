@@ -104,4 +104,4 @@ Sommelle is distributed under the [Mozilla Public License 2.0](LICENSE) (MPL-2.0
 
 ## A note on development
 
-Sommelle's code was developed with the help of an AI assistant (Claude, by Anthropic): the app itself embeds no artificial intelligence, all content and calculations rely on the clinical CBT-I protocol (HAS, Réseau Morphée, ESRS, CBT-i Coach), the program engine and screen logic are deterministic and covered by automated tests, and I personally maintain the project and answer issues and messages myself.
+Sommelle's code was developed with the help of an AI assistant (Claude, by Anthropic): the app itself embeds no artificial intelligence, all content and calculations are inspired by CBT-I (HAS, Réseau Morphée, ESRS, CBT-i Coach), the program engine and screen logic are deterministic and covered by automated tests, and I personally maintain the project and answer issues and messages myself.

@@ -61,7 +61,7 @@
 
       <h2 id="tcci">1. La TCC-I en bref</h2>
       <p>La thérapie cognitivo-comportementale de l'insomnie (TCC-I) est le traitement de première intention de l'insomnie chronique de l'adulte, avant les hypnotiques, selon les recommandations européennes (2023) et américaines (2021). Elle associe plusieurs composantes : agenda du sommeil, restriction du temps au lit, contrôle du stimulus, travail sur les pensées et éducation au sommeil.</p>
-      <p>Les versions numériques de la TCC-I sont efficaces dans les essais, avec des effets plus faibles sans soutien humain. Le principal enjeu est que le patient aille au bout du programme : c'est ce qui guide la conception de Sommelle (saisie rapide, aucun mécanisme culpabilisant).</p>
+      <p>Pour la TCC-I numérique, l'efficacité est surtout démontrée pour des programmes en ligne accompagnés ; les effets sont plus faibles sans soutien humain. Le principal enjeu est que le patient aille au bout du programme : c'est ce qui guide la conception de Sommelle (saisie rapide, aucun mécanisme culpabilisant).</p>
 
       <h2 id="deroule">2. Déroulé du programme</h2>
       <table>
@@ -167,10 +167,10 @@
           <tr><td>Durée d'observation avant toute restriction</td><td>7 jours</td></tr>
           <tr><td>Nuits renseignées nécessaires</td><td>Au moins 5 sur 7, sinon la fenêtre est maintenue et le patient en est informé</td></tr>
           <tr><td>Fenêtre initiale</td><td>Temps de sommeil moyen de la semaine d'observation, arrondi au quart d'heure supérieur</td></tr>
-          <tr><td>Durée minimale</td><td>5 h 30 ; 6 h pour les personnes exposées à un risque en cas de somnolence ; jamais sous 5 h, quel que soit le réglage</td></tr>
+          <tr><td>Durée minimale</td><td>6 h (repère du Réseau Morphée, 2019), quel que soit le profil ; une fenêtre déjà en cours sous 6 h est relevée à 6 h au calcul suivant</td></tr>
           <tr><td>Durée maximale</td><td>9 h</td></tr>
           <tr><td>Point d'ancrage</td><td>Heure de lever fixe, choisie par le patient, 7 jours sur 7 ; l'heure de coucher en découle</td></tr>
-          <tr><td>Ajustement chaque semaine</td><td>Efficacité ≥ 85 % : +15 min ; &lt; 80 % : −15 min (sans passer sous le minimum) ; entre les deux : inchangée</td></tr>
+          <tr><td>Ajustement chaque semaine</td><td>Efficacité ≥ 85 % : +15 min ; &lt; 80 % : −15 min (sans passer sous le minimum) ; entre les deux : inchangée. Si le patient déclare s'être endormi sans le vouloir en journée, ou avoir failli, la fenêtre n'est pas réduite cette semaine-là (l'élargissement reste permis) et l'appli l'invite à en parler à son médecin</td></tr>
           <tr><td>À partir de 65 ans</td><td>Seuils abaissés de 5 points (80 % et 75 %), le sommeil étant naturellement plus fragmenté</td></tr>
         </tbody>
       </table>
@@ -289,7 +289,7 @@
       </figure>
 
       <h3>Précautions</h3>
-      <p>La restriction entraîne une somnolence diurne transitoire, mesurable objectivement (Kyle et al., 2014). Un avertissement sur la conduite et les activités dangereuses s'affiche au début du programme. La restriction n'est jamais proposée dans les situations listées en section 7.</p>
+      <p>La restriction entraîne une somnolence diurne transitoire, mesurable objectivement (Kyle et al., 2014). Un avertissement sur la conduite et les machines dangereuses s'affiche pour tout parcours avec restriction, avant la première fenêtre, puis est rappelé lors des trois premiers bilans hebdomadaires. Chaque bilan pose aussi la question : « Cette semaine, vous êtes-vous endormi·e sans le vouloir en journée, ou avez-vous failli ? ». La restriction n'est jamais proposée dans les situations listées en section 7.</p>
 
       <h2 id="stimulus">5. Le contrôle du stimulus et les repères d'hygiène du soir</h2>
       <p>Le contrôle du stimulus (Bootzin, 1972 ; <em>CBT-i Coach</em>) vise à réassocier le lit au sommeil. Dans Sommelle, il passe par cinq éléments :</p>
@@ -322,10 +322,10 @@
           <tr><td>Ronflements forts avec pauses respiratoires constatées, ou somnolence marquée dans la journée</td><td>Pas de restriction ; invitation à consulter (apnée du sommeil possible)</td></tr>
           <tr><td>Trouble bipolaire, épilepsie</td><td>Pas de restriction ; invitation à en parler au médecin traitant</td></tr>
           <tr><td>Grossesse</td><td>Pas de restriction</td></tr>
-          <tr><td>Conduite professionnelle, machines dangereuses, métier de sécurité</td><td>Restriction avec durée minimale relevée à 6 h et avertissement renforcé, ou pas de restriction, au choix du patient</td></tr>
+          <tr><td>Conduite professionnelle, machines dangereuses, métier de sécurité</td><td>Pas de restriction par défaut ; message : la restriction peut augmenter la somnolence, à discuter avec le médecin</td></tr>
           <tr><td>Horaires très tardifs avec un sommeil normal une fois endormi</td><td>Pas de restriction ; signalement d'un possible retard de phase et invitation à consulter</td></tr>
           <tr><td>Travail posté ou de nuit, nuits interrompues par un tiers (nourrisson, proche malade), moins de 18 ans</td><td>Hors du champ de l'application ; orientation</td></tr>
-          <tr><td>Détresse exprimée</td><td>Mise en avant du 3114 (prévention du suicide), présent en permanence dans l'application</td></tr>
+          <tr><td>Détresse exprimée</td><td>Mise en avant du 3114 (prévention du suicide), présent en permanence dans l'application ; parcours sans restriction du temps au lit et invitation à consulter</td></tr>
         </tbody>
       </table>
 
@@ -345,14 +345,21 @@
       <h2 id="limites">9. Ce que Sommelle ne fait pas, et points à valider</h2>
       <ul>
         <li>Elle ne pose pas de diagnostic d'insomnie ni d'autre trouble du sommeil.</li>
-        <li>Elle ne gère pas la réduction ou l'arrêt des hypnotiques, qui reste à encadrer par le médecin.</li>
+        <li>Elle ne gère pas la réduction ou l'arrêt des hypnotiques, qui reste à encadrer par le médecin ; elle rappelle de ne pas les arrêter sans avis médical.</li>
         <li>Elle ne propose pas de suivi par un professionnel : elle peut en revanche accompagner un suivi existant, grâce au résumé.</li>
         <li>Elle ne présente pas encore toutes les consignes d'hygiène du sommeil et de contrôle du stimulus (voir section 5).</li>
         <li>Son efficacité propre n'a pas été évaluée dans une étude clinique.</li>
       </ul>
+      <h2 id="ecarts">Écarts et limites</h2>
+      <ul>
+        <li>La restriction du temps au lit est proposée sans suivi par un clinicien, alors que les recommandations la décrivent avec un suivi.</li>
+        <li>Les contenus ont été relus face aux référentiels publiés (European Insomnia Guideline 2023, AASM 2021, HAS 2024, Réseau Morphée 2019), mais n'ont pas encore été validés par un médecin du sommeil.</li>
+        <li>Sommelle n'a pas été évaluée cliniquement.</li>
+      </ul>
+
       <p>Plusieurs paramètres sont des choix de conception raisonnés plutôt que des valeurs établies. Nous souhaitons les faire relire par des professionnels du sommeil :</p>
       <ul>
-        <li>la durée minimale de 5 h 30 et les seuils d'ajustement, notamment l'abaissement à partir de 65 ans ;</li>
+        <li>la durée minimale de 6 h et les seuils d'ajustement, notamment l'abaissement à partir de 65 ans ;</li>
         <li>le calcul de l'efficacité hebdomadaire sur les totaux plutôt qu'en moyenne des nuits, et l'arrondi supérieur de la fenêtre initiale ;</li>
         <li>la durée maximale de 9 h ;</li>
         <li>le contenu des exercices cognitifs et l'ordre dans lequel ils se débloquent ;</li>
@@ -384,7 +391,7 @@
         <tbody>
           <tr>
             <td><strong>Paramètres cliniques versionnés</strong></td>
-            <td><code>baselineDays = 7</code>, <code>minimumLoggedNightsPerWeek = 5</code>, <code>defaultMinimumWindow = 5h30</code>, <code>safetyCriticalMinimumWindow = 6h00</code>, <code>absoluteMinimumWindow = 5h00</code>, <code>maximumWindow = 9h00</code>, <code>increaseThreshold = 0.85</code>, <code>decreaseThreshold = 0.80</code>, <code>seniorThresholdOffset = 0.05</code>.</td>
+            <td><code>baselineDays = 7</code>, <code>minimumLoggedNightsPerWeek = 5</code>, <code>defaultMinimumWindow = 6h00</code>, <code>absoluteMinimumWindow = 6h00</code>, <code>maximumWindow = 9h00</code>, <code>increaseThreshold = 0.85</code>, <code>decreaseThreshold = 0.80</code>, <code>seniorThresholdOffset = 0.05</code>.</td>
             <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ProtocolConfig.kt"><code>ProtocolConfig.kt</code></a></td>
           </tr>
           <tr>
@@ -399,7 +406,7 @@
           </tr>
           <tr>
             <td><strong>Orientation de sécurité à l'entrée</strong></td>
-            <td>Arbre de décision excluant la restriction en cas de suspicion d'apnée, trouble bipolaire, épilepsie, grossesse ou retard de phase, et relevant le plancher à <code>6h00</code> pour les métiers de sécurité ou de conduite.</td>
+            <td>Arbre de décision excluant la restriction en cas de suspicion d'apnée, trouble bipolaire, épilepsie, grossesse ou retard de phase, et excluant aussi la restriction en cas de détresse déclarée ou de métier de sécurité ou de conduite.</td>
             <td><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/main/kotlin/fr/sommelle/core/protocol/ScreeningEvaluator.kt"><code>ScreeningEvaluator.kt</code></a><br><a href="https://github.com/Pilmil-Studio/sommelle/blob/main/core/protocol/src/test/kotlin/fr/sommelle/core/protocol/ScreeningEvaluatorTest.kt"><code>ScreeningEvaluatorTest.kt</code></a></td>
           </tr>
           <tr>
