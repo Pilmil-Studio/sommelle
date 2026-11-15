@@ -51,8 +51,8 @@
     <string name="home_impact_4">Надзвичайно сильно</string>
     <string name="home_nights_previous">Попередній тиждень</string>
     <string name="home_nights_next">Наступний тиждень</string>
-    <string name="home_reminder_title">Щоб не забувати про щоденник</string>
-    <string name="home_reminder_text">Ранкове нагадування дуже допомагає записувати кожну ніч, а від цього залежить програма. Якщо ніч уже записано, нагадування не надходить.</string>
+    <string name="home_reminder_title">Ранкове нагадування, якщо хочете.</string>
+    <string name="home_reminder_text">Воно може допомогти записувати ночі. Нагадування не надсилається, якщо ніч уже записано.</string>
     <string name="home_reminder_enable">Увімкнути нагадування</string>
     <string name="home_reminder_dismiss">Ні, дякую</string>
     <string name="wake_drowsiness_warning">У перші тижні сонливість може посилитися. Якщо вам важко залишатися бадьорим, не керуйте транспортом і не працюйте з небезпечними механізмами.</string>
@@ -62,4 +62,5 @@
     <string name="home_night_to_fill">заповнити</string>
     <string name="home_night_desc_missing">%1$s, ніч для заповнення</string>
     <string name="home_night_desc_filled">%1$s, ніч заповнено</string>
+    <string name="home_impact_later">Пізніше</string>
 </resources>

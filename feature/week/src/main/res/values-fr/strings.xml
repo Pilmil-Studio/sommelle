@@ -42,10 +42,6 @@
     <string name="week_outcome_before">Au départ</string>
     <string name="week_outcome_after">Aujourd\'hui</string>
     <string name="week_report_button">Résumé pour mon médecin</string>
-    <string name="week_review_title">Sommelle vous aide ?</string>
-    <string name="week_review_text">Sommelle est gratuite, libre, sans publicité et sans serveur. Un petit avis sur le Play Store aide d\'autres personnes insomniaques à la trouver.</string>
-    <string name="week_review_yes">Laisser un avis</string>
-    <string name="week_review_no">Non merci</string>
     <string name="week_drowsiness_reminder">Pendant les premières semaines, la somnolence peut augmenter. Si vous avez du mal à rester éveillé·e, ne conduisez pas et n\'utilisez pas de machine dangereuse.</string>
     <string name="week_held_title">Votre fenêtre ne raccourcit pas cette semaine</string>
     <string name="week_held_text">Cette semaine, vous avez dormi %1$s du temps passé au lit. Votre fenêtre ne raccourcit pas : elle reste la même.</string>

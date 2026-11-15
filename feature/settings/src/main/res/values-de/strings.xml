@@ -74,4 +74,5 @@
     <string name="night_end_label">Ende der Nacht: %1$d Uhr</string>
     <string name="night_hour_earlier">Eine Stunde früher</string>
     <string name="night_hour_later">Eine Stunde später</string>
+    <string name="settings_review_button">Bewertung im Play Store abgeben</string>
 </resources>

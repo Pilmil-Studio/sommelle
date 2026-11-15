@@ -49,8 +49,8 @@
     <string name="home_impact_4">Enormemente</string>
     <string name="home_nights_previous">Semana anterior</string>
     <string name="home_nights_next">Semana siguiente</string>
-    <string name="home_reminder_title">Para no olvidar el diario</string>
-    <string name="home_reminder_text">Un recordatorio por la mañana ayuda mucho a anotar cada noche, y el programa depende de ello. No se envía ningún recordatorio si la noche ya está anotada.</string>
+    <string name="home_reminder_title">Un recordatorio por la mañana, si lo deseas.</string>
+    <string name="home_reminder_text">Puede ayudarte a anotar tus noches. No se envía ningún recordatorio si la noche ya está anotada.</string>
     <string name="home_reminder_enable">Activar recordatorios</string>
     <string name="home_reminder_dismiss">No, gracias</string>
     <string name="wake_drowsiness_warning">Durante las primeras semanas, la somnolencia puede aumentar. Si te cuesta mantenerte despierto, no conduzcas ni uses maquinaria peligrosa.</string>
@@ -60,4 +60,5 @@
     <string name="home_night_to_fill">por rellenar</string>
     <string name="home_night_desc_missing">%1$s, noche por rellenar</string>
     <string name="home_night_desc_filled">%1$s, noche rellenada</string>
+    <string name="home_impact_later">Más tarde</string>
 </resources>

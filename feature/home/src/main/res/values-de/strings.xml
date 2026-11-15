@@ -49,8 +49,8 @@
     <string name="home_impact_4">Extrem stark</string>
     <string name="home_nights_previous">Vorherige Woche</string>
     <string name="home_nights_next">Nächste Woche</string>
-    <string name="home_reminder_title">Damit du das Tagebuch nicht vergisst</string>
-    <string name="home_reminder_text">Eine Erinnerung am Morgen hilft sehr, jede Nacht einzutragen, und das Programm hängt davon ab. Ist die Nacht schon eingetragen, kommt keine Erinnerung.</string>
+    <string name="home_reminder_title">Eine Erinnerung am Morgen, wenn du möchtest.</string>
+    <string name="home_reminder_text">Sie kann dir helfen, deine Nächte zu erfassen. Es wird keine Erinnerung gesendet, wenn die Nacht schon erfasst ist.</string>
     <string name="home_reminder_enable">Erinnerungen einschalten</string>
     <string name="home_reminder_dismiss">Nein danke</string>
     <string name="wake_drowsiness_warning">In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>
@@ -60,4 +60,5 @@
     <string name="home_night_to_fill">offen</string>
     <string name="home_night_desc_missing">%1$s, Nacht noch offen</string>
     <string name="home_night_desc_filled">%1$s, Nacht erfasst</string>
+    <string name="home_impact_later">Später</string>
 </resources>

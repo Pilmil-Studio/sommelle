@@ -35,10 +35,6 @@
     <string name="week_outcome_before">Zu Beginn</string>
     <string name="week_outcome_after">Heute</string>
     <string name="week_report_button">Bericht für meine Ärztin / meinen Arzt</string>
-    <string name="week_review_title">Hilft dir Sommelle?</string>
-    <string name="week_review_text">Sommelle ist kostenlos, quelloffen, werbefrei und ohne Server. Eine kurze Bewertung im Play Store hilft anderen Menschen mit Schlafstörungen, sie zu finden.</string>
-    <string name="week_review_yes">Bewertung abgeben</string>
-    <string name="week_review_no">Nein danke</string>
     <string name="week_drowsiness_reminder">In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>
     <string name="week_held_title">Dein Fenster wird diese Woche nicht verkürzt</string>
     <string name="week_held_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster wird nicht verkürzt: Es bleibt gleich.</string>

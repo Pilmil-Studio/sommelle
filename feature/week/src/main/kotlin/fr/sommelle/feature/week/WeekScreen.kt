@@ -58,42 +58,7 @@ fun WeekScreen(
     val viewModel: WeekViewModel = viewModel { WeekViewModel(repository) }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
-    val context = LocalContext.current
-    val prefs = remember { context.getSharedPreferences(WEEK_PREFS, Context.MODE_PRIVATE) }
-    var reviewDismissed by remember { mutableStateOf(prefs.getBoolean(KEY_REVIEW_DISMISSED, false)) }
-    val snapshot by repository.snapshot.collectAsStateWithLifecycle(initialValue = null)
-    // Après deux ajustements hebdomadaires au moins : la personne a vu le programme fonctionner.
-    val adjustments = (snapshot?.windows?.size ?: 0) - 1
-    fun dismiss() {
-        prefs.edit().putBoolean(KEY_REVIEW_DISMISSED, true).apply()
-        reviewDismissed = true
-    }
-    WeekContent(
-        s,
-        onOpenReport,
-        showReviewPrompt = !reviewDismissed && adjustments >= REVIEW_AFTER_ADJUSTMENTS,
-        onReview = {
-            dismiss()
-            openStore(context)
-        },
-        onDismissReview = ::dismiss,
-    )
-}
-
-private const val WEEK_PREFS = "week"
-private const val KEY_REVIEW_DISMISSED = "review_prompt_dismissed"
-private const val REVIEW_AFTER_ADJUSTMENTS = 2
-
-/** Fiche Play Store, ou la page web si le Store n'est pas installé (APK GitHub, F-Droid…). */
-private fun openStore(context: Context) {
-    val pkg = context.packageName
-    val market = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    val web = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    try {
-        context.startActivity(market)
-    } catch (_: ActivityNotFoundException) {
-        runCatching { context.startActivity(web) }
-    }
+    WeekContent(s, onOpenReport)
 }
 
 /** Bilan sans état ni dépendance : affiché tel quel dans les captures de la documentation. */
@@ -101,9 +66,6 @@ private fun openStore(context: Context) {
 fun WeekContent(
     s: WeekState,
     onOpenReport: () -> Unit = {},
-    showReviewPrompt: Boolean = false,
-    onReview: () -> Unit = {},
-    onDismissReview: () -> Unit = {},
 ) {
     var showHow by rememberSaveable { mutableStateOf(false) }
     var showRelapse by rememberSaveable { mutableStateOf(false) }
@@ -146,17 +108,6 @@ fun WeekContent(
         }
 
         Chart(s.bars, s.chartDescription)
-
-        if (showReviewPrompt) {
-            Surface(shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.surface, shadowElevation = 1.dp) {
-                Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text(stringResource(R.string.week_review_title), style = MaterialTheme.typography.titleMedium, modifier = Modifier.semantics { heading() })
-                    Text(stringResource(R.string.week_review_text), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    SommelleButton(stringResource(R.string.week_review_yes), onReview, style = SommelleButtonStyle.Outlined)
-                    SommelleButton(stringResource(R.string.week_review_no), onDismissReview, style = SommelleButtonStyle.Quiet)
-                }
-            }
-        }
 
         SommelleButton(
             text = stringResource(R.string.week_report_button),

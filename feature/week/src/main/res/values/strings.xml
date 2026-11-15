@@ -42,10 +42,6 @@
     <string name="week_outcome_before">At the start</string>
     <string name="week_outcome_after">Today</string>
     <string name="week_report_button">Summary for my doctor</string>
-    <string name="week_review_title">Is Sommelle helping you?</string>
-    <string name="week_review_text">Sommelle is free, open source, ad-free and has no servers. A short review on the Play Store helps other people with insomnia find it.</string>
-    <string name="week_review_yes">Leave a review</string>
-    <string name="week_review_no">No thanks</string>
     <string name="week_drowsiness_reminder">During the first weeks, sleepiness may increase. If you have trouble staying awake, do not drive and do not use dangerous machinery.</string>
     <string name="week_held_title">Your window does not shrink this week</string>
     <string name="week_held_text">This week, you slept %1$s of your time in bed. Your window does not shrink: it stays the same.</string>

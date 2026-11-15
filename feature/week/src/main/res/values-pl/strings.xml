@@ -35,10 +35,6 @@
     <string name="week_outcome_before">Na początku</string>
     <string name="week_outcome_after">Dziś</string>
     <string name="week_report_button">Raport dla mojego lekarza</string>
-    <string name="week_review_title">Czy Sommelle Ci pomaga?</string>
-    <string name="week_review_text">Sommelle jest darmowa, otwarta, bez reklam i bez serwerów. Krótka opinia w Sklepie Play pomoże innym osobom z bezsennością ją znaleźć.</string>
-    <string name="week_review_yes">Wystaw opinię</string>
-    <string name="week_review_no">Nie, dziękuję</string>
     <string name="week_drowsiness_reminder">W pierwszych tygodniach senność może się nasilić. Jeśli trudno Ci utrzymać się na jawie, nie prowadź pojazdów i nie obsługuj niebezpiecznych maszyn.</string>
     <string name="week_held_title">Twoje okno nie skraca się w tym tygodniu</string>
     <string name="week_held_text">W tym tygodniu przespałeś %1$s czasu spędzonego w łóżku. Okno się nie skraca: pozostaje bez zmian.</string>

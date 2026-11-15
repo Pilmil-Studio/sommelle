@@ -74,4 +74,5 @@
     <string name="night_end_label">Кінець ночі: %1$d:00</string>
     <string name="night_hour_earlier">На годину раніше</string>
     <string name="night_hour_later">На годину пізніше</string>
+    <string name="settings_review_button">Залишити відгук у Play Store</string>
 </resources>

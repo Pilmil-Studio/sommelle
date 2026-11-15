@@ -3,7 +3,11 @@ package fr.sommelle.feature.settings
 import fr.sommelle.core.model.*
 
 import android.Manifest
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -369,6 +373,7 @@ fun SettingsContent(
     importedCount: Int? = null,
 ) {
     val uriHandler = LocalUriHandler.current
+    val context = LocalContext.current
     var confirmErase by rememberSaveable { mutableStateOf(false) }
 
     ScreenScaffold {
@@ -423,6 +428,7 @@ fun SettingsContent(
                 Text(stringResource(R.string.settings_import_result, importedCount), style = MaterialTheme.typography.bodySmall)
             }
             SommelleButton(stringResource(R.string.settings_privacy), { uriHandler.openSafely(privacyUrl) }, style = SommelleButtonStyle.Quiet)
+            SommelleButton(stringResource(R.string.settings_review_button), { openStore(context) }, style = SommelleButtonStyle.Quiet)
             SommelleButton(stringResource(R.string.settings_erase), { confirmErase = true }, style = SommelleButtonStyle.Quiet)
         }
 
@@ -628,5 +634,17 @@ private fun appVersionName(): String {
     val context = LocalContext.current
     return remember(context) {
         runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull() ?: ""
+    }
+}
+
+/** Fiche Play Store, ou la page web si le Store n'est pas installé (APK GitHub, F-Droid…). */
+private fun openStore(context: Context) {
+    val pkg = context.packageName
+    val market = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    val web = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    try {
+        context.startActivity(market)
+    } catch (_: ActivityNotFoundException) {
+        runCatching { context.startActivity(web) }
     }
 }

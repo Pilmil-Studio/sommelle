@@ -150,7 +150,8 @@ fun HomeContent(
     ) {
         Header(s)
         s.pendingSleepinessCheck?.let { date -> SleepinessCheckCard { onSleepinessAnswer(date, it) } }
-        if (s.askDaytimeImpact) DaytimeImpactCard(onDaytimeImpact)
+        var impactLater by rememberSaveable { mutableStateOf(false) }
+        if (s.askDaytimeImpact && !impactLater) DaytimeImpactCard(onDaytimeImpact, onLater = { impactLater = true })
         ProgramCard(s, onChooseWakeTime)
         if (diaryAvailable) DiarySection(s, onFillNight)
         if (diaryAvailable && showReminderPrompt) ReminderPromptCard(onEnableReminders, onDismissReminders)
@@ -483,7 +484,7 @@ private fun RecentNightsStrip(
 
 /** Ressenti de la journée, demandé au début puis en fin de programme pour le bilan avant/après. */
 @Composable
-private fun DaytimeImpactCard(onAnswer: (Int) -> Unit) {
+private fun DaytimeImpactCard(onAnswer: (Int) -> Unit, onLater: () -> Unit) {
     val labels = listOf(
         R.string.home_impact_0, R.string.home_impact_1, R.string.home_impact_2, R.string.home_impact_3, R.string.home_impact_4,
     )
@@ -507,6 +508,7 @@ private fun DaytimeImpactCard(onAnswer: (Int) -> Unit) {
                 onSelect = onAnswer,
                 columns = 1,
             )
+            SommelleButton(stringResource(R.string.home_impact_later), onLater, style = SommelleButtonStyle.Quiet)
         }
     }
 }

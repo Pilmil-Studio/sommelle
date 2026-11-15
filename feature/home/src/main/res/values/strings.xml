@@ -54,8 +54,8 @@
     <string name="home_impact_4">Enormously</string>
     <string name="home_nights_previous">Previous week</string>
     <string name="home_nights_next">Next week</string>
-    <string name="home_reminder_title">Don\'t forget your diary</string>
-    <string name="home_reminder_text">A morning reminder makes it much easier to log every night, and the program depends on it. No reminder is sent once the night is logged.</string>
+    <string name="home_reminder_title">A morning reminder, if you like.</string>
+    <string name="home_reminder_text">It can help you log your nights. No reminder is sent if the night is already logged.</string>
     <string name="home_reminder_enable">Turn on reminders</string>
     <string name="home_reminder_dismiss">No thanks</string>
     <string name="wake_drowsiness_warning">During the first weeks, sleepiness may increase. If you have trouble staying awake, do not drive and do not use dangerous machinery.</string>
@@ -65,4 +65,5 @@
     <string name="home_night_to_fill">to fill</string>
     <string name="home_night_desc_missing">%1$s, night to fill in</string>
     <string name="home_night_desc_filled">%1$s, night filled in</string>
+    <string name="home_impact_later">Later</string>
 </resources>
