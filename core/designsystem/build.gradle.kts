@@ -28,4 +28,5 @@ dependencies {
     api(libs.androidx.compose.material.icons.core)
     api(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    testImplementation(kotlin("test"))
 }

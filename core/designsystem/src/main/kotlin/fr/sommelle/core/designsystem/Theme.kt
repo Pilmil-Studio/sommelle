@@ -40,7 +40,7 @@ object SommelleColors {
     val Lavender = Color(0xFFE6E4F2)
     val LavenderOnNight = Color(0xFFD9DCEB)
     val Line = Color(0xFFE2DDD3)
-    val ChipBorder = Color(0xFFCFC8BA)
+    val ChipBorder = Color(0xFF8A8272)
     val Amber = Color(0xFFE8A33D)
     val Moon = Color(0xFFF2C27B)
 
@@ -49,8 +49,8 @@ object SommelleColors {
     val EmberSurface = Color(0xFF1E1611)
     val EmberContainer = Color(0xFF2A2019)
     val Sand = Color(0xFFC9A98A)
-    val SandMuted = Color(0xFF9C8169)
-    val EmberOutline = Color(0xFF6B5747)
+    val SandMuted = Color(0xFFA88E75)
+    val EmberOutline = Color(0xFF8F7560)
     val AmberDim = Color(0xFFB9853A)
 }
 
