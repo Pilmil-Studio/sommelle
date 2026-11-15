@@ -18,6 +18,7 @@ rootProject.name = "sommelle"
 includeBuild("pilmil-core")
 
 include(":app")
+include(":shared")
 
 // Socle pur Kotlin (sans dépendance Android), testable et relisible indépendamment de l'interface.
 include(":core:model")
