@@ -46,6 +46,7 @@ import fr.sommelle.core.designsystem.SommelleButton
 import fr.sommelle.core.designsystem.SommelleButtonStyle
 import fr.sommelle.core.designsystem.SommelleColors
 import fr.sommelle.core.designsystem.SommelleIcons
+import fr.sommelle.core.presentation.EfficiencyBand
 import fr.sommelle.core.presentation.ReportTone
 import fr.sommelle.core.presentation.WeekBar
 import fr.sommelle.core.presentation.WeeklyReport
@@ -74,7 +75,19 @@ fun WeekContent(
         Text(stringResource(R.string.week_label), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         val (title, text) = headline(s)
         ScreenTitle(title)
+        // Les mots d'abord, le pourcentage ensuite, et une phrase qui dédramatise la variabilité.
+        s.report?.takeIf { s.restriction && it.efficiency != null }?.let { r ->
+            val summary = when (r.efficiencyBand) {
+                EfficiencyBand.HIGH -> R.string.week_summary_high
+                EfficiencyBand.MID -> R.string.week_summary_mid
+                else -> R.string.week_summary_low
+            }
+            Text(stringResource(summary, r.efficiency.orEmpty()), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
+        }
         Text(text, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
+        if (s.restriction && s.report?.efficiency != null) {
+            Text(stringResource(R.string.week_variability), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
 
         if (s.report?.sleepinessReported == true) {
             Text(

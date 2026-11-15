@@ -2,15 +2,15 @@
 <resources>
     <string name="week_label">Wochenbilanz</string>
     <string name="week_longer_title">Deine Nächte sind erholsamer</string>
-    <string name="week_longer_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster verlängert sich um %2$s.</string>
+    <string name="week_longer_text">Dein Fenster verlängert sich um %2$s.</string>
     <string name="week_shorter_title">Dein Schlaffenster verkürzt sich leicht</string>
-    <string name="week_shorter_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster verkürzt sich um %2$s: Das hilft, den Schlaf zu festigen.</string>
+    <string name="week_shorter_text">Dein Fenster verkürzt sich um %2$s: Das hilft, den Schlaf zu festigen.</string>
     <string name="week_steady_title">Du bist auf dem richtigen Weg</string>
-    <string name="week_steady_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster bleibt unverändert.</string>
+    <string name="week_steady_text">Dein Fenster bleibt unverändert.</string>
     <string name="week_floor_title">Dein Fenster bleibt stabil</string>
-    <string name="week_floor_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster hat bereits das Sicherheitsminimum erreicht und verkürzt sich nicht weiter.</string>
+    <string name="week_floor_text">Dein Fenster hat bereits das Sicherheitsminimum erreicht und verkürzt sich nicht weiter.</string>
     <string name="week_max_title">Dein Schlaf hat sich gut stabilisiert</string>
-    <string name="week_max_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster hat die maximale Dauer erreicht.</string>
+    <string name="week_max_text">Dein Fenster hat die maximale Dauer erreicht.</string>
     <string name="week_missing_title">Einige Nächte fehlen</string>
     <string name="week_missing_text">Um dein Fenster anzupassen, müssen mindestens %2$d von 7 Nächten erfasst sein. Du hast %1$d eingetragen: Dein Fenster bleibt gleich.</string>
     <string name="week_first_title">Dein erstes Schlaffenster</string>
@@ -37,6 +37,10 @@
     <string name="week_report_button">Bericht für meine Ärztin / meinen Arzt</string>
     <string name="week_drowsiness_reminder">In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>
     <string name="week_held_title">Dein Fenster wird diese Woche nicht verkürzt</string>
-    <string name="week_held_text">Diese Woche hast du %1$s deiner Zeit im Bett geschlafen. Dein Fenster wird nicht verkürzt: Es bleibt gleich.</string>
+    <string name="week_held_text">Dein Fenster wird nicht verkürzt: Es bleibt gleich.</string>
     <string name="week_sleepiness_doctor">Sprich mit deinem Arzt, bevor du die Bettzeitverkürzung fortsetzt.</string>
+    <string name="week_summary_high">Diese Woche hast du fast die gesamte Zeit im Bett geschlafen (%1$s).</string>
+    <string name="week_summary_mid">Diese Woche hast du einen großen Teil der Zeit im Bett geschlafen (%1$s).</string>
+    <string name="week_summary_low">Diese Woche hast du nur einen Teil der Zeit im Bett geschlafen (%1$s).</string>
+    <string name="week_variability">Der Schlaf schwankt von Nacht zu Nacht stark, das ist normal: Nur der Trend der Woche zählt.</string>
 </resources>

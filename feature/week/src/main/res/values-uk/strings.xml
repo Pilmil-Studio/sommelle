@@ -2,15 +2,15 @@
 <resources>
     <string name="week_label">Підсумок тижня</string>
     <string name="week_longer_title">Ваші ночі стали спокійнішими</string>
-    <string name="week_longer_text">Цього тижня ви спали %1$s часу, проведеного в ліжку. Ваше вікно сну збільшується на %2$s.</string>
+    <string name="week_longer_text">Ваше вікно сну збільшується на %2$s.</string>
     <string name="week_shorter_title">Ваше вікно сну трохи скорочується</string>
-    <string name="week_shorter_text">Цього тижня ви спали %1$s часу, проведеного в ліжку. Ваше вікно скорочується на %2$s: це допомагає зміцнити сон.</string>
+    <string name="week_shorter_text">Ваше вікно скорочується на %2$s: це допомагає зміцнити сон.</string>
     <string name="week_steady_title">Ви на правильному шляху</string>
-    <string name="week_steady_text">Цього тижня ви спали %1$s часу в ліжку. Ваше вікно залишається незмінним.</string>
+    <string name="week_steady_text">Ваше вікно залишається незмінним.</string>
     <string name="week_floor_title">Ваше вікно залишається стабільним</string>
-    <string name="week_floor_text">Цього тижня ви спали %1$s часу в ліжку. Ваше вікно досягло безпечного мінімуму і більше не скорочуватиметься.</string>
+    <string name="week_floor_text">Ваше вікно досягло безпечного мінімуму і більше не скорочуватиметься.</string>
     <string name="week_max_title">Ваш сон добре відновився</string>
-    <string name="week_max_text">Цього тижня ви спали %1$s часу в ліжку. Ваше вікно досягло максимальної тривалості.</string>
+    <string name="week_max_text">Ваше вікно досягло максимальної тривалості.</string>
     <string name="week_missing_title">Бракує кількох ночей</string>
     <string name="week_missing_text">Для налаштування вікна потрібно щонайменше %2$d заповнених ночей із 7. Заповнено %1$d: ваше вікно залишається незмінним.</string>
     <string name="week_first_title">Ваше перше вікно сну</string>
@@ -37,6 +37,10 @@
     <string name="week_report_button">Звіт для мого лікаря</string>
     <string name="week_drowsiness_reminder">У перші тижні сонливість може посилитися. Якщо вам важко залишатися бадьорим, не керуйте транспортом і не працюйте з небезпечними механізмами.</string>
     <string name="week_held_title">Ваше вікно цього тижня не скорочується</string>
-    <string name="week_held_text">Цього тижня ви спали %1$s часу, проведеного в ліжку. Вікно не скорочується: воно залишається тим самим.</string>
+    <string name="week_held_text">Вікно не скорочується: воно залишається тим самим.</string>
     <string name="week_sleepiness_doctor">Поговоріть із лікарем, перш ніж продовжувати обмеження.</string>
+    <string name="week_summary_high">Цього тижня ви проспали майже весь час, проведений у ліжку (%1$s).</string>
+    <string name="week_summary_mid">Цього тижня ви проспали більшу частину часу, проведеного в ліжку (%1$s).</string>
+    <string name="week_summary_low">Цього тижня ви проспали лише частину часу, проведеного в ліжку (%1$s).</string>
+    <string name="week_variability">Сон сильно змінюється від ночі до ночі, і це нормально: важить лише тенденція за тиждень.</string>
 </resources>

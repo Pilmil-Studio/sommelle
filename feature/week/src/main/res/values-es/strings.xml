@@ -2,15 +2,15 @@
 <resources>
     <string name="week_label">Balance de la semana</string>
     <string name="week_longer_title">Tus noches son más completas</string>
-    <string name="week_longer_text">Esta semana has dormido el %1$s del tiempo en la cama. Tu ventana se amplía en %2$s.</string>
+    <string name="week_longer_text">Tu ventana se amplía en %2$s.</string>
     <string name="week_shorter_title">Tu ventana se reduce un poco</string>
-    <string name="week_shorter_text">Esta semana has dormido el %1$s del tiempo en la cama. Tu ventana se reduce en %2$s: esto ayuda a consolidar el sueño.</string>
+    <string name="week_shorter_text">Tu ventana se reduce en %2$s: esto ayuda a consolidar el sueño.</string>
     <string name="week_steady_title">Vas por buen camino</string>
-    <string name="week_steady_text">Esta semana has dormido el %1$s del tiempo en la cama. Tu ventana se mantiene igual.</string>
+    <string name="week_steady_text">Tu ventana se mantiene igual.</string>
     <string name="week_floor_title">Tu ventana se mantiene estable</string>
-    <string name="week_floor_text">Esta semana has dormido el %1$s del tiempo en la cama. Tu ventana ya está en el límite mínimo de seguridad: no bajará más.</string>
+    <string name="week_floor_text">Tu ventana ya está en el límite mínimo de seguridad: no bajará más.</string>
     <string name="week_max_title">Tu sueño se ha restablecido bien</string>
-    <string name="week_max_text">Esta semana has dormido el %1$s del tiempo en la cama. Tu ventana ha alcanzado su duración máxima.</string>
+    <string name="week_max_text">Tu ventana ha alcanzado su duración máxima.</string>
     <string name="week_missing_title">Faltan algunas noches</string>
     <string name="week_missing_text">Para ajustar tu ventana se necesitan al menos %2$d noches de 7. Has rellenado %1$d: tu ventana no cambia.</string>
     <string name="week_first_title">Tu primera ventana</string>
@@ -37,6 +37,10 @@
     <string name="week_report_button">Resumen para mi médico</string>
     <string name="week_drowsiness_reminder">Durante las primeras semanas, la somnolencia puede aumentar. Si te cuesta mantenerte despierto, no conduzcas ni uses maquinaria peligrosa.</string>
     <string name="week_held_title">Tu ventana no se reduce esta semana</string>
-    <string name="week_held_text">Esta semana has dormido el %1$s del tiempo en la cama. Tu ventana no se reduce: se mantiene igual.</string>
+    <string name="week_held_text">Tu ventana no se reduce: se mantiene igual.</string>
     <string name="week_sleepiness_doctor">Habla con tu médico antes de seguir con la restricción.</string>
+    <string name="week_summary_high">Esta semana has dormido casi todo el tiempo que has pasado en la cama (%1$s).</string>
+    <string name="week_summary_mid">Esta semana has dormido buena parte del tiempo que has pasado en la cama (%1$s).</string>
+    <string name="week_summary_low">Esta semana has dormido solo una parte del tiempo que has pasado en la cama (%1$s).</string>
+    <string name="week_variability">El sueño varía mucho de una noche a otra, y es normal: solo cuenta la tendencia de la semana.</string>
 </resources>

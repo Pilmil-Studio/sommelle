@@ -3,15 +3,15 @@
     <string name="week_label">Bilan de la semaine</string>
 
     <string name="week_longer_title">Vos nuits sont plus pleines</string>
-    <string name="week_longer_text">Cette semaine, vous avez dormi %1$s du temps passé au lit. Votre fenêtre s\'allonge donc de %2$s.</string>
+    <string name="week_longer_text">Votre fenêtre s\'allonge donc de %2$s.</string>
     <string name="week_shorter_title">Votre fenêtre se resserre un peu</string>
-    <string name="week_shorter_text">Cette semaine, vous avez dormi %1$s du temps passé au lit. Votre fenêtre raccourcit de %2$s : c\'est ce qui aide le sommeil à se consolider.</string>
+    <string name="week_shorter_text">Votre fenêtre raccourcit de %2$s : c\'est ce qui aide le sommeil à se consolider.</string>
     <string name="week_steady_title">Vous êtes sur la bonne voie</string>
-    <string name="week_steady_text">Cette semaine, vous avez dormi %1$s du temps passé au lit. Votre fenêtre reste la même.</string>
+    <string name="week_steady_text">Votre fenêtre reste la même.</string>
     <string name="week_floor_title">Votre fenêtre reste stable</string>
-    <string name="week_floor_text">Cette semaine, vous avez dormi %1$s du temps passé au lit. Votre fenêtre est déjà au plus court prévu : elle ne descend pas plus bas.</string>
+    <string name="week_floor_text">Votre fenêtre est déjà au plus court prévu : elle ne descend pas plus bas.</string>
     <string name="week_max_title">Votre sommeil s\'est bien rétabli</string>
-    <string name="week_max_text">Cette semaine, vous avez dormi %1$s du temps passé au lit. Votre fenêtre a atteint sa durée maximale.</string>
+    <string name="week_max_text">Votre fenêtre a atteint sa durée maximale.</string>
     <string name="week_missing_title">Il manque quelques nuits</string>
     <string name="week_missing_text">Pour ajuster votre fenêtre, il faut au moins %2$d nuits remplies sur 7. Vous en avez rempli %1$d : votre fenêtre reste la même.</string>
 
@@ -44,6 +44,10 @@
     <string name="week_report_button">Résumé pour mon médecin</string>
     <string name="week_drowsiness_reminder">Pendant les premières semaines, la somnolence peut augmenter. Si vous avez du mal à rester éveillé·e, ne conduisez pas et n\'utilisez pas de machine dangereuse.</string>
     <string name="week_held_title">Votre fenêtre ne raccourcit pas cette semaine</string>
-    <string name="week_held_text">Cette semaine, vous avez dormi %1$s du temps passé au lit. Votre fenêtre ne raccourcit pas : elle reste la même.</string>
+    <string name="week_held_text">Votre fenêtre ne raccourcit pas : elle reste la même.</string>
     <string name="week_sleepiness_doctor">Parlez-en à votre médecin avant de poursuivre la restriction.</string>
+    <string name="week_summary_high">Cette semaine, vous avez dormi presque tout le temps passé au lit (%1$s).</string>
+    <string name="week_summary_mid">Cette semaine, vous avez dormi une grande partie du temps passé au lit (%1$s).</string>
+    <string name="week_summary_low">Cette semaine, vous avez dormi une partie seulement du temps passé au lit (%1$s).</string>
+    <string name="week_variability">D\'une nuit à l\'autre, le sommeil varie beaucoup, c\'est normal : seule la tendance sur la semaine compte.</string>
 </resources>

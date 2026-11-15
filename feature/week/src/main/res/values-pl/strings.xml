@@ -2,15 +2,15 @@
 <resources>
     <string name="week_label">Podsumowanie tygodnia</string>
     <string name="week_longer_title">Twoje noce są pełniejsze</string>
-    <string name="week_longer_text">W tym tygodniu przespałeś %1$s czasu spędzonego w łóżku. Twoje okno wydłuża się o %2$s.</string>
+    <string name="week_longer_text">Twoje okno wydłuża się o %2$s.</string>
     <string name="week_shorter_title">Twoje okno snu nieco się skraca</string>
-    <string name="week_shorter_text">W tym tygodniu przespałeś %1$s czasu spędzonego w łóżku. Twoje okno skraca się o %2$s: to pomaga skonsolidować sen.</string>
+    <string name="week_shorter_text">Twoje okno skraca się o %2$s: to pomaga skonsolidować sen.</string>
     <string name="week_steady_title">Jesteś na dobrej drodze</string>
-    <string name="week_steady_text">W tym tygodniu przespałeś %1$s czasu spędzonego w łóżku. Twoje okno pozostaje bez zmian.</string>
+    <string name="week_steady_text">Twoje okno pozostaje bez zmian.</string>
     <string name="week_floor_title">Twoje okno pozostaje stabilne</string>
-    <string name="week_floor_text">W tym tygodniu przespałeś %1$s czasu spędzonego w łóżku. Twoje okno osiągnęło już dolny limit bezpieczeństwa: nie skróci się bardziej.</string>
+    <string name="week_floor_text">Twoje okno osiągnęło już dolny limit bezpieczeństwa: nie skróci się bardziej.</string>
     <string name="week_max_title">Twój sen wyraźnie się poprawił</string>
-    <string name="week_max_text">W tym tygodniu przespałeś %1$s czasu w łóżku. Twoje okno osiągnęło maksymalną przewidzianą długość.</string>
+    <string name="week_max_text">Twoje okno osiągnęło maksymalną przewidzianą długość.</string>
     <string name="week_missing_title">Brakuje kilku nocy</string>
     <string name="week_missing_text">Aby dostosować okno, potrzeba co najmniej %2$d zapisanych nocy z 7. Zapisano %1$d: Twoje okno pozostaje bez zmian.</string>
     <string name="week_first_title">Twoje pierwsze okno snu</string>
@@ -37,6 +37,10 @@
     <string name="week_report_button">Raport dla mojego lekarza</string>
     <string name="week_drowsiness_reminder">W pierwszych tygodniach senność może się nasilić. Jeśli trudno Ci utrzymać się na jawie, nie prowadź pojazdów i nie obsługuj niebezpiecznych maszyn.</string>
     <string name="week_held_title">Twoje okno nie skraca się w tym tygodniu</string>
-    <string name="week_held_text">W tym tygodniu przespałeś %1$s czasu spędzonego w łóżku. Okno się nie skraca: pozostaje bez zmian.</string>
+    <string name="week_held_text">Okno się nie skraca: pozostaje bez zmian.</string>
     <string name="week_sleepiness_doctor">Porozmawiaj z lekarzem, zanim będziesz kontynuować ograniczanie czasu w łóżku.</string>
+    <string name="week_summary_high">W tym tygodniu przespałeś(-aś) prawie cały czas spędzony w łóżku (%1$s).</string>
+    <string name="week_summary_mid">W tym tygodniu przespałeś(-aś) dużą część czasu spędzonego w łóżku (%1$s).</string>
+    <string name="week_summary_low">W tym tygodniu przespałeś(-aś) tylko część czasu spędzonego w łóżku (%1$s).</string>
+    <string name="week_variability">Sen bardzo się zmienia z nocy na noc i to normalne: liczy się tylko trend z całego tygodnia.</string>
 </resources>

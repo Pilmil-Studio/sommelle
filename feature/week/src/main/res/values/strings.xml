@@ -3,15 +3,15 @@
     <string name="week_label">Weekly review</string>
 
     <string name="week_longer_title">Your nights are fuller</string>
-    <string name="week_longer_text">This week, you slept %1$s of your time in bed. So your window grows by %2$s.</string>
+    <string name="week_longer_text">So your window grows by %2$s.</string>
     <string name="week_shorter_title">Your window narrows a little</string>
-    <string name="week_shorter_text">This week, you slept %1$s of your time in bed. Your window shrinks by %2$s: this is what helps sleep consolidate.</string>
+    <string name="week_shorter_text">Your window shrinks by %2$s: this is what helps sleep consolidate.</string>
     <string name="week_steady_title">You are on the right track</string>
-    <string name="week_steady_text">This week, you slept %1$s of your time in bed. Your window stays the same.</string>
+    <string name="week_steady_text">Your window stays the same.</string>
     <string name="week_floor_title">Your window stays steady</string>
-    <string name="week_floor_text">This week, you slept %1$s of your time in bed. Your window is already at its shortest planned length: it will not go any lower.</string>
+    <string name="week_floor_text">Your window is already at its shortest planned length: it will not go any lower.</string>
     <string name="week_max_title">Your sleep has recovered well</string>
-    <string name="week_max_text">This week, you slept %1$s of your time in bed. Your window has reached its maximum length.</string>
+    <string name="week_max_text">Your window has reached its maximum length.</string>
     <string name="week_missing_title">A few nights are missing</string>
     <string name="week_missing_text">To adjust your window, at least %2$d of the 7 nights need to be filled in. You filled in %1$d: your window stays the same.</string>
 
@@ -44,6 +44,10 @@
     <string name="week_report_button">Summary for my doctor</string>
     <string name="week_drowsiness_reminder">During the first weeks, sleepiness may increase. If you have trouble staying awake, do not drive and do not use dangerous machinery.</string>
     <string name="week_held_title">Your window does not shrink this week</string>
-    <string name="week_held_text">This week, you slept %1$s of your time in bed. Your window does not shrink: it stays the same.</string>
+    <string name="week_held_text">Your window does not shrink: it stays the same.</string>
     <string name="week_sleepiness_doctor">Talk to your doctor before continuing the restriction.</string>
+    <string name="week_summary_high">This week, you slept almost all of your time in bed (%1$s).</string>
+    <string name="week_summary_mid">This week, you slept a large part of your time in bed (%1$s).</string>
+    <string name="week_summary_low">This week, you slept only part of your time in bed (%1$s).</string>
+    <string name="week_variability">Sleep varies a lot from one night to the next, and that is normal: only the weekly trend matters.</string>
 </resources>

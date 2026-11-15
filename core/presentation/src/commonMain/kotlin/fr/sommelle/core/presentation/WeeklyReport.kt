@@ -11,6 +11,19 @@ import fr.sommelle.core.protocol.WindowDecision
 import kotlin.time.Duration
 import kotlinx.datetime.LocalDate
 
+/** Part du temps au lit passée à dormir, en mots : l'interface la dit avant le pourcentage. */
+enum class EfficiencyBand {
+    HIGH, MID, LOW;
+
+    companion object {
+        fun of(ratio: Double) = when {
+            ratio >= 0.85 -> HIGH
+            ratio >= 0.75 -> MID
+            else -> LOW
+        }
+    }
+}
+
 /** Ton du bilan hebdomadaire. Jamais d'échec : une semaine difficile est une information. */
 enum class ReportTone { LONGER, SHORTER, STEADY, AT_FLOOR, AT_MAXIMUM, MISSING_NIGHTS, REDUCTION_HELD }
 
@@ -30,6 +43,7 @@ data class WeeklyReport(
     val requiredNights: Int,
     /** Somnolence en journée déclarée cette semaine : l'interface invite à en parler au médecin. */
     val sleepinessReported: Boolean = false,
+    val efficiencyBand: EfficiencyBand? = null,
 ) {
     companion object {
         fun of(
@@ -59,6 +73,7 @@ data class WeeklyReport(
                 loggedNights = week?.loggedNights ?: 0,
                 requiredNights = config.minimumLoggedNightsPerWeek,
                 sleepinessReported = sleepinessReported,
+                efficiencyBand = week?.takeIf { tone != ReportTone.MISSING_NIGHTS }?.let { EfficiencyBand.of(it.sleepEfficiency) },
             )
         }
     }
