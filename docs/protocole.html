@@ -172,10 +172,10 @@
           <tr><td>Durée d'observation avant toute restriction</td><td>7 jours</td></tr>
           <tr><td>Nuits renseignées nécessaires</td><td>Au moins 5 sur 7, sinon la fenêtre est maintenue et le patient en est informé</td></tr>
           <tr><td>Fenêtre initiale</td><td>Temps de sommeil moyen de la semaine d'observation, arrondi au quart d'heure supérieur</td></tr>
-          <tr><td>Durée minimale</td><td>6 h, la même pour tous les profils (choix de conception). Le Réseau Morphée (2019) donne 6 h comme limite basse du temps au lit ; d'autres protocoles publiés acceptent 5 h (Spielman et al., 2011 ; RACGP), et les revues relèvent des minimums de 4 h 30, 5 h ou 6 h selon les protocoles (Riemann et al., 2023). Une fenêtre déjà en cours sous 6 h est relevée à 6 h au calcul suivant</td></tr>
-          <tr><td>Durée maximale</td><td>9 h (choix de conception : nous n'avons trouvé aucune source publiée pour ce plafond)</td></tr>
+          <tr><td>Durée minimale</td><td>6 h, la même pour tous les profils (choix de conception). Le Réseau Morphée (2019) donne 6 h comme limite basse du temps au lit ; d'autres protocoles publiés acceptent 5 h (Spielman et al., 2011 ; RACGP), et les revues relèvent des minimums de 4 h 30, 5 h ou 6 h selon les protocoles (Riemann et al., 2023). Une fenêtre déjà en cours sous 6 h est relevée à 6 h au calcul suivant. Ce plancher est le haut de la fourchette publiée : c'est le plus prudent des minimums relevés</td></tr>
+          <tr><td>Durée maximale</td><td>9 h (choix de conception : nous n'avons trouvé aucune source publiée pour ce plafond). Les mêmes bornes, 6 h et 9 h, s'appliquent à tous les profils : c'est aussi un choix de conception</td></tr>
           <tr><td>Point d'ancrage</td><td>Heure de lever fixe, choisie par le patient, 7 jours sur 7 ; l'heure de coucher en découle</td></tr>
-          <tr><td>Ajustement chaque semaine</td><td>Efficacité ≥ 85 % : +15 min ; &lt; 80 % : −15 min (sans passer sous le minimum) ; entre les deux : inchangée. Si le patient déclare s'être endormi sans le vouloir en journée, ou avoir failli, la fenêtre n'est pas réduite cette semaine-là (l'élargissement reste permis) et l'appli l'invite à en parler à son médecin. Pour comparaison, le manuel de Spielman et al. (2011) allonge à partir de 90 % et raccourcit sous 85 %, et le Réseau Morphée (2019) attend un index supérieur à 85 % avant d'avancer le coucher : les seuils de Sommelle sont donc moins restrictifs que ceux du manuel</td></tr>
+          <tr><td>Ajustement chaque semaine</td><td>Efficacité ≥ 85 % : +15 min ; &lt; 80 % : −15 min (sans passer sous le minimum) ; entre les deux : inchangée. Si le patient déclare s'être endormi sans le vouloir en journée, ou avoir failli, la fenêtre n'est pas réduite cette semaine-là (l'élargissement reste permis) et l'appli l'invite à en parler à son médecin. Pour comparaison, le manuel de Spielman et al. (2011) allonge à partir de 90 % et raccourcit sous 85 %, et le Réseau Morphée (2019) attend un index supérieur à 85 % avant d'avancer le coucher : les seuils de Sommelle (85 % et 80 %) sont donc plus souples que ceux du manuel (90 % et 85 %), tout en restant dans les fourchettes publiées. C'est un choix de prudence pour une application utilisée sans thérapeute : on allonge plus tôt et on raccourcit moins souvent</td></tr>
           <tr><td>À partir de 65 ans</td><td>Seuils abaissés de 5 points (80 % et 75 %). Le manuel de Spielman et al. (2011) abaisse lui aussi les seuils de 5 points chez les personnes âgées (85 % et 80 %) ; l'âge de 65 ans est un choix de conception</td></tr>
         </tbody>
       </table>
@@ -334,6 +334,10 @@
         <tbody>
           <tr><td>Ronflements forts avec pauses respiratoires constatées, ou somnolence marquée dans la journée</td><td>Pas de restriction ; invitation à consulter (apnée du sommeil possible)</td></tr>
           <tr><td>Trouble bipolaire, épilepsie</td><td>Pas de restriction ; invitation à en parler au médecin traitant</td></tr>
+          <tr><td>Somnambulisme, terreurs nocturnes ou comportements pendant le sommeil</td><td>Pas de restriction ; invitation à en parler à un médecin avant d'envisager de réduire le temps au lit</td></tr>
+          <tr><td>Dépression ou autre trouble de l'humeur en cours</td><td>Pas de restriction ; invitation à en parler à un médecin avant d'envisager de réduire le temps au lit</td></tr>
+          <tr><td>Risque de chute, ou somnifère ou sédatif pris le soir</td><td>Pas de restriction ; invitation à en parler à un médecin avant d'envisager de réduire le temps au lit</td></tr>
+          <tr><td>Maladie instable ou que le manque de sommeil peut aggraver (migraines sévères, maladie cardiaque, douleurs chroniques mal équilibrées)</td><td>Pas de restriction ; invitation à en parler à un médecin avant d'envisager de réduire le temps au lit</td></tr>
           <tr><td>Grossesse</td><td>Pas de restriction</td></tr>
           <tr><td>Conduite professionnelle, machines dangereuses, métier de sécurité</td><td>Pas de restriction par défaut ; message : la restriction peut augmenter la somnolence, à discuter avec le médecin</td></tr>
           <tr><td>Horaires très tardifs avec un sommeil normal une fois endormi</td><td>Pas de restriction ; signalement d'un possible retard de phase et invitation à consulter</td></tr>
@@ -341,6 +345,8 @@
           <tr><td>Détresse exprimée</td><td>Mise en avant du 3114 (prévention du suicide), présent en permanence dans l'application ; parcours sans restriction du temps au lit et invitation à consulter</td></tr>
         </tbody>
       </table>
+
+      <p>Dans tous ces cas, l'agenda du sommeil, le contrôle du stimulus, les conseils et les exercices restent accessibles : seule la réduction du temps passé au lit n'est pas proposée. Les réponses relèvent de la déclaration de la personne et ne constituent pas un diagnostic.</p>
 
       <h2 id="suivi">8. Suivi : bilan avant/après et résumé pour le médecin</h2>
       <h3>Bilan avant/après</h3>
@@ -366,7 +372,7 @@
       <h2 id="ecarts">Écarts et limites</h2>
       <ul>
         <li>La restriction du temps au lit est proposée sans suivi par un clinicien, alors que les recommandations la décrivent avec une évaluation initiale de l'adéquation et un suivi régulier de la somnolence (Riemann et al., 2023).</li>
-        <li>Certaines précautions citées par des sources ouvertes ne sont pas posées par le questionnaire d'entrée : les parasomnies (Spielman et al., 2011), la dépression ou les troubles de l'humeur autres que le trouble bipolaire (Réseau Morphée, 2019) et les affections que le manque de sommeil peut aggraver (Riemann et al., 2023). À l'inverse, la grossesse, le travail posté et le retard de phase sont écartés par prudence : nous n'avons pas trouvé de recommandation ouverte qui les liste pour la restriction.</li>
+        <li>Le questionnaire d'entrée pose aussi les précautions citées par des sources ouvertes : les parasomnies (Spielman et al., 2011), la dépression ou les troubles de l'humeur autres que le trouble bipolaire (Réseau Morphée, 2019), les affections que le manque de sommeil peut aggraver (Riemann et al., 2023) et le risque de chute ou la prise de sédatifs le soir (Edinger et al., 2021). Ces questions sont déclaratives et ne remplacent pas une évaluation médicale. À l'inverse, la grossesse, le travail posté et le retard de phase sont écartés par prudence : nous n'avons pas trouvé de recommandation ouverte qui les liste pour la restriction.</li>
         <li>Les contenus ont été relus face aux référentiels publiés (European Insomnia Guideline 2023, AASM 2021, HAS 2024, Réseau Morphée 2019), mais n'ont pas encore été validés par un médecin du sommeil.</li>
         <li>Sommelle n'a pas été évaluée cliniquement.</li>
       </ul>
