@@ -16,7 +16,7 @@
   "langs": {
     "fr": {
       "tagline": "L'insomnie, méthode TCC-I",
-      "social_line": "Accompagnement à l'insomnie fondé sur la TCC-I. Gratuit, sans compte, sans collecte.",
+      "social_line": "Notez vos nuits en quelques gestes, Sommelle ajuste vos horaires chaque semaine. Gratuit, sans compte, sans collecte.",
       "chips": [
         "Sans compte",
         "Hors ligne"
@@ -40,7 +40,7 @@
           "layout": "duo",
           "tilt": 3,
           "title": "L'agenda du sommeil, sans clavier",
-          "subtitle": "Il se remplit chaque matin en une vingtaine de secondes.",
+          "subtitle": "Il se remplit chaque matin en quelques gestes.",
           "chips": [],
           "second": "docs/marketing/captures/fr/agenda_estimation.png"
         },
@@ -90,7 +90,7 @@
     },
     "en": {
       "tagline": "Insomnia support, CBT-I method",
-      "social_line": "Insomnia support based on CBT-I. Free, no account, no data collection.",
+      "social_line": "Log your nights in a few taps, Sommelle adjusts your schedule every week. Free, no account, no data collection.",
       "chips": [
         "No account",
         "Offline"
@@ -114,7 +114,7 @@
           "layout": "duo",
           "tilt": 3,
           "title": "A sleep diary, no keyboard",
-          "subtitle": "Filled in each morning in about twenty seconds.",
+          "subtitle": "Filled in each morning in a few taps.",
           "chips": [],
           "second": "docs/marketing/captures/en/agenda_estimation.png"
         },
