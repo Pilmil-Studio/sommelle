@@ -1,16 +1,19 @@
-Sommelle is a support tool inspired by cognitive behavioral therapy for insomnia (CBT-I), which the European and American guidelines recommend as first-line care. Sommelle has not been clinically evaluated and does not replace a doctor.
+Sommelle is a support tool, not a medical device. It is designed for adults. It is inspired by cognitive behavioral therapy for insomnia (CBT-I), which the European and American guidelines recommend as first-line care. Sommelle has not been clinically evaluated and does not replace a doctor.
 
 Fully open source (MPL-2.0), free, ad-free, no subscription, no account, and 100% offline: it does not even request the Internet permission. Your sleep data never leaves your phone.
 
 A 6-WEEK PROGRAM
-• Starting questions: the app checks whether reducing your time in bed suits your situation (possible sleep apnea, bipolar disorder, epilepsy, pregnancy, jobs that demand constant alertness, distress) and points you to a suitable path or to a doctor.
-• One week of observation: a sleep diary filled in within twenty seconds each morning, without typing, to find your starting point (time in bed, time asleep, share of bed time spent sleeping).
+• Starting questions: the app checks whether reducing your time in bed suits your situation (possible sleep apnea, bipolar disorder, epilepsy, pregnancy, jobs that demand constant alertness, night or shift work, distress) and points you to a suitable path or to a doctor.
+• One week of observation: a sleep diary filled in each morning, without typing, to find your starting point (time in bed, time asleep, share of bed time spent sleeping).
 • A transition step: your starting figures and an explanation of the method before you begin.
 • Weeks 1 to 6: time in bed reduced to what you actually sleep (never under 6 h), a fixed rise time, tips for nights awake, and exercises to calm the thoughts that keep insomnia going. Each week, your window is adjusted from your sleep diary.
 • A review at the end: your first nights compared with your latest nights, based on your sleep diary.
 
 GOOD TO KNOW
 • During the first weeks, sleepiness may increase. If you struggle to stay awake, do not drive and do not use dangerous machinery.
+• Bipolar disorder: reducing time in bed can destabilize mood. Epilepsy: lack of sleep can make seizures more likely. In these cases, talk about your sleep with the doctor who follows you.
+• If your activity demands constant alertness, restricting time in bed can increase sleepiness: talk to your doctor before considering it.
+• Night or shift work: the standard program is not designed for this rhythm.
 • If you take a sleeping pill or an anti-anxiety medicine, do not stop it or change the dose without your doctor's advice.
 
 TOOLS
