@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
-Application d'accompagnement à l'insomnie (Android + socle KMP/iOS en cours de portage) fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie), le traitement recommandé en premier par les recommandations européennes et américaines. Gratuite, disponible en 6 langues (`fr`, `en`, `es`, `de`, `pl`, `uk`), sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
+Notez vos nuits en quelques gestes chaque matin : Sommelle ajuste chaque semaine vos heures de coucher et de lever d'après votre sommeil réel, sur un programme de six semaines. L'application (Android, socle KMP/iOS en cours de portage) s'inspire de la TCC-I (thérapie cognitivo-comportementale de l'insomnie), recommandée en première intention par les recommandations européennes et américaines. Gratuite, disponible en 6 langues (`fr`, `en`, `es`, `de`, `pl`, `uk`), sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
 
 Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et elle ne remplace pas un avis médical.
 

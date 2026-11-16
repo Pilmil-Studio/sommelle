@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
-An insomnia support app (Android + KMP/iOS port in progress) based on CBT-I (cognitive behavioral therapy for insomnia), the first-line treatment recommended by European and American guidelines. Free, available in 6 languages (`fr`, `en`, `es`, `de`, `pl`, `uk`), no account and no ads. No data leaves the phone.
+Log your nights in a few taps each morning: Sommelle adjusts your bedtime and rise time every week based on how you actually sleep, over a six-week program. The app (Android, KMP/iOS port in progress) is inspired by CBT-I (cognitive behavioral therapy for insomnia), the first-line treatment recommended by European and American guidelines. Free, available in 6 languages (`fr`, `en`, `es`, `de`, `pl`, `uk`), no account and no ads. No data leaves the phone.
 
 Sommelle is a self-help and education tool. It is not a medical device and does not replace medical advice.
 
