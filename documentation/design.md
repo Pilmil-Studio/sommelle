@@ -10,7 +10,7 @@ L'insomnie touche tous les âges et tous les milieux, mais pas de la même faço
 
 | Profil | Particularités | Conséquences dans l'appli |
 |---|---|---|
-| Actifs de 25 à 55 ans | Tranche la plus touchée, charge mentale, peu de temps | Agenda rempli en 20 secondes, rappels courts, ton direct |
+| Actifs de 25 à 55 ans | Tranche la plus touchée, charge mentale, peu de temps | Agenda rempli en quelques instants, rappels courts, ton direct |
 | Femmes (surreprésentées) | Transitions hormonales, charge familiale | Textes non genrés |
 | 65 ans et plus | Sommeil naturellement plus fragmenté, aisance numérique variable | Seuils d'efficacité abaissés, texte large par défaut, aucun jargon |
 | Étudiants, jeunes adultes | Horaires irréguliers, écrans au lit | Insistance sur l'heure de lever fixe |
@@ -64,7 +64,7 @@ En France, 16 % des 15 ans et plus étaient en situation d'illectronisme en 2019
 
 ---
 
-## 5. L'agenda en 20 secondes
+## 5. L'agenda en quelques instants
 
 C'est l'écran le plus important : s'il est pénible, les gens abandonnent, et le programme s'arrête.
 

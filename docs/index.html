@@ -65,7 +65,7 @@
           <div class="card">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/></svg>
             <h3>Pensée pour tout le monde</h3>
-            <p>Grands caractères, gros boutons, pas de jargon, et un agenda qui se remplit en vingt secondes, même mal réveillé.</p>
+            <p>Grands caractères, gros boutons, pas de jargon, et un agenda qui se remplit en quelques instants, même mal réveillé.</p>
           </div>
           <div class="card">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 118 0v4"/></svg>
@@ -123,7 +123,7 @@
         <h2>Questions fréquentes</h2>
         <details><summary>Est-ce vraiment gratuit ?</summary><p>Oui, entièrement : pas d'abonnement, pas d'achat intégré, pas de publicité. Sommelle est un logiciel libre sous licence MPL-2.0.</p></details>
         <details><summary>Que deviennent mes données ?</summary><p>Elles restent sur votre téléphone. Sommelle ne demande aucun compte et n'a pas accès à Internet. Elles sont exclues de la sauvegarde Android dans le cloud, et vous pouvez les faire passer vous-même d'un téléphone à l'autre.</p></details>
-        <details><summary>Combien de temps faut-il y consacrer ?</summary><p>Environ vingt secondes chaque matin pour l'agenda, et quelques minutes par semaine pour le bilan. Le programme dure six à huit semaines.</p></details>
+        <details><summary>Combien de temps faut-il y consacrer ?</summary><p>Quelques instants chaque matin pour l'agenda, et quelques minutes par semaine pour le bilan. Le programme dure six à huit semaines.</p></details>
         <details><summary>Et sur iPhone ?</summary><p>La version iPhone (iOS) est en développement et en phase de test sur l'App Store (TestFlight).</p></details>
         <details><summary>Comment l'installer ?</summary><p>Sommelle est en phase de test sur Google Play et l'App Store ; les sorties publiques suivront. En attendant, vous pouvez télécharger l'APK signé depuis <a href="https://github.com/Pilmil-Studio/sommelle/releases">GitHub</a>.</p></details>
         <details><summary>Je suis médecin ou pharmacien, comment la recommander ?</summary><p>Tout est sur la page <a href="professionnels.html">professionnels de santé</a>, avec une fiche à imprimer.</p></details>
@@ -192,7 +192,7 @@
         } else if (tab === "diary") {
           const dur = (wake + 24 - bed).toFixed(1);
           scr.innerHTML = `
-            <div style="font-weight:800;font-size:16px">Agenda du matin (20 s)</div>
+            <div style="font-weight:800;font-size:16px">Agenda du matin</div>
             <label style="font-size:12px">Couché : <strong>${fmtH(bed)}</strong>
               <input id="so-bed" type="range" min="21" max="25" step="0.25" value="${bed}" style="width:100%">
             </label>
