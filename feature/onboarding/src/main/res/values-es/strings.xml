@@ -24,6 +24,14 @@
     <string name="onb_h_sleepiness">En reuniones, en el transporte público o conduciendo.</string>
     <string name="onb_q_bipolar">¿Te ha diagnosticado un médico un trastorno bipolar?</string>
     <string name="onb_q_epilepsy">¿Tienes epilepsia?</string>
+    <string name="onb_q_parasomnia">¿Te levantas, gritas o haces cosas mientras duermes?</string>
+    <string name="onb_h_parasomnia">Sonambulismo, terrores nocturnos, o gestos y palabras que no recuerdas.</string>
+    <string name="onb_q_mood">¿Tienes ahora mismo una depresión u otro trastorno del estado de ánimo?</string>
+    <string name="onb_h_mood">Tanto si te sigue un médico como si no.</string>
+    <string name="onb_q_falls">¿Corres riesgo de caerte por la noche, o tomas un somnífero o un sedante por la noche?</string>
+    <string name="onb_h_falls">Por ejemplo, si tienes mareos, dificultad para caminar o un medicamento que da sueño.</string>
+    <string name="onb_q_unstable">¿Tienes una enfermedad inestable, o que la falta de sueño pueda empeorar?</string>
+    <string name="onb_h_unstable">Por ejemplo, migrañas intensas, una enfermedad del corazón o dolor crónico mal controlado.</string>
     <string name="onb_q_pregnancy">¿Estás embarazada?</string>
     <string name="onb_q_safety">¿Conduces por trabajo o manejas maquinaria pesada/peligrosa?</string>
     <string name="onb_h_safety">O ejerces una profesión en la que un despiste pueda tener consecuencias graves.</string>
@@ -44,6 +52,10 @@
     <string name="onb_ref_sleepiness">Quedarse dormido durante el día: consulta a tu médico. Mientras tanto, evita conducir si sientes somnolencia.</string>
     <string name="onb_ref_bipolar">Trastorno bipolar: reducir el tiempo en la cama puede desestabilizar el estado de ánimo. Consulta a tu especialista.</string>
     <string name="onb_ref_epilepsy">Epilepsia: la falta de sueño puede desencadenar crisis. Consulta a tu especialista.</string>
+    <string name="onb_ref_parasomnia">Sonambulismo, terrores nocturnos o conductas durante el sueño: reducir el tiempo en la cama puede favorecerlos. Habla con un médico antes de plantearte reducir tu tiempo en la cama.</string>
+    <string name="onb_ref_mood">Depresión u otro trastorno del estado de ánimo: reducir el tiempo en la cama puede afectar al ánimo. Habla con un médico antes de plantearte reducir tu tiempo en la cama.</string>
+    <string name="onb_ref_falls">Riesgo de caída o somnífero por la noche: la somnolencia y levantarse de noche pueden aumentar el riesgo de caída. Habla con un médico antes de plantearte reducir tu tiempo en la cama.</string>
+    <string name="onb_ref_unstable">Enfermedad inestable o que empeora con la falta de sueño: reducir el tiempo en la cama puede dificultar su control. Habla con un médico antes de plantearte reducir tu tiempo en la cama.</string>
     <string name="onb_ref_delayed">Horarios muy tardíos: podría tratarse de un retraso de fase del ritmo circadiano más que de insomnio. Un médico puede orientarte.</string>
     <string name="onb_ref_shift">Trabajo nocturno o a turnos: el programa convencional no está adaptado a este ritmo. La medicina del trabajo o del sueño te puede asesorar.</string>
     <string name="onb_notice_drowsiness">Durante las primeras semanas, la somnolencia puede aumentar. Si te cuesta mantenerte despierto, no conduzcas ni uses maquinaria peligrosa.</string>

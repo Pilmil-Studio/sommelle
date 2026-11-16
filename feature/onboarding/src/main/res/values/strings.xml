@@ -26,6 +26,14 @@
     <string name="onb_h_sleepiness">In meetings, on public transport, or at the wheel.</string>
     <string name="onb_q_bipolar">Has a doctor told you that you have bipolar disorder?</string>
     <string name="onb_q_epilepsy">Do you have epilepsy?</string>
+    <string name="onb_q_parasomnia">Do you ever get up, shout or act while you are asleep?</string>
+    <string name="onb_h_parasomnia">Sleepwalking, night terrors, or movements or words you do not remember.</string>
+    <string name="onb_q_mood">Do you currently have depression or another mood disorder?</string>
+    <string name="onb_h_mood">Whether or not a doctor is following you.</string>
+    <string name="onb_q_falls">Are you at risk of falling at night, or do you take a sleeping pill or sedative in the evening?</string>
+    <string name="onb_h_falls">For example dizziness, difficulty walking, or a medicine that makes you drowsy.</string>
+    <string name="onb_q_unstable">Do you have a health condition that is unstable, or that lack of sleep can make worse?</string>
+    <string name="onb_h_unstable">For example severe migraines, a heart condition or poorly controlled chronic pain.</string>
     <string name="onb_q_pregnancy">Are you pregnant?</string>
     <string name="onb_q_safety">Do you drive for work, or operate dangerous machinery?</string>
     <string name="onb_h_safety">Or a job where a moment of inattention could have serious consequences.</string>
@@ -48,6 +56,10 @@
     <string name="onb_ref_sleepiness">Falling asleep during the day: talk to your doctor. In the meantime, avoid driving if you feel drowsy.</string>
     <string name="onb_ref_bipolar">Bipolar disorder: reducing time in bed can destabilize mood. Talk about your sleep with the doctor who follows you.</string>
     <string name="onb_ref_epilepsy">Epilepsy: lack of sleep can make seizures more likely. Talk about your sleep with the doctor who follows you.</string>
+    <string name="onb_ref_parasomnia">Sleepwalking, night terrors or actions during sleep: reducing time in bed can make them more likely. Talk to a doctor before considering a shorter time in bed.</string>
+    <string name="onb_ref_mood">Depression or another mood disorder: reducing time in bed can weigh on mood. Talk to a doctor before considering a shorter time in bed.</string>
+    <string name="onb_ref_falls">Risk of falling or a sleeping pill in the evening: sleepiness and getting up at night can increase the risk of a fall. Talk to a doctor before considering a shorter time in bed.</string>
+    <string name="onb_ref_unstable">Unstable condition, or one that lack of sleep can worsen: reducing time in bed may make it harder to control. Talk to a doctor before considering a shorter time in bed.</string>
     <string name="onb_ref_delayed">Very late schedule: this may be a shift in your body clock rather than insomnia. A doctor can advise you.</string>
     <string name="onb_ref_shift">Night or shift work: the standard program is not designed for this rhythm. An occupational health or sleep doctor can advise you.</string>
 

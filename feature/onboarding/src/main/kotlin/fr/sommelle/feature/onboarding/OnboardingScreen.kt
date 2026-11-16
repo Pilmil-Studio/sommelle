@@ -290,6 +290,10 @@ private fun ScreeningQuestion.text(): Int = when (this) {
     ScreeningQuestion.DAYTIME_SLEEPINESS -> R.string.onb_q_sleepiness
     ScreeningQuestion.BIPOLAR -> R.string.onb_q_bipolar
     ScreeningQuestion.EPILEPSY -> R.string.onb_q_epilepsy
+    ScreeningQuestion.PARASOMNIA -> R.string.onb_q_parasomnia
+    ScreeningQuestion.MOOD_DISORDER -> R.string.onb_q_mood
+    ScreeningQuestion.FALL_RISK_OR_EVENING_SEDATIVES -> R.string.onb_q_falls
+    ScreeningQuestion.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> R.string.onb_q_unstable
     ScreeningQuestion.PREGNANCY -> R.string.onb_q_pregnancy
     ScreeningQuestion.SAFETY_CRITICAL -> R.string.onb_q_safety
     ScreeningQuestion.LATE_SCHEDULE -> R.string.onb_q_late
@@ -301,6 +305,10 @@ private fun ScreeningQuestion.hint(): Int? = when (this) {
     ScreeningQuestion.SHIFT_WORK -> R.string.onb_h_shift_work
     ScreeningQuestion.EXTERNAL_DISRUPTION -> R.string.onb_h_external
     ScreeningQuestion.DAYTIME_SLEEPINESS -> R.string.onb_h_sleepiness
+    ScreeningQuestion.PARASOMNIA -> R.string.onb_h_parasomnia
+    ScreeningQuestion.MOOD_DISORDER -> R.string.onb_h_mood
+    ScreeningQuestion.FALL_RISK_OR_EVENING_SEDATIVES -> R.string.onb_h_falls
+    ScreeningQuestion.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> R.string.onb_h_unstable
     ScreeningQuestion.SAFETY_CRITICAL -> R.string.onb_h_safety
     else -> null
 }
@@ -312,6 +320,10 @@ private fun Referral.text(): Int = when (this) {
     Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> R.string.onb_ref_sleepiness
     Referral.BIPOLAR_DISORDER -> R.string.onb_ref_bipolar
     Referral.EPILEPSY -> R.string.onb_ref_epilepsy
+    Referral.PARASOMNIA -> R.string.onb_ref_parasomnia
+    Referral.MOOD_DISORDER -> R.string.onb_ref_mood
+    Referral.FALL_RISK_OR_EVENING_SEDATIVES -> R.string.onb_ref_falls
+    Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> R.string.onb_ref_unstable
     Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> R.string.onb_ref_delayed
     Referral.SHIFT_WORK -> R.string.onb_ref_shift
 }

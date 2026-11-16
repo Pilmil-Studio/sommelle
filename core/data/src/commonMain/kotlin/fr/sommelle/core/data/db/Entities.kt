@@ -28,6 +28,11 @@ data class ProgramEntity(
     val externalNightDisruption: Boolean,
     val lateScheduleSleepsWellOnceAsleep: Boolean,
     val expressedDistress: Boolean,
+    /** Colonnes ajoutées en version 4 (précautions de l'accueil) ; false pour les programmes existants. */
+    val parasomnia: Boolean = false,
+    val moodDisorder: Boolean = false,
+    val fallRiskOrEveningSedatives: Boolean = false,
+    val unstableOrSleepSensitiveCondition: Boolean = false,
 )
 
 @Entity(tableName = "diary_entries")

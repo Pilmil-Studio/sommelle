@@ -24,6 +24,14 @@
     <string name="onb_h_sleepiness">In Besprechungen, in der Bahn oder am Steuer.</string>
     <string name="onb_q_bipolar">Wurde bei dir eine bipolare Störung diagnostiziert?</string>
     <string name="onb_q_epilepsy">Hast du Epilepsie?</string>
+    <string name="onb_q_parasomnia">Kommt es vor, dass du im Schlaf aufstehst, schreist oder etwas tust?</string>
+    <string name="onb_h_parasomnia">Schlafwandeln, Nachtschreck oder Handlungen, an die du dich nicht erinnerst.</string>
+    <string name="onb_q_mood">Hast du derzeit eine Depression oder eine andere Stimmungsstörung?</string>
+    <string name="onb_h_mood">Unabhängig davon, ob du ärztlich betreut wirst.</string>
+    <string name="onb_q_falls">Besteht bei dir nachts ein Sturzrisiko, oder nimmst du abends ein Schlafmittel oder Beruhigungsmittel?</string>
+    <string name="onb_h_falls">Zum Beispiel bei Schwindel, unsicherem Gang oder einem Medikament, das müde macht.</string>
+    <string name="onb_q_unstable">Hast du eine Erkrankung, die nicht stabil ist oder durch Schlafmangel schlimmer werden kann?</string>
+    <string name="onb_h_unstable">Zum Beispiel starke Migräne, eine Herzerkrankung oder schlecht eingestellte chronische Schmerzen.</string>
     <string name="onb_q_pregnancy">Bist du schwanger?</string>
     <string name="onb_q_safety">Fährst du beruflich Auto oder bedienst gefährliche Maschinen?</string>
     <string name="onb_h_safety">Oder ein Beruf, in dem eine Unaufmerksamkeit gefährlich sein kann.</string>
@@ -44,6 +52,10 @@
     <string name="onb_ref_sleepiness">Ungewolltes Einschlafen am Tag: Bitte ärztlich abklären lassen. Fahre bei Schläfrigkeit vorerst kein Auto.</string>
     <string name="onb_ref_bipolar">Bipolare Störung: Eine Verkürzung der Bettzeit kann die Stimmungslage destabilisieren. Sprich bitte mit deiner behandelnden Fachkraft.</string>
     <string name="onb_ref_epilepsy">Epilepsie: Schlafmangel kann Anfälle begünstigen. Sprich bitte mit deiner behandelnden Fachkraft.</string>
+    <string name="onb_ref_parasomnia">Schlafwandeln, Nachtschreck oder Handlungen im Schlaf: Eine Verkürzung der Bettzeit kann sie begünstigen. Sprich bitte mit einer Ärztin oder einem Arzt, bevor du eine kürzere Bettzeit erwägst.</string>
+    <string name="onb_ref_mood">Depression oder andere Stimmungsstörung: Eine Verkürzung der Bettzeit kann die Stimmung belasten. Sprich bitte mit einer Ärztin oder einem Arzt, bevor du eine kürzere Bettzeit erwägst.</string>
+    <string name="onb_ref_falls">Sturzrisiko oder Schlafmittel am Abend: Schläfrigkeit und nächtliches Aufstehen können das Sturzrisiko erhöhen. Sprich bitte mit einer Ärztin oder einem Arzt, bevor du eine kürzere Bettzeit erwägst.</string>
+    <string name="onb_ref_unstable">Instabile oder durch Schlafmangel verschlechterte Erkrankung: Eine Verkürzung der Bettzeit kann sie verschlimmern. Sprich bitte mit einer Ärztin oder einem Arzt, bevor du eine kürzere Bettzeit erwägst.</string>
     <string name="onb_ref_delayed">Sehr späte Schlafzeiten: Möglicherweise liegt eine circadiane Phasenverzögerung statt einer Insomnie vor. Eine ärztliche Abklärung hilft.</string>
     <string name="onb_ref_shift">Schicht- oder Nachtarbeit: Das Standardprogramm ist nicht auf diesen Rhythmus ausgelegt. Eine arbeits- oder schlafmedizinische Beratung ist empfehlenswert.</string>
     <string name="onb_notice_drowsiness">In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.</string>

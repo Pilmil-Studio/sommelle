@@ -106,6 +106,10 @@ object PolishFormat : TextFormat {
         Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> "Zgłoszone mimowolne zasypianie w ciągu dnia"
         Referral.BIPOLAR_DISORDER -> "Zgłoszona choroba afektywna dwubiegunowa: bez ograniczenia czasu w łóżku"
         Referral.EPILEPSY -> "Zgłoszona padaczka: bez ograniczenia czasu w łóżku"
+        Referral.PARASOMNIA -> "Zgłoszona parasomnia (lunatykowanie, lęki nocne): bez ograniczenia czasu w łóżku"
+        Referral.MOOD_DISORDER -> "Zgłoszona depresja lub inne zaburzenie nastroju: bez ograniczenia czasu w łóżku"
+        Referral.FALL_RISK_OR_EVENING_SEDATIVES -> "Zgłoszone ryzyko upadku lub wieczorne tabletki nasenne lub uspokajające: bez ograniczenia czasu w łóżku"
+        Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> "Zgłoszona niestabilna choroba lub choroba nasilana brakiem snu: bez ograniczenia czasu w łóżku"
         Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> "Bardzo późne pory przy normalnym śnie: możliwe opóźnienie fazy snu"
         Referral.SHIFT_WORK -> "Zgłoszona praca zmianowa lub nocna"
     }

@@ -8,5 +8,5 @@ fun SommelleDatabase.Companion.create(context: Context): SommelleDatabase =
         context = context.applicationContext,
         name = context.applicationContext.getDatabasePath("sommelle.db").absolutePath,
     )
-        .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+        .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
         .build()
