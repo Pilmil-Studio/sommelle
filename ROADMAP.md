@@ -13,7 +13,7 @@
 - Maintien des captures d'écran Paparazzi à jour pour les fiches stores (6 langues).
 
 ## 3. Qualité de code & sécurité
-- Sauvegarde Android configurable par application (`-Ppilmil.allowAutoBackup=false` par défaut, règles `data_extraction_rules.xml` excluant le cloud tout en autorisant le transfert câble si activé).
+- Sauvegarde Android : activée dans le manifeste, et c'est l'agent de sauvegarde qui applique le choix de la personne. La copie dans le compte Google est désactivée par défaut, activable dans les réglages et jamais faite sans chiffrement de bout en bout ; le transfert direct vers un nouveau téléphone reste permis.
 - Évaluer le chiffrement au repos de la base Room locale (SQLCipher) pour les données d'agenda de sommeil.
 - Exécution de `test` et `:app:lintDebug` en CI ; à compléter par `ktlint` / `detekt`.
 
