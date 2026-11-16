@@ -70,8 +70,9 @@ class OnboardingViewModelTest {
 
         vm.start()
         vm.chooseAge(AgeBand.FROM_25_TO_44)
-        while (vm.state.value is OnboardingState.Questions) {
-            vm.answer(false)
+        while (true) {
+            val questions = vm.state.value as? OnboardingState.Questions ?: break
+            if (questions.flow.isMedicalStep) vm.answerMedical(emptySet()) else vm.answer(false)
         }
 
         val result = assertIs<OnboardingState.Result>(vm.state.value)
@@ -99,8 +100,9 @@ class OnboardingViewModelTest {
 
         vm.start()
         vm.chooseAge(AgeBand.UNDER_18)
-        while (vm.state.value is OnboardingState.Questions) {
-            vm.answer(false)
+        while (true) {
+            val questions = vm.state.value as? OnboardingState.Questions ?: break
+            if (questions.flow.isMedicalStep) vm.answerMedical(emptySet()) else vm.answer(false)
         }
 
         val result = assertIs<OnboardingState.Result>(vm.state.value)
