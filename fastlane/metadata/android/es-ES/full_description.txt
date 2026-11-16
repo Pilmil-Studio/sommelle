@@ -1,0 +1,24 @@
+Sommelle es una herramienta de acompañamiento, no un producto sanitario. Está pensada para personas adultas. Se inspira en la terapia cognitivo-conductual del insomnio (TCC-I), que las guías europeas y estadounidenses recomiendan como tratamiento de primera elección. Sommelle no ha sido evaluada clínicamente y no sustituye a un médico.
+
+Totalmente libre (MPL-2.0), gratuita, sin publicidad, sin suscripción, sin cuenta y 100 % sin conexión: ni siquiera solicita el permiso de acceso a Internet. Tus datos de sueño nunca salen de tu teléfono.
+
+UN PROGRAMA DE 6 SEMANAS
+• Preguntas iniciales: la app comprueba si reducir tu tiempo en la cama es adecuado para tu situación (posible apnea del sueño, trastorno bipolar, epilepsia, embarazo, trabajos que exigen una vigilancia constante, trabajo nocturno o a turnos, malestar anímico) y te orienta hacia un recorrido adaptado o hacia un médico.
+• Una semana de observación: un diario del sueño que rellenas cada mañana, sin teclado, para conocer tu punto de partida (tiempo en la cama, tiempo dormido, parte del tiempo en la cama que pasas durmiendo).
+• Una etapa de transición: tus cifras de partida y la explicación del método antes de empezar.
+• Semanas 1 a 6: el tiempo en la cama se reduce a lo que duermes realmente (nunca menos de 6 h), con una hora de levantarse fija, pautas para las noches en vela y ejercicios para calmar los pensamientos que mantienen el insomnio. Cada semana, tu ventana de sueño se ajusta a partir de tu diario del sueño.
+• Un balance al final: tus primeras noches comparadas con tus últimas noches, a partir de tu diario del sueño.
+
+CONVIENE SABER
+• Durante las primeras semanas, la somnolencia puede aumentar. Si te cuesta mantenerte despierto, no conduzcas ni uses maquinaria peligrosa.
+• Trastorno bipolar: reducir el tiempo en la cama puede desestabilizar el estado de ánimo. Epilepsia: la falta de sueño puede desencadenar crisis. En estos casos, consulta sobre tu sueño al especialista que te atiende.
+• Si tu actividad exige una vigilancia constante, la restricción del tiempo en la cama puede aumentar la somnolencia: habla con tu médico antes de planteártela.
+• Trabajo nocturno o a turnos: el programa convencional no está adaptado a este ritmo.
+• Si tomas un somnífero o un ansiolítico, no lo dejes ni cambies la dosis sin el consejo de tu médico.
+
+HERRAMIENTAS
+• Diario del sueño inspirado en el Consensus Sleep Diary.
+• Pantalla nocturna muy tenue «No consigo dormir».
+• Exportación en PDF y CSV para tu médico.
+• Copia cifrada de tus datos, que guardas tú mismo.
+• Sin rastreadores, sin venta de datos.
