@@ -3,7 +3,7 @@
     <string name="reminders_channel">Program reminders</string>
     <string name="reminders_channel_description">A morning reminder for your sleep diary and an evening reminder before your bedtime.</string>
     <string name="reminder_morning_title">How did you sleep last night?</string>
-    <string name="reminder_morning_text">Twenty seconds to log it in your diary.</string>
+    <string name="reminder_morning_text">A moment to log it in your diary.</string>
     <string name="reminder_evening_title">Your window starts at %1$s</string>
     <string name="reminder_evening_text">Stay up until then: that is what makes sleep deeper.</string>
     <string name="reminder_week_title">Your week in review is ready</string>
