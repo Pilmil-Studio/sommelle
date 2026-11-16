@@ -1,0 +1,24 @@
+Sommelle ist ein Begleitwerkzeug, kein Medizinprodukt. Es ist für Erwachsene gedacht. Es orientiert sich an der kognitiven Verhaltenstherapie für Insomnie (KVT-I), die europäische und amerikanische Leitlinien als Behandlung erster Wahl empfehlen. Sommelle wurde klinisch nicht evaluiert und ersetzt keine Ärztin und keinen Arzt.
+
+Vollständig Open Source (MPL-2.0), kostenlos, ohne Werbung, ohne Abo, ohne Account und zu 100 % offline: Die App fordert nicht einmal die Internetberechtigung an. Deine Schlafdaten verlassen dein Handy nie.
+
+EIN PROGRAMM ÜBER 6 WOCHEN
+• Einstiegsfragen: Die App prüft, ob eine Verkürzung deiner Bettzeit zu deiner Situation passt (mögliche Schlafapnoe, bipolare Störung, Epilepsie, Schwangerschaft, Tätigkeiten mit ständiger Wachsamkeit, Nacht- oder Schichtarbeit, seelische Belastung) und führt dich zu einem passenden Weg oder zu einer Ärztin bzw. einem Arzt.
+• Eine Beobachtungswoche: ein Schlaftagebuch, das du jeden Morgen ohne Tastatur ausfüllst, um deinen Ausgangspunkt zu finden (Bettzeit, Schlafzeit, Anteil der Bettzeit, den du schläfst).
+• Ein Übergangsschritt: deine Ausgangswerte und eine Erklärung der Methode, bevor du beginnst.
+• Wochen 1 bis 6: Die Bettzeit wird auf das reduziert, was du tatsächlich schläfst (nie unter 6 Std.), dazu eine feste Aufstehzeit, Hinweise für Nächte im Wachzustand und Übungen, um die Gedanken zu beruhigen, die die Insomnie aufrechterhalten. Jede Woche wird dein Schlaffenster anhand deines Schlaftagebuchs angepasst.
+• Eine Auswertung am Ende: deine ersten Nächte im Vergleich mit deinen letzten Nächten, auf Grundlage deines Schlaftagebuchs.
+
+GUT ZU WISSEN
+• In den ersten Wochen kann die Schläfrigkeit zunehmen. Wenn es dir schwerfällt, wach zu bleiben, fahre nicht Auto und bediene keine gefährlichen Maschinen.
+• Bipolare Störung: Eine Verkürzung der Bettzeit kann die Stimmungslage destabilisieren. Epilepsie: Schlafmangel kann Anfälle begünstigen. Sprich in diesen Fällen mit der Fachkraft, die dich behandelt, über deinen Schlaf.
+• Wenn deine Tätigkeit ständige Wachsamkeit erfordert, kann die Bettzeitverkürzung die Schläfrigkeit verstärken: Sprich mit deinem Arzt, bevor du sie in Betracht ziehst.
+• Schicht- oder Nachtarbeit: Das Standardprogramm ist nicht auf diesen Rhythmus ausgelegt.
+• Wenn du ein Schlafmittel oder ein Beruhigungsmittel einnimmst, setze es nicht ab und ändere die Dosis nicht ohne ärztlichen Rat.
+
+WERKZEUGE
+• Schlaftagebuch nach dem Vorbild des Consensus Sleep Diary.
+• Sehr gedimmter Nachtbildschirm „Ich kann nicht schlafen“.
+• PDF- und CSV-Export für deine Ärztin bzw. deinen Arzt.
+• Verschlüsselte Sicherung deiner Daten, die du selbst aufbewahrst.
+• Keine Tracker, kein Datenverkauf.

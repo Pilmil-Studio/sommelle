@@ -1,16 +1,19 @@
-Sommelle est un outil d'accompagnement qui s'inspire de la thérapie cognitivo-comportementale de l'insomnie (TCC-I), que la HAS et les recommandations européennes et américaines recommandent en première intention. Sommelle n'a pas été évaluée cliniquement et ne remplace pas un médecin.
+Sommelle est un outil d'accompagnement, pas un dispositif médical. Elle est conçue pour les adultes. Elle s'inspire de la thérapie cognitivo-comportementale de l'insomnie (TCC-I), que la HAS et les recommandations européennes et américaines recommandent en première intention. Sommelle n'a pas été évaluée cliniquement et ne remplace pas un médecin.
 
 Totalement libre (MPL-2.0), gratuite, sans publicité, sans abonnement, sans compte et 100 % hors ligne : elle ne demande même pas la permission d'accès à Internet. Vos données de sommeil ne quittent jamais votre téléphone.
 
 UN PROGRAMME EN 6 SEMAINES
-• Questions de départ : l'appli vérifie si la réduction du temps passé au lit est adaptée à votre situation (apnée possible, trouble bipolaire, épilepsie, grossesse, métier exigeant une vigilance constante, détresse) et vous oriente vers un parcours adapté ou vers un médecin.
-• Une semaine d'observation : un agenda du sommeil à remplir en 20 secondes chaque matin, sans clavier, pour connaître votre point de départ (temps au lit, temps dormi, part du temps au lit passée à dormir).
+• Questions de départ : l'appli vérifie si la réduction du temps passé au lit est adaptée à votre situation (apnée possible, trouble bipolaire, épilepsie, grossesse, métier exigeant une vigilance constante, travail de nuit ou en horaires décalés, détresse) et vous oriente vers un parcours adapté ou vers un médecin.
+• Une semaine d'observation : un agenda du sommeil à remplir chaque matin, sans clavier, pour connaître votre point de départ (temps au lit, temps dormi, part du temps au lit passée à dormir).
 • Une étape de transition : vos chiffres de départ et l'explication de la méthode, avant de commencer.
 • Semaines 1 à 6 : un temps au lit réduit à ce que vous dormez réellement (jamais moins de 6 h), avec une heure de lever fixe, des repères pour les nuits d'éveil et des exercices pour apaiser les pensées qui entretiennent l'insomnie. Chaque semaine, la fenêtre est ajustée à partir de votre agenda de sommeil.
 • Un bilan à la fin : vos nuits du début comparées à vos dernières nuits, à partir de votre agenda de sommeil.
 
 À SAVOIR
 • Pendant les premières semaines, la somnolence peut augmenter. Si vous avez du mal à rester éveillé·e, ne conduisez pas et n'utilisez pas de machine dangereuse.
+• Trouble bipolaire : réduire le temps passé au lit peut déstabiliser l'humeur. Épilepsie : le manque de sommeil peut favoriser les crises. Dans ces cas, parlez de votre sommeil au médecin qui vous suit.
+• Si votre activité demande une vigilance constante, la restriction du temps au lit peut augmenter la somnolence : parlez-en à votre médecin avant de l'envisager.
+• Horaires de nuit ou décalés : le programme classique n'est pas prévu pour ce rythme.
 • Si vous prenez un somnifère ou un anxiolytique, ne l'arrêtez pas et ne changez pas la dose sans l'avis de votre médecin.
 
 OUTILS

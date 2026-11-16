@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
-An insomnia support app (Android + KMP/iOS port in progress) based on CBT-I (cognitive behavioral therapy for insomnia), the first-line treatment recommended by European and American guidelines. Free, available in 6 languages (`fr`, `en`, `es`, `de`, `pl`, `uk`), no account and no ads. No data leaves the phone.
+Log your nights in a few taps each morning: Sommelle adjusts your bedtime and rise time every week based on how you actually sleep, over a six-week program. The app (Android, KMP/iOS port in progress) is inspired by CBT-I (cognitive behavioral therapy for insomnia), the first-line treatment recommended by European and American guidelines. Free, available in 6 languages (`fr`, `en`, `es`, `de`, `pl`, `uk`), no account and no ads. No data leaves the phone.
 
 Sommelle is a self-help and education tool. It is not a medical device and does not replace medical advice.
 
@@ -14,11 +14,11 @@ Sommelle is a self-help and education tool. It is not a medical device and does 
 
 ## What the app does
 
-Over six to eight weeks:
+Over seven weeks (one observation week, then six weeks of program):
 
 - **An entry questionnaire and clear 6-week roadmap** rule out sleep restriction when it is not advised (possible apnea, bipolar disorder, epilepsy, pregnancy, safety-critical job), explain the three stages of the program upfront, and point to a doctor when needed.
-- **A sleep diary** is filled in each morning in about twenty seconds, without a keyboard, with reassuring guidance during the first week of sleep restriction.
-- **A sleep window** (bedtime and rise time) is calculated after an observation week, then adjusted each week based on your nights, with personalized evening landmarks (quiet wind-down 1h before bed, last caffeine 8h before bed).
+- **A sleep diary** is filled in each morning in a few taps, without a keyboard, with reassuring guidance during the first week of sleep restriction.
+- **A sleep window** (bedtime and rise time) is calculated after an observation week, then adjusted each week based on your nights, with evening landmarks (a quiet wind-down before bed, a cut-off time for caffeine).
 - **A night screen**, almost black and clock-free, reminds you what to do when sleep does not come and offers an optional **20-minute gentle chime** (stimulus control rule without a visible countdown).
 - **Five cognitive exercises and evening habit commitments** unlock over the program: ideas about sleep, putting the day to rest (with an interactive evening notepad on the phone), paradoxical intention, decatastrophizing, relaxation, each playable **with your eyes closed** via a calm offline voice guide and gentle acoustic chime, alongside 5 checkable bedroom and evening habits.
 - **A before/after review and relapse-prevention guide** compare the observation week with the latest nights and explain what to do if an occasional bad night comes back later.
@@ -50,7 +50,7 @@ Screenshots are generated from the screen code on every change.
 ## Design commitments
 
 - **No morning score out of 100**: a hard night is information used to adjust your weekly schedule, not a failure to grade.
-- **No clock or countdown at night**: checking the time at 3 AM keeps you awake. The night screen hides the status bar clock and offers a gentle 20-minute chime with no numbers on screen.
+- **No clock or countdown at night**: watching a clock while trying to sleep increases worry and makes falling asleep seem longer (Tang et al., 2007). The night screen hides the status bar clock and offers a gentle 20-minute chime with no numbers on screen.
 - **No Internet permission or subscription**: the full 6-to-8-week program works offline and for free.
 
 ## From the same studio (Pilmil Studio)

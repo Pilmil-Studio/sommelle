@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml/badge.svg)](https://github.com/Pilmil-Studio/sommelle/actions/workflows/ci.yml)
 
-Application d'accompagnement à l'insomnie (Android + socle KMP/iOS en cours de portage) fondée sur la TCC-I (thérapie cognitivo-comportementale de l'insomnie), le traitement recommandé en premier par les recommandations européennes et américaines. Gratuite, disponible en 6 langues (`fr`, `en`, `es`, `de`, `pl`, `uk`), sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
+Notez vos nuits en quelques gestes chaque matin : Sommelle ajuste chaque semaine vos heures de coucher et de lever d'après votre sommeil réel, sur un programme de six semaines. L'application (Android, socle KMP/iOS en cours de portage) s'inspire de la TCC-I (thérapie cognitivo-comportementale de l'insomnie), recommandée en première intention par les recommandations européennes et américaines. Gratuite, disponible en 6 langues (`fr`, `en`, `es`, `de`, `pl`, `uk`), sans compte et sans publicité. Aucune donnée ne quitte le téléphone.
 
 Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un dispositif médical et elle ne remplace pas un avis médical.
 
@@ -14,11 +14,11 @@ Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un disposit
 
 ## Ce que fait l'appli
 
-Pendant six à huit semaines :
+Pendant sept semaines (une semaine d'observation, puis six semaines de programme) :
 
 - **Un questionnaire d'entrée et un repère clair sur la durée (6 semaines)** écartent la restriction du sommeil quand elle est déconseillée (apnée possible, trouble bipolaire, épilepsie, grossesse, métier à risque), expliquent les trois étapes du programme dès le départ et orientent vers un médecin si besoin.
-- **Un agenda du sommeil** se remplit chaque matin en une vingtaine de secondes, sans clavier, avec un accompagnement rassurant pendant la première semaine de restriction.
-- **Une fenêtre de sommeil** (heures de coucher et de lever) est calculée après une semaine d'observation, puis ajustée chaque semaine selon les nuits, avec des repères horaires adaptés (sas calme 1 h avant, arrêt de la caféine 8 h avant).
+- **Un agenda du sommeil** se remplit chaque matin en quelques gestes, sans clavier, avec un accompagnement rassurant pendant la première semaine de restriction.
+- **Une fenêtre de sommeil** (heures de coucher et de lever) est calculée après une semaine d'observation, puis ajustée chaque semaine selon les nuits, avec des repères du soir (un sas calme avant le coucher, une heure limite pour la caféine).
 - **Un écran pour la nuit**, presque noir et sans horloge, rappelle quoi faire quand le sommeil ne vient pas et propose un **repère sonore doux à 20 minutes** (règle du contrôle du stimulus, sans afficher de décompte).
 - **Cinq exercices cognitifs et une liste d'engagements du soir** se débloquent au fil du programme : idées sur le sommeil, mise au repos de la journée (avec un carnet du soir interactif sur le téléphone), intention paradoxale, décatastrophisation, relaxation, chacun pouvant être écouté **les yeux fermés** grâce à une lecture vocale hors ligne à débit apaisé et une cloche acoustique douce, complétés par 5 habitudes cochables de chambre et de soirée.
 - **Un bilan avant/après et un guide anti-rechute** comparent la semaine d'observation aux dernières nuits et rappellent la conduite à tenir si une mauvaise nuit isolée revient plus tard.
@@ -55,8 +55,8 @@ Les captures sont générées à partir du code des écrans à chaque modificati
 ## Parti pris
 
 - **Pas de note sur 100 chaque matin** : une mauvaise nuit est une information pour ajuster vos horaires de la semaine, pas un échec à noter.
-- **Pas d'horloge ni de décompte la nuit** : regarder l'heure à 3 h du matin entretient l'éveil. L'écran de nuit masque l'heure et propose un timbre doux à 20 minutes sans afficher de chiffre.
-- **Pas de permission Internet ni d'abonnement** : l'ensemble du programme de 6 à 8 semaines fonctionne hors ligne et gratuitement.
+- **Pas d'horloge ni de décompte la nuit** : surveiller l'horloge en essayant de dormir augmente l'inquiétude et fait paraître l'endormissement plus long (Tang et al., 2007). L'écran de nuit masque l'heure et propose un timbre doux à 20 minutes sans afficher de chiffre.
+- **Pas de permission Internet ni d'abonnement** : l'ensemble du programme de sept semaines fonctionne hors ligne et gratuitement.
 
 ## Du même atelier (Pilmil Studio)
 

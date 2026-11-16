@@ -1,0 +1,24 @@
+Sommelle jest narzędziem wspierającym, a nie wyrobem medycznym. Jest przeznaczona dla osób dorosłych. Opiera się na terapii poznawczo-behawioralnej bezsenności (CBT-I), którą europejskie i amerykańskie wytyczne zalecają jako leczenie pierwszego wyboru. Sommelle nie została oceniona klinicznie i nie zastępuje lekarza.
+
+W pełni otwarte oprogramowanie (MPL-2.0), bezpłatna, bez reklam, bez subskrypcji, bez konta i w 100% offline: nie prosi nawet o uprawnienie do dostępu do Internetu. Twoje dane o śnie nigdy nie opuszczają telefonu.
+
+6-TYGODNIOWY PROGRAM
+• Pytania na start: aplikacja sprawdza, czy skrócenie czasu w łóżku pasuje do Twojej sytuacji (możliwe bezdechy senne, choroba afektywna dwubiegunowa, padaczka, ciąża, praca wymagająca stałej czujności, praca nocna lub zmianowa, przytłoczenie) i kieruje Cię na odpowiednią ścieżkę lub do lekarza.
+• Tydzień obserwacji: dziennik snu wypełniany każdego ranka bez klawiatury, aby poznać punkt wyjścia (czas w łóżku, czas snu, część czasu w łóżku spędzona na spaniu).
+• Etap przejściowy: Twoje wyniki początkowe i wyjaśnienie metody, zanim zaczniesz.
+• Tygodnie 1 do 6: czas w łóżku ograniczony do tego, ile naprawdę śpisz (nigdy poniżej 6 godz.), stała godzina wstawania, wskazówki na noce bez snu oraz ćwiczenia uspokajające myśli, które podtrzymują bezsenność. Co tydzień Twoje okno snu jest dopasowywane na podstawie dziennika snu.
+• Podsumowanie na końcu: Twoje pierwsze noce porównane z ostatnimi, na podstawie dziennika snu.
+
+WARTO WIEDZIEĆ
+• W pierwszych tygodniach senność może się nasilić. Jeśli trudno Ci utrzymać się na jawie, nie prowadź pojazdów i nie obsługuj niebezpiecznych maszyn.
+• Choroba afektywna dwubiegunowa: ograniczenie czasu w łóżku może destabilizować nastrój. Padaczka: niedobór snu może prowokować napady. W takich przypadkach porozmawiaj o swoim śnie z lekarzem prowadzącym.
+• Jeśli Twoja aktywność wymaga stałej czujności, ograniczenie czasu w łóżku może nasilać senność: porozmawiaj z lekarzem, zanim ją rozważysz.
+• Praca zmianowa lub nocna: klasyczny program nie jest dostosowany do takiego rytmu.
+• Jeśli przyjmujesz tabletki nasenne lub leki przeciwlękowe, nie odstawiaj ich i nie zmieniaj dawki bez porady lekarza.
+
+NARZĘDZIA
+• Dziennik snu wzorowany na Consensus Sleep Diary.
+• Bardzo przyciemniony ekran nocny „Nie mogę spać”.
+• Eksport PDF i CSV dla Twojego lekarza.
+• Szyfrowana kopia Twoich danych, przechowywana przez Ciebie.
+• Brak trackerów, brak sprzedaży danych.

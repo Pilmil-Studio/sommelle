@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Scientific dossier: Sommelle</title>
   <meta name="description" content="Sommelle scientific dossier for health professionals: CBT-I components, sleep window calculation, safety rules, cognitive exercises, summary for the doctor, limitations and sources.">
+  <meta property="og:title" content="Scientific dossier: Sommelle">
+  <meta property="og:description" content="Sommelle scientific dossier for health professionals: protocol, safety rules, sources and limitations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pilmil-studio.github.io/sommelle/en/protocol.html">
+  <meta property="og:image" content="https://pilmil-studio.github.io/sommelle/marketing/out/en/social.png">
   <link rel="icon" href="../img/icone.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="fr" href="../protocole.html">
   <link rel="stylesheet" href="../style.css">
@@ -60,7 +65,7 @@
       </nav>
 
       <h2 id="tcci">1. CBT-I in brief</h2>
-      <p>Cognitive behavioral therapy for insomnia (CBT-I) is the first-line treatment for chronic insomnia in adults, ahead of hypnotics, according to European (2023) and American (2021) guidelines. It combines several components: sleep diary, sleep restriction, stimulus control, cognitive work and sleep education.</p>
+      <p>Cognitive behavioral therapy for insomnia (CBT-I) is the first-line treatment for chronic insomnia in adults, ahead of hypnotics, according to European (2023) and American (American College of Physicians, 2016) guidelines. The French health authority (HAS, 2024) also asks for CBT to be offered first, before any medication, for insomnia that is more than occasional. It combines several components: sleep diary, sleep restriction, stimulus control, cognitive work and sleep education.</p>
       <p>For digital CBT-I, effectiveness is mainly shown for guided online programs; effects are smaller without human support. The main challenge is for the patient to complete the program: this is what guides Sommelle's design (quick entry, nothing that makes the patient feel guilty).</p>
 
       <h2 id="deroule">2. Program outline</h2>
@@ -86,7 +91,7 @@
         <li>the time of final awakening and the time they got out of bed;</li>
         <li>the perceived quality of the night.</li>
       </ul>
-      <p>Durations are <strong>estimated</strong> from simple choices ("less than 5 min", "15 min", "30 min"…), never timed: asking for exact minutes would push the patient to check the time at night, which maintains insomnia (Tang et al., 2007). An entry takes about twenty seconds. The app checks that times are consistent and flags inconsistencies without blocking the patient.</p>
+      <p>Durations are <strong>estimated</strong> from simple choices ("less than 5 min", "15 min", "30 min"…), never timed: asking for exact minutes would push the patient to check the time at night. In an experimental study, watching a clock while trying to sleep increased pre-sleep worry and the perceived time to fall asleep (Tang et al., 2007). An entry takes a few moments. The app checks that times are consistent and flags inconsistencies without blocking the patient.</p>
 
       <h3>Calculations from the diary</h3>
       <ul>
@@ -167,11 +172,11 @@
           <tr><td>Observation period before any restriction</td><td>7 days</td></tr>
           <tr><td>Logged nights required</td><td>At least 5 out of 7, otherwise the window is kept and the patient is told</td></tr>
           <tr><td>Initial window</td><td>Mean total sleep time during the observation week, rounded up to the next quarter hour</td></tr>
-          <tr><td>Minimum length</td><td>6 h (Réseau Morphée benchmark, 2019) for everyone; a window already under way below 6 h is raised to 6 h at the next calculation</td></tr>
-          <tr><td>Maximum length</td><td>9 h</td></tr>
+          <tr><td>Minimum length</td><td>6 h, the same for every profile (design choice). Réseau Morphée (2019) gives 6 h as the lower limit of time in bed; other published protocols accept 5 h (Spielman et al., 2011; RACGP), and reviews report minimums of 4.5, 5 or 6 h depending on the protocol (Riemann et al., 2023). A window already under way below 6 h is raised to 6 h at the next calculation</td></tr>
+          <tr><td>Maximum length</td><td>9 h (design choice: we found no published source for this ceiling)</td></tr>
           <tr><td>Anchor</td><td>Fixed rise time, chosen by the patient, 7 days a week; the bedtime follows from it</td></tr>
-          <tr><td>Weekly adjustment</td><td>Efficiency ≥ 85%: +15 min; &lt; 80%: −15 min (without going below the minimum); in between: unchanged</td></tr>
-          <tr><td>From age 65</td><td>Thresholds lowered by 5 points (80% and 75%), as sleep is naturally more fragmented</td></tr>
+          <tr><td>Weekly adjustment</td><td>Efficiency ≥ 85%: +15 min; &lt; 80%: −15 min (without going below the minimum); in between: unchanged. For comparison, the Spielman et al. (2011) manual lengthens from 90% and shortens below 85%, and Réseau Morphée (2019) waits for an index above 85% before moving bedtime earlier: Sommelle's thresholds are therefore less restrictive than the manual's</td>
+          <tr><td>From age 65</td><td>Thresholds lowered by 5 points (80% and 75%). The Spielman et al. (2011) manual also lowers thresholds by 5 points for older adults (85% and 80%); the age of 65 is a design choice</td></tr>
         </tbody>
       </table>
 
@@ -289,16 +294,24 @@
       </figure>
 
       <h3>Precautions</h3>
-      <p>Restriction causes transient daytime sleepiness, objectively measurable (Kyle et al., 2014). A warning about driving and dangerous machinery is shown for every pathway with restriction, before the first window, and repeated at the first three weekly reviews. Each review also asks: “This week, did you fall asleep unintentionally during the day, or nearly do so?”. If yes, the window is not reduced that week (lengthening is still allowed) and the app advises talking to a doctor. Restriction is never offered in the situations listed in section 7.</p>
+      <p>Restriction causes transient daytime sleepiness, objectively measurable: in a small laboratory study, measured sleepiness was higher at weeks 1 to 3 of a 4-week restriction and back to baseline at 3 months (Kyle et al., 2014). Guidelines list sleepiness and its effect on driving among the safety points to monitor (Riemann et al., 2023; Edinger et al., 2021). A warning about driving and dangerous machinery is shown for every pathway with restriction, before the first window, and repeated at the first three weekly reviews. Each review also asks: “This week, did you fall asleep unintentionally during the day, or nearly do so?”. If yes, the window is not reduced that week (lengthening is still allowed) and the app advises talking to a doctor. Restriction is never offered in the situations listed in section 7.</p>
 
       <h2 id="stimulus">5. Stimulus control and evening sleep habits</h2>
       <p>Stimulus control (Bootzin, 1972; <em>CBT-i Coach</em>) aims to re-associate the bed with sleep. In Sommelle, it relies on five elements:</p>
       <ul>
         <li>a <strong>fixed rise time</strong>, the same 7 days a week, even after a bad night;</li>
-        <li>a <strong>bedtime</strong> given by the sleep window, paired on the home screen with <strong>two personalized evening landmarks</strong> calculated automatically: wind-down start (<code>bedtime − 45 min</code>) and suggested caffeine cutoff (<code>rise time + 9 h</code>, clamped between 2 pm and 5 pm);</li>
+        <li>a <strong>bedtime</strong> given by the sleep window, paired on the home screen with <strong>two personalized evening landmarks</strong> calculated automatically: wind-down start (<code>bedtime − 1 h</code>) and suggested caffeine cutoff (<code>bedtime − 8 h</code>);</li>
         <li>an <strong>"I can't sleep"</strong> button that opens, at night, an almost black screen in warm colors and reduced brightness, with no time or numbers. It recalls the instruction: get up, go to another room, do something calm away from screens, go back to bed when sleep comes;</li>
         <li>a <strong>clock-free 20-minute gentle chime</strong> on that night screen: if the patient wants to be notified after about 20 minutes out of bed without ever checking the clock (Tang et al., 2007), a soft chime rings after 20 minutes with no visible countdown;</li>
-        <li>an interactive <strong>"My evening and bedroom habits"</strong> card in the Exercises tab (5 checkable habits inspired by <em>CBT-i Coach</em>'s <em>Create New Sleep Habits</em> module: 45-min wind-down buffer, afternoon caffeine cutoff, cool/dark bedroom with no visible clock, bed reserved for sleep, no naps after 3 pm).</li>
+        <li>an interactive <strong>"My evening and bedroom habits"</strong> card in the Exercises tab (5 checkable habits inspired by <em>CBT-i Coach</em>'s <em>Create New Sleep Habits</em> module: hide the clock at night, reserve the bed for sleep, stop coffee, tea and cola at least 8 h before bedtime, get daylight within the hour after rising, avoid naps or keep them to 20 minutes before 3 pm).</li>
+      </ul>
+      <p>The two evening landmarks and the habits are design choices, not established values. Here is what the open sources allow us to say.</p>
+      <ul>
+        <li><strong>Screens before bed (one-hour wind-down).</strong> The NHS advises avoiding phones, tablets and computers for the hour before bed, and HAS (2024) advises limiting screens before bedtime. The one-hour length is the NHS's; no trial validates it in people with insomnia.</li>
+        <li><strong>Caffeine (bedtime − 8 h).</strong> A meta-analysis of 24 studies (Gardiner et al., 2023) estimates that coffee should be taken at least 8.8 h before bedtime to avoid reducing sleep time; its abstract does not say whether people with insomnia are included. A small crossover trial (12 adults without insomnia, 400 mg) measured lost sleep even when caffeine was taken six hours before bed, and suggests avoiding substantial amounts for at least 6 h (Drake et al., 2013). HAS (2024) recommends avoiding caffeine, alcohol and nicotine without giving a time.</li>
+        <li><strong>Naps.</strong> Avoiding naps is part of the stimulus control instructions (Morin et al., 2006; Edinger et al., 2021). HAS (2024) advises against naps longer than one hour or after 4 pm; our limit of 20 minutes before 3 pm is stricter and is our own choice.</li>
+        <li><strong>Daylight after rising.</strong> Réseau Morphée (2019) advises daily exposure to natural light; the one-hour delay after rising is a design choice.</li>
+        <li><strong>20-minute landmark.</strong> The NHS advises getting up after about 20 minutes awake, and the RACGP after 15 to 20 minutes; the AASM (2021) and Morin et al. (2006) describe the instruction to get up without giving a duration.</li>
       </ul>
 
       <h2 id="cognitif">6. Cognitive and relaxation exercises</h2>
@@ -352,7 +365,8 @@
       </ul>
       <h2 id="gaps">Gaps and limits</h2>
       <ul>
-        <li>Time-in-bed restriction is offered without follow-up by a clinician, whereas the guidelines describe it with follow-up.</li>
+        <li>Time-in-bed restriction is offered without follow-up by a clinician, whereas the guidelines describe it with an initial suitability assessment and regular reviews of sleepiness (Riemann et al., 2023).</li>
+        <li>Some precautions listed by open sources are not asked about in the entry questionnaire: parasomnias (Spielman et al., 2011), depression or mood disorders other than bipolar disorder (Réseau Morphée, 2019) and conditions that sleep loss may aggravate (Riemann et al., 2023). Conversely, pregnancy, shift work and delayed sleep phase are excluded as a precaution: we found no open guideline that lists them for restriction.</li>
         <li>The content has been reviewed against published references (European Insomnia Guideline 2023, AASM 2021, HAS 2024, Réseau Morphée 2019) but not yet validated by a sleep physician.</li>
         <li>Sommelle has not been clinically evaluated.</li>
       </ul>
@@ -369,19 +383,29 @@
 
       <h2 id="sources">10. Sources</h2>
       <ul class="refs">
-        <li>Riemann D. et al. The European Insomnia Guideline: an update on the diagnosis and treatment of insomnia 2023. <em>J Sleep Res</em>, 2023.</li>
-        <li>Edinger J.D. et al. Behavioral and psychological treatments for chronic insomnia disorder in adults: an American Academy of Sleep Medicine clinical practice guideline. <em>J Clin Sleep Med</em>, 2021.</li>
-        <li>Zachariae R. et al. Efficacy of internet-delivered cognitive-behavioral therapy for insomnia: a systematic review and meta-analysis of randomized controlled trials. <em>Sleep Med Rev</em>, 2016.</li>
-        <li>Soh H.L. et al. Efficacy of digital cognitive behavioural therapy for insomnia: a meta-analysis of randomised controlled trials. <em>Sleep Med Rev</em>, 2020.</li>
-        <li>Carney C.E. et al. The Consensus Sleep Diary: standardizing prospective sleep self-monitoring. <em>Sleep</em>, 2012.</li>
+        <li>Riemann D. et al. The European Insomnia Guideline: an update on the diagnosis and treatment of insomnia 2023. <em>J Sleep Res</em>, 2023. <a href="https://pure.uva.nl/ws/files/260029353/Journal_of_Sleep_Research_-_2023_-_Riemann_-_The_European_Insomnia_Guideline.pdf">pure.uva.nl</a></li>
+        <li>Edinger J.D. et al. Behavioral and psychological treatments for chronic insomnia disorder in adults: an American Academy of Sleep Medicine clinical practice guideline. <em>J Clin Sleep Med</em>, 2021. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7853203">pmc.ncbi.nlm.nih.gov</a></li>
+        <li>Qaseem A. et al. (Clinical Guidelines Committee of the American College of Physicians). Management of chronic insomnia disorder in adults: a clinical practice guideline from the American College of Physicians. <em>Ann Intern Med</em>, 2016, 165(2), 125-133. <a href="https://researchconnect.buffalo.edu/en/publications/management-of-chronic-insomnia-disorder-in-adults-a-clinical-prac/">researchconnect.buffalo.edu</a></li>
+        <li>Zachariae R. et al. Efficacy of internet-delivered cognitive-behavioral therapy for insomnia: a systematic review and meta-analysis of randomized controlled trials. <em>Sleep Med Rev</em>, 2016. <a href="https://em-consulte.com/article/1111050/figures/efficacy-of-internet-delivered-cognitive-behaviora">em-consulte.com</a></li>
+        <li>Soh H.L. et al. Efficacy of digital cognitive behavioural therapy for insomnia: a meta-analysis of randomised controlled trials. <em>Sleep Med</em>, 2020. <a href="https://read.qxmd.com/read/32950013/efficacy-of-digital-cognitive-behavioural-therapy-for-insomnia-a-meta-analysis-of-randomised-controlled-trials">read.qxmd.com</a></li>
+        <li>Carney C.E. et al. The Consensus Sleep Diary: standardizing prospective sleep self-monitoring. <em>Sleep</em>, 2012. <a href="https://core.ac.uk/download/442651103.pdf">core.ac.uk</a></li>
         <li>Spielman A.J., Saskin P., Thorpy M.J. Treatment of chronic insomnia by restriction of time in bed. <em>Sleep</em>, 1987.</li>
-        <li>Kyle S.D. et al. Sleep restriction therapy for insomnia is associated with reduced objective total sleep time, increased daytime somnolence, and objectively impaired vigilance. <em>Sleep</em>, 2014.</li>
+        <li>Spielman A.J., Yang C.-M., Glovinsky P.B. Sleep restriction therapy. In: <em>Behavioral Treatments for Sleep Disorders</em>, Elsevier, 2011, chapter 1. <a href="https://www.med.upenn.edu/cbti/assets/user-content/documents/BTSD%20Spielman%20Chapter%20on%20SRT.pdf">med.upenn.edu</a></li>
+        <li>Kyle S.D. et al. Sleep restriction therapy for insomnia is associated with reduced objective total sleep time, increased daytime somnolence, and objectively impaired vigilance. <em>Sleep</em>, 2014. <a href="https://eprints.gla.ac.uk/93153">eprints.gla.ac.uk</a> (abstract)</li>
+        <li>Kyle S.D. et al. Towards standardisation and improved understanding of sleep restriction therapy for insomnia disorder: a systematic examination of CBT-I trial content. <em>Sleep Med Rev</em>, 2015. <a href="https://www.em-consulte.com/article/999747/towards-standardisation-and-improved-understanding">em-consulte.com</a> (abstract)</li>
+        <li>Morin C.M., Bootzin R.R., Buysse D.J., Edinger J.D., Espie C.A., Lichstein K.L. Psychological and behavioral treatment of insomnia: update of the recent evidence (1998-2004). <em>Sleep</em>, 2006, 29(11), 1398-1414. <a href="https://www.med.upenn.edu/cbti/assets/user-content/documents/Review_Insomnia.pdf">med.upenn.edu</a></li>
         <li>Bootzin R.R. Stimulus control treatment for insomnia. <em>Proceedings of the American Psychological Association</em>, 1972.</li>
         <li>Morin C.M., Vallières A., Ivers H. Dysfunctional Beliefs and Attitudes about Sleep (DBAS): validation of a brief version (DBAS-16). <em>Sleep</em>, 2007.</li>
         <li>Carney C.E., Waters W.F. Effects of a structured problem-solving procedure on pre-sleep cognitive arousal in college students with insomnia. <em>Behav Sleep Med</em>, 2006.</li>
         <li>Espie C.A., Lindsay W.R. Paradoxical intention in the treatment of chronic insomnia. <em>Behav Res Ther</em>, 1985.</li>
-        <li>Tang N.K.Y., Schmidt D.A., Harvey A.G. Sleeping with the enemy: clock monitoring in the maintenance of insomnia. <em>J Behav Ther Exp Psychiatry</em>, 2007.</li>
+        <li>Tang N.K.Y., Schmidt D.A., Harvey A.G. Sleeping with the enemy: clock monitoring in the maintenance of insomnia. <em>J Behav Ther Exp Psychiatry</em>, 2007. <a href="https://www.med.upenn.edu/cbti/assets/user-content/documents/Tang2007_SleepingwiththeEnemy-ClockMonitoringintheMaintenanceofInsomnia.pdf">med.upenn.edu</a></li>
         <li>Baron K.G. et al. Orthosomnia: are some patients taking the quantified self too far? <em>J Clin Sleep Med</em>, 2017.</li>
+        <li>Haute Autorité de santé (HAS). Quelle place pour les benzodiazépines dans l'insomnie ? (good-use sheet, in French), July 2024. <a href="https://www.has-sante.fr/upload/docs/application/pdf/2024-07/bum_bzd_insomnie_11_07_24_vf.pdf">has-sante.fr</a></li>
+        <li>Drake C., Roehrs T., Shambroom J., Roth T. Caffeine effects on sleep taken 0, 3, or 6 hours before going to bed. <em>J Clin Sleep Med</em>, 2013, 9(11), 1195-1200. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3805807">pmc.ncbi.nlm.nih.gov</a></li>
+        <li>Réseau Morphée. Conduite à tenir : devant une insomnie chronique (in French). January 2019 version. <a href="https://reseau-morphee.fr/download/5580">reseau-morphee.fr</a></li>
+        <li>Gardiner C. et al. The effect of caffeine on subsequent sleep: a systematic review and meta-analysis. <em>Sleep Med Rev</em>, 2023, 69, 101764. <a href="https://doi.org/10.1016/j.smrv.2023.101764">doi.org</a> (abstract read on <a href="https://em-consulte.com/article/1592377/the-effect-of-caffeine-on-subsequent-sleep-a-syste">em-consulte.com</a>)</li>
+        <li>NHS, Every Mind Matters. How to fall asleep faster and sleep better. Accessed November 2026. <a href="https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/how-to-fall-asleep-faster-and-sleep-better/">nhs.uk</a></li>
+        <li>Royal Australian College of General Practitioners (RACGP). HANDI: Brief behavioural therapy, insomnia in adults, 2014. <a href="https://www.racgp.org.au/getattachment/ee39e04f-982e-4d70-9910-9ec66dd72998/Brief-behavioural-therapy-insomnia-in-adults.aspx">racgp.org.au</a></li>
       </ul>
 
       <h2 id="retours">11. Code and formula auditability (file-by-file mapping)</h2>
@@ -435,7 +459,7 @@
         <a href="https://github.com/Pilmil-Studio/sommelle">Source code</a>
         <a href="mailto:pilmil.studio@proton.me">Contact</a>
       </div>
-      <p><img src="../img/pilmil-logo.svg" alt="" width="18" height="18" style="vertical-align:-3px;margin-right:6px"><strong>Pilmil Studio</strong> (France) · Sommelle is free software distributed under the Mozilla Public License 2.0 (MPL-2.0). It is not a medical device.</p>
+      <p><img src="../img/pilmil-logo.svg" alt="" width="18" height="18" style="vertical-align:-3px;margin-right:6px"><a href="https://pilmil-studio.github.io/en/"><strong>Pilmil Studio</strong></a> (France) · Sommelle is free software distributed under the Mozilla Public License 2.0 (MPL-2.0). It is not a medical device.</p>
     </div>
   </footer>
 </body>
