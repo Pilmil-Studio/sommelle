@@ -65,6 +65,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import fr.sommelle.core.data.SommelleRepository
+import fr.sommelle.core.data.backup.BackupPolicy
+import fr.sommelle.core.data.backup.CloudBackupConsent
 import fr.sommelle.core.designsystem.InfoLine
 import fr.sommelle.core.designsystem.NightThemeMode
 import fr.sommelle.core.designsystem.NightThemeStore
@@ -133,6 +135,11 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
     val viewModel: SettingsViewModel = viewModel { SettingsViewModel(repository, BackupService.create(repository, context)) }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val s = state ?: return
+    val cloudConsent = remember { CloudBackupConsent(context.noBackupFilesDir) }
+    var cloudBackupOn by remember { mutableStateOf(cloudConsent.enabled) }
+    val deviceSecure = remember {
+        (context.getSystemService(android.content.Context.KEYGUARD_SERVICE) as? android.app.KeyguardManager)?.isDeviceSecure == true
+    }
     var notificationsAllowed by remember { mutableStateOf(NotificationManagerCompat.from(context).areNotificationsEnabled()) }
     var importedCount by rememberSaveable { mutableStateOf<Int?>(null) }
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -220,6 +227,13 @@ fun SettingsScreen(repository: SommelleRepository, onOpenReport: () -> Unit, onO
         },
         pilmilStatus = backupMessage?.let { stringResource(it) },
         importedCount = importedCount,
+        cloudBackupAvailable = BackupPolicy.settingAvailable(Build.VERSION.SDK_INT),
+        cloudBackupPossible = deviceSecure,
+        cloudBackupOn = cloudBackupOn,
+        onCloudBackupChange = { on ->
+            cloudConsent.enabled = on
+            cloudBackupOn = on
+        },
         onErase = { viewModel.erase(onErased) },
     )
 
@@ -371,6 +385,10 @@ fun SettingsContent(
     onExportPilmil: () -> Unit = {},
     pilmilStatus: String? = null,
     importedCount: Int? = null,
+    cloudBackupAvailable: Boolean = false,
+    cloudBackupPossible: Boolean = false,
+    cloudBackupOn: Boolean = false,
+    onCloudBackupChange: (Boolean) -> Unit = {},
 ) {
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
@@ -420,6 +438,15 @@ fun SettingsContent(
             InfoLine(SommelleIcons.History, stringResource(R.string.settings_data_hint))
             SommelleButton(stringResource(R.string.settings_backup_export), onExportPilmil, style = SommelleButtonStyle.Outlined)
             SommelleButton(stringResource(R.string.settings_backup_restore), onImportCsv, style = SommelleButtonStyle.Outlined)
+            if (cloudBackupAvailable) {
+                ToggleRow(
+                    title = stringResource(R.string.settings_cloud_backup),
+                    hint = stringResource(if (cloudBackupPossible) R.string.settings_cloud_backup_hint else R.string.settings_cloud_backup_unavailable),
+                    checked = cloudBackupOn && cloudBackupPossible,
+                    enabled = cloudBackupPossible,
+                    onChange = onCloudBackupChange,
+                )
+            }
             SommelleButton(stringResource(R.string.settings_import_csv), onImportCsv, style = SommelleButtonStyle.Outlined)
             if (pilmilStatus != null) {
                 Text(pilmilStatus, style = MaterialTheme.typography.bodySmall)
