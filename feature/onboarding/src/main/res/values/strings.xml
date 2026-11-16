@@ -34,7 +34,7 @@
     <string name="onb_h_private">Your answer stays on your phone.</string>
 
     <string name="onb_result_full_title">The full program is right for you</string>
-    <string name="onb_result_full_text">1. Observation (first 7 days): sleep as usual and log your night each morning.\n2. Weeks 1 to 6: Sommelle temporarily matches your time in bed to your actual sleep time to make it more continuous. For 2 to 4 weeks, tiredness and sleepiness may increase. They usually ease afterwards. Sommelle then lengthens your nights week after week.\n3. After the 6 weeks: your sleep should have improved and you can put the diary away.</string>
+    <string name="onb_result_full_text">1. Observation (first 7 days): sleep as usual and log your night each morning.\n2. Weeks 1 to 6: Sommelle temporarily matches your time in bed to your actual sleep time to make it more continuous. For 2 to 4 weeks, tiredness and sleepiness may increase. They usually ease afterwards. Sommelle then lengthens your nights week after week.\n3. After the 6 weeks: many people notice better sleep, but this is not guaranteed. If nothing changes, medical advice is useful. You can then put the diary away.</string>
     <string name="onb_result_partial_title">A program adapted for you</string>
     <string name="onb_result_partial_text">Based on your answers, Sommelle will not reduce your time in bed. Over 6 weeks, you will follow the morning diary, the night guidance and one exercise per week to calm your sleep.</string>
     <string name="onb_result_out_title">Sommelle is not suited to your situation</string>

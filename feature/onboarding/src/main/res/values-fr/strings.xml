@@ -34,7 +34,7 @@
     <string name="onb_h_private">Votre réponse reste sur votre téléphone.</string>
 
     <string name="onb_result_full_title">Le programme complet vous convient</string>
-    <string name="onb_result_full_text">1. Observation (7 premiers jours) : dormez comme d\'habitude et notez votre nuit chaque matin.\n2. Semaines 1 à 6 : Sommelle aligne temporairement votre temps au lit sur votre sommeil réel pour le rendre plus continu. Pendant 2 à 4 semaines, la fatigue et la somnolence peuvent augmenter. Elles diminuent en général ensuite. Puis Sommelle rallonge vos nuits semaine après semaine.\n3. Après les 6 semaines : votre sommeil devrait s\'être amélioré et vous pouvez ranger l\'agenda.</string>
+    <string name="onb_result_full_text">1. Observation (7 premiers jours) : dormez comme d\'habitude et notez votre nuit chaque matin.\n2. Semaines 1 à 6 : Sommelle aligne temporairement votre temps au lit sur votre sommeil réel pour le rendre plus continu. Pendant 2 à 4 semaines, la fatigue et la somnolence peuvent augmenter. Elles diminuent en général ensuite. Puis Sommelle rallonge vos nuits semaine après semaine.\n3. Après les 6 semaines : beaucoup de personnes constatent une amélioration de leur sommeil, mais ce n\'est pas garanti. Si rien ne change, un avis médical est utile. Vous pouvez ensuite ranger l\'agenda.</string>
     <string name="onb_result_partial_title">Un programme adapté pour vous</string>
     <string name="onb_result_partial_text">D\'après vos réponses, Sommelle ne réduira pas votre temps passé au lit. Pendant 6 semaines, vous suivrez l\'agenda du matin, les repères pour la nuit et un exercice par semaine pour apaiser le sommeil.</string>
     <string name="onb_result_out_title">Sommelle n\'est pas adaptée à votre situation</string>

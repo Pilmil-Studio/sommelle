@@ -31,7 +31,7 @@
     <string name="onb_q_distress">¿Últimamente te sientes al límite o sin esperanza?</string>
     <string name="onb_h_private">Tu respuesta se queda en tu teléfono.</string>
     <string name="onb_result_full_title">El programa completo es adecuado para ti</string>
-    <string name="onb_result_full_text">1. Observación (primeros 7 días): duerme con normalidad y anota tu noche cada mañana.\n2. Semanas 1 a 6: Sommelle ajusta inicialmente el tiempo en la cama a tu tiempo de sueño real y luego alarga tu descanso semanalmente. Durante 2 a 4 semanas, el cansancio y la somnolencia pueden aumentar. Por lo general, disminuyen después.\n3. Tras las 6 semanas, tu sueño debería haber mejorado y puedes dejar el diario.</string>
+    <string name="onb_result_full_text">1. Observación (primeros 7 días): duerme con normalidad y anota tu noche cada mañana.\n2. Semanas 1 a 6: Sommelle ajusta inicialmente el tiempo en la cama a tu tiempo de sueño real y luego alarga tu descanso semanalmente. Durante 2 a 4 semanas, el cansancio y la somnolencia pueden aumentar. Por lo general, disminuyen después.\n3. Tras las 6 semanas: muchas personas notan una mejora del sueño, pero no está garantizada. Si nada cambia, conviene pedir consejo médico. Después puedes dejar el diario.</string>
     <string name="onb_result_partial_title">Un programa adaptado para ti</string>
     <string name="onb_result_partial_text">Según tus respuestas, Sommelle no reducirá tu tiempo en la cama. Durante 6 semanas seguirás el diario matutino, las pautas nocturnas y un ejercicio semanal para mejorar el descanso.</string>
     <string name="onb_result_out_title">Sommelle no se adapta a tu situación</string>
