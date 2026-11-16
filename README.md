@@ -14,7 +14,7 @@ Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un disposit
 
 ## Ce que fait l'appli
 
-Pendant six à huit semaines :
+Pendant sept semaines (une semaine d'observation, puis six semaines de programme) :
 
 - **Un questionnaire d'entrée et un repère clair sur la durée (6 semaines)** écartent la restriction du sommeil quand elle est déconseillée (apnée possible, trouble bipolaire, épilepsie, grossesse, métier à risque), expliquent les trois étapes du programme dès le départ et orientent vers un médecin si besoin.
 - **Un agenda du sommeil** se remplit chaque matin en quelques gestes, sans clavier, avec un accompagnement rassurant pendant la première semaine de restriction.
@@ -55,8 +55,8 @@ Les captures sont générées à partir du code des écrans à chaque modificati
 ## Parti pris
 
 - **Pas de note sur 100 chaque matin** : une mauvaise nuit est une information pour ajuster vos horaires de la semaine, pas un échec à noter.
-- **Pas d'horloge ni de décompte la nuit** : regarder l'heure à 3 h du matin entretient l'éveil. L'écran de nuit masque l'heure et propose un timbre doux à 20 minutes sans afficher de chiffre.
-- **Pas de permission Internet ni d'abonnement** : l'ensemble du programme de 6 à 8 semaines fonctionne hors ligne et gratuitement.
+- **Pas d'horloge ni de décompte la nuit** : surveiller l'horloge en essayant de dormir augmente l'inquiétude et fait paraître l'endormissement plus long (Tang et al., 2007). L'écran de nuit masque l'heure et propose un timbre doux à 20 minutes sans afficher de chiffre.
+- **Pas de permission Internet ni d'abonnement** : l'ensemble du programme de sept semaines fonctionne hors ligne et gratuitement.
 
 ## Du même atelier (Pilmil Studio)
 
