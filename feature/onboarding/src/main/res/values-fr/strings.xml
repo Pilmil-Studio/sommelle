@@ -40,6 +40,10 @@
     <string name="onb_medical_hint">Cochez ce qui s\'applique. Vos réponses restent sur votre téléphone.</string>
     <string name="onb_medical_bipolar">Un médecin m\'a dit que j\'avais un trouble bipolaire</string>
     <string name="onb_medical_epilepsy">J\'ai de l\'épilepsie</string>
+    <string name="onb_medical_parasomnia">Je me lève, je crie ou j\'agis pendant mon sommeil</string>
+    <string name="onb_medical_mood">J\'ai en ce moment une dépression ou un autre trouble de l\'humeur</string>
+    <string name="onb_medical_falls">Je risque de tomber la nuit, ou je prends un somnifère ou un sédatif le soir</string>
+    <string name="onb_medical_unstable">J\'ai une maladie instable, ou que le manque de sommeil peut aggraver</string>
     <string name="onb_medical_pregnancy">Je suis enceinte</string>
     <string name="onb_medical_none">Aucune de ces situations</string>
     <string name="onb_q_safety">Conduisez-vous pour votre travail, ou utilisez-vous des machines dangereuses ?</string>

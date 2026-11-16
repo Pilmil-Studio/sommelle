@@ -38,6 +38,10 @@
     <string name="onb_medical_hint">Zaznacz to, co Cię dotyczy. Twoje odpowiedzi pozostają na Twoim telefonie.</string>
     <string name="onb_medical_bipolar">Lekarz zdiagnozował u mnie chorobę afektywną dwubiegunową</string>
     <string name="onb_medical_epilepsy">Choruję na padaczkę</string>
+    <string name="onb_medical_parasomnia">Zdarza mi się wstawać, krzyczeć lub coś robić podczas snu</string>
+    <string name="onb_medical_mood">Mam obecnie depresję lub inne zaburzenie nastroju</string>
+    <string name="onb_medical_falls">W nocy grozi mi upadek albo wieczorem przyjmuję tabletki nasenne lub leki uspokajające</string>
+    <string name="onb_medical_unstable">Mam chorobę, która jest niestabilna albo którą brak snu może nasilać</string>
     <string name="onb_medical_pregnancy">Jestem w ciąży</string>
     <string name="onb_medical_none">Żadna z tych sytuacji</string>
     <string name="onb_q_safety">Czy prowadzisz zawodowo pojazdy lub obsługujesz niebezpieczne maszyny?</string>

@@ -38,6 +38,10 @@
     <string name="onb_medical_hint">Kreuze an, was zutrifft. Deine Antworten bleiben auf deinem Gerät.</string>
     <string name="onb_medical_bipolar">Bei mir wurde eine bipolare Störung diagnostiziert</string>
     <string name="onb_medical_epilepsy">Ich habe Epilepsie</string>
+    <string name="onb_medical_parasomnia">Ich stehe im Schlaf auf, schreie oder tue etwas</string>
+    <string name="onb_medical_mood">Ich habe derzeit eine Depression oder eine andere Stimmungsstörung</string>
+    <string name="onb_medical_falls">Bei mir besteht nachts ein Sturzrisiko, oder ich nehme abends ein Schlafmittel oder Beruhigungsmittel</string>
+    <string name="onb_medical_unstable">Ich habe eine Erkrankung, die nicht stabil ist oder durch Schlafmangel schlimmer werden kann</string>
     <string name="onb_medical_pregnancy">Ich bin schwanger</string>
     <string name="onb_medical_none">Keine dieser Situationen</string>
     <string name="onb_q_safety">Fährst du beruflich Auto oder bedienst gefährliche Maschinen?</string>

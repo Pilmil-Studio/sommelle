@@ -38,6 +38,10 @@
     <string name="onb_medical_hint">Marca lo que corresponda. Tus respuestas se quedan en tu teléfono.</string>
     <string name="onb_medical_bipolar">Un médico me ha diagnosticado un trastorno bipolar</string>
     <string name="onb_medical_epilepsy">Tengo epilepsia</string>
+    <string name="onb_medical_parasomnia">Me levanto, grito o hago cosas mientras duermo</string>
+    <string name="onb_medical_mood">Tengo ahora mismo una depresión u otro trastorno del estado de ánimo</string>
+    <string name="onb_medical_falls">Corro riesgo de caerme por la noche, o tomo un somnífero o un sedante por la noche</string>
+    <string name="onb_medical_unstable">Tengo una enfermedad inestable, o que la falta de sueño puede empeorar</string>
     <string name="onb_medical_pregnancy">Estoy embarazada</string>
     <string name="onb_medical_none">Ninguna de estas situaciones</string>
     <string name="onb_q_safety">¿Conduces por trabajo o manejas maquinaria pesada/peligrosa?</string>

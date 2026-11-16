@@ -38,6 +38,10 @@
     <string name="onb_medical_hint">Позначте те, що вас стосується. Ваші відповіді залишаються на телефоні.</string>
     <string name="onb_medical_bipolar">Лікар діагностував у мене біполярний розлад</string>
     <string name="onb_medical_epilepsy">У мене епілепсія</string>
+    <string name="onb_medical_parasomnia">Я встаю, кричу або щось роблю уві сні</string>
+    <string name="onb_medical_mood">У мене зараз депресія або інший розлад настрою</string>
+    <string name="onb_medical_falls">Я ризикую впасти вночі, або ввечері приймаю снодійне чи заспокійливе</string>
+    <string name="onb_medical_unstable">У мене хвороба, що перебігає нестабільно або яку нестача сну може погіршити</string>
     <string name="onb_medical_pregnancy">Я вагітна</string>
     <string name="onb_medical_none">Жодна з цих ситуацій</string>
     <string name="onb_q_safety">Ви керуєте авто по роботі чи працюєте з небезпечними механізмами?</string>

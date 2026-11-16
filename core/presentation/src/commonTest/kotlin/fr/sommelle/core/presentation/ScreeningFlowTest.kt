@@ -122,7 +122,7 @@ class ScreeningFlowTest {
     }
 
     @Test
-    fun `les trois situations medicales tiennent sur un seul ecran`() {
+    fun `les situations medicales tiennent sur un seul ecran`() {
         val medical = atMedicalStep()
         assertEquals(ScreeningQuestion.BIPOLAR, medical.current)
         // Âge, quatre questions, puis l'écran médical : sixième écran.
@@ -130,16 +130,57 @@ class ScreeningFlowTest {
         val after = medical.answerMedical(emptySet())
         assertEquals(ScreeningQuestion.SAFETY_CRITICAL, after.current)
         assertEquals(7, after.stepNumber)
-        // Deux écrans de moins qu'avec une question par écran.
-        assertEquals(ScreeningQuestion.entries.size - 1, after.totalSteps)
+        // Un seul écran pour tout le groupe, au lieu d'une question par écran.
+        assertEquals(1 + ScreeningQuestion.entries.size - (ScreeningQuestion.MEDICAL_GROUP.size - 1), after.totalSteps)
     }
 
     @Test
-    fun `ne rien cocher repond non aux trois, cocher enregistre chaque situation`() {
+    fun `les quatre precautions de l accueil sont sur l ecran medical et rien n est demande deux fois`() {
+        val newOnes = listOf(
+            ScreeningQuestion.PARASOMNIA,
+            ScreeningQuestion.MOOD_DISORDER,
+            ScreeningQuestion.FALL_RISK_OR_EVENING_SEDATIVES,
+            ScreeningQuestion.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION,
+        )
+        assertTrue(ScreeningQuestion.MEDICAL_GROUP.containsAll(newOnes))
+        // Le groupe est contigu et dans l'ordre de l'énumération.
+        val ordinals = ScreeningQuestion.MEDICAL_GROUP.map { it.ordinal }
+        assertEquals((ordinals.first()..ordinals.last()).toList(), ordinals)
+
+        // Parcours complet : l'écran médical n'apparaît qu'une fois et aucune question n'est posée à part.
+        var f = ScreeningFlow().chooseAge(AgeBand.FROM_25_TO_44)
+        val screens = mutableListOf<ScreeningQuestion>()
+        while (!f.finished) {
+            screens += f.current!!
+            f = if (f.isMedicalStep) f.answerMedical(emptySet()) else f.answer(false)
+        }
+        assertEquals(1, screens.count { it in ScreeningQuestion.MEDICAL_GROUP })
+        assertEquals(screens.size, screens.toSet().size)
+        assertEquals(ScreeningQuestion.entries.filter { it !in ScreeningQuestion.MEDICAL_GROUP || it == ScreeningQuestion.MEDICAL_GROUP.first() }, screens)
+
+        // Chaque situation cochée est enregistrée, retrouvée au retour, et bloque la restriction.
+        newOnes.forEach { q ->
+            val after = atMedicalStep().answerMedical(setOf(q))
+            assertEquals(setOf(q), after.back().medicalSelection)
+            val result = fr.sommelle.core.protocol.ScreeningEvaluator().evaluate(after.answers!!)
+            assertEquals(fr.sommelle.core.model.Pathway.WITHOUT_RESTRICTION, result.pathway, "parcours : $q")
+            assertTrue(result.referrals.isNotEmpty(), "invitation à consulter : $q")
+        }
+        // Les quatre à la fois.
+        val all = atMedicalStep().answerMedical(newOnes.toSet())
+        assertEquals(newOnes.toSet(), all.medicalSelection)
+    }
+
+    @Test
+    fun `ne rien cocher repond non a tout, cocher enregistre chaque situation`() {
         val none = atMedicalStep().answerMedical(emptySet()).answers!!
         assertFalse(none.bipolarDisorder)
         assertFalse(none.epilepsy)
         assertFalse(none.pregnancy)
+        assertFalse(none.parasomnia)
+        assertFalse(none.moodDisorder)
+        assertFalse(none.fallRiskOrEveningSedatives)
+        assertFalse(none.unstableOrSleepSensitiveCondition)
 
         val some = atMedicalStep().answerMedical(setOf(ScreeningQuestion.EPILEPSY, ScreeningQuestion.PREGNANCY)).answers!!
         assertFalse(some.bipolarDisorder)

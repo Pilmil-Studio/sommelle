@@ -40,6 +40,10 @@
     <string name="onb_medical_hint">Tick what applies. Your answers stay on your phone.</string>
     <string name="onb_medical_bipolar">A doctor has told me I have bipolar disorder</string>
     <string name="onb_medical_epilepsy">I have epilepsy</string>
+    <string name="onb_medical_parasomnia">I get up, shout or act while I am asleep</string>
+    <string name="onb_medical_mood">I currently have depression or another mood disorder</string>
+    <string name="onb_medical_falls">I am at risk of falling at night, or I take a sleeping pill or sedative in the evening</string>
+    <string name="onb_medical_unstable">I have a health condition that is unstable, or that lack of sleep can make worse</string>
     <string name="onb_medical_pregnancy">I am pregnant</string>
     <string name="onb_medical_none">None of these</string>
     <string name="onb_q_safety">Do you drive for work, or operate dangerous machinery?</string>
