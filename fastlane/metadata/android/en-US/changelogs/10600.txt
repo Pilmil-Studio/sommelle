@@ -1,0 +1,6 @@
+• Full encrypted backup and restore from settings.
+• Night screen: closes automatically after 3 minutes without a touch, higher contrast.
+• Night settings in six languages, larger radio-button choices.
+• Diary: draft kept if the app is closed.
+• Weekly summary: words first, then the percentage.
+• Questionnaire: "I don't know" answer and a weekly sleepiness question.

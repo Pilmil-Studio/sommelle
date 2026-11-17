@@ -1,0 +1,6 @@
+• Sauvegarde chiffrée complète et restauration depuis les réglages.
+• Écran de nuit : fermeture automatique après 3 minutes sans toucher, contrastes relevés.
+• Réglages de nuit en six langues, choix en boutons radio plus grands.
+• Journal : brouillon conservé si l'appli est fermée.
+• Bilan hebdomadaire : les mots d'abord, puis le pourcentage.
+• Questionnaire : réponse « Je ne sais pas » et question hebdomadaire sur la somnolence.
