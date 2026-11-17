@@ -1,0 +1,55 @@
+complexity:
+  ComplexCondition:
+    active: false
+  CyclomaticComplexMethod:
+    active: false
+  LargeClass:
+    active: false
+  LongMethod:
+    active: false
+  LongParameterList:
+    active: false
+  NestedBlockDepth:
+    active: false
+  TooManyFunctions:
+    active: false
+
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
+  SwallowedException:
+    active: false
+
+naming:
+  FunctionNaming:
+    active: true
+    ignoreAnnotated:
+      - Composable
+    excludes:
+      - '**/iosMain/**'
+  MatchingDeclarationName:
+    active: false
+
+performance:
+  SpreadOperator:
+    active: false
+
+style:
+  ForbiddenComment:
+    active: false
+  LoopWithTooManyJumpStatements:
+    active: false
+  MagicNumber:
+    active: false
+  MaxLineLength:
+    active: false
+  ReturnCount:
+    active: false
+  ThrowsCount:
+    active: false
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated:
+      - Preview
+  WildcardImport:
+    active: false
