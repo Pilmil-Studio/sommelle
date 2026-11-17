@@ -23,6 +23,14 @@ data class ScreeningAnswers(
     val markedDaytimeSleepiness: Boolean = false,
     val bipolarDisorder: Boolean = false,
     val epilepsy: Boolean = false,
+    /** Somnambulisme, terreurs nocturnes ou comportements pendant le sommeil. */
+    val parasomnia: Boolean = false,
+    /** Dépression ou autre trouble de l'humeur en cours. */
+    val moodDisorder: Boolean = false,
+    /** Risque de chute, ou somnifère ou sédatif pris le soir. */
+    val fallRiskOrEveningSedatives: Boolean = false,
+    /** Maladie instable ou que le manque de sommeil peut aggraver (migraines sévères, maladie cardiaque, douleurs chroniques mal équilibrées). */
+    val unstableOrSleepSensitiveCondition: Boolean = false,
     val pregnancy: Boolean = false,
     /** Conduite professionnelle, machines dangereuses ou métier de sécurité : parcours sans restriction. */
     val safetyCriticalActivity: Boolean = false,
@@ -52,6 +60,10 @@ enum class Referral {
     EXCESSIVE_DAYTIME_SLEEPINESS,
     BIPOLAR_DISORDER,
     EPILEPSY,
+    PARASOMNIA,
+    MOOD_DISORDER,
+    FALL_RISK_OR_EVENING_SEDATIVES,
+    UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION,
     DELAYED_SLEEP_PHASE_SUSPECTED,
     SHIFT_WORK,
 }

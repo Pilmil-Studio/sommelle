@@ -105,6 +105,10 @@ object UkrainianFormat : TextFormat {
         Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> "Зголошено про мимовільне засинання вдень"
         Referral.BIPOLAR_DISORDER -> "Зголошено біполярний розлад: без обмеження часу в ліжку"
         Referral.EPILEPSY -> "Зголошено епілепсію: без обмеження часу в ліжку"
+        Referral.PARASOMNIA -> "Зголошено парасомнію (сомнамбулізм, нічні жахи): без обмеження часу в ліжку"
+        Referral.MOOD_DISORDER -> "Зголошено депресію або інший розлад настрою: без обмеження часу в ліжку"
+        Referral.FALL_RISK_OR_EVENING_SEDATIVES -> "Зголошено ризик падіння або снодійне чи заспокійливе ввечері: без обмеження часу в ліжку"
+        Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> "Зголошено нестабільну хворобу або таку, що погіршується через нестачу сну: без обмеження часу в ліжку"
         Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> "Дуже пізній час при нормальному сні: можливий розлад фази сну"
         Referral.SHIFT_WORK -> "Зголошено змінну або нічну роботу"
     }

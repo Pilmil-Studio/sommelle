@@ -115,6 +115,7 @@ object SommelleBackup {
     private fun Map<*, *>.str(key: String): String = this[key] as? String ?: error("$key manquant ou invalide")
     private fun Map<*, *>.long(key: String): Long = this[key] as? Long ?: error("$key manquant ou invalide")
     private fun Map<*, *>.bool(key: String): Boolean = this[key] as? Boolean ?: error("$key manquant ou invalide")
+    private fun Map<*, *>.optBool(key: String): Boolean = if (this[key] == null) false else bool(key)
     private fun Map<*, *>.date(key: String): LocalDate = LocalDate.parse(str(key))
     private fun Map<*, *>.dateTime(key: String): LocalDateTime = LocalDateTime.parse(str(key))
     private fun Map<*, *>.time(key: String): LocalTime = LocalTime.parse(str(key))
@@ -134,6 +135,10 @@ object SommelleBackup {
         "externalNightDisruption" to p.externalNightDisruption,
         "lateScheduleSleepsWellOnceAsleep" to p.lateScheduleSleepsWellOnceAsleep,
         "expressedDistress" to p.expressedDistress,
+        "parasomnia" to p.parasomnia,
+        "moodDisorder" to p.moodDisorder,
+        "fallRiskOrEveningSedatives" to p.fallRiskOrEveningSedatives,
+        "unstableOrSleepSensitiveCondition" to p.unstableOrSleepSensitiveCondition,
     )
 
     private fun programFromJson(m: Map<*, *>): ProgramEntity {
@@ -153,6 +158,11 @@ object SommelleBackup {
             externalNightDisruption = m.bool("externalNightDisruption"),
             lateScheduleSleepsWellOnceAsleep = m.bool("lateScheduleSleepsWellOnceAsleep"),
             expressedDistress = m.bool("expressedDistress"),
+            // Absents des sauvegardes faites avant la version 4 de la base : false.
+            parasomnia = m.optBool("parasomnia"),
+            moodDisorder = m.optBool("moodDisorder"),
+            fallRiskOrEveningSedatives = m.optBool("fallRiskOrEveningSedatives"),
+            unstableOrSleepSensitiveCondition = m.optBool("unstableOrSleepSensitiveCondition"),
         )
     }
 

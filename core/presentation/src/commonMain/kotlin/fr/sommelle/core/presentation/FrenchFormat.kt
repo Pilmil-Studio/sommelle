@@ -100,6 +100,10 @@ object FrenchFormat : TextFormat {
         Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> "Endormissements involontaires en journée déclarés"
         Referral.BIPOLAR_DISORDER -> "Trouble bipolaire déclaré : pas de restriction du temps au lit"
         Referral.EPILEPSY -> "Épilepsie déclarée : pas de restriction du temps au lit"
+        Referral.PARASOMNIA -> "Parasomnie déclarée (somnambulisme, terreurs nocturnes) : pas de restriction du temps au lit"
+        Referral.MOOD_DISORDER -> "Dépression ou trouble de l'humeur en cours déclaré : pas de restriction du temps au lit"
+        Referral.FALL_RISK_OR_EVENING_SEDATIVES -> "Risque de chute ou somnifère ou sédatif le soir déclaré : pas de restriction du temps au lit"
+        Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> "Maladie instable ou aggravée par le manque de sommeil déclarée : pas de restriction du temps au lit"
         Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> "Horaires très tardifs avec sommeil normal : retard de phase possible"
         Referral.SHIFT_WORK -> "Travail posté ou de nuit déclaré"
     }

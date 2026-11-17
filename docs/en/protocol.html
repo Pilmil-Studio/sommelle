@@ -172,10 +172,10 @@
           <tr><td>Observation period before any restriction</td><td>7 days</td></tr>
           <tr><td>Logged nights required</td><td>At least 5 out of 7, otherwise the window is kept and the patient is told</td></tr>
           <tr><td>Initial window</td><td>Mean total sleep time during the observation week, rounded up to the next quarter hour</td></tr>
-          <tr><td>Minimum length</td><td>6 h, the same for every profile (design choice). Réseau Morphée (2019) gives 6 h as the lower limit of time in bed; other published protocols accept 5 h (Spielman et al., 2011; RACGP), and reviews report minimums of 4.5, 5 or 6 h depending on the protocol (Riemann et al., 2023). A window already under way below 6 h is raised to 6 h at the next calculation</td></tr>
-          <tr><td>Maximum length</td><td>9 h (design choice: we found no published source for this ceiling)</td></tr>
+          <tr><td>Minimum length</td><td>6 h, the same for every profile (design choice). Réseau Morphée (2019) gives 6 h as the lower limit of time in bed; other published protocols accept 5 h (Spielman et al., 2011; RACGP), and reviews report minimums of 4.5, 5 or 6 h depending on the protocol (Riemann et al., 2023). A window already under way below 6 h is raised to 6 h at the next calculation. This floor is the upper end of the published range: it is the most cautious of the minimums found</td></tr>
+          <tr><td>Maximum length</td><td>9 h (design choice: we found no published source for this ceiling). The same bounds, 6 h and 9 h, apply to every profile: this is also a design choice</td></tr>
           <tr><td>Anchor</td><td>Fixed rise time, chosen by the patient, 7 days a week; the bedtime follows from it</td></tr>
-          <tr><td>Weekly adjustment</td><td>Efficiency ≥ 85%: +15 min; &lt; 80%: −15 min (without going below the minimum); in between: unchanged. For comparison, the Spielman et al. (2011) manual lengthens from 90% and shortens below 85%, and Réseau Morphée (2019) waits for an index above 85% before moving bedtime earlier: Sommelle's thresholds are therefore less restrictive than the manual's</td>
+          <tr><td>Weekly adjustment</td><td>Efficiency ≥ 85%: +15 min; &lt; 80%: −15 min (without going below the minimum); in between: unchanged. For comparison, the Spielman et al. (2011) manual lengthens from 90% and shortens below 85%, and Réseau Morphée (2019) waits for an index above 85% before moving bedtime earlier: Sommelle's thresholds (85% and 80%) are therefore more lenient than the manual's (90% and 85%), while staying within the published ranges. This is a cautious choice for an app used without a therapist: the window is lengthened earlier and shortened less often</td></tr>
           <tr><td>From age 65</td><td>Thresholds lowered by 5 points (80% and 75%). The Spielman et al. (2011) manual also lowers thresholds by 5 points for older adults (85% and 80%); the age of 65 is a design choice</td></tr>
         </tbody>
       </table>
@@ -334,6 +334,10 @@
         <tbody>
           <tr><td>Loud snoring with observed breathing pauses, or marked daytime sleepiness</td><td>No restriction; advice to see a doctor (possible sleep apnea)</td></tr>
           <tr><td>Bipolar disorder, epilepsy</td><td>No restriction; advice to talk to the treating doctor</td></tr>
+          <tr><td>Sleepwalking, night terrors or behaviours during sleep</td><td>No restriction; advice to talk to a doctor before considering a shorter time in bed</td></tr>
+          <tr><td>Depression or another mood disorder at present</td><td>No restriction; advice to talk to a doctor before considering a shorter time in bed</td></tr>
+          <tr><td>Risk of falling, or a sleeping pill or sedative taken in the evening</td><td>No restriction; advice to talk to a doctor before considering a shorter time in bed</td></tr>
+          <tr><td>Unstable condition, or one that lack of sleep can worsen (severe migraines, heart disease, poorly controlled chronic pain)</td><td>No restriction; advice to talk to a doctor before considering a shorter time in bed</td></tr>
           <tr><td>Pregnancy</td><td>No restriction</td></tr>
           <tr><td>Driving for work, dangerous machinery, safety-critical job</td><td>No restriction by default; message: restriction can increase sleepiness, to discuss with a doctor</td></tr>
           <tr><td>Very late schedule with normal sleep once asleep</td><td>No restriction; possible delayed sleep phase flagged and advice to see a doctor</td></tr>
@@ -341,6 +345,8 @@
           <tr><td>Distress expressed</td><td>Crisis line highlighted (3114, the French suicide prevention line, always present in the app, with advice to contact a local crisis line elsewhere); path without time-in-bed restriction and invitation to see a doctor</td></tr>
         </tbody>
       </table>
+
+      <p>In all these cases the sleep diary, stimulus control, tips and exercises remain available: only the reduction of time in bed is not offered. Answers are self-reported and are not a diagnosis.</p>
 
       <h2 id="suivi">8. Follow-up: before/after review and summary for the doctor</h2>
       <h3>Before/after review</h3>
@@ -366,7 +372,7 @@
       <h2 id="gaps">Gaps and limits</h2>
       <ul>
         <li>Time-in-bed restriction is offered without follow-up by a clinician, whereas the guidelines describe it with an initial suitability assessment and regular reviews of sleepiness (Riemann et al., 2023).</li>
-        <li>Some precautions listed by open sources are not asked about in the entry questionnaire: parasomnias (Spielman et al., 2011), depression or mood disorders other than bipolar disorder (Réseau Morphée, 2019) and conditions that sleep loss may aggravate (Riemann et al., 2023). Conversely, pregnancy, shift work and delayed sleep phase are excluded as a precaution: we found no open guideline that lists them for restriction.</li>
+        <li>The entry questionnaire also asks about the precautions listed by open sources: parasomnias (Spielman et al., 2011), depression or mood disorders other than bipolar disorder (Réseau Morphée, 2019), conditions that sleep loss may aggravate (Riemann et al., 2023) and fall risk or evening sedatives (Edinger et al., 2021). These questions are self-reported and do not replace a medical assessment. Conversely, pregnancy, shift work and delayed sleep phase are excluded as a precaution: we found no open guideline that lists them for restriction.</li>
         <li>The content has been reviewed against published references (European Insomnia Guideline 2023, AASM 2021, HAS 2024, Réseau Morphée 2019) but not yet validated by a sleep physician.</li>
         <li>Sommelle has not been clinically evaluated.</li>
       </ul>

@@ -152,7 +152,7 @@ interface SommelleDao {
         DaytimeImpactEntity::class,
         WeeklyCheckEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -184,6 +184,15 @@ abstract class SommelleDatabase : RoomDatabase() {
                     "CREATE TABLE IF NOT EXISTS `weekly_checks` (`reviewDate` TEXT NOT NULL, " +
                         "`sleepinessReported` INTEGER NOT NULL, PRIMARY KEY(`reviewDate`))",
                 )
+            }
+        }
+
+        /** Version 4 : quatre précautions de l'accueil (parasomnies, humeur, chutes ou sédatifs, maladie instable). Valeur 0 pour l'existant. */
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(connection: SQLiteConnection) {
+                listOf("parasomnia", "moodDisorder", "fallRiskOrEveningSedatives", "unstableOrSleepSensitiveCondition").forEach { column ->
+                    connection.execSQL("ALTER TABLE `program` ADD COLUMN `$column` INTEGER NOT NULL DEFAULT 0")
+                }
             }
         }
     }
