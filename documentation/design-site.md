@@ -13,3 +13,20 @@ Constats avant reprise :
 8. Longueur de ligne : texte courant du dossier protocole limité à 72ch (environ 93 caractères par ligne à 1280 px d'après la largeur moyenne mesurée) ; titres h1 d'accueil sur 4 lignes à 1280 px et 5 lignes à 360 px ; aucun `text-wrap: balance`.
 9. Tableaux du dossier : `display:block; overflow-x:auto` rendent le défilement local ; `scrollWidth` du document mesuré à 360 px dans un cadre de 360 px, sans barre de défilement : aucun débordement de page. La première colonne « Durée d'observation avant toute restriction » passe sur 4 lignes à 1280 px (largeur de colonne réduite par `display:block`).
 10. Pas d'échelle : 15 valeurs de `font-size` distinctes, 18 déclarations `padding` distinctes, 7 rayons en pixels (3, 6, 18, 20, 26 et 28 via `--radius`), 1 seule ombre en dur ; seuls les couleurs de base et `--radius` sont des variables. Le style en ligne `margin-top: 12px` est répété sur 7 paragraphes de la page d'accueil.
+
+Constat supplémentaire relevé pendant la reprise : la classe `.note` (couleur claire prévue pour le bandeau d'accueil, #D9DCEB) était aussi appliquée aux notes des pages `pourquoi` (fond crème), soit environ 1,3:1.
+
+## Après reprise
+
+1. Corrigé : variables `--band`, `--band-deep`, `--on-band` ; en thème sombre l'en-tête, le bandeau d'accueil et le pied de page prennent le brun de l'appli (#2A2019, #0B0806). Thème clair inchangé (bleu nuit).
+2. Corrigé : un seul bouton plein (APK, ambre), « Google Play · bientôt » en contour pointillé sans plein, « Comment ça marche » en contour ; trois boutons de 48 px, sur une ligne à 1280 px, pleine largeur à 360 px (les classes des deux premiers sont échangées dans index.html et en/index.html, texte inchangé).
+3. Corrigé : classe `.footer-logo` sur les dix pages.
+4. Corrigé : cadre des captures en `box-shadow` ; mesure : 0 image dont le ratio rendu diffère de celui des attributs, sur les dix pages.
+5. Corrigé : contour de focus `--focus` (bleu nuit 9,79:1 en clair, ambre 8,95:1 en sombre ; lune #F2C27B sur les bandeaux, 6,59:1).
+6. Corrigé : texte `.in` en sombre #120D0A sur #8C9BD9 (7,18:1) ; `.in2` « s'allonge » crème en clair, sombre en thème sombre (5,47:1) ; « raccourcit » crème en sombre (6,87:1).
+7. Corrigé pour les liens isolés (navigation, pied de page, liens « Découvrir », sommaire, sources, fichiers de code, bouton « Mode nuit » et onglets du simulateur) : 44 px minimum. Non corrigé : les liens à l'intérieur d'une phrase (22 à 24 px de haut).
+8. Corrigé : colonne de texte à 37em (environ 70 caractères) ; h1 d'accueil sur 3 lignes à 1280 px ; `text-wrap: balance` sur les titres. Le h1 reste sur 4 lignes à 360 px.
+9. Sans changement nécessaire : aucun défilement de page ; la première colonne des tableaux n'a pas été retouchée.
+10. Corrigé : échelles `--step-*`, `--space-*`, rayons `--radius-s/m`, `--radius`, `--shadow-s/m` ; `.note` limité au bandeau d'accueil. Non corrigé : les `style="margin-top: 12px"` et les styles du simulateur restent en ligne.
+
+Vérifications : `scrollWidth` = 360 sur les dix pages à 360 px (cadre de 360 px) ; tous les `href` et `src` locaux existent.
