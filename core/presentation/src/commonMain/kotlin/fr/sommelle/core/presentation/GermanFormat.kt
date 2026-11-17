@@ -98,6 +98,10 @@ object GermanFormat : TextFormat {
         Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> "Ungewolltes Einschlafen am Tag angegeben"
         Referral.BIPOLAR_DISORDER -> "Bipolare Störung angegeben: Keine Bettzeit-Einschränkung"
         Referral.EPILEPSY -> "Epilepsie angegeben: Keine Bettzeit-Einschränkung"
+        Referral.PARASOMNIA -> "Parasomnie angegeben (Schlafwandeln, Nachtschreck): Keine Bettzeit-Einschränkung"
+        Referral.MOOD_DISORDER -> "Depression oder andere Stimmungsstörung angegeben: Keine Bettzeit-Einschränkung"
+        Referral.FALL_RISK_OR_EVENING_SEDATIVES -> "Sturzrisiko oder abendliches Schlaf- oder Beruhigungsmittel angegeben: Keine Bettzeit-Einschränkung"
+        Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> "Instabile oder durch Schlafmangel verschlechterte Erkrankung angegeben: Keine Bettzeit-Einschränkung"
         Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> "Sehr späte Zeiten bei normalem Schlaf: Mögliche Phasenverzögerung"
         Referral.SHIFT_WORK -> "Schicht- oder Nachtarbeit angegeben"
     }

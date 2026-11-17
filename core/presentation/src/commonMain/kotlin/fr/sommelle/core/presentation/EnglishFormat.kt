@@ -100,6 +100,10 @@ object EnglishFormat : TextFormat {
         Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> "Reports falling asleep unintentionally during the day"
         Referral.BIPOLAR_DISORDER -> "Reports bipolar disorder: no time-in-bed restriction"
         Referral.EPILEPSY -> "Reports epilepsy: no time-in-bed restriction"
+        Referral.PARASOMNIA -> "Reports parasomnia (sleepwalking, night terrors): no time-in-bed restriction"
+        Referral.MOOD_DISORDER -> "Reports depression or another mood disorder: no time-in-bed restriction"
+        Referral.FALL_RISK_OR_EVENING_SEDATIVES -> "Reports fall risk or an evening sleeping pill or sedative: no time-in-bed restriction"
+        Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> "Reports an unstable condition, or one that lack of sleep can worsen: no time-in-bed restriction"
         Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> "Very late schedule with normal sleep: possible delayed sleep phase"
         Referral.SHIFT_WORK -> "Reports shift or night work"
     }

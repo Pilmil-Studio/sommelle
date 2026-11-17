@@ -56,12 +56,48 @@ class ScreeningEvaluatorTest {
             answers().copy(markedDaytimeSleepiness = true),
             answers().copy(bipolarDisorder = true),
             answers().copy(epilepsy = true),
+            answers().copy(parasomnia = true),
+            answers().copy(moodDisorder = true),
+            answers().copy(fallRiskOrEveningSedatives = true),
+            answers().copy(unstableOrSleepSensitiveCondition = true),
             answers().copy(pregnancy = true),
             answers().copy(lateScheduleSleepsWellOnceAsleep = true),
             answers().copy(safetyCriticalActivity = true),
             answers().copy(expressedDistress = true),
         )
         cases.forEach { assertFalse(evaluator.evaluate(it).restrictionAllowed, "cas : $it") }
+    }
+
+    @Test
+    fun `chaque nouvelle precaution donne un parcours sans restriction et l invitation a consulter`() {
+        val cases = mapOf(
+            Referral.PARASOMNIA to answers().copy(parasomnia = true),
+            Referral.MOOD_DISORDER to answers().copy(moodDisorder = true),
+            Referral.FALL_RISK_OR_EVENING_SEDATIVES to answers().copy(fallRiskOrEveningSedatives = true),
+            Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION to answers().copy(unstableOrSleepSensitiveCondition = true),
+        )
+        cases.forEach { (referral, a) ->
+            val r = evaluator.evaluate(a)
+            assertEquals(Pathway.WITHOUT_RESTRICTION, r.pathway, "parcours : $referral")
+            assertNull(r.minimumSleepWindow, "plancher : $referral")
+            assertEquals(setOf(referral), r.referrals, "orientation : $referral")
+            assertFalse(Notice.DROWSINESS_WARNING in r.notices, "avertissement : $referral")
+            assertNull(RestrictionProfile.from(ProtocolConfig.DEFAULT, r), "profil : $referral")
+        }
+    }
+
+    @Test
+    fun `plusieurs precautions s additionnent sans bloquer le reste du parcours`() {
+        val r = evaluator.evaluate(answers().copy(parasomnia = true, moodDisorder = true, epilepsy = true))
+        assertEquals(Pathway.WITHOUT_RESTRICTION, r.pathway)
+        assertEquals(setOf(Referral.PARASOMNIA, Referral.MOOD_DISORDER, Referral.EPILEPSY), r.referrals)
+    }
+
+    @Test
+    fun `une precaution ne change pas le hors perimetre`() {
+        val r = evaluator.evaluate(answers(AgeBand.UNDER_18).copy(moodDisorder = true))
+        assertEquals(Pathway.OUT_OF_SCOPE, r.pathway)
+        assertTrue(Referral.MINOR in r.referrals)
     }
 
     @Test

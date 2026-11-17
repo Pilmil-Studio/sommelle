@@ -26,7 +26,7 @@ Restitution sobre dans l'interface, uniquement lorsque le signal dépasse un seu
 
 ### 2.2 Aide explicable à l'ajustement de la fenêtre de restriction (TCC-I)
 - Calcul hebdomadaire de l'**efficacité du sommeil** (`temps dormi / temps passé au lit`).
-- Proposition argumentée d'extension (+15 min), de maintien ou de resserrement (-15 min, plancher strict de sécurité ≥ 5 h 30), en affichant les 7 dernières nuits ayant motivé la recommandation.
+- Proposition argumentée d'extension (+15 min), de maintien ou de resserrement (-15 min, plancher de 6 h, identique à celui du protocole), en affichant les 7 dernières nuits ayant motivé la recommandation.
 - **Garde-fou** : l'utilisateur valide toujours manuellement la nouvelle fenêtre ; l'application ne l'impose jamais silencieusement.
 
 ### 2.3 Prévention du biais de récence

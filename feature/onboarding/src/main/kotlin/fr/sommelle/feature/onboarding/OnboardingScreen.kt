@@ -223,7 +223,7 @@ private fun QuestionStep(question: ScreeningQuestion, step: Int, total: Int, onB
 }
 
 /**
- * Situations médicales rares, réunies sur un écran à cocher. Ne rien cocher vaut « non » aux trois :
+ * Situations médicales, réunies sur un écran à cocher (défilant). Ne rien cocher vaut « non » à toutes :
  * le bouton le dit en toutes lettres tant qu'aucune case n'est cochée.
  */
 @Composable
@@ -252,6 +252,7 @@ private fun MedicalStep(
             ScreeningQuestion.MEDICAL_GROUP.forEach { question ->
                 CheckRow(
                     text = stringResource(question.statement()),
+                    hint = question.hint()?.let { stringResource(it) },
                     checked = question in selected,
                     onToggle = {
                         selectedNames = if (question.name in selectedNames) selectedNames - question.name else selectedNames + question.name
@@ -264,7 +265,7 @@ private fun MedicalStep(
 
 /** Grande case à cocher, annoncée comme telle, de la même taille que les pastilles de choix. */
 @Composable
-private fun CheckRow(text: String, checked: Boolean, onToggle: () -> Unit) {
+private fun CheckRow(text: String, hint: String?, checked: Boolean, onToggle: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     val shape = MaterialTheme.shapes.medium
     Row(
@@ -280,7 +281,10 @@ private fun CheckRow(text: String, checked: Boolean, onToggle: () -> Unit) {
     ) {
         Checkbox(checked = checked, onCheckedChange = null)
         Spacer(Modifier.width(12.dp))
-        Text(text, style = MaterialTheme.typography.titleLarge, color = colors.onSurface)
+        Column(Modifier.weight(1f)) {
+            Text(text, style = MaterialTheme.typography.titleLarge, color = colors.onSurface)
+            if (hint != null) Text(hint, style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
+        }
     }
 }
 
@@ -383,6 +387,10 @@ private fun ScreeningQuestion.text(): Int = when (this) {
     ScreeningQuestion.DAYTIME_SLEEPINESS -> R.string.onb_q_sleepiness
     ScreeningQuestion.BIPOLAR -> R.string.onb_q_bipolar
     ScreeningQuestion.EPILEPSY -> R.string.onb_q_epilepsy
+    ScreeningQuestion.PARASOMNIA -> R.string.onb_q_parasomnia
+    ScreeningQuestion.MOOD_DISORDER -> R.string.onb_q_mood
+    ScreeningQuestion.FALL_RISK_OR_EVENING_SEDATIVES -> R.string.onb_q_falls
+    ScreeningQuestion.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> R.string.onb_q_unstable
     ScreeningQuestion.PREGNANCY -> R.string.onb_q_pregnancy
     ScreeningQuestion.SAFETY_CRITICAL -> R.string.onb_q_safety
     ScreeningQuestion.LATE_SCHEDULE -> R.string.onb_q_late
@@ -394,6 +402,10 @@ private fun ScreeningQuestion.text(): Int = when (this) {
 private fun ScreeningQuestion.statement(): Int = when (this) {
     ScreeningQuestion.BIPOLAR -> R.string.onb_medical_bipolar
     ScreeningQuestion.EPILEPSY -> R.string.onb_medical_epilepsy
+    ScreeningQuestion.PARASOMNIA -> R.string.onb_medical_parasomnia
+    ScreeningQuestion.MOOD_DISORDER -> R.string.onb_medical_mood
+    ScreeningQuestion.FALL_RISK_OR_EVENING_SEDATIVES -> R.string.onb_medical_falls
+    ScreeningQuestion.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> R.string.onb_medical_unstable
     ScreeningQuestion.PREGNANCY -> R.string.onb_medical_pregnancy
     else -> text()
 }
@@ -403,6 +415,10 @@ private fun ScreeningQuestion.hint(): Int? = when (this) {
     ScreeningQuestion.SHIFT_WORK -> R.string.onb_h_shift_work
     ScreeningQuestion.EXTERNAL_DISRUPTION -> R.string.onb_h_external
     ScreeningQuestion.DAYTIME_SLEEPINESS -> R.string.onb_h_sleepiness
+    ScreeningQuestion.PARASOMNIA -> R.string.onb_h_parasomnia
+    ScreeningQuestion.MOOD_DISORDER -> R.string.onb_h_mood
+    ScreeningQuestion.FALL_RISK_OR_EVENING_SEDATIVES -> R.string.onb_h_falls
+    ScreeningQuestion.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> R.string.onb_h_unstable
     ScreeningQuestion.SAFETY_CRITICAL -> R.string.onb_h_safety
     else -> null
 }
@@ -414,6 +430,10 @@ private fun Referral.text(): Int = when (this) {
     Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> R.string.onb_ref_sleepiness
     Referral.BIPOLAR_DISORDER -> R.string.onb_ref_bipolar
     Referral.EPILEPSY -> R.string.onb_ref_epilepsy
+    Referral.PARASOMNIA -> R.string.onb_ref_parasomnia
+    Referral.MOOD_DISORDER -> R.string.onb_ref_mood
+    Referral.FALL_RISK_OR_EVENING_SEDATIVES -> R.string.onb_ref_falls
+    Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> R.string.onb_ref_unstable
     Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> R.string.onb_ref_delayed
     Referral.SHIFT_WORK -> R.string.onb_ref_shift
 }

@@ -16,7 +16,7 @@ Sommelle est un outil d'accompagnement et d'éducation. Ce n'est pas un disposit
 
 Pendant sept semaines (une semaine d'observation, puis six semaines de programme) :
 
-- **Un questionnaire d'entrée et un repère clair sur la durée (6 semaines)** écartent la restriction du sommeil quand elle est déconseillée (apnée possible, trouble bipolaire, épilepsie, grossesse, métier à risque), expliquent les trois étapes du programme dès le départ et orientent vers un médecin si besoin.
+- **Un questionnaire d'entrée et un repère clair sur la durée (6 semaines)** écartent la restriction du sommeil quand elle est déconseillée (apnée possible, trouble bipolaire, épilepsie, parasomnies, dépression, risque de chute ou somnifère le soir, maladie instable, grossesse, métier à risque), expliquent les trois étapes du programme dès le départ et orientent vers un médecin si besoin.
 - **Un agenda du sommeil** se remplit chaque matin en quelques gestes, sans clavier, avec un accompagnement rassurant pendant la première semaine de restriction.
 - **Une fenêtre de sommeil** (heures de coucher et de lever) est calculée après une semaine d'observation, puis ajustée chaque semaine selon les nuits, avec des repères du soir (un sas calme avant le coucher, une heure limite pour la caféine).
 - **Un écran pour la nuit**, presque noir et sans horloge, rappelle quoi faire quand le sommeil ne vient pas et propose un **repère sonore doux à 20 minutes** (règle du contrôle du stimulus, sans afficher de décompte).

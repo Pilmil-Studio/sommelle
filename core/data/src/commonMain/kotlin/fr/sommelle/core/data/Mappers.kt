@@ -77,6 +77,10 @@ internal fun ProgramEntity.answers() = ScreeningAnswers(
     externalNightDisruption = externalNightDisruption,
     lateScheduleSleepsWellOnceAsleep = lateScheduleSleepsWellOnceAsleep,
     expressedDistress = expressedDistress,
+    parasomnia = parasomnia,
+    moodDisorder = moodDisorder,
+    fallRiskOrEveningSedatives = fallRiskOrEveningSedatives,
+    unstableOrSleepSensitiveCondition = unstableOrSleepSensitiveCondition,
 )
 
 fun ScreeningAnswers.toEntity(startDate: LocalDate, wakeTime: LocalTime?) = ProgramEntity(
@@ -93,4 +97,8 @@ fun ScreeningAnswers.toEntity(startDate: LocalDate, wakeTime: LocalTime?) = Prog
     externalNightDisruption = externalNightDisruption,
     lateScheduleSleepsWellOnceAsleep = lateScheduleSleepsWellOnceAsleep,
     expressedDistress = expressedDistress,
+    parasomnia = parasomnia,
+    moodDisorder = moodDisorder,
+    fallRiskOrEveningSedatives = fallRiskOrEveningSedatives,
+    unstableOrSleepSensitiveCondition = unstableOrSleepSensitiveCondition,
 )

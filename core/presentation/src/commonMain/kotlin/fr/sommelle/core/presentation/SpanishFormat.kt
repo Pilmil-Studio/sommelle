@@ -98,6 +98,10 @@ object SpanishFormat : TextFormat {
         Referral.EXCESSIVE_DAYTIME_SLEEPINESS -> "Somnolencia diurna excesiva o sueño involuntario declarados"
         Referral.BIPOLAR_DISORDER -> "Trastorno bipolar declarado: sin restricción de tiempo en cama"
         Referral.EPILEPSY -> "Epilepsia declarada: sin restricción de tiempo en cama"
+        Referral.PARASOMNIA -> "Parasomnia declarada (sonambulismo, terrores nocturnos): sin restricción de tiempo en cama"
+        Referral.MOOD_DISORDER -> "Depresión u otro trastorno del estado de ánimo declarado: sin restricción de tiempo en cama"
+        Referral.FALL_RISK_OR_EVENING_SEDATIVES -> "Riesgo de caída o somnífero o sedante por la noche declarado: sin restricción de tiempo en cama"
+        Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION -> "Enfermedad inestable o que empeora con la falta de sueño declarada: sin restricción de tiempo en cama"
         Referral.DELAYED_SLEEP_PHASE_SUSPECTED -> "Horarios muy tardíos con sueño normal: posible retraso de fase"
         Referral.SHIFT_WORK -> "Trabajo nocturno o a turnos declarado"
     }

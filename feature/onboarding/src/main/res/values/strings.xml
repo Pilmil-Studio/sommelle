@@ -27,11 +27,23 @@
     <string name="onb_h_sleepiness">In meetings, on public transport, or at the wheel.</string>
     <string name="onb_q_bipolar">Has a doctor told you that you have bipolar disorder?</string>
     <string name="onb_q_epilepsy">Do you have epilepsy?</string>
+    <string name="onb_q_parasomnia">Do you ever get up, shout or act while you are asleep?</string>
+    <string name="onb_h_parasomnia">Sleepwalking, night terrors, or movements or words you do not remember.</string>
+    <string name="onb_q_mood">Do you currently have depression or another mood disorder?</string>
+    <string name="onb_h_mood">Whether or not a doctor is following you.</string>
+    <string name="onb_q_falls">Are you at risk of falling at night, or do you take a sleeping pill or sedative in the evening?</string>
+    <string name="onb_h_falls">For example dizziness, difficulty walking, or a medicine that makes you drowsy.</string>
+    <string name="onb_q_unstable">Do you have a health condition that is unstable, or that lack of sleep can make worse?</string>
+    <string name="onb_h_unstable">For example severe migraines, a heart condition or poorly controlled chronic pain.</string>
     <string name="onb_q_pregnancy">Are you pregnant?</string>
     <string name="onb_medical_title">Do any of these apply to you?</string>
     <string name="onb_medical_hint">Tick what applies. Your answers stay on your phone.</string>
     <string name="onb_medical_bipolar">A doctor has told me I have bipolar disorder</string>
     <string name="onb_medical_epilepsy">I have epilepsy</string>
+    <string name="onb_medical_parasomnia">I get up, shout or act while I am asleep</string>
+    <string name="onb_medical_mood">I currently have depression or another mood disorder</string>
+    <string name="onb_medical_falls">I am at risk of falling at night, or I take a sleeping pill or sedative in the evening</string>
+    <string name="onb_medical_unstable">I have a health condition that is unstable, or that lack of sleep can make worse</string>
     <string name="onb_medical_pregnancy">I am pregnant</string>
     <string name="onb_medical_none">None of these</string>
     <string name="onb_q_safety">Do you drive for work, or operate dangerous machinery?</string>
@@ -41,7 +53,7 @@
     <string name="onb_h_private">Your answer stays on your phone.</string>
 
     <string name="onb_result_full_title">The full program is right for you</string>
-    <string name="onb_result_full_text">1. Observation (first 7 days): sleep as usual and log your night each morning.\n2. Weeks 1 to 6: Sommelle temporarily matches your time in bed to your actual sleep time to make it more continuous. For 2 to 4 weeks, tiredness and sleepiness may increase. They usually ease afterwards. Sommelle then lengthens your nights week after week.\n3. After the 6 weeks: your sleep should have improved and you can put the diary away.</string>
+    <string name="onb_result_full_text">1. Observation (first 7 days): sleep as usual and log your night each morning.\n2. Weeks 1 to 6: Sommelle temporarily matches your time in bed to your actual sleep time to make it more continuous. For 2 to 4 weeks, tiredness and sleepiness may increase. They usually ease afterwards. Sommelle then lengthens your nights week after week.\n3. After the 6 weeks: many people notice better sleep, but this is not guaranteed. If nothing changes, medical advice is useful. You can then put the diary away.</string>
     <string name="onb_result_partial_title">A program adapted for you</string>
     <string name="onb_result_partial_text">Based on your answers, Sommelle will not reduce your time in bed. Over 6 weeks, you will follow the morning diary, the night guidance and one exercise per week to calm your sleep.</string>
     <string name="onb_result_out_title">Sommelle is not suited to your situation</string>
@@ -55,6 +67,10 @@
     <string name="onb_ref_sleepiness">Falling asleep during the day: talk to your doctor. In the meantime, avoid driving if you feel drowsy.</string>
     <string name="onb_ref_bipolar">Bipolar disorder: reducing time in bed can destabilize mood. Talk about your sleep with the doctor who follows you.</string>
     <string name="onb_ref_epilepsy">Epilepsy: lack of sleep can make seizures more likely. Talk about your sleep with the doctor who follows you.</string>
+    <string name="onb_ref_parasomnia">Sleepwalking, night terrors or actions during sleep: reducing time in bed can make them more likely. Talk to a doctor before considering a shorter time in bed.</string>
+    <string name="onb_ref_mood">Depression or another mood disorder: reducing time in bed can weigh on mood. Talk to a doctor before considering a shorter time in bed.</string>
+    <string name="onb_ref_falls">Risk of falling or a sleeping pill in the evening: sleepiness and getting up at night can increase the risk of a fall. Talk to a doctor before considering a shorter time in bed.</string>
+    <string name="onb_ref_unstable">Unstable condition, or one that lack of sleep can worsen: reducing time in bed may make it harder to control. Talk to a doctor before considering a shorter time in bed.</string>
     <string name="onb_ref_delayed">Very late schedule: this may be a shift in your body clock rather than insomnia. A doctor can advise you.</string>
     <string name="onb_ref_shift">Night or shift work: the standard program is not designed for this rhythm. An occupational health or sleep doctor can advise you.</string>
 

@@ -27,11 +27,23 @@
     <string name="onb_h_sleepiness">En réunion, dans les transports, ou au volant.</string>
     <string name="onb_q_bipolar">Un médecin vous a-t-il dit que vous aviez un trouble bipolaire ?</string>
     <string name="onb_q_epilepsy">Avez-vous de l\'épilepsie ?</string>
+    <string name="onb_q_parasomnia">Vous arrive-t-il de vous lever, de crier ou d\'agir pendant votre sommeil ?</string>
+    <string name="onb_h_parasomnia">Somnambulisme, terreurs nocturnes, gestes ou paroles dont vous ne vous souvenez pas.</string>
+    <string name="onb_q_mood">Avez-vous en ce moment une dépression ou un autre trouble de l\'humeur ?</string>
+    <string name="onb_h_mood">Que vous soyez suivi·e ou non par un médecin.</string>
+    <string name="onb_q_falls">Risquez-vous de tomber la nuit, ou prenez-vous un somnifère ou un sédatif le soir ?</string>
+    <string name="onb_h_falls">Par exemple en cas de vertiges, de marche difficile ou de médicament qui endort.</string>
+    <string name="onb_q_unstable">Avez-vous une maladie instable, ou que le manque de sommeil peut aggraver ?</string>
+    <string name="onb_h_unstable">Par exemple des migraines sévères, une maladie cardiaque ou des douleurs chroniques mal équilibrées.</string>
     <string name="onb_q_pregnancy">Êtes-vous enceinte ?</string>
     <string name="onb_medical_title">L\'une de ces situations vous concerne-t-elle ?</string>
     <string name="onb_medical_hint">Cochez ce qui s\'applique. Vos réponses restent sur votre téléphone.</string>
     <string name="onb_medical_bipolar">Un médecin m\'a dit que j\'avais un trouble bipolaire</string>
     <string name="onb_medical_epilepsy">J\'ai de l\'épilepsie</string>
+    <string name="onb_medical_parasomnia">Je me lève, je crie ou j\'agis pendant mon sommeil</string>
+    <string name="onb_medical_mood">J\'ai en ce moment une dépression ou un autre trouble de l\'humeur</string>
+    <string name="onb_medical_falls">Je risque de tomber la nuit, ou je prends un somnifère ou un sédatif le soir</string>
+    <string name="onb_medical_unstable">J\'ai une maladie instable, ou que le manque de sommeil peut aggraver</string>
     <string name="onb_medical_pregnancy">Je suis enceinte</string>
     <string name="onb_medical_none">Aucune de ces situations</string>
     <string name="onb_q_safety">Conduisez-vous pour votre travail, ou utilisez-vous des machines dangereuses ?</string>
@@ -41,7 +53,7 @@
     <string name="onb_h_private">Votre réponse reste sur votre téléphone.</string>
 
     <string name="onb_result_full_title">Le programme complet vous convient</string>
-    <string name="onb_result_full_text">1. Observation (7 premiers jours) : dormez comme d\'habitude et notez votre nuit chaque matin.\n2. Semaines 1 à 6 : Sommelle aligne temporairement votre temps au lit sur votre sommeil réel pour le rendre plus continu. Pendant 2 à 4 semaines, la fatigue et la somnolence peuvent augmenter. Elles diminuent en général ensuite. Puis Sommelle rallonge vos nuits semaine après semaine.\n3. Après les 6 semaines : votre sommeil devrait s\'être amélioré et vous pouvez ranger l\'agenda.</string>
+    <string name="onb_result_full_text">1. Observation (7 premiers jours) : dormez comme d\'habitude et notez votre nuit chaque matin.\n2. Semaines 1 à 6 : Sommelle aligne temporairement votre temps au lit sur votre sommeil réel pour le rendre plus continu. Pendant 2 à 4 semaines, la fatigue et la somnolence peuvent augmenter. Elles diminuent en général ensuite. Puis Sommelle rallonge vos nuits semaine après semaine.\n3. Après les 6 semaines : beaucoup de personnes constatent une amélioration de leur sommeil, mais ce n\'est pas garanti. Si rien ne change, un avis médical est utile. Vous pouvez ensuite ranger l\'agenda.</string>
     <string name="onb_result_partial_title">Un programme adapté pour vous</string>
     <string name="onb_result_partial_text">D\'après vos réponses, Sommelle ne réduira pas votre temps passé au lit. Pendant 6 semaines, vous suivrez l\'agenda du matin, les repères pour la nuit et un exercice par semaine pour apaiser le sommeil.</string>
     <string name="onb_result_out_title">Sommelle n\'est pas adaptée à votre situation</string>
@@ -55,6 +67,10 @@
     <string name="onb_ref_sleepiness">Endormissements dans la journée : parlez-en à votre médecin. En attendant, évitez de conduire en cas de somnolence.</string>
     <string name="onb_ref_bipolar">Trouble bipolaire : réduire le temps passé au lit peut déstabiliser l\'humeur. Parlez de votre sommeil au médecin qui vous suit.</string>
     <string name="onb_ref_epilepsy">Épilepsie : le manque de sommeil peut favoriser les crises. Parlez de votre sommeil au médecin qui vous suit.</string>
+    <string name="onb_ref_parasomnia">Somnambulisme, terreurs nocturnes ou gestes pendant le sommeil : réduire le temps passé au lit peut les favoriser. Parlez-en à un médecin avant d\'envisager de réduire votre temps au lit.</string>
+    <string name="onb_ref_mood">Dépression ou trouble de l\'humeur : réduire le temps passé au lit peut peser sur l\'humeur. Parlez-en à un médecin avant d\'envisager de réduire votre temps au lit.</string>
+    <string name="onb_ref_falls">Risque de chute ou somnifère le soir : la somnolence et les levers de nuit peuvent augmenter le risque de chute. Parlez-en à un médecin avant d\'envisager de réduire votre temps au lit.</string>
+    <string name="onb_ref_unstable">Maladie instable ou aggravée par le manque de sommeil : réduire le temps passé au lit peut la déséquilibrer. Parlez-en à un médecin avant d\'envisager de réduire votre temps au lit.</string>
     <string name="onb_ref_delayed">Horaires très tardifs : il peut s\'agir d\'un décalage de l\'horloge biologique plutôt que d\'une insomnie. Un médecin peut vous orienter.</string>
     <string name="onb_ref_shift">Horaires de nuit ou décalés : le programme classique n\'est pas prévu pour ce rythme. Un médecin du travail ou du sommeil peut vous conseiller.</string>
 

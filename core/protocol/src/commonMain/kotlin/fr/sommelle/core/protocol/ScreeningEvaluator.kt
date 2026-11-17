@@ -32,6 +32,10 @@ class ScreeningEvaluator(private val config: ProtocolConfig = ProtocolConfig.DEF
         if (answers.markedDaytimeSleepiness) referrals += Referral.EXCESSIVE_DAYTIME_SLEEPINESS
         if (answers.bipolarDisorder) referrals += Referral.BIPOLAR_DISORDER
         if (answers.epilepsy) referrals += Referral.EPILEPSY
+        if (answers.parasomnia) referrals += Referral.PARASOMNIA
+        if (answers.moodDisorder) referrals += Referral.MOOD_DISORDER
+        if (answers.fallRiskOrEveningSedatives) referrals += Referral.FALL_RISK_OR_EVENING_SEDATIVES
+        if (answers.unstableOrSleepSensitiveCondition) referrals += Referral.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION
         if (answers.lateScheduleSleepsWellOnceAsleep) referrals += Referral.DELAYED_SLEEP_PHASE_SUSPECTED
 
         val outOfScope = when {
@@ -55,6 +59,10 @@ class ScreeningEvaluator(private val config: ProtocolConfig = ProtocolConfig.DEF
             answers.markedDaytimeSleepiness ||
             answers.bipolarDisorder ||
             answers.epilepsy ||
+            answers.parasomnia ||
+            answers.moodDisorder ||
+            answers.fallRiskOrEveningSedatives ||
+            answers.unstableOrSleepSensitiveCondition ||
             answers.pregnancy ||
             answers.lateScheduleSleepsWellOnceAsleep ||
             answers.safetyCriticalActivity ||

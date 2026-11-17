@@ -35,6 +35,7 @@ import kotlin.time.Duration
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
@@ -259,6 +260,28 @@ class SommelleRepositoryTest {
         assertEquals(source.weeklyChecksOnce(), target.weeklyChecksOnce())
         assertEquals(mapOf("nightMode" to "ALWAYS_NIGHT", "nightStartHour" to "22"), data.preferences)
         assertEquals("Nuit \"agitée\"\nsecond ligne", target.entriesOnce().last().notes)
+    }
+
+    @Test
+    fun `les precautions de l accueil survivent a la sauvegarde et une ancienne sauvegarde reste lisible`() = runTest {
+        val source = FakeSommelleDao()
+        val answers = ScreeningAnswers(
+            ageBand = AgeBand.FROM_45_TO_64,
+            parasomnia = true,
+            moodDisorder = true,
+            fallRiskOrEveningSedatives = true,
+            unstableOrSleepSensitiveCondition = true,
+        )
+        source.upsertProgram(answers.toEntity(startDate = LocalDate.of(2026, 10, 1), wakeTime = LocalTime.of(6, 45)))
+        val json = SommelleRepository(source, clockAt(LocalDate.of(2026, 11, 15))).exportBackup()
+
+        assertEquals(answers, SommelleBackup.decode(json).program!!.answers())
+
+        // Sauvegarde faite avant l'ajout des quatre précautions : les clés manquent, les valeurs sont « non ».
+        val old = listOf("parasomnia", "moodDisorder", "fallRiskOrEveningSedatives", "unstableOrSleepSensitiveCondition")
+            .fold(json) { acc, key -> acc.replace("\"$key\":true,", "").replace(",\"$key\":true", "") }
+        assertFalse(old.contains("parasomnia"))
+        assertEquals(ScreeningAnswers(ageBand = AgeBand.FROM_45_TO_64), SommelleBackup.decode(old).program!!.answers())
     }
 
     @Test

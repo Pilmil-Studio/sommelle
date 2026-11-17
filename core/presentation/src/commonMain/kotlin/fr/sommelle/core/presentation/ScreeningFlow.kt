@@ -20,6 +20,10 @@ enum class ScreeningQuestion(
     DAYTIME_SLEEPINESS(allowsUnsure = true, set = { a, v -> a.copy(markedDaytimeSleepiness = v) }),
     BIPOLAR(set = { a, v -> a.copy(bipolarDisorder = v) }),
     EPILEPSY(set = { a, v -> a.copy(epilepsy = v) }),
+    PARASOMNIA(set = { a, v -> a.copy(parasomnia = v) }),
+    MOOD_DISORDER(set = { a, v -> a.copy(moodDisorder = v) }),
+    FALL_RISK_OR_EVENING_SEDATIVES(set = { a, v -> a.copy(fallRiskOrEveningSedatives = v) }),
+    UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION(set = { a, v -> a.copy(unstableOrSleepSensitiveCondition = v) }),
     PREGNANCY(set = { a, v -> a.copy(pregnancy = v) }),
     SAFETY_CRITICAL(set = { a, v -> a.copy(safetyCriticalActivity = v) }),
     LATE_SCHEDULE(set = { a, v -> a.copy(lateScheduleSleepsWellOnceAsleep = v) }),
@@ -30,10 +34,20 @@ enum class ScreeningQuestion(
 
     companion object {
         /**
-         * Situations médicales rares, présentées ensemble sur un seul écran à cocher plutôt qu'en
-         * trois écrans oui/non. L'écran est repéré par la première question du groupe.
+         * Situations médicales, présentées ensemble sur un seul écran à cocher plutôt qu'en
+         * autant d'écrans oui/non. L'écran est repéré par la première question du groupe.
+         * Le groupe doit rester contigu et dans l'ordre de l'énumération : la question suivante
+         * est cherchée après la dernière du groupe.
          */
-        val MEDICAL_GROUP: List<ScreeningQuestion> = listOf(BIPOLAR, EPILEPSY, PREGNANCY)
+        val MEDICAL_GROUP: List<ScreeningQuestion> = listOf(
+            BIPOLAR,
+            EPILEPSY,
+            PARASOMNIA,
+            MOOD_DISORDER,
+            FALL_RISK_OR_EVENING_SEDATIVES,
+            UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION,
+            PREGNANCY,
+        )
     }
 }
 
@@ -62,6 +76,10 @@ data class ScreeningFlow(
         return buildSet {
             if (a.bipolarDisorder) add(ScreeningQuestion.BIPOLAR)
             if (a.epilepsy) add(ScreeningQuestion.EPILEPSY)
+            if (a.parasomnia) add(ScreeningQuestion.PARASOMNIA)
+            if (a.moodDisorder) add(ScreeningQuestion.MOOD_DISORDER)
+            if (a.fallRiskOrEveningSedatives) add(ScreeningQuestion.FALL_RISK_OR_EVENING_SEDATIVES)
+            if (a.unstableOrSleepSensitiveCondition) add(ScreeningQuestion.UNSTABLE_OR_SLEEP_SENSITIVE_CONDITION)
             if (a.pregnancy) add(ScreeningQuestion.PREGNANCY)
         }
     }
@@ -89,7 +107,7 @@ data class ScreeningFlow(
 
     /**
      * Valide l'écran des situations médicales : chaque situation du groupe est enregistrée, cochée
-     * ou non. Ne rien cocher revient à répondre non aux trois.
+     * ou non. Ne rien cocher revient à répondre non à toutes.
      */
     fun answerMedical(selected: Set<ScreeningQuestion>): ScreeningFlow {
         check(isMedicalStep) { "l'écran des situations médicales n'est pas en cours" }

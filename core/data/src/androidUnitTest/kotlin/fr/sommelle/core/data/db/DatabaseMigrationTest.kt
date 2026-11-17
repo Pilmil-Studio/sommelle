@@ -13,19 +13,19 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 /**
- * Rejoue les migrations v1 -> v2 -> v3 sur un vrai moteur SQLite, à partir d'une base v1 remplie.
+ * Rejoue les migrations v1 -> v2 -> v3 -> v4 sur un vrai moteur SQLite, à partir d'une base v1 remplie.
  *
  * Deux garanties :
  * - le programme, l'agenda et les fenêtres de sommeil existants sont conservés à l'identique ;
  * - la base migrée est identique (colonnes, types, NOT NULL, clé primaire) à une base neuve créée
- *   par Room à partir du schéma exporté `schemas/.../3.json`.
+ *   par Room à partir du schéma exporté `schemas/.../4.json`.
  */
 class DatabaseMigrationTest {
 
-    private val latestSchema = File("schemas/fr.sommelle.core.data.db.SommelleDatabase/3.json")
+    private val latestSchema = File("schemas/fr.sommelle.core.data.db.SommelleDatabase/4.json")
 
     @Test
-    fun `migration de v1 a v3 sans perte de donnees`() = withDatabase { conn, db ->
+    fun `migration de v1 a v4 sans perte de donnees`() = withDatabase { conn, db ->
         createV1(db)
         db.execSQL(
             "INSERT INTO program VALUES (0, '2026-10-01', '07:00', 'FROM_25_TO_44', 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0)",
@@ -38,12 +38,18 @@ class DatabaseMigrationTest {
 
         SommelleDatabase.MIGRATION_1_2.migrate(db)
         SommelleDatabase.MIGRATION_2_3.migrate(db)
+        SommelleDatabase.MIGRATION_3_4.migrate(db)
 
         conn.query("SELECT * FROM program WHERE id = 0") { rs ->
             assertTrue(rs.next())
             assertEquals("2026-10-01", rs.getString("startDate"))
             assertEquals("FROM_25_TO_44", rs.getString("ageBand"))
             assertEquals(1, rs.getInt("safetyCriticalActivity"))
+            // Les quatre précautions ajoutées en version 4 valent « non » pour un programme existant.
+            assertEquals(0, rs.getInt("parasomnia"))
+            assertEquals(0, rs.getInt("moodDisorder"))
+            assertEquals(0, rs.getInt("fallRiskOrEveningSedatives"))
+            assertEquals(0, rs.getInt("unstableOrSleepSensitiveCondition"))
         }
         conn.query("SELECT * FROM diary_entries") { rs ->
             assertTrue(rs.next())
@@ -85,7 +91,32 @@ class DatabaseMigrationTest {
     }
 
     @Test
-    fun `la base migree correspond exactement au schema Room v3`() {
+    fun `migration de v3 a v4 ajoute les precautions sans toucher au programme`() = withDatabase { conn, db ->
+        createV1(db)
+        SommelleDatabase.MIGRATION_1_2.migrate(db)
+        SommelleDatabase.MIGRATION_2_3.migrate(db)
+        db.execSQL(
+            "INSERT INTO program VALUES (0, '2026-10-01', '07:00', 'FROM_45_TO_64', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)",
+        )
+
+        SommelleDatabase.MIGRATION_3_4.migrate(db)
+
+        conn.query("SELECT * FROM program WHERE id = 0") { rs ->
+            assertTrue(rs.next())
+            assertEquals("FROM_45_TO_64", rs.getString("ageBand"))
+            assertEquals(1, rs.getInt("bipolarDisorder"))
+            assertEquals(0, rs.getInt("parasomnia"))
+            assertEquals(0, rs.getInt("unstableOrSleepSensitiveCondition"))
+        }
+        db.execSQL("UPDATE program SET moodDisorder = 1 WHERE id = 0")
+        conn.query("SELECT moodDisorder FROM program WHERE id = 0") { rs ->
+            assertTrue(rs.next())
+            assertEquals(1, rs.getInt(1))
+        }
+    }
+
+    @Test
+    fun `la base migree correspond exactement au schema Room v4`() {
         val expected = withDatabase { conn, db ->
             createTablesSql(latestSchema).values.forEach(db::execSQL)
             tables(conn)
@@ -94,6 +125,7 @@ class DatabaseMigrationTest {
             createV1(db)
             SommelleDatabase.MIGRATION_1_2.migrate(db)
             SommelleDatabase.MIGRATION_2_3.migrate(db)
+            SommelleDatabase.MIGRATION_3_4.migrate(db)
             tables(conn)
         }
         assertEquals(expected, migrated)
