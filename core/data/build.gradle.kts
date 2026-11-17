@@ -39,7 +39,7 @@ kotlin {
             implementation(kotlin("test"))
             implementation(libs.kotlinx.coroutines.test)
             // Vrai moteur SQLite sur la JVM, pour rejouer les migrations sans émulateur.
-            implementation("org.xerial:sqlite-jdbc:3.46.1.3")
+            implementation("org.xerial:sqlite-jdbc:3.54.1.0")
         }
     }
 }
