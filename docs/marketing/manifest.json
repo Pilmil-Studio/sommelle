@@ -32,51 +32,78 @@
           "chips": [
             "Gratuit",
             "Sans compte"
-          ]
+          ],
+          "side_title": "Votre fenêtre de sommeil",
+          "side_subtitle": "Calculée après une semaine d'observation, puis ajustée chaque semaine.",
+          "side": "left"
+        },
+        {
+          "slug": "questions",
+          "capture": "docs/marketing/captures/fr/questionnaire.png",
+          "layout": "solo",
+          "tilt": 3,
+          "title": "Des questions d'abord",
+          "subtitle": "Pour vérifier que le programme vous convient. En cas de doute, Sommelle choisit la prudence.",
+          "chips": [],
+          "side_title": "Des questions d'abord",
+          "side_subtitle": "Quelques questions pour vérifier que le programme vous convient. En cas de doute, Sommelle choisit la prudence.",
+          "side": "right"
         },
         {
           "slug": "agenda",
           "capture": "docs/marketing/captures/fr/agenda_heure.png",
           "layout": "duo",
-          "tilt": 3,
+          "tilt": -3,
           "title": "L'agenda du sommeil, sans clavier",
           "subtitle": "Il se remplit chaque matin en quelques gestes.",
           "chips": [],
-          "second": "docs/marketing/captures/fr/agenda_estimation.png"
+          "second": "docs/marketing/captures/fr/agenda_estimation.png",
+          "side_title": "Sans clavier",
+          "side_subtitle": "L'agenda du sommeil se remplit chaque matin en quelques gestes.",
+          "side": "left"
         },
         {
           "slug": "bilan",
           "capture": "docs/marketing/captures/fr/bilan.png",
           "layout": "duo",
-          "tilt": -3,
+          "tilt": 3,
           "title": "Un bilan chaque semaine",
           "subtitle": "Temps au lit et temps dormi, pour ajuster la fenêtre suivante.",
           "chips": [],
-          "second": "docs/marketing/captures/fr/bilan_programme.png"
+          "second": "docs/marketing/captures/fr/bilan_programme.png",
+          "side_title": "Un bilan par semaine",
+          "side_subtitle": "Temps au lit et temps dormi, pour ajuster la fenêtre suivante.",
+          "side": "right"
         },
         {
           "slug": "nuit",
           "capture": "docs/marketing/captures/fr/nuit.png",
           "layout": "solo",
-          "tilt": 3,
+          "tilt": -3,
           "title": "Une nuit sans horloge",
           "subtitle": "Un écran presque noir rappelle quoi faire, avec un timbre doux à 20 minutes.",
-          "chips": []
+          "chips": [],
+          "side_title": "Sans horloge",
+          "side_subtitle": "Un écran presque noir rappelle quoi faire, avec un timbre doux à 20 minutes.",
+          "side": "left"
         },
         {
           "slug": "medecin",
           "capture": "docs/marketing/captures/fr/resume_medecin.png",
           "layout": "solo",
-          "tilt": -3,
+          "tilt": 3,
           "title": "Un résumé pour le médecin",
           "subtitle": "À montrer à l'écran ou à partager en PDF et en tableur.",
-          "chips": []
+          "chips": [],
+          "side_title": "Pour le médecin",
+          "side_subtitle": "Un résumé à montrer à l'écran ou à partager en PDF et en tableur.",
+          "side": "right"
         },
         {
           "slug": "confidentialite",
           "capture": "docs/marketing/captures/fr/bienvenue.png",
           "layout": "solo",
-          "tilt": 3,
+          "tilt": -3,
           "title": "Sans compte, sans collecte",
           "subtitle": "Aucune donnée ne quitte le téléphone. Pas de permission Internet.",
           "chips": [
@@ -84,7 +111,10 @@
             "Libre",
             "Sans publicité"
           ],
-          "scroll": 625
+          "scroll": 625,
+          "side_title": "Sans compte",
+          "side_subtitle": "Aucune donnée ne quitte le téléphone. Pas de permission Internet.",
+          "side": "left"
         }
       ]
     },
@@ -106,51 +136,78 @@
           "chips": [
             "Free",
             "No account"
-          ]
+          ],
+          "side_title": "Your sleep window",
+          "side_subtitle": "Worked out after a week of observation, then adjusted every week.",
+          "side": "left"
+        },
+        {
+          "slug": "questions",
+          "capture": "docs/marketing/captures/en/questionnaire.png",
+          "layout": "solo",
+          "tilt": 3,
+          "title": "Questions first",
+          "subtitle": "To check the programme suits you. When in doubt, Sommelle errs on the side of caution.",
+          "chips": [],
+          "side_title": "Questions first",
+          "side_subtitle": "A few questions to check the programme suits you. When in doubt, Sommelle errs on the side of caution.",
+          "side": "right"
         },
         {
           "slug": "agenda",
           "capture": "docs/marketing/captures/en/agenda_heure.png",
           "layout": "duo",
-          "tilt": 3,
+          "tilt": -3,
           "title": "A sleep diary, no keyboard",
           "subtitle": "Filled in each morning in a few taps.",
           "chips": [],
-          "second": "docs/marketing/captures/en/agenda_estimation.png"
+          "second": "docs/marketing/captures/en/agenda_estimation.png",
+          "side_title": "No keyboard",
+          "side_subtitle": "The sleep diary is filled in each morning in a few taps.",
+          "side": "left"
         },
         {
           "slug": "bilan",
           "capture": "docs/marketing/captures/en/bilan.png",
           "layout": "duo",
-          "tilt": -3,
+          "tilt": 3,
           "title": "A review every week",
           "subtitle": "Time in bed and time asleep, to adjust the next window.",
           "chips": [],
-          "second": "docs/marketing/captures/en/bilan_programme.png"
+          "second": "docs/marketing/captures/en/bilan_programme.png",
+          "side_title": "A review each week",
+          "side_subtitle": "Time in bed and time asleep, to adjust the next window.",
+          "side": "right"
         },
         {
           "slug": "nuit",
           "capture": "docs/marketing/captures/en/nuit.png",
           "layout": "solo",
-          "tilt": 3,
+          "tilt": -3,
           "title": "A night without a clock",
           "subtitle": "A nearly black screen says what to do, with a soft chime at 20 minutes.",
-          "chips": []
+          "chips": [],
+          "side_title": "No clock",
+          "side_subtitle": "A nearly black screen says what to do, with a soft chime at 20 minutes.",
+          "side": "left"
         },
         {
           "slug": "medecin",
           "capture": "docs/marketing/captures/en/resume_medecin.png",
           "layout": "solo",
-          "tilt": -3,
+          "tilt": 3,
           "title": "A summary for your doctor",
           "subtitle": "To show on screen or share as a PDF and a spreadsheet.",
-          "chips": []
+          "chips": [],
+          "side_title": "For your doctor",
+          "side_subtitle": "A summary to show on screen or share as a PDF and a spreadsheet.",
+          "side": "right"
         },
         {
           "slug": "confidentialite",
           "capture": "docs/marketing/captures/en/bienvenue.png",
           "layout": "solo",
-          "tilt": 3,
+          "tilt": -3,
           "title": "No account, no data collection",
           "subtitle": "No data leaves the phone. No Internet permission.",
           "chips": [
@@ -158,7 +215,10 @@
             "Open source",
             "No ads"
           ],
-          "scroll": 855
+          "scroll": 855,
+          "side_title": "No account",
+          "side_subtitle": "No data leaves the phone. No Internet permission.",
+          "side": "left"
         }
       ]
     }
