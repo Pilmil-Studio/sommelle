@@ -57,7 +57,6 @@
     <string name="home_sleepiness_title">Balance de la semana</string>
     <string name="home_sleepiness_question">Esta semana, ¿te has quedado dormido sin querer durante el día, o has estado a punto?</string>
     <string name="home_sleepiness_hint">Tu ventana semanal se ajusta en cuanto respondas.</string>
-    <string name="home_night_to_fill">por rellenar</string>
     <string name="home_night_desc_missing">%1$s, noche por rellenar</string>
     <string name="home_night_desc_filled">%1$s, noche rellenada</string>
     <string name="home_impact_later">Más tarde</string>

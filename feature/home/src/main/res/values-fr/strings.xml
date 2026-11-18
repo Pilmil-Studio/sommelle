@@ -63,7 +63,6 @@
     <string name="home_sleepiness_title">Bilan de la semaine</string>
     <string name="home_sleepiness_question">Cette semaine, vous êtes-vous endormi·e sans le vouloir en journée, ou avez-vous failli ?</string>
     <string name="home_sleepiness_hint">Votre fenêtre de la semaine est ajustée dès votre réponse.</string>
-    <string name="home_night_to_fill">à remplir</string>
     <string name="home_night_desc_missing">%1$s, nuit à remplir</string>
     <string name="home_night_desc_filled">%1$s, nuit remplie</string>
     <string name="home_impact_later">Plus tard</string>

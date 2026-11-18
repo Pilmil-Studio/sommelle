@@ -59,7 +59,6 @@
     <string name="home_sleepiness_title">Підсумок тижня</string>
     <string name="home_sleepiness_question">Чи траплялося цього тижня, що ви ненавмисно засинали вдень або ледь не заснули?</string>
     <string name="home_sleepiness_hint">Вікно сну на тиждень буде скориговано одразу після вашої відповіді.</string>
-    <string name="home_night_to_fill">заповнити</string>
     <string name="home_night_desc_missing">%1$s, ніч для заповнення</string>
     <string name="home_night_desc_filled">%1$s, ніч заповнено</string>
     <string name="home_impact_later">Пізніше</string>

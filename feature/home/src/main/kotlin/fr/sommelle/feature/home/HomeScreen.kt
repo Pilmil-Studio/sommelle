@@ -459,10 +459,13 @@ private fun RecentNightsStrip(
                             color = contentColor,
                         )
                         if (night.isMissingToFill) {
-                            Text(
-                                text = stringResource(R.string.home_night_to_fill),
-                                style = MaterialTheme.typography.labelSmall,
-                                color = contentColor.copy(alpha = 0.8f),
+                            // Un crayon plutôt qu'un libellé : sept tuiles sur la largeur, « à remplir » se coupait en pleine lettre.
+                            // Le sens est porté par la description de la tuile (home_night_desc_missing).
+                            Icon(
+                                Icons.Filled.Edit,
+                                contentDescription = null,
+                                tint = contentColor.copy(alpha = 0.8f),
+                                modifier = Modifier.padding(top = 1.dp).size(14.dp),
                             )
                         } else {
                             Box(

@@ -62,7 +62,6 @@
     <string name="home_sleepiness_title">Weekly review</string>
     <string name="home_sleepiness_question">This week, did you fall asleep unintentionally during the day, or nearly do so?</string>
     <string name="home_sleepiness_hint">Your weekly window is adjusted as soon as you answer.</string>
-    <string name="home_night_to_fill">to fill</string>
     <string name="home_night_desc_missing">%1$s, night to fill in</string>
     <string name="home_night_desc_filled">%1$s, night filled in</string>
     <string name="home_impact_later">Later</string>
