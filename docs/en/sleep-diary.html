@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Printable sleep diary : Sommelle</title>
+  <meta name="description" content="A free printable one-week sleep diary and a sleep efficiency calculator, as used in CBT-I. No sign-up.">
+  <meta property="og:title" content="Printable sleep diary">
+  <meta property="og:description" content="A free printable one-week sleep diary and a sleep efficiency calculator, as used in CBT-I. No sign-up.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pilmil-studio.github.io/sommelle/en/sleep-diary.html">
+  <meta property="og:image" content="https://pilmil-studio.github.io/sommelle/marketing/out/en/social.png">
+  <link rel="icon" href="../img/icone.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="fr" href="../agenda-du-sommeil.html">
+  <link rel="stylesheet" href="../style.css">
+<style>
+.calc{margin:1.5rem 0;padding:1.2rem;border:1px solid var(--line, rgba(127,127,127,.3));border-radius:18px;display:grid;gap:.9rem}
+.calc .grid2{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
+.calc label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.25rem}
+.calc input,.calc select{width:100%;font:inherit;padding:.55rem .7rem;border-radius:10px;border:1px solid rgba(127,127,127,.45);background:transparent;color:inherit}
+.calc select option{color:#111}
+.res{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
+.res div{padding:.8rem;border-radius:12px;background:rgba(242,194,123,.13)}
+.res b{display:block;font-size:1.5rem;color:#F2C27B}
+.diary{width:100%;border-collapse:collapse;font-size:.85rem;margin:1rem 0}
+.diary th,.diary td{border:1px solid rgba(127,127,127,.45);padding:.45rem .4rem;text-align:left;vertical-align:top}
+.diary td{height:2.1rem}
+.diary th[scope=row]{width:34%;font-weight:600}
+.print-only{display:none}
+@media print{
+ @page{size:A4 landscape;margin:12mm}
+ body{background:#fff!important;color:#000!important}
+ .site-header,.site-footer,.skip,.no-print{display:none!important}
+ .print-only{display:block}
+ .prose{max-width:none!important}
+ .diary{font-size:9.5pt;margin:4mm 0}
+ .diary td{height:9mm}
+ h1{font-size:16pt!important;margin:0 0 2mm!important}
+ .prose>p.note,.prose>.intro,.prose>h2{display:none!important}
+ .diary th,.diary td{border-color:#555}
+}
+</style>
+</head>
+<body>
+  <a class="skip" href="#contenu">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2C27B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/><path d="M12 7v5l3.2 2.2"/></svg>
+        Sommelle
+      </a>
+      <nav class="site-nav" aria-label="Site navigation">
+        <a href="./#methode">The method</a>
+        <a href="why.html">Why</a>
+        <a href="sleep-diary.html" aria-current="page">Sleep diary</a>
+        <a href="professionals.html">Health professionals</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="../agenda-du-sommeil.html" lang="fr" hreflang="fr">Français</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="wrap">
+    <article class="prose">
+      <h1>Sleep diary: printable, with sleep efficiency</h1>
+      <p class="note">Published on 26 November 2026. This is not medical advice.</p>
+      <p class="intro">Writing down your nights for one or two weeks is the first step of cognitive behavioural therapy for insomnia (CBT-I), and it is often what a sleep doctor asks for. It shows your nights as they are, not as you remember them after a bad week.</p>
+
+      <h2 class="no-print">How to fill it in</h2>
+      <div class="no-print"><ul>
+<li><strong>Every morning</strong>, within an hour of getting up, for the night just gone.</li>
+<li><strong>Estimate durations, do not time them.</strong> Checking the clock at night increases worry and the time it takes to fall asleep: an estimate is enough.</li>
+<li><strong>Write down bad nights too</strong>, and nights with a sleeping pill or alcohol: the whole picture matters.</li>
+<li><strong>Change nothing in the first week.</strong> Observe first, act later.</li>
+</ul></div>
+
+      <h2 class="no-print">Work out the efficiency of a night</h2>
+      <div class="calc no-print">
+        <p style="margin:0"><strong>Sleep efficiency</strong> is the share of time in bed spent asleep. The calculation runs on your device; nothing is sent.</p>
+        <div class="grid2">
+          <div><label for="bed">Into bed</label><input id="bed" type="time" value="23:00"></div>
+          <div><label for="off">Lights out</label><input id="off" type="time" value="23:15"></div>
+          <div><label for="lat">Time to fall asleep</label><select id="lat"><option value="5">under 5 min</option><option value="10">10 min</option><option value="20" selected>20 min</option><option value="30">30 min</option><option value="45">45 min</option><option value="60">1 h</option><option value="90">1 h 30</option><option value="120">2 h or more</option></select></div>
+          <div><label for="waso">Time awake during the night (total)</label><select id="waso"><option value="0">none</option><option value="10">10 min</option><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">1 h</option><option value="90">1 h 30</option><option value="120">2 h</option><option value="180">3 h or more</option></select></div>
+          <div><label for="wake">Final awakening</label><input id="wake" type="time" value="06:30"></div>
+          <div><label for="up">Out of bed</label><input id="up" type="time" value="07:00"></div>
+        </div>
+        <div class="res" id="out" aria-live="polite" hidden>
+          <div>Time in bed<b id="tib"></b></div>
+          <div>Time asleep<b id="tst"></b></div>
+          <div>Efficiency<b id="se"></b></div>
+        </div>
+        <p id="msg" data-bad="The times do not add up: check when you went to bed and got up." style="margin:0"></p>
+        <p style="margin:0">A single night says little: the weekly average is what counts. Time in bed before lights out or after waking counts as time in bed, not as sleep. In CBT-I, low efficiency over a week is used to adjust time in bed, but <strong>cutting that time is done within a supervised programme</strong>, with precautions: not something to do alone on the strength of a calculation. Details are in the <a href="protocol.html">scientific file</a>.</p>
+      </div>
+
+      <h2>The printable diary</h2>
+      <p class="no-print">One week per page, A4 landscape. The rest of this page does not print.</p>
+      <p class="no-print"><button class="btn btn-accent" id="print" type="button">Print the diary</button></p>
+      <p class="print-only"><strong>Sleep diary</strong>. Fill in every morning, for the night just gone. Estimate durations without checking the clock at night.</p>
+      <table class="diary">
+        <thead><tr><th scope="col"></th><th scope="col">Night 1<br><span style="font-weight:400">of …… </span></th><th scope="col">Night 2<br><span style="font-weight:400">of …… </span></th><th scope="col">Night 3<br><span style="font-weight:400">of …… </span></th><th scope="col">Night 4<br><span style="font-weight:400">of …… </span></th><th scope="col">Night 5<br><span style="font-weight:400">of …… </span></th><th scope="col">Night 6<br><span style="font-weight:400">of …… </span></th><th scope="col">Night 7<br><span style="font-weight:400">of …… </span></th></tr></thead>
+        <tbody><tr><th scope="row">Time into bed</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Lights-out time</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Time to fall asleep (estimate)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Number of awakenings</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Total time awake (estimate)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Final awakening time</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Time out of bed</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Sleep quality (1 very poor to 5 very good)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Naps, sleeping pill, alcohol (yes / no, time)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>
+      </table>
+      <p class="print-only">Efficiency = time asleep ÷ time in bed. Diary from Sommelle, a free and open-source app: pilmil-studio.github.io/sommelle</p>
+
+      <h2 class="no-print">When to see a doctor</h2>
+      <div class="no-print"><p>Talk to your doctor, diary in hand, if:</p>
+<ul>
+<li>you are told you snore loudly with pauses in your breathing, or you are very sleepy during the day, especially when driving;</li>
+<li>the trouble has lasted more than three months and weighs on your days;</li>
+<li>you take a sleeping pill or sedative in the evening, have an illness that lack of sleep makes worse, or are pregnant;</li>
+<li>you have unusual behaviour during sleep (sleepwalking, night terrors).</li>
+</ul>
+<p>If you are struggling or having thoughts of suicide, contact your local emergency or crisis line (in France, <strong>3114</strong>, free, day and night).</p></div>
+
+      <aside class="callout no-print"><h2 style="margin-top:0">Sommelle does the maths for you</h2>
+<p>Sommelle puts this diary on your phone, a few taps each morning, works out the week's efficiency and then offers a six-to-eight-week programme based on CBT-I, with a safety questionnaire at the start. Free, no account, no ads, and no Internet access.</p>
+<p><a href="./">Discover Sommelle</a> · <a href="why.html">Why these choices</a></p></aside>
+
+      <h2 class="no-print">Sources</h2>
+      <ul class="refs no-print"><li>Carney C. E. et al., “The Consensus Sleep Diary: standardizing prospective sleep self-monitoring”, <em>Sleep</em>, 2012.</li>
+<li>Riemann D. et al., European guideline for the diagnosis and treatment of insomnia, <em>Journal of Sleep Research</em>, 2023.</li>
+<li>Tang N. K. Y. et al., clock monitoring and insomnia, 2007.</li>
+<li>Calculations and precautions in detail: <a href="protocol.html">Sommelle's scientific file</a>.</li></ul>
+    </article>
+  </main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const m=v=>{if(!v)return null;const [h,mi]=v.split(':').map(Number);return h*60+mi;};
+  const fmt=x=>Math.floor(x/60)+' h '+String(Math.round(x%60)).padStart(2,'0');
+  function run(){
+    let bed=m($('bed').value), off=m($('off').value), wake=m($('wake').value), up=m($('up').value);
+    const lat=+$('lat').value, waso=+$('waso').value, out=$('out'), msg=$('msg');
+    if([bed,off,wake,up].some(v=>v===null)){out.hidden=true;return;}
+    if(off<bed) off+=1440; if(wake<off) wake+=1440; if(up<wake) up+=1440;
+    const tib=up-bed, tst=Math.max(0,(wake-off)-lat-waso);
+    if(tib<=0||tib>18*60){out.hidden=true;msg.textContent=msg.dataset.bad;return;}
+    msg.textContent='';
+    $('tib').textContent=fmt(tib); $('tst').textContent=fmt(tst); $('se').textContent=Math.round(100*tst/tib)+' %';
+    out.hidden=false;
+  }
+  ['bed','off','lat','waso','wake','up'].forEach(id=>$(id).addEventListener('input',run));
+  $('print').addEventListener('click',()=>window.print());
+  run();
+})();
+</script>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="why.html">Why these choices</a>
+        <a href="./">Home</a>
+        <a href="sleep-diary.html">Sleep diary</a>
+        <a href="professionals.html">Health professionals</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://github.com/Pilmil-Studio/sommelle">Source code</a>
+        <a href="mailto:pilmil.studio@proton.me">Contact</a>
+      </div>
+      <p><img class="footer-logo" src="../img/pilmil-logo.svg" alt="" width="18" height="18"><a href="https://pilmil-studio.github.io/en/"><strong>Pilmil Studio</strong></a> (France) · Sommelle is free software distributed under the Mozilla Public License 2.0 (MPL-2.0). It is not a medical device.</p>
+    </div>
+  </footer>
+</body>
+</html>
