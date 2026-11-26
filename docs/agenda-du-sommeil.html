@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agenda du sommeil à imprimer : Sommelle</title>
+  <meta name="description" content="Un agenda du sommeil gratuit à imprimer, pour une semaine, et un calcul de l'efficacité du sommeil, comme dans la TCC-I. Sans inscription.">
+  <meta property="og:title" content="Agenda du sommeil à imprimer">
+  <meta property="og:description" content="Un agenda du sommeil gratuit à imprimer, pour une semaine, et un calcul de l'efficacité du sommeil, comme dans la TCC-I. Sans inscription.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pilmil-studio.github.io/sommelle/agenda-du-sommeil.html">
+  <meta property="og:image" content="https://pilmil-studio.github.io/sommelle/marketing/out/fr/social.png">
+  <link rel="icon" href="img/icone.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="en/sleep-diary.html">
+  <link rel="stylesheet" href="style.css">
+<style>
+.calc{margin:1.5rem 0;padding:1.2rem;border:1px solid var(--line, rgba(127,127,127,.3));border-radius:18px;display:grid;gap:.9rem}
+.calc .grid2{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
+.calc label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.25rem}
+.calc input,.calc select{width:100%;font:inherit;padding:.55rem .7rem;border-radius:10px;border:1px solid rgba(127,127,127,.45);background:transparent;color:inherit}
+.calc select option{color:#111}
+.res{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
+.res div{padding:.8rem;border-radius:12px;background:rgba(242,194,123,.13)}
+.res b{display:block;font-size:1.5rem;color:#F2C27B}
+.diary{width:100%;border-collapse:collapse;font-size:.85rem;margin:1rem 0}
+.diary th,.diary td{border:1px solid rgba(127,127,127,.45);padding:.45rem .4rem;text-align:left;vertical-align:top}
+.diary td{height:2.1rem}
+.diary th[scope=row]{width:34%;font-weight:600}
+.print-only{display:none}
+@media print{
+ @page{size:A4 landscape;margin:12mm}
+ body{background:#fff!important;color:#000!important}
+ .site-header,.site-footer,.skip,.no-print{display:none!important}
+ .print-only{display:block}
+ .prose{max-width:none!important}
+ .diary{font-size:9.5pt;margin:4mm 0}
+ .diary td{height:9mm}
+ h1{font-size:16pt!important;margin:0 0 2mm!important}
+ .prose>p.note,.prose>.intro,.prose>h2{display:none!important}
+ .diary th,.diary td{border-color:#555}
+}
+</style>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2C27B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/><path d="M12 7v5l3.2 2.2"/></svg>
+        Sommelle
+      </a>
+      <nav class="site-nav" aria-label="Navigation du site">
+        <a href="./#methode">La méthode</a>
+        <a href="pourquoi.html">Pourquoi</a>
+        <a href="agenda-du-sommeil.html" aria-current="page">Agenda du sommeil</a>
+        <a href="professionnels.html">Professionnels de santé</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="en/sleep-diary.html" lang="en" hreflang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="wrap">
+    <article class="prose">
+      <h1>Agenda du sommeil : à imprimer, avec le calcul de l'efficacité</h1>
+      <p class="note">Mis en ligne le 26 novembre 2026. Ce n'est pas un avis médical.</p>
+      <p class="intro">Noter ses nuits pendant une à deux semaines, c'est la première étape de la thérapie cognitivo-comportementale de l'insomnie (TCC-I), et c'est ce que demande souvent un médecin du sommeil. Cela permet de voir ses nuits telles qu'elles sont, et pas telles qu'on s'en souvient après une mauvaise semaine.</p>
+
+      <h2 class="no-print">Comment le remplir</h2>
+      <div class="no-print"><ul>
+<li><strong>Chaque matin</strong>, dans l'heure qui suit le lever, pour la nuit qui vient de passer.</li>
+<li><strong>Estimez les durées, ne les chronométrez pas.</strong> Regarder l'heure la nuit augmente l'inquiétude et le temps mis à s'endormir : une estimation suffit.</li>
+<li><strong>Notez aussi les mauvaises nuits</strong>, et les nuits où vous avez pris un somnifère ou de l'alcool : c'est l'ensemble qui compte.</li>
+<li><strong>Ne changez rien la première semaine.</strong> On observe d'abord, on agit ensuite.</li>
+</ul></div>
+
+      <h2 class="no-print">Calculer l'efficacité d'une nuit</h2>
+      <div class="calc no-print">
+        <p style="margin:0">L'<strong>efficacité du sommeil</strong> est la part du temps passé au lit pendant laquelle on dort. Le calcul se fait sur votre appareil, rien n'est envoyé.</p>
+        <div class="grid2">
+          <div><label for="bed">Mise au lit</label><input id="bed" type="time" value="23:00"></div>
+          <div><label for="off">Extinction de la lumière</label><input id="off" type="time" value="23:15"></div>
+          <div><label for="lat">Temps pour s'endormir</label><select id="lat"><option value="5">moins de 5 min</option><option value="10">10 min</option><option value="20" selected>20 min</option><option value="30">30 min</option><option value="45">45 min</option><option value="60">1 h</option><option value="90">1 h 30</option><option value="120">2 h ou plus</option></select></div>
+          <div><label for="waso">Éveils pendant la nuit (total)</label><select id="waso"><option value="0">aucun</option><option value="10">10 min</option><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">1 h</option><option value="90">1 h 30</option><option value="120">2 h</option><option value="180">3 h ou plus</option></select></div>
+          <div><label for="wake">Réveil final</label><input id="wake" type="time" value="06:30"></div>
+          <div><label for="up">Sortie du lit</label><input id="up" type="time" value="07:00"></div>
+        </div>
+        <div class="res" id="out" aria-live="polite" hidden>
+          <div>Temps au lit<b id="tib"></b></div>
+          <div>Temps de sommeil<b id="tst"></b></div>
+          <div>Efficacité<b id="se"></b></div>
+        </div>
+        <p id="msg" data-bad="Les heures ne semblent pas cohérentes : vérifiez la mise au lit et la sortie du lit." style="margin:0"></p>
+        <p style="margin:0">Une nuit isolée ne dit pas grand-chose : c'est la moyenne sur une semaine qui compte. Le temps passé au lit avant d'éteindre ou après le réveil compte dans le temps au lit, pas dans le sommeil. Dans la TCC-I, une efficacité basse sur une semaine sert à ajuster le temps passé au lit, mais <strong>réduire ce temps se fait dans un programme encadré</strong>, avec des précautions : ce n'est pas à faire seul sur la foi d'un calcul. Le détail est dans le <a href="protocole.html#restriction">dossier scientifique</a>.</p>
+      </div>
+
+      <h2>L'agenda à imprimer</h2>
+      <p class="no-print">Une semaine par page, au format A4 paysage. Le reste de la page ne s'imprime pas.</p>
+      <p class="no-print"><button class="btn btn-accent" id="print" type="button">Imprimer l'agenda</button></p>
+      <p class="print-only"><strong>Agenda du sommeil</strong>. À remplir chaque matin, pour la nuit passée. Estimez les durées, sans regarder l'heure la nuit.</p>
+      <table class="diary">
+        <thead><tr><th scope="col"></th><th scope="col">Nuit 1<br><span style="font-weight:400">du …… </span></th><th scope="col">Nuit 2<br><span style="font-weight:400">du …… </span></th><th scope="col">Nuit 3<br><span style="font-weight:400">du …… </span></th><th scope="col">Nuit 4<br><span style="font-weight:400">du …… </span></th><th scope="col">Nuit 5<br><span style="font-weight:400">du …… </span></th><th scope="col">Nuit 6<br><span style="font-weight:400">du …… </span></th><th scope="col">Nuit 7<br><span style="font-weight:400">du …… </span></th></tr></thead>
+        <tbody><tr><th scope="row">Heure de mise au lit</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Heure d'extinction de la lumière</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Temps pour s'endormir (estimé)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Nombre de réveils dans la nuit</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Durée totale des réveils (estimée)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Heure du réveil final</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Heure de sortie du lit</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Qualité de la nuit (1 très mauvaise à 5 très bonne)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Siestes, somnifère, alcool (oui / non, heure)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>
+      </table>
+      <p class="print-only">Efficacité = temps de sommeil ÷ temps au lit. Agenda proposé par Sommelle, appli libre et gratuite : pilmil-studio.github.io/sommelle</p>
+
+      <h2 class="no-print">Quand en parler à un médecin</h2>
+      <div class="no-print"><p>Parlez-en à votre médecin, avec l'agenda, si :</p>
+<ul>
+<li>on vous dit que vous ronflez fort avec des pauses dans la respiration, ou vous somnolez beaucoup dans la journée, surtout au volant ;</li>
+<li>les difficultés durent depuis plus de trois mois et pèsent sur vos journées ;</li>
+<li>vous prenez un somnifère ou un sédatif le soir, vous avez une maladie que le manque de sommeil aggrave, ou vous êtes enceinte ;</li>
+<li>vous avez des comportements inhabituels pendant le sommeil (somnambulisme, terreurs nocturnes).</li>
+</ul>
+<p>Si vous allez mal ou avez des idées de suicide, appelez le <strong>3114</strong>, gratuit, jour et nuit.</p></div>
+
+      <aside class="callout no-print"><h2 style="margin-top:0">Sommelle fait le calcul pour vous</h2>
+<p>Sommelle reprend cet agenda sur téléphone, en quelques gestes chaque matin, calcule l'efficacité de la semaine et propose ensuite un programme de six à huit semaines fondé sur la TCC-I, avec un questionnaire de sécurité au départ. Gratuite, sans compte, sans publicité, et sans accès à Internet.</p>
+<p><a href="./">Découvrir Sommelle</a> · <a href="pourquoi.html">Pourquoi ces choix</a></p></aside>
+
+      <h2 class="no-print">Sources</h2>
+      <ul class="refs no-print"><li>Carney C. E. et al., « The Consensus Sleep Diary: standardizing prospective sleep self-monitoring », <em>Sleep</em>, 2012.</li>
+<li>Haute Autorité de santé, recommandations sur la prise en charge de l'insomnie de l'adulte, 2024 (TCC en première intention).</li>
+<li>Riemann D. et al., recommandations européennes sur le diagnostic et le traitement de l'insomnie, <em>Journal of Sleep Research</em>, 2023.</li>
+<li>Tang N. K. Y. et al., surveillance de l'horloge et insomnie, 2007.</li>
+<li>Le détail des calculs et des précautions : <a href="protocole.html">dossier scientifique de Sommelle</a>.</li></ul>
+    </article>
+  </main>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const m=v=>{if(!v)return null;const [h,mi]=v.split(':').map(Number);return h*60+mi;};
+  const fmt=x=>Math.floor(x/60)+' h '+String(Math.round(x%60)).padStart(2,'0');
+  function run(){
+    let bed=m($('bed').value), off=m($('off').value), wake=m($('wake').value), up=m($('up').value);
+    const lat=+$('lat').value, waso=+$('waso').value, out=$('out'), msg=$('msg');
+    if([bed,off,wake,up].some(v=>v===null)){out.hidden=true;return;}
+    if(off<bed) off+=1440; if(wake<off) wake+=1440; if(up<wake) up+=1440;
+    const tib=up-bed, tst=Math.max(0,(wake-off)-lat-waso);
+    if(tib<=0||tib>18*60){out.hidden=true;msg.textContent=msg.dataset.bad;return;}
+    msg.textContent='';
+    $('tib').textContent=fmt(tib); $('tst').textContent=fmt(tst); $('se').textContent=Math.round(100*tst/tib)+' %';
+    out.hidden=false;
+  }
+  ['bed','off','lat','waso','wake','up'].forEach(id=>$(id).addEventListener('input',run));
+  $('print').addEventListener('click',()=>window.print());
+  run();
+})();
+</script>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="pourquoi.html">Pourquoi ces choix</a>
+        <a href="./">Accueil</a>
+        <a href="agenda-du-sommeil.html">Agenda du sommeil</a>
+        <a href="professionnels.html">Professionnels de santé</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="https://github.com/Pilmil-Studio/sommelle">Code source</a>
+        <a href="mailto:pilmil.studio@proton.me">Contact</a>
+      </div>
+      <p><img class="footer-logo" src="img/pilmil-logo.svg" alt="" width="18" height="18"><a href="https://pilmil-studio.github.io/"><strong>Pilmil Studio</strong></a> (France) · Sommelle est un logiciel libre distribué sous licence Mozilla Public License 2.0 (MPL-2.0). Ce n'est pas un dispositif médical.</p>
+    </div>
+  </footer>
+</body>
+</html>
